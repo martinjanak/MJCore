@@ -1,0 +1,22 @@
+{
+  "name": "MJCore",
+  "version": "0.1.0",
+  "summary": "A short description of MJCore.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/martinjanak/MJCore",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "martinjanak": "janak.martin@email.cz"
+  },
+  "source": {
+    "git": "https://github.com/martinjanak/MJCore.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "MJCore/Classes/**/*"
+}
