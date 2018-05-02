@@ -1,0 +1,6 @@
+use_frameworks!
+target 'MJCore_Tests' do
+  pod 'MJCore', :path => '../'
+  
+  
+end
