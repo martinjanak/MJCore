@@ -122,6 +122,9 @@
 		5B41E808209C474B00129589 /* MJResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B41E807209C474B00129589 /* MJResult.swift */; };
 		5B41E80C209C491500129589 /* MJCoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B41E80B209C491500129589 /* MJCoreDataService.swift */; };
 		5B41E80E209C497800129589 /* MJCoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B41E80D209C497800129589 /* MJCoreDataModel.swift */; };
+		5B41E811209C508B00129589 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B41E810209C508B00129589 /* UserDefaultsService.swift */; };
+		5B41E814209C50D900129589 /* MJKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B41E813209C50D900129589 /* MJKeychain.swift */; };
+		5B41E816209C514100129589 /* MJKeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B41E815209C514100129589 /* MJKeychainService.swift */; };
 		5BBF4AEE498B9D2E50FFA20BDD6DFD0E /* _RXObjCRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 835253799995A972735548AFE376724B /* _RXObjCRuntime.m */; };
 		5C436F7A59928CB1557BF307AC10F96A /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52144B7A42EFCEA8A6B691A3A2039CD5 /* Logging.swift */; };
 		5C7DEFFE6825C1C04763852FBE8FADE6 /* Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A8E60D57D25EB9C74A8A0C84F19D4D /* Merge.swift */; };
@@ -486,6 +489,9 @@
 		5B41E807209C474B00129589 /* MJResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJResult.swift; sourceTree = "<group>"; };
 		5B41E80B209C491500129589 /* MJCoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJCoreDataService.swift; sourceTree = "<group>"; };
 		5B41E80D209C497800129589 /* MJCoreDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJCoreDataModel.swift; sourceTree = "<group>"; };
+		5B41E810209C508B00129589 /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
+		5B41E813209C50D900129589 /* MJKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJKeychain.swift; sourceTree = "<group>"; };
+		5B41E815209C514100129589 /* MJKeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJKeychainService.swift; sourceTree = "<group>"; };
 		5BF290F37A17BFA15E917127EF19B03B /* AsyncLock.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AsyncLock.swift; path = RxSwift/Concurrency/AsyncLock.swift; sourceTree = "<group>"; };
 		5C2B4461B42041A6C9B8D03D734CFB79 /* _RX.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = _RX.m; path = RxCocoa/Runtime/_RX.m; sourceTree = "<group>"; };
 		5C50219D82218D8F12E39F82C04BA577 /* Signal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Signal.swift; path = RxCocoa/Traits/Signal/Signal.swift; sourceTree = "<group>"; };
@@ -799,6 +805,8 @@
 			isa = PBXGroup;
 			children = (
 				5B41E80A209C490300129589 /* CoreData */,
+				5B41E80F209C506700129589 /* UserDefaults */,
+				5B41E812209C50B500129589 /* Keychain */,
 			);
 			path = Persistance;
 			sourceTree = "<group>";
@@ -810,6 +818,23 @@
 				5B41E80D209C497800129589 /* MJCoreDataModel.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		5B41E80F209C506700129589 /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				5B41E810209C508B00129589 /* UserDefaultsService.swift */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
+		5B41E812209C50B500129589 /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				5B41E813209C50D900129589 /* MJKeychain.swift */,
+				5B41E815209C514100129589 /* MJKeychainService.swift */,
+			);
+			path = Keychain;
 			sourceTree = "<group>";
 		};
 		726972F794C190BF8D0AD2F8C8D55749 /* Support Files */ = {
@@ -1641,15 +1666,18 @@
 			files = (
 				5B41E7F9209C439800129589 /* UIView+TopSafeConstraint.swift in Sources */,
 				5B41E801209C439800129589 /* MJView.swift in Sources */,
+				5B41E816209C514100129589 /* MJKeychainService.swift in Sources */,
 				5B41E7FD209C439800129589 /* MJHttpEndpoints.swift in Sources */,
 				5B41E806209C43D000129589 /* MJTwoWayBinding.swift in Sources */,
 				5B41E7FA209C439800129589 /* MJHttpMethod.swift in Sources */,
 				5B41E7FF209C439800129589 /* MJHttpResponse.swift in Sources */,
+				5B41E811209C508B00129589 /* UserDefaultsService.swift in Sources */,
 				D5F8F352A0552251ECE33DB12F709620 /* MJCore-dummy.m in Sources */,
 				5B41E808209C474B00129589 /* MJResult.swift in Sources */,
 				5B41E7F8209C439800129589 /* UINavigationController+Root.swift in Sources */,
 				5B41E802209C439800129589 /* MJViewController.swift in Sources */,
 				5B41E803209C439800129589 /* MJFlowController.swift in Sources */,
+				5B41E814209C50D900129589 /* MJKeychain.swift in Sources */,
 				5B41E80E209C497800129589 /* MJCoreDataModel.swift in Sources */,
 				5B41E7FC209C439800129589 /* Observable+MJHttpResponse.swift in Sources */,
 				5B41E800209C439800129589 /* MJCodableUtil.swift in Sources */,
