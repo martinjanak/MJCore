@@ -26,6 +26,9 @@
   "dependencies": {
     "RxSwift": [
       "~> 4.1.2"
+    ],
+    "RxCocoa": [
+      "~> 4.1.2"
     ]
   }
 }

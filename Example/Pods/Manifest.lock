@@ -1,6 +1,9 @@
 PODS:
   - MJCore (0.1.0):
+    - RxCocoa (~> 4.1.2)
     - RxSwift (~> 4.1.2)
+  - RxCocoa (4.1.2):
+    - RxSwift (~> 4.0)
   - RxSwift (4.1.2)
 
 DEPENDENCIES:
@@ -11,7 +14,8 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  MJCore: 0809f766ef3cb4425a36ea91c40307346d46356a
+  MJCore: 71feb06d12acfa38baf18b54e39d9d5f7630ae3e
+  RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
   RxSwift: e49536837d9901277638493ea537394d4b55f570
 
 PODFILE CHECKSUM: 96494afd38ff5b2aab0032598567f5bfa8faec8f
