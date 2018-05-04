@@ -6,20 +6,26 @@
 //
 
 import UIKit
+import RxSwift
 
-public protocol MJRemoteNotificationService {
-    associatedtype Notification: MJRemoteNotifications
+open class MJRemoteNotificationService {
     
-    func getToken() -> String?
-    func storeAndUpload(token: String)
-    func deleteAndRevoke(token: String)
-    func received(
-        notificationResult: MJResult<Notification>,
-        completionHandler: @escaping (UIBackgroundFetchResult) -> Void
-    )
-}
-
-extension MJRemoteNotificationService {
+    public typealias Payload = [AnyHashable: Any]
+    
+    private let notificationSubject = PublishSubject<MJRemoteNotification>()
+    public lazy var notification = notificationSubject.asObservable()
+    
+    open func getToken() -> String? {
+        fatalError("getToken() has not been implemented")
+    }
+    
+    open func storeAndUpload(token: String) {
+        fatalError("storeAndUpload(token:) has not been implemented")
+    }
+    
+    open func deleteAndRevoke(token: String) {
+        fatalError("deleteAndRevoke(token:) has not been implemented")
+    }
     
     public func register() {
         DispatchQueue.main.async {
@@ -45,14 +51,14 @@ extension MJRemoteNotificationService {
     }
     
     public func didReceive(
-        payload: [AnyHashable: Any],
+        payload: Payload,
         completionHandler: @escaping (UIBackgroundFetchResult) -> Void
     ) {
-        let notificationResult = Notification.create(from: payload)
-        received(
-            notificationResult: notificationResult,
-            completionHandler: completionHandler
+        notificationSubject.onNext(
+            MJRemoteNotification(
+                payload: payload,
+                completionHandler: completionHandler
+            )
         )
     }
-    
 }
