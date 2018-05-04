@@ -8,7 +8,7 @@
 import Foundation
 import SystemConfiguration
 
-public class MJReachability {
+public final class MJReachability {
     
     public enum Status {
         case notReachable

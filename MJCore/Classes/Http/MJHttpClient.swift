@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 
-public class MJHttpClient<Endpoint: MJHttpEndpoints> {
+public final class MJHttpClient<Endpoint: MJHttpEndpoints> {
     
     private let session: URLSession
     private let authorizationClosure: ((inout URLRequest) -> Bool)?

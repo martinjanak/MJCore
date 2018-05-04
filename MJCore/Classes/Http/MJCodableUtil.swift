@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class MJCodableUtil {
+public final class MJCodableUtil {
     
     public static func decode<D: Decodable>(decodableType: D.Type, data: Data, handler: @escaping (D?, Error?) -> Void) {
         let decoder = JSONDecoder()
