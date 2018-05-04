@@ -113,6 +113,7 @@
 		5B41E7E1209C405500129589 /* MJReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B41E7DB209C405500129589 /* MJReachability.swift */; };
 		5B41E7E2209C405500129589 /* MJHttpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B41E7DC209C405500129589 /* MJHttpResponse.swift */; };
 		5B41E7E3209C405500129589 /* MJCodableUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B41E7DD209C405500129589 /* MJCodableUtil.swift */; };
+		5B41E7E5209C41F300129589 /* Observable+MJHttpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B41E7E4209C41F300129589 /* Observable+MJHttpResponse.swift */; };
 		5BBF4AEE498B9D2E50FFA20BDD6DFD0E /* _RXObjCRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 835253799995A972735548AFE376724B /* _RXObjCRuntime.m */; };
 		5C436F7A59928CB1557BF307AC10F96A /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52144B7A42EFCEA8A6B691A3A2039CD5 /* Logging.swift */; };
 		5C7DEFFE6825C1C04763852FBE8FADE6 /* Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A8E60D57D25EB9C74A8A0C84F19D4D /* Merge.swift */; };
@@ -471,6 +472,7 @@
 		5B41E7DB209C405500129589 /* MJReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJReachability.swift; sourceTree = "<group>"; };
 		5B41E7DC209C405500129589 /* MJHttpResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJHttpResponse.swift; sourceTree = "<group>"; };
 		5B41E7DD209C405500129589 /* MJCodableUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJCodableUtil.swift; sourceTree = "<group>"; };
+		5B41E7E4209C41F300129589 /* Observable+MJHttpResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+MJHttpResponse.swift"; sourceTree = "<group>"; };
 		5BF290F37A17BFA15E917127EF19B03B /* AsyncLock.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AsyncLock.swift; path = RxSwift/Concurrency/AsyncLock.swift; sourceTree = "<group>"; };
 		5C2B4461B42041A6C9B8D03D734CFB79 /* _RX.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = _RX.m; path = RxCocoa/Runtime/_RX.m; sourceTree = "<group>"; };
 		5C50219D82218D8F12E39F82C04BA577 /* Signal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Signal.swift; path = RxCocoa/Traits/Signal/Signal.swift; sourceTree = "<group>"; };
@@ -733,12 +735,13 @@
 		5B41E7D7209C405500129589 /* Http */ = {
 			isa = PBXGroup;
 			children = (
-				5B41E7D8209C405500129589 /* MJHttpMethod.swift */,
 				5B41E7D9209C405500129589 /* MJHttpClient.swift */,
 				5B41E7DA209C405500129589 /* MJHttpEndpoints.swift */,
-				5B41E7DB209C405500129589 /* MJReachability.swift */,
+				5B41E7D8209C405500129589 /* MJHttpMethod.swift */,
 				5B41E7DC209C405500129589 /* MJHttpResponse.swift */,
+				5B41E7DB209C405500129589 /* MJReachability.swift */,
 				5B41E7DD209C405500129589 /* MJCodableUtil.swift */,
+				5B41E7E4209C41F300129589 /* Observable+MJHttpResponse.swift */,
 			);
 			name = Http;
 			path = MJCore/Classes/Http;
@@ -1606,6 +1609,7 @@
 				9B16B611BC050140847E2379A47FF1DC /* UINavigationController+Root.swift in Sources */,
 				5B41E7E0209C405500129589 /* MJHttpEndpoints.swift in Sources */,
 				8C84B8424CDBD6D97B7824BAAD29E735 /* UIView+TopSafeConstraint.swift in Sources */,
+				5B41E7E5209C41F300129589 /* Observable+MJHttpResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
