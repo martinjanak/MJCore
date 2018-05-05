@@ -23,7 +23,7 @@ extension Observable {
         })
     }
     
-    public func `catch`<V>(
+    public func failure<V>(
         _ handler: @escaping (Error) -> Void
     ) -> Observable<MJResult<V>> where Element == MJResult<V> {
         return self.map({ response in
@@ -35,6 +35,14 @@ extension Observable {
             }
             return response
         })
+    }
+    
+    public func bindSuccess<V, O: ObserverType>(
+        to observer: O
+    ) -> Disposable where O.E == Bool, Element == MJResult<V> {
+        return self
+            .map({ $0.isSuccess() })
+            .bind(to: observer)
     }
     
     public func debug<V>(_ tag: String = "Result") -> Observable<MJResult<V>> where Element == MJResult<V> {
@@ -67,7 +75,7 @@ extension Observable where Element == MJResultSimple {
         })
     }
     
-    public func `catch`(
+    public func failure(
         _ handler: @escaping (Error) -> Void
     ) -> Observable<MJResultSimple>  {
         return self.map({ response in
@@ -79,6 +87,14 @@ extension Observable where Element == MJResultSimple {
             }
             return response
         })
+    }
+    
+    public func bindSuccess<O: ObserverType>(
+        to observer: O
+    ) -> Disposable where O.E == Bool, Element == MJResultSimple {
+        return self
+            .map({ $0.isSuccess() })
+            .bind(to: observer)
     }
     
     public func debug(_ tag: String = "Result") -> Observable<MJResultSimple> {

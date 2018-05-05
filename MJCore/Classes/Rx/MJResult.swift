@@ -34,6 +34,15 @@ extension MJResultSimple {
         case .failure(let error): throw error
         }
     }
+    
+    public func isSuccess() -> Bool {
+        switch self {
+        case .success:
+            return true
+        case .failure:
+            return false
+        }
+    }
 }
 
 extension MJResult {
@@ -50,6 +59,15 @@ extension MJResult {
         switch self {
         case .success(let value): return value
         case .failure(let error): throw error
+        }
+    }
+    
+    public func isSuccess() -> Bool {
+        switch self {
+        case .success:
+            return true
+        case .failure:
+            return false
         }
     }
 }
