@@ -14,7 +14,7 @@ extension UINavigationController {
         case pop
     }
     
-    func set(rootViewController: UIViewController, direction: Direction? = nil) {
+    public func set(rootViewController: UIViewController, direction: Direction? = nil) {
         if let direction = direction {
             addTransition(direction)
         }

@@ -10,7 +10,7 @@ import UIKit
 extension UIView {
     
     @discardableResult
-    func topSafe(_ constant: CGFloat = 0) -> UIView {
+    public func topSafe(_ constant: CGFloat = 0) -> UIView {
         if let spv = superview {
             self.topAnchor
                 .constraint(equalTo: spv.safeAreaLayoutGuide.topAnchor, constant: constant)

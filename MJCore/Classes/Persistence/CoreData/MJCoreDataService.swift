@@ -17,7 +17,7 @@ public final class CoreDataService {
     
     private let modelName: String
     
-    init(modelName: String) {
+    public init(modelName: String) {
         self.modelName = modelName
     }
     

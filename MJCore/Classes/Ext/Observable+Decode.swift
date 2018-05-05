@@ -9,7 +9,7 @@ import RxSwift
 
 extension Observable where Element == MJResult<Data> {
     
-    func decode<D: Decodable>(_ decodableType: D.Type) -> Observable<MJResult<D>> {
+    public func decode<D: Decodable>(_ decodableType: D.Type) -> Observable<MJResult<D>> {
         return self.map({ response in
             switch response {
             case .success(let data):
@@ -25,7 +25,7 @@ extension Observable where Element == MJResult<Data> {
         })
     }
     
-    func decode<D: Decodable>(_ decodableType: [D].Type) -> Observable<MJResult<[D]>> {
+    public func decode<D: Decodable>(_ decodableType: [D].Type) -> Observable<MJResult<[D]>> {
         return self.map({ response in
             switch response {
             case .success(let data):
@@ -41,7 +41,7 @@ extension Observable where Element == MJResult<Data> {
         })
     }
     
-    func decodeOptional<D: Decodable>(_ decodableType: D.Type) -> Observable<D?> {
+    public func decodeOptional<D: Decodable>(_ decodableType: D.Type) -> Observable<D?> {
         return self.map({ response in
             switch response {
             case .success(let data):
@@ -56,7 +56,7 @@ extension Observable where Element == MJResult<Data> {
         })
     }
     
-    func decodeOptional<D: Decodable>(_ decodableType: [D].Type) -> Observable<[D]?> {
+    public func decodeOptional<D: Decodable>(_ decodableType: [D].Type) -> Observable<[D]?> {
         return self.map({ response in
             switch response {
             case .success(let data):
@@ -71,7 +71,7 @@ extension Observable where Element == MJResult<Data> {
         })
     }
     
-    func decode<D: Decodable>(_ decodableType: D.Type, defaultValue: D) -> Observable<D> {
+    public func decode<D: Decodable>(_ decodableType: D.Type, defaultValue: D) -> Observable<D> {
         return self.map({ response in
             switch response {
             case .success(let data):
@@ -86,7 +86,7 @@ extension Observable where Element == MJResult<Data> {
         })
     }
     
-    func decode<D: Decodable>(_ decodableType: [D].Type, defaultValue: [D]) -> Observable<[D]> {
+    public func decode<D: Decodable>(_ decodableType: [D].Type, defaultValue: [D]) -> Observable<[D]> {
         return self.map({ response in
             switch response {
             case .success(let data):

@@ -9,7 +9,7 @@ import RxSwift
 
 extension Observable {
     
-    func success<V>(
+    public func success<V>(
         _ handler: @escaping (V) -> Void
     ) -> Observable<MJResult<V>> where Element == MJResult<V> {
         return self.map({ response in
@@ -23,7 +23,7 @@ extension Observable {
         })
     }
     
-    func `catch`<V>(
+    public func `catch`<V>(
         _ handler: @escaping (Error) -> Void
     ) -> Observable<MJResult<V>> where Element == MJResult<V> {
         return self.map({ response in
@@ -37,7 +37,7 @@ extension Observable {
         })
     }
     
-    func debug<V>(_ tag: String = "Result") -> Observable<MJResult<V>> where Element == MJResult<V> {
+    public func debug<V>(_ tag: String = "Result") -> Observable<MJResult<V>> where Element == MJResult<V> {
         return self.map({ response in
             switch response {
             case .success:
@@ -53,7 +53,7 @@ extension Observable {
 
 extension Observable where Element == MJResultSimple {
     
-    func success(
+    public func success(
         _ handler: @escaping () -> Void
     ) -> Observable<MJResultSimple> {
         return self.map({ response in
@@ -67,7 +67,7 @@ extension Observable where Element == MJResultSimple {
         })
     }
     
-    func `catch`(
+    public func `catch`(
         _ handler: @escaping (Error) -> Void
     ) -> Observable<MJResultSimple>  {
         return self.map({ response in
@@ -81,7 +81,7 @@ extension Observable where Element == MJResultSimple {
         })
     }
     
-    func debug(_ tag: String = "Result") -> Observable<MJResultSimple> {
+    public func debug(_ tag: String = "Result") -> Observable<MJResultSimple> {
         return self.map({ response in
             switch response {
             case .success:

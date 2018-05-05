@@ -13,7 +13,7 @@ public final class MJHttpClient<Endpoint: MJHttpEndpoints> {
     private let session: URLSession
     private let authorizationClosure: ((inout URLRequest) -> Bool)?
     
-    init(
+    public init(
         sessionConfig: URLSessionConfiguration? = nil,
         authorizationClosure: ((inout URLRequest) -> Bool)? = nil
     ) {

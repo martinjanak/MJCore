@@ -11,7 +11,7 @@ open class MJViewController<View: MJView>: UIViewController {
     
     public let ui: View
     
-    init() {
+    public init() {
         ui = View()
         super.init(nibName: nil, bundle: nil)
     }

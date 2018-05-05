@@ -16,7 +16,7 @@ open class MJFlowController<Service> {
     private weak var parentFlowController: MJFlowController<Service>?
     private var childFlowController: MJFlowController<Service>?
     
-    init(service: Service) {
+    public init(service: Service) {
         self.service = service
     }
     
