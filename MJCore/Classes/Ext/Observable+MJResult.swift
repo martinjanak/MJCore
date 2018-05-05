@@ -45,6 +45,14 @@ extension Observable {
             .bind(to: observer)
     }
     
+    public func bindSuccess<V>(
+        to variable: Variable<Bool>
+        ) -> Disposable where Element == MJResult<V> {
+        return self
+            .map({ $0.isSuccess() })
+            .bind(to: variable)
+    }
+    
     public func debug<V>(_ tag: String = "Result") -> Observable<MJResult<V>> where Element == MJResult<V> {
         return self.map({ response in
             switch response {
@@ -91,10 +99,18 @@ extension Observable where Element == MJResultSimple {
     
     public func bindSuccess<O: ObserverType>(
         to observer: O
-    ) -> Disposable where O.E == Bool, Element == MJResultSimple {
+    ) -> Disposable where O.E == Bool {
         return self
             .map({ $0.isSuccess() })
             .bind(to: observer)
+    }
+    
+    public func bindSuccess(
+        to variable: Variable<Bool>
+    ) -> Disposable {
+        return self
+            .map({ $0.isSuccess() })
+            .bind(to: variable)
     }
     
     public func debug(_ tag: String = "Result") -> Observable<MJResultSimple> {
