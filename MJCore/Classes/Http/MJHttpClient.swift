@@ -28,18 +28,22 @@ public final class MJHttpClient<Endpoint: MJHttpEndpoints> {
         self.authorizationClosure = authorizationClosure
     }
     
-    public func sendRequest(_ endpoint: Endpoint) -> Observable<MJHttpResponse> {
+    public func sendRequest(_ endpoint: Endpoint) -> Observable<MJResult<Data>> {
         
         guard MJReachability.status != .notReachable else {
-            return Observable<MJHttpResponse>.just(.noConnection)
+            return Observable<MJResult<Data>>.just(
+                .failure(error: MJHttpError.noConnection)
+            )
         }
         
-        let subject = PublishSubject<MJHttpResponse>()
+        let subject = PublishSubject<MJResult<Data>>()
         
         DispatchQueue.global(qos: .userInitiated).async {
             
             guard let url = URL(string: "\(endpoint.domainUrl)\(endpoint.path)") else {
-                subject.onNext(.errorInvalidUrl)
+                subject.onNext(
+                    .failure(error: MJHttpError.invalidUrl)
+                )
                 return
             }
             var request = URLRequest(url: url)
@@ -50,7 +54,9 @@ public final class MJHttpClient<Endpoint: MJHttpEndpoints> {
             
             if let authorizationClosure = self.authorizationClosure {
                 guard authorizationClosure(&request) else {
-                    subject.onNext(.errorCouldNotAuthorizeRequest)
+                    subject.onNext(
+                        .failure(error: MJHttpError.couldNotAuthorizeRequest)
+                    )
                     return
                 }
             }
@@ -61,7 +67,9 @@ public final class MJHttpClient<Endpoint: MJHttpEndpoints> {
                     request.httpBody = data
                 }
             } catch let error {
-                subject.onNext(.errorCouldNotEncodeData(error: error))
+                subject.onNext(
+                    .failure(error: error)
+                )
                 return
             }
             
@@ -70,7 +78,7 @@ public final class MJHttpClient<Endpoint: MJHttpEndpoints> {
         return subject.asObservable()
     }
     
-    private func dataTask(request: URLRequest, subject: PublishSubject<MJHttpResponse>) {
+    private func dataTask(request: URLRequest, subject: PublishSubject<MJResult<Data>>) {
         
         let task = session.dataTask(with: request) { (data, response, error) in
             
@@ -78,26 +86,30 @@ public final class MJHttpClient<Endpoint: MJHttpEndpoints> {
                 let nserror = error as NSError
                 if nserror.domain == NSURLErrorDomain,
                     nserror.code == -1001 {
-                    subject.onNext(.timedOut)
+                    subject.onNext(.failure(error: MJHttpError.timedOut))
                 } else {
-                    subject.onNext(.errorSystem(error: error))
+                    subject.onNext(.failure(error: error))
                 }
                 return
             }
             
             if let statusCode = (response as? HTTPURLResponse)?.statusCode {
                 if statusCode < 200 || statusCode > 299 {
-                    subject.onNext(.errorHttp(statusCode: statusCode))
+                    subject.onNext(
+                        .failure(error: MJHttpError.http(statusCode: statusCode))
+                    )
                     return
                 }
             }
             
             guard let data = data else {
-                subject.onNext(.errorNoDataReturned)
+                subject.onNext(
+                    .failure(error: MJHttpError.noDataReturned)
+                )
                 return
             }
             
-            subject.onNext(.success(data: data))
+            subject.onNext(.success(value: data))
         }
         
         task.resume()

@@ -1,67 +1,42 @@
 //
-//  Observable+MJHttpResponse.swift
+//  Observable+Decode.swift
 //  MJCore
 //
-//  Created by Martin Janák on 04/05/2018.
+//  Created by Martin Janák on 05/05/2018.
 //
 
 import RxSwift
 
-public enum MJDecodedResponse<D: Decodable> {
-    case success(object: D)
-    case errorCouldNotDecode(error: Error)
-    case error(response: MJHttpResponse)
+extension Observable where Element == MJResult<Data> {
     
-    func isSuccess() -> Bool {
-        switch self {
-        case .success: return true
-        default: return false
-        }
-    }
-}
-
-extension Observable where Element == MJHttpResponse {
-    
-    func `catch`(_ handler: @escaping (MJHttpResponse) -> Void) -> Observable<MJHttpResponse> {
-        return self.map({ response in
-            switch response {
-            case .success:
-                break
-            default:
-                handler(response)
-            }
-            return response
-        })
-    }
-    
-    func decode<D: Decodable>(_ decodableType: D.Type) -> Observable<MJDecodedResponse<D>> {
+    func decode<D: Decodable>(_ decodableType: D.Type) -> Observable<MJResult<D>> {
         return self.map({ response in
             switch response {
             case .success(let data):
                 do {
                     let object: D = try MJCodableUtil.decode(decodableType: decodableType, data: data)
-                    return .success(object: object)
+                    return .success(value: object)
                 } catch let error {
-                    return .errorCouldNotDecode(error: error)
+                    return .failure(error: error)
                 }
-            default:
-                return .error(response: response)
+            case .failure(let error):
+                return .failure(error: error)
             }
         })
     }
     
-    func decode<D: Decodable>(_ decodableType: [D].Type) -> Observable<MJDecodedResponse<[D]>> {
+    func decode<D: Decodable>(_ decodableType: [D].Type) -> Observable<MJResult<[D]>> {
         return self.map({ response in
             switch response {
             case .success(let data):
                 do {
                     let object: [D] = try MJCodableUtil.decode(decodableType: decodableType, data: data)
-                    return .success(object: object)
+                    return .success(value: object)
                 } catch let error {
-                    return .errorCouldNotDecode(error: error)
+                    return .failure(error: error)
                 }
-            default:
-                return .error(response: response)
+            case .failure(let error):
+                return .failure(error: error)
             }
         })
     }
@@ -125,5 +100,6 @@ extension Observable where Element == MJHttpResponse {
             }
         })
     }
+
     
 }
