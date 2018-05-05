@@ -12,8 +12,12 @@ open class MJRemoteNotificationService {
     
     public typealias Payload = [AnyHashable: Any]
     
-    private let notificationSubject = PublishSubject<MJRemoteNotification>()
+    private let notificationSubject: PublishSubject<MJRemoteNotification>
     public lazy var notification = notificationSubject.asObservable()
+    
+    public init() {
+        notificationSubject = PublishSubject<MJRemoteNotification>()
+    }
     
     open func getToken() -> String? {
         fatalError("getToken() has not been implemented")
