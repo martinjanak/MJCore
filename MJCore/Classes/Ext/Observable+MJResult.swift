@@ -37,6 +37,18 @@ extension Observable {
         })
     }
     
+    func debug<V>(_ tag: String = "Result") -> Observable<MJResult<V>> where Element == MJResult<V> {
+        return self.map({ response in
+            switch response {
+            case .success:
+                print("[\(tag)]: Success")
+            case .failure(let error):
+                print("[\(tag)]: Failure: \(error)")
+            }
+            return response
+        })
+    }
+    
 }
 
 extension Observable where Element == MJResultSimple {
@@ -64,6 +76,18 @@ extension Observable where Element == MJResultSimple {
                 break
             case .failure(let error):
                 handler(error)
+            }
+            return response
+        })
+    }
+    
+    func debug(_ tag: String = "Result") -> Observable<MJResultSimple> {
+        return self.map({ response in
+            switch response {
+            case .success:
+                print("[\(tag)]: Success")
+            case .failure(let error):
+                print("[\(tag)]: Failure: \(error)")
             }
             return response
         })
