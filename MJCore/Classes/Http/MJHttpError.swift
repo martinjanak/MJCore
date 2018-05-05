@@ -25,6 +25,10 @@ public enum MJHttpError: Error {
         return isHttpError(401)
     }
     
+    public var isForbidden: Bool {
+        return isHttpError(403)
+    }
+    
     public var isServerError: Bool {
         return isHttpError(500...599)
     }

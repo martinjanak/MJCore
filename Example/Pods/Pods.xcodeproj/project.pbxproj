@@ -106,6 +106,7 @@
 		5A712F6F30D4E4F7DB277ECF4D3AE24D /* RxCollectionViewDataSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968F78126977449D4DD5BB0EB09883C /* RxCollectionViewDataSourceType.swift */; };
 		5B03466FCB1AD202748FC913C0542CA5 /* ObservableType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1028A073688F7BA102986DCD8A18597C /* ObservableType+Extensions.swift */; };
 		5B049C7F4A406641EA73EAA265255B26 /* RxPickerViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A120760EF02FB5BE863FEE132C226 /* RxPickerViewAdapter.swift */; };
+		5B390A9B209E31B8004D7451 /* MJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B390A9A209E31B8004D7451 /* MJson.swift */; };
 		5B41E7F8209C439800129589 /* UINavigationController+Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B41E7E9209C439800129589 /* UINavigationController+Root.swift */; };
 		5B41E7F9209C439800129589 /* UIView+TopSafeConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B41E7EA209C439800129589 /* UIView+TopSafeConstraint.swift */; };
 		5B41E7FA209C439800129589 /* MJHttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B41E7ED209C439800129589 /* MJHttpMethod.swift */; };
@@ -478,6 +479,7 @@
 		583A1673DAEA1430896182EED78F995E /* Single.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Single.swift; path = RxSwift/Traits/Single.swift; sourceTree = "<group>"; };
 		59AC3D23F16A87777F6D74567C457815 /* Using.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Using.swift; path = RxSwift/Observables/Using.swift; sourceTree = "<group>"; };
 		5B0F7B1B1E820348CD70B9E493288AE7 /* InvocableScheduledItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InvocableScheduledItem.swift; path = RxSwift/Schedulers/Internal/InvocableScheduledItem.swift; sourceTree = "<group>"; };
+		5B390A9A209E31B8004D7451 /* MJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJson.swift; sourceTree = "<group>"; };
 		5B41E7E9209C439800129589 /* UINavigationController+Root.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Root.swift"; sourceTree = "<group>"; };
 		5B41E7EA209C439800129589 /* UIView+TopSafeConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+TopSafeConstraint.swift"; sourceTree = "<group>"; };
 		5B41E7ED209C439800129589 /* MJHttpMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJHttpMethod.swift; sourceTree = "<group>"; };
@@ -790,6 +792,7 @@
 				5B41E7F1209C439800129589 /* MJReachability.swift */,
 				5B41E7F2209C439800129589 /* MJHttpError.swift */,
 				5B41E7F3209C439800129589 /* MJCodableUtil.swift */,
+				5B390A9A209E31B8004D7451 /* MJson.swift */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -1708,6 +1711,7 @@
 				5B41E801209C439800129589 /* MJView.swift in Sources */,
 				5B41E816209C514100129589 /* MJKeychainService.swift in Sources */,
 				5B41E7FD209C439800129589 /* MJHttpEndpoints.swift in Sources */,
+				5B390A9B209E31B8004D7451 /* MJson.swift in Sources */,
 				5B41E806209C43D000129589 /* MJTwoWayBinding.swift in Sources */,
 				5B41E81A209C526D00129589 /* MJLocalNotificationService.swift in Sources */,
 				5B472319209D9D7000611A36 /* Observable+Decode.swift in Sources */,

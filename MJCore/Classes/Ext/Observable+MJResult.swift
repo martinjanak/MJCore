@@ -67,6 +67,28 @@ extension Observable {
     
 }
 
+extension Observable where Element == MJResult<Data> {
+    
+    public func debug(_ tag: String = "Result") -> Observable<MJResult<Data>> {
+        return self.map({ response in
+            switch response {
+            case .success(let data):
+                if let json = MJsonUtil.parse(data) {
+                    print("[\(tag)]: Success: \(json)")
+                } else if let jsonArray = MJsonUtil.parseArray(data) {
+                    print("[\(tag)]: Success: \(jsonArray)")
+                } else {
+                    print("[\(tag)]: Success, but could not parse as JSON.")
+                }
+            case .failure(let error):
+                print("[\(tag)]: Failure: \(error)")
+            }
+            return response
+        })
+    }
+    
+}
+
 extension Observable where Element == MJResultSimple {
     
     public func success(
