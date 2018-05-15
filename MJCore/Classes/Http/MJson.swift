@@ -10,7 +10,7 @@ public typealias MJsonArray = [MJson]
 
 public class MJsonUtil {
     
-    static func parse(_ data: Data) -> MJson? {
+    public static func parse(_ data: Data) -> MJson? {
         do {
             return try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? MJson
         } catch {
@@ -18,7 +18,7 @@ public class MJsonUtil {
         }
     }
     
-    static func parseArray(_ data: Data) -> MJsonArray? {
+    public static func parseArray(_ data: Data) -> MJsonArray? {
         do {
             return try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? MJsonArray
         } catch {
