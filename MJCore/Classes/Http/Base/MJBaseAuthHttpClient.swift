@@ -25,7 +25,6 @@ open class MJBaseAuthHttpClient: MJBaseHttpClient {
         sessionConfig: URLSessionConfiguration? = nil
     ) {
         self.state = state
-        self.authenticateClosure = authenticate
         self.refreshClosure = refresh
         self.addAuthentication = addAuthentication
         super.init(sessionConfig: sessionConfig)
