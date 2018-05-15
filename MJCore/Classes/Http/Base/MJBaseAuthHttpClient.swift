@@ -87,6 +87,18 @@ open class MJBaseAuthHttpClient: MJBaseHttpClient {
         }
     }
     
+    public func isAuthenticated() -> Bool {
+        var auth = false
+        lock.sync {
+            if case .unauthenticated = self.state {
+                auth = false
+            } else {
+                auth = true
+            }
+        }
+        return auth
+    }
+    
     private func refresh() {
         refreshClosure { response in
             self.lock.async {
