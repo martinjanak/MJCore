@@ -15,13 +15,11 @@ open class MJBaseAuthHttpClient: MJBaseHttpClient {
     private var state: State
     private var resendRequestBuffer = [MJResendRequest]()
     
-    private let authenticateClosure: MJBaseHttpRequest
     private let refreshClosure: MJBaseHttpRequest
     private let addAuthentication: (URLRequest) -> URLRequest?
     
     public init(
         state: State,
-        authenticate: @escaping MJBaseHttpRequest,
         refresh: @escaping MJBaseHttpRequest,
         addAuthentication: @escaping (URLRequest) -> URLRequest?,
         sessionConfig: URLSessionConfiguration? = nil
@@ -84,15 +82,9 @@ open class MJBaseAuthHttpClient: MJBaseHttpClient {
         }
     }
     
-    public func authenticate() {
-        authenticateClosure { response in
-            self.lock.async {
-                if case .success = response {
-                    self.state = .accessValid
-                } else {
-                    self.state = .unauthenticated
-                }
-            }
+    public func set(state: State) {
+        lock.async {
+            self.state = state
         }
     }
     
