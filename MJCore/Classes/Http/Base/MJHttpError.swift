@@ -14,14 +14,16 @@ public enum MJHttpError: Error {
     case http(statusCode: Int)
     case noDataReturned
     case couldNotParseAsJson
-    case couldNotAuthorizeRequest
+    case couldNotAuthenticateRequest
     case timedOut
+    case couldNotRefreshAuthentication
+    case clientUnavailable
     
     public var isBadRequest: Bool {
         return isHttpError(400)
     }
     
-    public var isUnauthorized: Bool {
+    public var isUnauthenticated: Bool {
         return isHttpError(401)
     }
     

@@ -8,111 +8,73 @@
 import Foundation
 import RxSwift
 
-public final class MJHttpClient<Endpoint: MJHttpEndpoints> {
+public typealias MJHttpSubject = PublishSubject<MJResult<Data>>
+public typealias MJHttpResponse = Observable<MJResult<Data>>
+public typealias MJHttpRequest = () -> MJHttpResponse
+
+public final class MJHttpClient<Endpoint: MJHttpEndpoints>: MJBaseHttpClient {
     
-    private let session: URLSession
-    private let authorizationClosure: ((inout URLRequest) -> Bool)?
-    
-    public init(
-        sessionConfig: URLSessionConfiguration? = nil,
-        authorizationClosure: ((inout URLRequest) -> Bool)? = nil
-    ) {
-        if let sessionConfig = sessionConfig {
-            session = URLSession(configuration: sessionConfig)
-        } else {
-            let sessionConfig = URLSessionConfiguration.default
-            sessionConfig.timeoutIntervalForRequest = 30
-            sessionConfig.timeoutIntervalForResource = 30
-            session = URLSession(configuration: sessionConfig)
-        }
-        self.authorizationClosure = authorizationClosure
-    }
-    
-    public func sendRequest(_ endpoint: Endpoint) -> Observable<MJResult<Data>> {
+    public func sendRequest(_ endpoint: Endpoint) -> MJHttpResponse {
         
-        guard MJReachability.status != .notReachable else {
-            return Observable<MJResult<Data>>.just(
-                .failure(error: MJHttpError.noConnection)
-            )
-        }
-        
-        let subject = PublishSubject<MJResult<Data>>()
+        let subject = MJHttpSubject()
         
         DispatchQueue.global(qos: .userInitiated).async {
-            
-            guard let url = URL(string: "\(endpoint.domainUrl)\(endpoint.path)") else {
-                subject.onNext(
-                    .failure(error: MJHttpError.invalidUrl)
-                )
-                return
-            }
-            var request = URLRequest(url: url)
-            request.httpMethod = endpoint.method.rawValue
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.addValue("application/json", forHTTPHeaderField: "Accept")
-            request.addValue("utf-8", forHTTPHeaderField: "Accept-Charset")
-            
-            if let authorizationClosure = self.authorizationClosure {
-                guard authorizationClosure(&request) else {
-                    subject.onNext(
-                        .failure(error: MJHttpError.couldNotAuthorizeRequest)
-                    )
-                    return
-                }
-            }
-            
-            do {
-                let data = try endpoint.getPayloadData()
-                if data != nil {
-                    request.httpBody = data
-                }
-            } catch let error {
-                subject.onNext(
-                    .failure(error: error)
-                )
-                return
-            }
-            
-            self.dataTask(request: request, subject: subject)
+            self.sendRequestSync(endpoint, handler: subject.onNext)
         }
+        
         return subject.asObservable()
     }
     
-    private func dataTask(request: URLRequest, subject: PublishSubject<MJResult<Data>>) {
-        
-        let task = session.dataTask(with: request) { (data, response, error) in
-            
-            if let error = error {
-                let nserror = error as NSError
-                if nserror.domain == NSURLErrorDomain,
-                    nserror.code == -1001 {
-                    subject.onNext(.failure(error: MJHttpError.timedOut))
-                } else {
-                    subject.onNext(.failure(error: error))
-                }
-                return
-            }
-            
-            if let statusCode = (response as? HTTPURLResponse)?.statusCode {
-                if statusCode < 200 || statusCode > 299 {
+    public func request(_ endpoint: Endpoint) -> MJHttpRequest {
+        return { [weak self] in
+            let subject = MJHttpSubject()
+            DispatchQueue.global(qos: .userInitiated).async {
+                guard let `self` = self else {
                     subject.onNext(
-                        .failure(error: MJHttpError.http(statusCode: statusCode))
+                        .failure(error: MJHttpError.clientUnavailable)
                     )
                     return
                 }
+                self.sendRequestSync(endpoint, handler: subject.onNext)
             }
-            
-            guard let data = data else {
-                subject.onNext(
-                    .failure(error: MJHttpError.noDataReturned)
-                )
-                return
+            return subject.asObservable()
+        }
+    }
+    
+    public func baseRequest(_ endpoint: Endpoint) -> MJBaseHttpRequest {
+        return { [weak self] handler in
+            DispatchQueue.global(qos: .userInitiated).async {
+                guard let `self` = self else {
+                    handler(.failure(error: MJHttpError.clientUnavailable))
+                    return
+                }
+                self.sendRequestSync(endpoint, handler: handler)
             }
+        }
+    }
+    
+    private func sendRequestSync(_ endpoint: Endpoint, handler: @escaping MJHttpHandler) {
             
-            subject.onNext(.success(value: data))
+        var data: Data? = nil
+        do {
+            data = try endpoint.getPayloadData()
+        } catch let error {
+            handler(.failure(error: error))
+            return
         }
         
-        task.resume()
+        guard let request = self.createRequest(
+            url: "\(endpoint.domainUrl)\(endpoint.path)",
+            method: endpoint.method,
+            data: data
+        ) else {
+            handler(
+                .failure(error: MJHttpError.invalidUrl)
+            )
+            return
+        }
+        
+        self.send(request: request, handler: handler)
     }
     
 }
