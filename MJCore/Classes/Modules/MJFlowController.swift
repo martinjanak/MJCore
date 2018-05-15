@@ -13,8 +13,8 @@ open class MJFlowController<Service> {
     private weak var navigation: UINavigationController?
     public let service: Service
     
-    public weak var parentFlowController: MJFlowController<Service>?
-    public var childFlowController: MJFlowController<Service>?
+    private weak var parentFlowController: MJFlowController<Service>?
+    private var childFlowController: MJFlowController<Service>?
     
     public init(service: Service) {
         self.service = service
@@ -23,6 +23,13 @@ open class MJFlowController<Service> {
     open func start(navigation: UINavigationController) {
         self.navigation = navigation
         // override and present/push/root view controller
+    }
+    
+    public func startParentFlow() {
+        guard let navigation = navigation else {
+            return
+        }
+        parentFlowController?.start(navigation: navigation)
     }
     
     public func start(_ flowController: MJFlowController<Service>) {
