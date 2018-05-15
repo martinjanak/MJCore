@@ -13,8 +13,8 @@ open class MJFlowController<Service> {
     private weak var navigation: UINavigationController?
     public let service: Service
     
-    private weak var parentFlowController: MJFlowController<Service>?
-    private var childFlowController: MJFlowController<Service>?
+    public weak var parentFlowController: MJFlowController<Service>?
+    public var childFlowController: MJFlowController<Service>?
     
     public init(service: Service) {
         self.service = service

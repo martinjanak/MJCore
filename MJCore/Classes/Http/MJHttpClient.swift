@@ -14,6 +14,7 @@ public typealias MJHttpRequest = () -> MJHttpResponse
 
 public final class MJHttpClient<Endpoint: MJHttpEndpoints>: MJBaseHttpClient {
     
+    @discardableResult
     public func sendRequest(_ endpoint: Endpoint) -> MJHttpResponse {
         
         let subject = MJHttpSubject()

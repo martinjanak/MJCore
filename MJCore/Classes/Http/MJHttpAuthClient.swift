@@ -10,6 +10,7 @@ import RxSwift
 
 public final class MJAuthHttpClient<Endpoint: MJHttpEndpoints>: MJBaseAuthHttpClient {
     
+    @discardableResult
     public func sendRequest(_ endpoint: Endpoint) -> MJHttpResponse {
         
         let subject = MJHttpSubject()
