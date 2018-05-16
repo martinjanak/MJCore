@@ -70,4 +70,14 @@ extension MJResult {
             return false
         }
     }
+    
+    public func simplify() -> MJResultSimple {
+        switch self {
+        case .success:
+            return .success
+        case .failure(let error):
+            return .failure(error: error)
+        }
+    }
+    
 }

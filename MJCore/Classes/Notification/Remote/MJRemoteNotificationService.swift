@@ -23,11 +23,11 @@ open class MJRemoteNotificationService {
         fatalError("getToken() has not been implemented")
     }
     
-    open func storeAndUpload(token: String) {
+    open func storeAndUpload(token: String) -> MJHttpResponse {
         fatalError("storeAndUpload(token:) has not been implemented")
     }
     
-    open func deleteAndRevoke(token: String) {
+    open func deleteAndRevoke(token: String) -> MJHttpResponse {
         fatalError("deleteAndRevoke(token:) has not been implemented")
     }
     
@@ -37,21 +37,23 @@ open class MJRemoteNotificationService {
         }
     }
     
-    public func unregister() {
+    public func unregister() -> Observable<MJResultSimple> {
         if let deviceToken = getToken() {
-            deleteAndRevoke(token: deviceToken)
+            return deleteAndRevoke(token: deviceToken).simplify()
+        } else {
+            return Observable<MJResultSimple>.just(.success)
         }
     }
     
-    public func didRegister(_ deviceToken: Data) {
+    public func didRegister(_ deviceToken: Data) -> Observable<MJResultSimple> {
         
         let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
         
         if let lastToken = getToken(),
             token == lastToken {
-            return
+            return Observable<MJResultSimple>.just(.success)
         }
-        storeAndUpload(token: token)
+        return storeAndUpload(token: token).simplify()
     }
     
     public func didReceive(
