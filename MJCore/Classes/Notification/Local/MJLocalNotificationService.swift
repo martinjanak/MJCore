@@ -10,6 +10,8 @@ import RxSwift
 
 public final class MJLocalNotificationService<Notification: MJLocalNotifications> {
     
+    public init() { }
+    
     public func create(
         notification: Notification
     ) -> Observable<MJResultSimple> {
