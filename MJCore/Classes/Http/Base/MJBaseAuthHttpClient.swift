@@ -30,7 +30,11 @@ open class MJBaseAuthHttpClient: MJBaseHttpClient {
         super.init(sessionConfig: sessionConfig)
     }
     
-    override public func send(request: URLRequest, handler: @escaping MJHttpHandler) {
+    override public func send(
+        request: URLRequest,
+        handler: @escaping MJHttpHandler,
+        sent: (() -> Void)? = nil
+    ) {
         
         var send: Bool = true
         lock.sync {
@@ -51,15 +55,19 @@ open class MJBaseAuthHttpClient: MJBaseHttpClient {
             handler(.failure(error: MJHttpError.couldNotAuthenticateRequest))
             return
         }
-        super.send(request: authenticatedRequest) { response in
-            if case .failure(let error) = response,
-                let httpError = error as? MJHttpError,
-                httpError.isUnauthenticated {
-                self.onUnauthenticated(request: request, handler: handler)
-            } else {
-                handler(response)
-            }
-        }
+        super.send(
+            request: authenticatedRequest,
+            handler: { response in
+                if case .failure(let error) = response,
+                    let httpError = error as? MJHttpError,
+                    httpError.isUnauthenticated {
+                    self.onUnauthenticated(request: request, handler: handler)
+                } else {
+                    handler(response)
+                }
+            },
+            sent: sent
+        )
     }
     
     private func resend(request: URLRequest, handler: @escaping MJHttpHandler) {
@@ -70,15 +78,19 @@ open class MJBaseAuthHttpClient: MJBaseHttpClient {
                 handler(.failure(error: MJHttpError.couldNotAuthenticateRequest))
                 return
             }
-            super.send(request: authenticatedRequest) { response in
-                if case .failure(let error) = response,
-                    let httpError = error as? MJHttpError,
-                    httpError.isUnauthenticated {
-                    self.onUnauthenticated(request: request, handler: handler)
-                } else {
-                    handler(response)
-                }
-            }
+            super.send(
+                request: authenticatedRequest,
+                handler: { response in
+                    if case .failure(let error) = response,
+                        let httpError = error as? MJHttpError,
+                        httpError.isUnauthenticated {
+                        self.onUnauthenticated(request: request, handler: handler)
+                    } else {
+                        handler(response)
+                    }
+                },
+                sent: nil
+            )
         }
     }
     

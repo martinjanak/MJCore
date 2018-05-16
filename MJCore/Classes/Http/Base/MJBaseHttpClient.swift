@@ -53,12 +53,17 @@ open class MJBaseHttpClient {
         return request
     }
     
-    public func send(request: URLRequest, handler: @escaping MJHttpHandler) {
+    public func send(
+        request: URLRequest,
+        handler: @escaping MJHttpHandler,
+        sent: (() -> Void)? = nil
+    ) {
         guard MJReachability.status != .notReachable else {
             handler(.failure(error: MJHttpError.noConnection))
             return
         }
         self.dataTask(request: request, handler: handler)
+        sent?()
     }
     
     private func dataTask(request: URLRequest, handler: @escaping MJHttpHandler) {
