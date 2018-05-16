@@ -62,6 +62,26 @@ open class MJBaseAuthHttpClient: MJBaseHttpClient {
         }
     }
     
+    private func resend(request: URLRequest, handler: @escaping MJHttpHandler) {
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            
+            guard let authenticatedRequest = self.addAuthentication(request) else {
+                handler(.failure(error: MJHttpError.couldNotAuthenticateRequest))
+                return
+            }
+            super.send(request: authenticatedRequest) { response in
+                if case .failure(let error) = response,
+                    let httpError = error as? MJHttpError,
+                    httpError.isUnauthenticated {
+                    self.onUnauthenticated(request: request, handler: handler)
+                } else {
+                    handler(response)
+                }
+            }
+        }
+    }
+    
     private func onUnauthenticated(request: URLRequest, handler: @escaping MJHttpHandler) {
         lock.async {
             switch self.state {
@@ -105,7 +125,7 @@ open class MJBaseAuthHttpClient: MJBaseHttpClient {
                 if case .success = response {
                     self.state = .accessValid
                     for resendRequest in self.resendRequestBuffer {
-                        self.send(request: resendRequest.request, handler: resendRequest.handler)
+                        self.resend(request: resendRequest.request, handler: resendRequest.handler)
                     }
                 } else {
                     self.state = .unauthenticated
