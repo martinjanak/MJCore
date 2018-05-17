@@ -59,7 +59,9 @@ public final class MJAuthHttpClient<Endpoint: MJHttpEndpoints>: MJBaseAuthHttpCl
             return
         }
         
-        self.send(request: request, handler: subject.onNext)
+        self.send(request: request) { response in
+            subject.onNext(response)
+        }
     }
     
 }

@@ -20,7 +20,9 @@ public final class MJHttpClient<Endpoint: MJHttpEndpoints>: MJBaseHttpClient {
         let subject = MJHttpSubject()
         
         DispatchQueue.global(qos: .userInitiated).async {
-            self.sendRequestSync(endpoint, handler: subject.onNext)
+            self.sendRequestSync(endpoint) { response in
+                subject.onNext(response)
+            }
         }
         
         return subject.asObservable()
@@ -36,7 +38,9 @@ public final class MJHttpClient<Endpoint: MJHttpEndpoints>: MJBaseHttpClient {
                     )
                     return
                 }
-                self.sendRequestSync(endpoint, handler: subject.onNext)
+                self.sendRequestSync(endpoint) { response in
+                    subject.onNext(response)
+                }
             }
             return subject.asObservable()
         }
