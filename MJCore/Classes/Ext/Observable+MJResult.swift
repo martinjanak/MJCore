@@ -23,6 +23,19 @@ extension Observable {
         })
     }
     
+    public func successFlat<V, W>(
+        _ handler: @escaping (V) -> Observable<MJResult<W>>
+    ) -> Observable<MJResult<W>> where Element == MJResult<V> {
+        return self.flatMap({ (response: MJResult<V>) -> Observable<MJResult<W>> in
+            switch response {
+            case .success(let value):
+                return handler(value)
+            case .failure(let error):
+                return Observable<MJResult<W>>.just(.failure(error: error))
+            }
+        })
+    }
+    
     public func failure<V>(
         _ handler: @escaping (Error) -> Void
     ) -> Observable<MJResult<V>> where Element == MJResult<V> {
