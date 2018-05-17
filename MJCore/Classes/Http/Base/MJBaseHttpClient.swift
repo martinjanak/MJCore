@@ -8,6 +8,7 @@
 import Foundation
 
 public typealias MJHttpHandler = (MJResult<Data>) -> Void
+public typealias MJBaseHttpRequest = (@escaping MJHttpHandler) -> Void
 
 open class MJBaseHttpClient {
     
@@ -53,17 +54,12 @@ open class MJBaseHttpClient {
         return request
     }
     
-    public func send(
-        request: URLRequest,
-        handler: @escaping MJHttpHandler,
-        sent: (() -> Void)? = nil
-    ) {
+    public func send(request: URLRequest, handler: @escaping MJHttpHandler) {
         guard MJReachability.status != .notReachable else {
             handler(.failure(error: MJHttpError.noConnection))
             return
         }
-        self.dataTask(request: request, handler: handler)
-        sent?()
+        dataTask(request: request, handler: handler)
     }
     
     private func dataTask(request: URLRequest, handler: @escaping MJHttpHandler) {

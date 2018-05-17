@@ -63,3 +63,11 @@ public final class MJAuthHttpClient<Endpoint: MJHttpEndpoints>: MJBaseAuthHttpCl
     }
     
 }
+
+extension MJBaseAuthHttpClient {
+    public enum State {
+        case unauthenticated
+        case accessValid
+        case accessExpired
+    }
+}
