@@ -41,13 +41,16 @@ open class MJFlowController<Service> {
         flowController.start(navigation: navigation)
     }
     
-    public func back(animated: Bool = true) {
+    public func back(animated: Bool = true, navBarHidden: Bool = false) {
         guard let navigation = navigation else {
             return
         }
         if navigation.presentedViewController != nil {
             navigation.dismiss(animated: animated, completion: nil)
         } else {
+            if navigation.isNavigationBarHidden != navBarHidden {
+                navigation.setNavigationBarHidden(navBarHidden, animated: animated)
+            }
             navigation.popViewController(animated: animated)
         }
     }
@@ -61,28 +64,39 @@ open class MJFlowController<Service> {
         navigation?.set(rootViewController: controller, direction: direction)
     }
     
-    public func push(_ controller: UIViewController, animated: Bool = true) {
+    public func push(_ controller: UIViewController, animated: Bool = true, navBarHidden: Bool = false) {
+        if navigation?.isNavigationBarHidden != navBarHidden {
+            navigation?.setNavigationBarHidden(navBarHidden, animated: animated)
+        }
         navigation?.pushViewController(controller, animated: animated)
     }
     
-    public func present(_ controller: UIViewController, animated: Bool = true) {
+    public func present(
+        _ controller: UIViewController,
+        animated: Bool = true,
+        completion: (() -> Void)? = nil
+    ) {
         guard let navigation = navigation else {
             return
         }
         if navigation.presentedViewController != nil {
             navigation.dismiss(animated: animated) {
-                navigation.present(controller, animated: animated, completion: nil)
+                navigation.present(controller, animated: animated, completion: completion)
             }
         } else {
-            navigation.present(controller, animated: animated, completion: nil)
+            navigation.present(controller, animated: animated, completion: completion)
         }
     }
     
-    public func presentModal(_ controller: UIViewController, animated: Bool = true) {
+    public func presentModal(
+        _ controller: UIViewController,
+        animated: Bool = true,
+        completion: (() -> Void)? = nil
+    ) {
         
         controller.modalPresentationStyle = .overFullScreen
         controller.modalTransitionStyle = .crossDissolve
         
-        present(controller, animated: animated)
+        present(controller, animated: animated, completion: completion)
     }
 }

@@ -52,11 +52,11 @@ public final class MJAuthHttpClient<Endpoint: MJHttpEndpoints>: MJBaseAuthHttpCl
             url: "\(endpoint.domainUrl)\(endpoint.path)",
             method: endpoint.method,
             data: data
-            ) else {
-                subject.onNext(
-                    .failure(error: MJHttpError.invalidUrl)
-                )
-                return
+        ) else {
+            subject.onNext(
+                .failure(error: MJHttpError.invalidUrl)
+            )
+            return
         }
         
         self.send(request: request, handler: subject.onNext)
