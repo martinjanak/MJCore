@@ -100,6 +100,5 @@ extension Observable where Element == MJResult<Data> {
             }
         })
     }
-
     
 }

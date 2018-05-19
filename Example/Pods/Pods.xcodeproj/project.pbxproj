@@ -106,6 +106,9 @@
 		5A712F6F30D4E4F7DB277ECF4D3AE24D /* RxCollectionViewDataSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968F78126977449D4DD5BB0EB09883C /* RxCollectionViewDataSourceType.swift */; };
 		5B03466FCB1AD202748FC913C0542CA5 /* ObservableType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1028A073688F7BA102986DCD8A18597C /* ObservableType+Extensions.swift */; };
 		5B049C7F4A406641EA73EAA265255B26 /* RxPickerViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A120760EF02FB5BE863FEE132C226 /* RxPickerViewAdapter.swift */; };
+		5B06234720B0A77200159BD0 /* MJsonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B06234620B0A77200159BD0 /* MJsonModel.swift */; };
+		5B06234920B0A86700159BD0 /* Observable+MJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B06234820B0A86700159BD0 /* Observable+MJson.swift */; };
+		5B06234B20B0B1A100159BD0 /* Array+MJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B06234A20B0B1A100159BD0 /* Array+MJson.swift */; };
 		5B390A9B209E31B8004D7451 /* MJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B390A9A209E31B8004D7451 /* MJson.swift */; };
 		5B41E7F8209C439800129589 /* UINavigationController+Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B41E7E9209C439800129589 /* UINavigationController+Root.swift */; };
 		5B41E7F9209C439800129589 /* UIView+TopSafeConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B41E7EA209C439800129589 /* UIView+TopSafeConstraint.swift */; };
@@ -484,6 +487,9 @@
 		57F43982EABD5DDA1BC0A594BA5B9EAB /* UIButton+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIButton+Rx.swift"; path = "RxCocoa/iOS/UIButton+Rx.swift"; sourceTree = "<group>"; };
 		583A1673DAEA1430896182EED78F995E /* Single.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Single.swift; path = RxSwift/Traits/Single.swift; sourceTree = "<group>"; };
 		59AC3D23F16A87777F6D74567C457815 /* Using.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Using.swift; path = RxSwift/Observables/Using.swift; sourceTree = "<group>"; };
+		5B06234620B0A77200159BD0 /* MJsonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJsonModel.swift; sourceTree = "<group>"; };
+		5B06234820B0A86700159BD0 /* Observable+MJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+MJson.swift"; sourceTree = "<group>"; };
+		5B06234A20B0B1A100159BD0 /* Array+MJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+MJson.swift"; sourceTree = "<group>"; };
 		5B0F7B1B1E820348CD70B9E493288AE7 /* InvocableScheduledItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InvocableScheduledItem.swift; path = RxSwift/Schedulers/Internal/InvocableScheduledItem.swift; sourceTree = "<group>"; };
 		5B390A9A209E31B8004D7451 /* MJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJson.swift; sourceTree = "<group>"; };
 		5B41E7E9209C439800129589 /* UINavigationController+Root.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Root.swift"; sourceTree = "<group>"; };
@@ -803,8 +809,10 @@
 				5B41E7E9209C439800129589 /* UINavigationController+Root.swift */,
 				5B41E7EA209C439800129589 /* UIView+TopSafeConstraint.swift */,
 				5B472318209D9D7000611A36 /* Observable+Decode.swift */,
+				5B06234820B0A86700159BD0 /* Observable+MJson.swift */,
 				5B41E7EF209C439800129589 /* Observable+MJResult.swift */,
 				5BA4F95B20AC9F32005DA154 /* Observable+MJResultWithProgress.swift */,
+				5B06234A20B0B1A100159BD0 /* Array+MJson.swift */,
 			);
 			path = Ext;
 			sourceTree = "<group>";
@@ -818,6 +826,7 @@
 				5B41E7F0209C439800129589 /* MJHttpEndpoints.swift */,
 				5B41E7F3209C439800129589 /* MJCodableUtil.swift */,
 				5B390A9A209E31B8004D7451 /* MJson.swift */,
+				5B06234620B0A77200159BD0 /* MJsonModel.swift */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -1737,6 +1746,7 @@
 				5B41E801209C439800129589 /* MJView.swift in Sources */,
 				5B41E816209C514100129589 /* MJKeychainService.swift in Sources */,
 				5B41E7FD209C439800129589 /* MJHttpEndpoints.swift in Sources */,
+				5B06234720B0A77200159BD0 /* MJsonModel.swift in Sources */,
 				5B54F09320A08F4300AE9351 /* MJBaseHttpClient.swift in Sources */,
 				5B390A9B209E31B8004D7451 /* MJson.swift in Sources */,
 				5B41E806209C43D000129589 /* MJTwoWayBinding.swift in Sources */,
@@ -1749,8 +1759,10 @@
 				5B41E808209C474B00129589 /* MJResult.swift in Sources */,
 				5B41E7F8209C439800129589 /* UINavigationController+Root.swift in Sources */,
 				5BA4F95A20AC9C31005DA154 /* MJResultWithProgress.swift in Sources */,
+				5B06234B20B0B1A100159BD0 /* Array+MJson.swift in Sources */,
 				5B41E802209C439800129589 /* MJViewController.swift in Sources */,
 				5B54F09720A0933300AE9351 /* MJHttpAuthClient.swift in Sources */,
+				5B06234920B0A86700159BD0 /* Observable+MJson.swift in Sources */,
 				5B41E803209C439800129589 /* MJFlowController.swift in Sources */,
 				5B41E814209C50D900129589 /* MJKeychain.swift in Sources */,
 				5B41E81C209C528600129589 /* MJLocalNotifications.swift in Sources */,
