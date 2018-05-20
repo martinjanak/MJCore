@@ -14,7 +14,7 @@ extension Observable where Element == MJResult<Data> {
             switch response {
             case .success(let data):
                 return MJResult { () -> Model in
-                    let json = try MJsonUtil.parse(data)
+                    let json = try MJson.parse(data)
                     return try Model(json: json)
                 }
             case .failure(let error):
@@ -28,7 +28,7 @@ extension Observable where Element == MJResult<Data> {
             switch response {
             case .success(let data):
                 return MJResult { () -> [Model] in
-                    let jsonArray = try MJsonUtil.parseArray(data)
+                    let jsonArray = try MJson.parseArray(data)
                     var modelArray = [Model]()
                     for json in jsonArray {
                         modelArray.append(try Model(json: json))
@@ -46,7 +46,7 @@ extension Observable where Element == MJResult<Data> {
             switch response {
             case .success(let data):
                 do {
-                    let json = try MJsonUtil.parse(data)
+                    let json = try MJson.parse(data)
                     return try Model(json: json)
                 } catch {
                     return nil
@@ -62,7 +62,7 @@ extension Observable where Element == MJResult<Data> {
             switch response {
             case .success(let data):
                 do {
-                    let jsonArray = try MJsonUtil.parseArray(data)
+                    let jsonArray = try MJson.parseArray(data)
                     var modelArray = [Model]()
                     for json in jsonArray {
                         modelArray.append(try Model(json: json))
@@ -82,7 +82,7 @@ extension Observable where Element == MJResult<Data> {
             switch response {
             case .success(let data):
                 do {
-                    let json = try MJsonUtil.parse(data)
+                    let json = try MJson.parse(data)
                     return try Model(json: json)
                 } catch {
                     return defaultValue
@@ -98,7 +98,7 @@ extension Observable where Element == MJResult<Data> {
             switch response {
             case .success(let data):
                 do {
-                    let jsonArray = try MJsonUtil.parseArray(data)
+                    let jsonArray = try MJson.parseArray(data)
                     var modelArray = [Model]()
                     for json in jsonArray {
                         modelArray.append(try Model(json: json))
