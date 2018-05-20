@@ -10,10 +10,10 @@ import RxSwift
 import RxCocoa
 
 public protocol HasCoreData {
-    var coreData: CoreDataService { get }
+    var coreData: MJCoreDataService { get }
 }
 
-public final class CoreDataService {
+public final class MJCoreDataService {
     
     private let modelName: String
     
