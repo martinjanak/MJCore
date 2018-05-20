@@ -15,7 +15,7 @@ extension Date {
     
     // MARK: Strings
     
-    func format(_ format: String) -> String {
+    public func format(_ format: String) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = format
         return formatter.string(from: self)
@@ -23,7 +23,7 @@ extension Date {
     
     // MARK: ISO
     
-    static func create(fromIso: String) throws -> Date {
+    public static func create(fromIso: String) throws -> Date {
         let formatter = ISO8601DateFormatter()
         formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
         if let date = formatter.date(from: fromIso) {
@@ -33,13 +33,13 @@ extension Date {
         }
     }
     
-    static func createOptional(fromIso: String) -> Date? {
+    public static func createOptional(fromIso: String) -> Date? {
         let formatter = ISO8601DateFormatter()
         formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
         return formatter.date(from: fromIso)
     }
     
-    func getIso() -> String {
+    public func getIso() -> String {
         let formatter = ISO8601DateFormatter()
         formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
         return formatter.string(from: self)
@@ -47,17 +47,17 @@ extension Date {
     
     // MARK: Unix epoch time
     
-    static func create(fromEpochTime: Int) -> Date {
+    public static func create(fromEpochTime: Int) -> Date {
         return Date(timeIntervalSince1970: TimeInterval(fromEpochTime))
     }
     
-    func getEpochTime() -> Int {
+    public func getEpochTime() -> Int {
         return Int(self.timeIntervalSince1970)
     }
     
     // MARK: Util
     
-    func minutes(from date: Date) -> Int? {
+    public func minutes(from date: Date) -> Int? {
         return Calendar.current.dateComponents(Set<Calendar.Component>([.minute]), from: date, to: self).minute
     }
     
