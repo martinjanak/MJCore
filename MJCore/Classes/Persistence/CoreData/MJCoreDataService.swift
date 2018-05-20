@@ -85,22 +85,35 @@ public final class MJCoreDataService {
         return persistentStoreCoordinator
     }()
     
+    public func transaction(_ block: @escaping () -> Void) {
+        privateContext.perform {
+            block()
+        }
+    }
+    
     // MARK: CRUD
     
     // MARK: Create
+    
+    public func createSync<Model: MJCoreDataModel>(_ model: Model) {
+        let _ = model.createEntity(context: self.privateContext)
+    }
+    
+    public func createSync<Model: MJCoreDataModel>(_ models: [Model]) {
+        for model in models {
+            let _ = model.createEntity(context: self.privateContext)
+        }
+    }
     
     public func create<Model: MJCoreDataModel>(_ model: Model) -> Observable<MJResultSimple> {
         let subject = PublishSubject<MJResultSimple>()
         privateContext.perform {
             let _ = model.createEntity(context: self.privateContext)
-            do {
+            subject.onNext(MJResultSimple {
                 if self.privateContext.hasChanges {
                     try self.privateContext.save()
                 }
-                subject.onNext(.success)
-            } catch let error {
-                subject.onNext(.failure(error: error))
-            }
+            })
         }
         return subject
     }
@@ -111,19 +124,119 @@ public final class MJCoreDataService {
             for model in models {
                 let _ = model.createEntity(context: self.privateContext)
             }
-            do {
+            subject.onNext(MJResultSimple {
                 if self.privateContext.hasChanges {
                     try self.privateContext.save()
                 }
-                subject.onNext(.success)
-            } catch let error {
-                subject.onNext(.failure(error: error))
+            })
+        }
+        return subject
+    }
+    
+    // MARK: Update
+    
+    public func updateSync<Model: MJCoreDataModel>(_ model: Model) -> MJResultSimple {
+        
+        guard let id = model.id else {
+            return .failure(error: MJCoreDataError.modelHasNoId)
+        }
+        
+        let existingEntity = self.privateContext.object(with: id)
+        
+        if !existingEntity.isFault {
+            self.privateContext.delete(existingEntity)
+            let _ = model.createEntity(context: self.privateContext)
+            return .success
+        } else {
+            return .failure(error: MJCoreDataError.entityDoesNotExist)
+        }
+    }
+    
+    public func updateSync<Model: MJCoreDataModel>(_ models: [Model]) -> MJResultSimple {
+        
+        let allHaveId = models.reduce(true, { result, model in
+            return result && model.id != nil
+        })
+        
+        guard allHaveId else {
+            return .failure(error: MJCoreDataError.modelHasNoId)
+        }
+        
+        var success = true
+        
+        for model in models {
+            let existingEntity = self.privateContext.object(with: model.id!)
+            if !existingEntity.isFault {
+                self.privateContext.delete(existingEntity)
+                let _ = model.createEntity(context: self.privateContext)
+            } else {
+                success = false
+            }
+        }
+        
+        if success {
+            return .success
+        } else {
+            return .failure(error: MJCoreDataError.entityDoesNotExist)
+        }
+    }
+    
+    public func update<Model: MJCoreDataModel>(_ model: Model) -> Observable<MJResultSimple> {
+        
+        guard let id = model.id else {
+            return Observable<MJResultSimple>.just(
+                .failure(error: MJCoreDataError.modelHasNoId)
+            )
+        }
+        
+        let subject = PublishSubject<MJResultSimple>()
+        privateContext.perform {
+            
+            let existingEntity = self.privateContext.object(with: id)
+            
+            if !existingEntity.isFault {
+                self.privateContext.delete(existingEntity)
+                let _ = model.createEntity(context: self.privateContext)
+                subject.onNext(MJResultSimple {
+                    if self.privateContext.hasChanges {
+                        try self.privateContext.save()
+                    }
+                })
+            } else {
+                subject.onNext(
+                    .failure(error: MJCoreDataError.entityDoesNotExist)
+                )
             }
         }
         return subject
     }
     
     // MARK: Read
+    
+    public func readSync<Model: MJCoreDataModel>(
+        _ modelType: Model.Type,
+        predicate: NSPredicate? = nil,
+        sortDescriptors: [NSSortDescriptor]? = nil
+    ) -> MJResult<[Model]> {
+        
+        let fetchRequest: NSFetchRequest = Model.Entity.fetchRequest()
+        if let sortDescriptors = sortDescriptors {
+            fetchRequest.sortDescriptors = sortDescriptors
+        }
+        if let predicate = predicate {
+            fetchRequest.predicate = predicate
+        }
+        
+        return MJResult {
+            let rawData = try self.privateContext.fetch(fetchRequest)
+            if let entities = rawData as? [Model.Entity] {
+                let data = entities.map({ Model(entity: $0) })
+                return data
+            } else {
+                throw MJCoreDataError.couldNotCastToEntity
+            }
+        }
+    }
     
     public func read<Model: MJCoreDataModel>(
         _ modelType: Model.Type,
@@ -142,59 +255,42 @@ public final class MJCoreDataService {
         }
         
         privateContext.perform {
-            do {
+            subject.onNext(MJResult {
                 let rawData = try self.privateContext.fetch(fetchRequest)
                 if let entities = rawData as? [Model.Entity] {
                     let data = entities.map({ Model(entity: $0) })
-                    subject.onNext(.success(value: data))
+                    return data
                 } else {
-                    subject.onNext(
-                        .failure(error: MJCoreDataError.couldNotCastToEntity)
-                    )
+                    throw MJCoreDataError.couldNotCastToEntity
                 }
-            } catch let error {
-                subject.onNext(.failure(error: error))
-            }
-        }
-        return subject
-    }
-    
-    // MARK: Update
-    
-    public func update<Model: MJCoreDataModel>(_ model: Model) -> Observable<MJResultSimple> {
-        
-        guard let id = model.id else {
-            return Observable<MJResultSimple>.just(
-                .failure(error: MJCoreDataError.modelHasNoId)
-            )
-        }
-        
-        let subject = PublishSubject<MJResultSimple>()
-        privateContext.perform {
-            
-            let existingEntity = self.privateContext.object(with: id)
-            
-            if !existingEntity.isFault {
-                self.privateContext.delete(existingEntity)
-                let _ = model.createEntity(context: self.privateContext)
-                do {
-                    if self.privateContext.hasChanges {
-                        try self.privateContext.save()
-                    }
-                    subject.onNext(.success)
-                } catch let error {
-                    subject.onNext(.failure(error: error))
-                }
-            } else {
-                subject.onNext(
-                    .failure(error: MJCoreDataError.entityDoesNotExist)
-                )
-            }
+            })
         }
         return subject
     }
     
     // MARK: Delete
+    
+    public func deleteSync<Model: MJCoreDataModel>(
+        _ modelType: Model.Type,
+        predicate: NSPredicate? = nil
+    ) -> MJResultSimple {
+        
+        let fetchRequest: NSFetchRequest = Model.Entity.fetchRequest()
+        if let predicate = predicate {
+            fetchRequest.predicate = predicate
+        }
+        
+        return MJResultSimple {
+            let rawData = try self.privateContext.fetch(fetchRequest)
+            if let entities = rawData as? [Model.Entity] {
+                for entity in entities {
+                    self.privateContext.delete(entity)
+                }
+            } else {
+                throw MJCoreDataError.couldNotCastToEntity
+            }
+        }
+    }
     
     public func delete<Model: MJCoreDataModel>(
         _ modelType: Model.Type,
@@ -209,7 +305,7 @@ public final class MJCoreDataService {
         }
         
         privateContext.perform {
-            do {
+            subject.onNext(MJResultSimple {
                 let rawData = try self.privateContext.fetch(fetchRequest)
                 if let entities = rawData as? [Model.Entity] {
                     for entity in entities {
@@ -218,15 +314,10 @@ public final class MJCoreDataService {
                     if self.privateContext.hasChanges {
                         try self.privateContext.save()
                     }
-                    subject.onNext(.success)
                 } else {
-                    subject.onNext(
-                        .failure(error: MJCoreDataError.couldNotCastToEntity)
-                    )
+                    throw MJCoreDataError.couldNotCastToEntity
                 }
-            } catch let error {
-                subject.onNext(.failure(error: error))
-            }
+            })
         }
         return subject
     }

@@ -23,7 +23,20 @@ extension Observable {
         })
     }
     
-    public func successFlat<V, W>(
+    public func successMap<V, W>(
+        _ handler: @escaping (V) -> MJResult<W>
+    ) -> Observable<MJResult<W>> where Element == MJResult<V> {
+        return self.map({ (response: MJResult<V>) -> MJResult<W> in
+            switch response {
+            case .success(let value):
+                return handler(value)
+            case .failure(let error):
+                return .failure(error: error)
+            }
+        })
+    }
+    
+    public func successFlatMap<V, W>(
         _ handler: @escaping (V) -> Observable<MJResult<W>>
     ) -> Observable<MJResult<W>> where Element == MJResult<V> {
         return self.flatMap({ (response: MJResult<V>) -> Observable<MJResult<W>> in
@@ -119,6 +132,32 @@ extension Observable where Element == MJResultSimple {
                 break
             }
             return response
+        })
+    }
+    
+    public func successMap<W>(
+        _ handler: @escaping () -> MJResult<W>
+    ) -> Observable<MJResult<W>> {
+        return self.map({ (response: MJResultSimple) -> MJResult<W> in
+            switch response {
+            case .success:
+                return handler()
+            case .failure(let error):
+                return .failure(error: error)
+            }
+        })
+    }
+    
+    public func successFlatMap<W>(
+        _ handler: @escaping () -> Observable<MJResult<W>>
+    ) -> Observable<MJResult<W>> {
+        return self.flatMap({ (response: MJResultSimple) -> Observable<MJResult<W>> in
+            switch response {
+            case .success:
+                return handler()
+            case .failure(let error):
+                return Observable<MJResult<W>>.just(.failure(error: error))
+            }
         })
     }
     
