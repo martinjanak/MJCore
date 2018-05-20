@@ -162,9 +162,18 @@ public final class CoreDataService {
     // MARK: Update
     
     public func update<Model: MJCoreDataModel>(_ model: Model) -> Observable<MJResultSimple> {
+        
+        guard let id = model.id else {
+            return Observable<MJResultSimple>.just(
+                .failure(error: MJCoreDataError.modelHasNoId)
+            )
+        }
+        
         let subject = PublishSubject<MJResultSimple>()
         privateContext.perform {
-            let existingEntity = self.privateContext.object(with: model.id)
+            
+            let existingEntity = self.privateContext.object(with: id)
+            
             if !existingEntity.isFault {
                 self.privateContext.delete(existingEntity)
                 let _ = model.createEntity(context: self.privateContext)
@@ -227,6 +236,7 @@ public final class CoreDataService {
     public enum MJCoreDataError: Error {
         case couldNotCastToEntity
         case entityDoesNotExist
+        case modelHasNoId
     }
     
 }

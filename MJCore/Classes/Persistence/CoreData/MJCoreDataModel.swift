@@ -13,5 +13,5 @@ public protocol MJCoreDataModel {
     init(entity: Entity)
     func createEntity(context: NSManagedObjectContext) -> Entity
     
-    var id: NSManagedObjectID { get }
+    var id: NSManagedObjectID? { get }
 }
