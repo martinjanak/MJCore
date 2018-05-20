@@ -21,6 +21,10 @@ public final class MJCoreDataService {
         self.modelName = modelName
     }
     
+    public func saveChangesSync() -> MJResultSimple {
+        return saveContextSync(privateContext)
+    }
+    
     public func saveChanges() -> Observable<MJResultSimple> {
         return saveContext(privateContext)
     }
@@ -28,16 +32,17 @@ public final class MJCoreDataService {
     private func saveContext(_ context: NSManagedObjectContext) -> Observable<MJResultSimple> {
         let subject = PublishSubject<MJResultSimple>()
         context.perform {
-            do {
-                if context.hasChanges {
-                    try context.save()
-                }
-                subject.onNext(.success)
-            } catch let error {
-                subject.onNext(.failure(error: error))
-            }
+            subject.onNext(self.saveContextSync(context))
         }
         return subject
+    }
+    
+    private func saveContextSync(_ context: NSManagedObjectContext) -> MJResultSimple {
+        return MJResultSimple {
+            if context.hasChanges {
+                try context.save()
+            }
+        }
     }
     
     private(set) lazy var privateContext: NSManagedObjectContext = {
