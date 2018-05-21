@@ -13,6 +13,13 @@ public protocol HasCoreData {
     var coreData: MJCoreDataService { get }
 }
 
+public enum MJCoreDataError: Error {
+    case couldNotCastToEntity
+    case entityDoesNotExist
+    case modelHasNoId
+    case serviceUnavailable
+}
+
 public final class MJCoreDataService {
     
     private let modelName: String
@@ -325,14 +332,6 @@ public final class MJCoreDataService {
             })
         }
         return subject
-    }
-    
-    // MARK: Error
-    
-    public enum MJCoreDataError: Error {
-        case couldNotCastToEntity
-        case entityDoesNotExist
-        case modelHasNoId
     }
     
 }

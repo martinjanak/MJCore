@@ -10,33 +10,17 @@ import RxSwift
 extension Observable where Element == MJResult<Data> {
     
     public func decode<D: Decodable>(_ decodableType: D.Type) -> Observable<MJResult<D>> {
-        return self.map({ response in
-            switch response {
-            case .success(let data):
-                do {
-                    let object: D = try MJCodableUtil.decode(decodableType: decodableType, data: data)
-                    return .success(value: object)
-                } catch let error {
-                    return .failure(error: error)
-                }
-            case .failure(let error):
-                return .failure(error: error)
+        return self.successMap({ data in
+            return MJResult {
+                return try MJCodableUtil.decode(decodableType: decodableType, data: data)
             }
         })
     }
     
     public func decode<D: Decodable>(_ decodableType: [D].Type) -> Observable<MJResult<[D]>> {
-        return self.map({ response in
-            switch response {
-            case .success(let data):
-                do {
-                    let object: [D] = try MJCodableUtil.decode(decodableType: decodableType, data: data)
-                    return .success(value: object)
-                } catch let error {
-                    return .failure(error: error)
-                }
-            case .failure(let error):
-                return .failure(error: error)
+        return self.successMap({ data in
+            return MJResult {
+                return try MJCodableUtil.decode(decodableType: decodableType, data: data)
             }
         })
     }

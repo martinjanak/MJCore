@@ -1,8 +1,8 @@
 //
-//  Observable+MJHttpResponse.swift
+//  Observable+Success.swift
 //  MJCore
 //
-//  Created by Martin Janák on 04/05/2018.
+//  Created by Martin Janák on 21/05/2018.
 //
 
 import RxSwift
@@ -49,17 +49,16 @@ extension Observable {
         })
     }
     
-    public func failure<V>(
-        _ handler: @escaping (Error) -> Void
-    ) -> Observable<MJResult<V>> where Element == MJResult<V> {
-        return self.map({ response in
+    public func successFlatMapSimple<V>(
+        _ handler: @escaping (V) -> Observable<MJResultSimple>
+    ) -> Observable<MJResultSimple> where Element == MJResult<V> {
+        return self.flatMap({ (response: MJResult<V>) -> Observable<MJResultSimple> in
             switch response {
-            case .success:
-                break
+            case .success(let value):
+                return handler(value)
             case .failure(let error):
-                handler(error)
+                return Observable<MJResultSimple>.just(.failure(error: error))
             }
-            return response
         })
     }
     
@@ -73,48 +72,10 @@ extension Observable {
     
     public func bindSuccess<V>(
         to variable: Variable<Bool>
-        ) -> Disposable where Element == MJResult<V> {
+    ) -> Disposable where Element == MJResult<V> {
         return self
             .map({ $0.isSuccess() })
             .bind(to: variable)
-    }
-    
-    public func debug<V>(_ tag: String = "Result") -> Observable<MJResult<V>> where Element == MJResult<V> {
-        return self.map({ response in
-            switch response {
-            case .success:
-                print("[\(tag)]: Success")
-            case .failure(let error):
-                print("[\(tag)]: Failure: \(error)")
-            }
-            return response
-        })
-    }
-    
-    public func simplify<V>() -> Observable<MJResultSimple> where Element == MJResult<V> {
-        return self.map({ $0.simplify() })
-    }
-    
-}
-
-extension Observable where Element == MJResult<Data> {
-    
-    public func debug(_ tag: String = "Result") -> Observable<MJResult<Data>> {
-        return self.map({ response in
-            switch response {
-            case .success(let data):
-                if let json = MJson.parseOptional(data) {
-                    print("[\(tag)]: Success: \(json)")
-                } else if let jsonArray = MJson.parseArrayOptional(data) {
-                    print("[\(tag)]: Success: \(jsonArray)")
-                } else {
-                    print("[\(tag)]: Success, but could not parse as JSON.")
-                }
-            case .failure(let error):
-                print("[\(tag)]: Failure: \(error)")
-            }
-            return response
-        })
     }
     
 }
@@ -161,20 +122,6 @@ extension Observable where Element == MJResultSimple {
         })
     }
     
-    public func failure(
-        _ handler: @escaping (Error) -> Void
-    ) -> Observable<MJResultSimple>  {
-        return self.map({ response in
-            switch response {
-            case .success:
-                break
-            case .failure(let error):
-                handler(error)
-            }
-            return response
-        })
-    }
-    
     public func bindSuccess<O: ObserverType>(
         to observer: O
     ) -> Disposable where O.E == Bool {
@@ -189,18 +136,6 @@ extension Observable where Element == MJResultSimple {
         return self
             .map({ $0.isSuccess() })
             .bind(to: variable)
-    }
-    
-    public func debug(_ tag: String = "Result") -> Observable<MJResultSimple> {
-        return self.map({ response in
-            switch response {
-            case .success:
-                print("[\(tag)]: Success")
-            case .failure(let error):
-                print("[\(tag)]: Failure: \(error)")
-            }
-            return response
-        })
     }
     
 }
