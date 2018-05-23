@@ -16,6 +16,10 @@ open class MJFlowController<Service> {
     private weak var parentFlowController: MJFlowController<Service>?
     private var childFlowController: MJFlowController<Service>?
     
+    public lazy var currentViewController: UIViewController? = {
+        return self.navigation?.viewControllers.last
+    }()
+    
     public init(service: Service) {
         self.service = service
     }
@@ -41,12 +45,16 @@ open class MJFlowController<Service> {
         flowController.start(navigation: navigation)
     }
     
-    public func back(animated: Bool = true, navBarHidden: Bool = false) {
+    public func back(
+        animated: Bool = true,
+        navBarHidden: Bool = false,
+        completion: (() -> Void)? = nil
+    ) {
         guard let navigation = navigation else {
             return
         }
         if navigation.presentedViewController != nil {
-            navigation.dismiss(animated: animated, completion: nil)
+            navigation.dismiss(animated: animated, completion: completion)
         } else {
             if navigation.isNavigationBarHidden != navBarHidden {
                 navigation.setNavigationBarHidden(navBarHidden, animated: animated)
