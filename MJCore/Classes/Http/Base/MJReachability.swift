@@ -7,8 +7,43 @@
 
 import Foundation
 import SystemConfiguration
+import RxSwift
 
 public final class MJReachability {
+    
+    private var timer: Timer?
+    
+    private let statusVariable = Variable<Status>(MJReachability.status)
+    public lazy var statusObservable = statusVariable.asObservable()
+    
+    public init(checkTimeInterval: Double = 2) {
+        runTimer(checkTimeInterval)
+    }
+    
+    deinit {
+        endTimer()
+    }
+    
+    private func runTimer(_ interval: Double) {
+        endTimer()
+        timer = Timer.scheduledTimer(
+            timeInterval: interval,
+            target: self,
+            selector: #selector(checkReachability),
+            userInfo: nil,
+            repeats: true
+        )
+    }
+    
+    private func endTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    @objc
+    private func checkReachability() {
+        statusVariable.value = MJReachability.status
+    }
     
     public enum Status {
         case notReachable
