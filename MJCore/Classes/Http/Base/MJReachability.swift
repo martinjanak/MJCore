@@ -11,23 +11,20 @@ import RxSwift
 
 public final class MJReachability {
     
+    private let timerInterval: Double
     private var timer: Timer?
     
     private let statusVariable = Variable<Status>(MJReachability.status)
     public lazy var statusObservable = statusVariable.asObservable()
     
-    public init(checkTimeInterval: Double = 2) {
-        runTimer(checkTimeInterval)
+    public init(timerInterval: Double = 2) {
+        self.timerInterval = timerInterval
     }
     
-    deinit {
-        endTimer()
-    }
-    
-    private func runTimer(_ interval: Double) {
+    public func runTimer() {
         endTimer()
         timer = Timer.scheduledTimer(
-            timeInterval: interval,
+            timeInterval: timerInterval,
             target: self,
             selector: #selector(checkReachability),
             userInfo: nil,
@@ -35,7 +32,7 @@ public final class MJReachability {
         )
     }
     
-    private func endTimer() {
+    public func endTimer() {
         timer?.invalidate()
         timer = nil
     }
@@ -82,6 +79,10 @@ public final class MJReachability {
         } else {
             return .notReachable
         }
+    }
+    
+    deinit {
+        endTimer()
     }
     
 }
