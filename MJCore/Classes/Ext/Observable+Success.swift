@@ -64,17 +64,41 @@ extension Observable {
     
     public func bindSuccess<V, O: ObserverType>(
         to observer: O
-    ) -> Disposable where O.E == Bool, Element == MJResult<V> {
+    ) -> Disposable where O.E == V, Element == MJResult<V> {
         return self
-            .map({ $0.isSuccess() })
+            .map({ result -> V? in
+                if case .success(let value) = result {
+                    return value
+                } else {
+                    return nil
+                }
+            })
+            .filter({ (value: V?) in
+                return value != nil
+            })
+            .map({ (value: V?) -> V in
+                return value!
+            })
             .bind(to: observer)
     }
     
     public func bindSuccess<V>(
-        to variable: Variable<Bool>
+        to variable: Variable<V>
     ) -> Disposable where Element == MJResult<V> {
         return self
-            .map({ $0.isSuccess() })
+            .map({ result -> V? in
+                if case .success(let value) = result {
+                    return value
+                } else {
+                    return nil
+                }
+            })
+            .filter({ (value: V?) in
+                return value != nil
+            })
+            .map({ (value: V?) -> V in
+                return value!
+            })
             .bind(to: variable)
     }
     
