@@ -10,14 +10,13 @@ import RxSwift
 extension Observable {
     
     public func debug<V>(_ tag: String = "Result") -> Observable<MJResult<V>> where Element == MJResult<V> {
-        return self.map({ response in
+        return self.do(onNext: { response in
             switch response {
             case .success:
                 print("[\(tag)]: Success")
             case .failure(let error):
                 print("[\(tag)]: Failure: \(error)")
             }
-            return response
         })
     }
     
@@ -26,7 +25,7 @@ extension Observable {
 extension Observable where Element == MJResult<Data> {
     
     public func debug(_ tag: String = "Result") -> Observable<MJResult<Data>> {
-        return self.map({ response in
+        return self.do(onNext: { response in
             switch response {
             case .success(let data):
                 if let json = MJson.parseOptional(data) {
@@ -39,7 +38,6 @@ extension Observable where Element == MJResult<Data> {
             case .failure(let error):
                 print("[\(tag)]: Failure: \(error)")
             }
-            return response
         })
     }
     
@@ -48,14 +46,13 @@ extension Observable where Element == MJResult<Data> {
 extension Observable where Element == MJResultSimple {
     
     public func debug(_ tag: String = "Result") -> Observable<MJResultSimple> {
-        return self.map({ response in
+        return self.do(onNext: { response in
             switch response {
             case .success:
                 print("[\(tag)]: Success")
             case .failure(let error):
                 print("[\(tag)]: Failure: \(error)")
             }
-            return response
         })
     }
     
