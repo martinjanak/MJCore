@@ -132,6 +132,7 @@
 		5B41E81F209C562800129589 /* MJRemoteNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B41E81E209C562800129589 /* MJRemoteNotificationService.swift */; };
 		5B41E821209C8DE800129589 /* MJRemoteNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B41E820209C8DE800129589 /* MJRemoteNotification.swift */; };
 		5B472319209D9D7000611A36 /* Observable+Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B472318209D9D7000611A36 /* Observable+Decode.swift */; };
+		5B5038A320B72CE300546C2C /* MJPoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5038A220B72CE300546C2C /* MJPoller.swift */; };
 		5B54F09320A08F4300AE9351 /* MJBaseHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B54F09220A08F4300AE9351 /* MJBaseHttpClient.swift */; };
 		5B54F09720A0933300AE9351 /* MJHttpAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B54F09620A0933300AE9351 /* MJHttpAuthClient.swift */; };
 		5B725AEB20B2B632000C8508 /* RawRepresentable+Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B725AEA20B2B632000C8508 /* RawRepresentable+Create.swift */; };
@@ -520,6 +521,7 @@
 		5B41E81E209C562800129589 /* MJRemoteNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJRemoteNotificationService.swift; sourceTree = "<group>"; };
 		5B41E820209C8DE800129589 /* MJRemoteNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJRemoteNotification.swift; sourceTree = "<group>"; };
 		5B472318209D9D7000611A36 /* Observable+Decode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Decode.swift"; sourceTree = "<group>"; };
+		5B5038A220B72CE300546C2C /* MJPoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJPoller.swift; sourceTree = "<group>"; };
 		5B54F09220A08F4300AE9351 /* MJBaseHttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJBaseHttpClient.swift; sourceTree = "<group>"; };
 		5B54F09620A0933300AE9351 /* MJHttpAuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJHttpAuthClient.swift; sourceTree = "<group>"; };
 		5B725AEA20B2B632000C8508 /* RawRepresentable+Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RawRepresentable+Create.swift"; sourceTree = "<group>"; };
@@ -865,6 +867,7 @@
 				5B41E805209C43D000129589 /* MJTwoWayBinding.swift */,
 				5B41E807209C474B00129589 /* MJResult.swift */,
 				5BA4F95920AC9C31005DA154 /* MJResultWithProgress.swift */,
+				5B5038A220B72CE300546C2C /* MJPoller.swift */,
 			);
 			path = Rx;
 			sourceTree = "<group>";
@@ -1789,6 +1792,7 @@
 				5B41E81C209C528600129589 /* MJLocalNotifications.swift in Sources */,
 				5B41E80E209C497800129589 /* MJCoreDataModel.swift in Sources */,
 				5BA4F95C20AC9F32005DA154 /* Observable+MJResultWithProgress.swift in Sources */,
+				5B5038A320B72CE300546C2C /* MJPoller.swift in Sources */,
 				5BB8EA1020B1E027008F771C /* Date+Ext.swift in Sources */,
 				5BD5FFBD20AB03110019C8FB /* MJBaseAuthHttpClient.swift in Sources */,
 				5B41E800209C439800129589 /* MJCodableUtil.swift in Sources */,
