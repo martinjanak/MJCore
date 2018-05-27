@@ -32,9 +32,41 @@ extension Dictionary where Key == String, Value == Any {
         }
     }
     
+    public func getArray<V: MJsonParsable>(_ key: String) throws -> [V] {
+        if let anyValue = self[key] {
+            if let jsonArray = anyValue as? MJsonArray {
+                var array = [V]()
+                for json in jsonArray {
+                    array.append(try V(json: json))
+                }
+                return array
+            } else {
+                throw MJsonError.valueTypeMismatch(key: key)
+            }
+        } else {
+            throw MJsonError.keyDoesNotExist(key: key)
+        }
+    }
+    
     public func getOptional<V>(_ key: String) -> V? {
         if let value = self[key] as? V {
             return value
+        } else {
+            return nil
+        }
+    }
+    
+    public func getArrayOptional<V: MJsonParsable>(_ key: String) -> [V]? {
+        if let jsonArray = self[key] as? MJsonArray {
+            do {
+                var array = [V]()
+                for json in jsonArray {
+                    array.append(try V(json: json))
+                }
+                return array
+            } catch {
+                return nil
+            }
         } else {
             return nil
         }
