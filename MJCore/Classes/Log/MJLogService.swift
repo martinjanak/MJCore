@@ -9,10 +9,10 @@ import Foundation
 import RxSwift
 
 public protocol HasLog {
-    var log: MJLog { get }
+    var log: MJLogService { get }
 }
 
-public final class MJLog {
+public final class MJLogService {
     
     private let infoSubject = PublishSubject<String>()
     lazy var infoFeed = infoSubject.asObservable()

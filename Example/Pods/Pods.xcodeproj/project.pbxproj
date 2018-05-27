@@ -108,8 +108,8 @@
 		5B049C7F4A406641EA73EAA265255B26 /* RxPickerViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A120760EF02FB5BE863FEE132C226 /* RxPickerViewAdapter.swift */; };
 		5B06234720B0A77200159BD0 /* MJsonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B06234620B0A77200159BD0 /* MJsonModel.swift */; };
 		5B06234B20B0B1A100159BD0 /* Array+MJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B06234A20B0B1A100159BD0 /* Array+MJson.swift */; };
-		5B238D8320B9E49A0099E63C /* MJLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B238D8220B9E49A0099E63C /* MJLog.swift */; };
-		5B238D8520B9E5000099E63C /* Observable+MJLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B238D8420B9E5000099E63C /* Observable+MJLog.swift */; };
+		5B238D8320B9E49A0099E63C /* MJLogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B238D8220B9E49A0099E63C /* MJLogService.swift */; };
+		5B238D8520B9E5000099E63C /* Observable+MJLogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B238D8420B9E5000099E63C /* Observable+MJLogService.swift */; };
 		5B390A9B209E31B8004D7451 /* MJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B390A9A209E31B8004D7451 /* MJson.swift */; };
 		5B41E7F8209C439800129589 /* UINavigationController+Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B41E7E9209C439800129589 /* UINavigationController+Root.swift */; };
 		5B41E7F9209C439800129589 /* UIView+TopSafeConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B41E7EA209C439800129589 /* UIView+TopSafeConstraint.swift */; };
@@ -499,8 +499,8 @@
 		5B06234620B0A77200159BD0 /* MJsonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJsonModel.swift; sourceTree = "<group>"; };
 		5B06234A20B0B1A100159BD0 /* Array+MJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+MJson.swift"; sourceTree = "<group>"; };
 		5B0F7B1B1E820348CD70B9E493288AE7 /* InvocableScheduledItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InvocableScheduledItem.swift; path = RxSwift/Schedulers/Internal/InvocableScheduledItem.swift; sourceTree = "<group>"; };
-		5B238D8220B9E49A0099E63C /* MJLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJLog.swift; sourceTree = "<group>"; };
-		5B238D8420B9E5000099E63C /* Observable+MJLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+MJLog.swift"; sourceTree = "<group>"; };
+		5B238D8220B9E49A0099E63C /* MJLogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJLogService.swift; sourceTree = "<group>"; };
+		5B238D8420B9E5000099E63C /* Observable+MJLogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+MJLogService.swift"; sourceTree = "<group>"; };
 		5B390A9A209E31B8004D7451 /* MJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJson.swift; sourceTree = "<group>"; };
 		5B41E7E9209C439800129589 /* UINavigationController+Root.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Root.swift"; sourceTree = "<group>"; };
 		5B41E7EA209C439800129589 /* UIView+TopSafeConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+TopSafeConstraint.swift"; sourceTree = "<group>"; };
@@ -810,7 +810,7 @@
 		5B238D8120B9E4850099E63C /* Log */ = {
 			isa = PBXGroup;
 			children = (
-				5B238D8220B9E49A0099E63C /* MJLog.swift */,
+				5B238D8220B9E49A0099E63C /* MJLogService.swift */,
 			);
 			path = Log;
 			sourceTree = "<group>";
@@ -838,7 +838,7 @@
 				5B725AEE20B2B94B000C8508 /* Observable+Success.swift */,
 				5B725AF020B2B99C000C8508 /* Observable+Failure.swift */,
 				5B725AF220B2BAB0000C8508 /* Observable+Debug.swift */,
-				5B238D8420B9E5000099E63C /* Observable+MJLog.swift */,
+				5B238D8420B9E5000099E63C /* Observable+MJLogService.swift */,
 				5B725AF420B2BB53000C8508 /* Observable+Simplify.swift */,
 				5B472318209D9D7000611A36 /* Observable+Decode.swift */,
 				5B725AEC20B2B803000C8508 /* Observable+Parse.swift */,
@@ -1776,7 +1776,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B238D8320B9E49A0099E63C /* MJLog.swift in Sources */,
+				5B238D8320B9E49A0099E63C /* MJLogService.swift in Sources */,
 				5BB8EA1220B1EE88008F771C /* Observable+Store.swift in Sources */,
 				5B41E81F209C562800129589 /* MJRemoteNotificationService.swift in Sources */,
 				5B41E7F9209C439800129589 /* UIView+TopSafeConstraint.swift in Sources */,
@@ -1814,7 +1814,7 @@
 				5B41E80C209C491500129589 /* MJCoreDataService.swift in Sources */,
 				5B725AF520B2BB53000C8508 /* Observable+Simplify.swift in Sources */,
 				5B41E7FB209C439800129589 /* MJHttpClient.swift in Sources */,
-				5B238D8520B9E5000099E63C /* Observable+MJLog.swift in Sources */,
+				5B238D8520B9E5000099E63C /* Observable+MJLogService.swift in Sources */,
 				5B41E7FE209C439800129589 /* MJReachability.swift in Sources */,
 				5B725AEF20B2B94B000C8508 /* Observable+Success.swift in Sources */,
 				5B41E821209C8DE800129589 /* MJRemoteNotification.swift in Sources */,
