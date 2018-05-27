@@ -20,6 +20,8 @@ public final class MJLogService {
     private let errorSubject = PublishSubject<String>()
     public lazy var errorFeed = errorSubject.asObservable()
     
+    public init() { }
+    
     public func info(_ tag: String, message: String) {
         infoSubject.onNext("[\(tag)]: \(message)")
     }
