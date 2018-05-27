@@ -15,16 +15,16 @@ public protocol HasLog {
 public final class MJLogService {
     
     private let infoSubject = PublishSubject<String>()
-    lazy var infoFeed = infoSubject.asObservable()
+    public lazy var infoFeed = infoSubject.asObservable()
     
     private let errorSubject = PublishSubject<String>()
-    lazy var errorFeed = errorSubject.asObservable()
+    public lazy var errorFeed = errorSubject.asObservable()
     
-    func info(_ tag: String, message: String) {
+    public func info(_ tag: String, message: String) {
         infoSubject.onNext("[\(tag)]: \(message)")
     }
     
-    func error(_ tag: String, message: String) {
+    public func error(_ tag: String, message: String) {
         errorSubject.onNext("[\(tag)]: ERROR: \(message)")
     }
     
