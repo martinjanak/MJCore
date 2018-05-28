@@ -36,6 +36,19 @@ extension Observable {
         })
     }
     
+    public func successMapSimple<V>(
+        _ handler: @escaping (V) -> MJResultSimple
+        ) -> Observable<MJResultSimple> where Element == MJResult<V> {
+        return self.map({ (response: MJResult<V>) -> MJResultSimple in
+            switch response {
+            case .success(let value):
+                return handler(value)
+            case .failure(let error):
+                return .failure(error: error)
+            }
+        })
+    }
+    
     public func successFlatMap<V, W>(
         _ handler: @escaping (V) -> Observable<MJResult<W>>
     ) -> Observable<MJResult<W>> where Element == MJResult<V> {
