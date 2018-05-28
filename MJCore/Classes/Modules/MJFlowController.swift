@@ -63,6 +63,28 @@ open class MJFlowController<Service> {
         }
     }
     
+    public func backToRoot(
+        animated: Bool = true,
+        navBarHidden: Bool = false
+    ) {
+        guard let navigation = navigation else {
+            return
+        }
+        if navigation.presentedViewController != nil {
+            navigation.dismiss(animated: animated) {
+                if navigation.isNavigationBarHidden != navBarHidden {
+                    navigation.setNavigationBarHidden(navBarHidden, animated: animated)
+                }
+                navigation.popToRootViewController(animated: animated)
+            }
+        } else {
+            if navigation.isNavigationBarHidden != navBarHidden {
+                navigation.setNavigationBarHidden(navBarHidden, animated: animated)
+            }
+            navigation.popToRootViewController(animated: animated)
+        }
+    }
+    
     public func enroot(
         _ controller: UIViewController,
         navBarHidden: Bool = false,
