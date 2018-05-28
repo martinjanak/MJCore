@@ -55,7 +55,7 @@ public final class MJPoller {
     private func tickHandler() {
         if let timeout = timeout, timeout <= seconds {
             tickSubject.onNext(.failure(error: MJPollerError.timeout))
-            stop()
+            stopSync()
         } else {
             tickSubject.onNext(.success(value: seconds))
             seconds = seconds + interval
