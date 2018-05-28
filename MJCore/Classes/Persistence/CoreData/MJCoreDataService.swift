@@ -231,7 +231,9 @@ public final class MJCoreDataService {
         sortDescriptors: [NSSortDescriptor]? = nil
     ) -> MJResult<[Model]> {
         
-        let fetchRequest: NSFetchRequest = Model.Entity.fetchRequest()
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(
+            entityName: String(describing: Model.Entity.self)
+        )
         if let sortDescriptors = sortDescriptors {
             fetchRequest.sortDescriptors = sortDescriptors
         }
@@ -258,7 +260,9 @@ public final class MJCoreDataService {
         
         let subject = PublishSubject<MJResult<[Model]>>()
         
-        let fetchRequest: NSFetchRequest = Model.Entity.fetchRequest()
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(
+            entityName: String(describing: Model.Entity.self)
+        )
         if let sortDescriptors = sortDescriptors {
             fetchRequest.sortDescriptors = sortDescriptors
         }
@@ -287,7 +291,9 @@ public final class MJCoreDataService {
         predicate: NSPredicate? = nil
     ) -> MJResultSimple {
         
-        let fetchRequest: NSFetchRequest = Model.Entity.fetchRequest()
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(
+            entityName: String(describing: Model.Entity.self)
+        )
         if let predicate = predicate {
             fetchRequest.predicate = predicate
         }
@@ -311,7 +317,9 @@ public final class MJCoreDataService {
         
         let subject = PublishSubject<MJResultSimple>()
         
-        let fetchRequest: NSFetchRequest = Model.Entity.fetchRequest()
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(
+            entityName: String(describing: Model.Entity.self)
+        )
         if let predicate = predicate {
             fetchRequest.predicate = predicate
         }
