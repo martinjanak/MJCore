@@ -2,19 +2,20 @@
 //  MJPoller.swift
 //  MJCore
 //
-//  Created by Martin Janák on 28/05/2018.
+//  Created by Martin Janák on 24/05/2018.
 //
 
 import RxSwift
 
-public enum MJPollerError: Error {
-    case timeout
-}
-
-public final class MJPoller {
+public final class MJBackgroundPoller {
     
     private let tickSubject = PublishSubject<MJResult<Double>>()
     public lazy var tick = tickSubject.asObservable()
+    
+    private let queue = DispatchQueue(
+        label: "Poller",
+        qos: .background
+    )
     
     private var timer: Timer?
     private let interval: Double
@@ -27,20 +28,25 @@ public final class MJPoller {
     }
     
     public func start() {
-        DispatchQueue.main.async {
+        queue.async {
             self.stopSync()
-            self.timer = Timer.scheduledTimer(
+            self.timer = Timer(
                 timeInterval: self.interval,
                 target: self,
                 selector: #selector(self.tickHandler),
                 userInfo: nil,
                 repeats: true
             )
+            RunLoop.current.add(
+                self.timer!,
+                forMode: RunLoopMode.defaultRunLoopMode
+            )
+            RunLoop.current.run()
         }
     }
     
     public func stop() {
-        DispatchQueue.main.async {
+        queue.async {
             self.stopSync()
         }
     }
@@ -63,7 +69,7 @@ public final class MJPoller {
     }
     
     deinit {
-        DispatchQueue.main.sync {
+        queue.sync {
             stopSync()
         }
     }
