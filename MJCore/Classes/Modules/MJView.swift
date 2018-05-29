@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Stevia
 
 open class MJView: UIView {
     
