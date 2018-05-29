@@ -63,9 +63,7 @@ public final class MJPoller {
     }
     
     deinit {
-        DispatchQueue.main.sync {
-            stopSync()
-        }
+        stopSync()
     }
     
 }

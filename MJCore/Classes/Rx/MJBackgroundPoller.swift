@@ -69,9 +69,7 @@ public final class MJBackgroundPoller {
     }
     
     deinit {
-        queue.sync {
-            stopSync()
-        }
+        stopSync()
     }
     
 }
