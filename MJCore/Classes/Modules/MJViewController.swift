@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class MJViewController<View: MJView>: UIViewController {
+open class MJViewController<View: UIView>: UIViewController {
     
     public let ui: View
     
@@ -18,7 +18,7 @@ open class MJViewController<View: MJView>: UIViewController {
     
     override open func viewDidLoad() {
         super.viewDidLoad()
-        ui.setup()
+//        ui.setup()
         view = ui
         setup()
         setupBindings()
