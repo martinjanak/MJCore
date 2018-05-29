@@ -43,4 +43,5 @@ TODO: Add long description of the pod here.
   
   s.dependency 'RxSwift', '~> 4.1.2'
   s.dependency 'RxCocoa', '~> 4.1.2'
+  s.dependency 'SteviaLayout', '~> 4.3.0'
 end

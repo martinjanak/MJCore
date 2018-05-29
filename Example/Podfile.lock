@@ -2,22 +2,31 @@ PODS:
   - MJCore (0.1.0):
     - RxCocoa (~> 4.1.2)
     - RxSwift (~> 4.1.2)
+    - SteviaLayout (~> 4.3.0)
   - RxCocoa (4.1.2):
     - RxSwift (~> 4.0)
   - RxSwift (4.1.2)
+  - SteviaLayout (4.3.0)
 
 DEPENDENCIES:
   - MJCore (from `../`)
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - RxCocoa
+    - RxSwift
+    - SteviaLayout
+
 EXTERNAL SOURCES:
   MJCore:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
-  MJCore: 71feb06d12acfa38baf18b54e39d9d5f7630ae3e
+  MJCore: c3558a957ca57e898f0e00be627c5772e1a254a6
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
   RxSwift: e49536837d9901277638493ea537394d4b55f570
+  SteviaLayout: 4237718d4e9eaea2d530bd1426637735a7e19de6
 
 PODFILE CHECKSUM: 96494afd38ff5b2aab0032598567f5bfa8faec8f
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.2
