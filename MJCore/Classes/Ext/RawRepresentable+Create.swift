@@ -16,7 +16,7 @@ extension RawRepresentable where RawValue == String {
         if let value = Self.init(rawValue: rawValue) {
             return value
         } else {
-            throw MJEnumError.rawValueMismatch(value: rawValue)
+            throw MJEnumError.rawValueMismatch(value: "\(String(describing: self))[\(rawValue)]")
         }
     }
 }
