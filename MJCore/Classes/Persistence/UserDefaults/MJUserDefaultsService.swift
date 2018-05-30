@@ -11,7 +11,6 @@ public protocol MJUserDefaultsService {
     associatedtype KeyType: RawRepresentable where KeyType.RawValue == String
     func set<T>(_ key: KeyType, value: T)
     func get<T>(_ key: KeyType) -> T?
-    func get<T>(_ key: KeyType, default: T) -> T
     func delete(_ key: KeyType)
 }
 
@@ -23,13 +22,6 @@ extension MJUserDefaultsService {
     
     public func get<T>(_ key: KeyType) -> T? {
         return UserDefaults.standard.object(forKey: key.rawValue) as? T
-    }
-    
-    public func get<T>(_ key: KeyType, default: T) -> T {
-        if let object: T = get(key) {
-            return object
-        }
-        return `default`
     }
     
     public func delete(_ key: KeyType) {

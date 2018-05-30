@@ -32,6 +32,18 @@ extension Dictionary where Key == String, Value == Any {
         }
     }
     
+    public func getObject<V: MJsonParsable>(_ key: String) throws -> V {
+        if let anyValue = self[key] {
+            if let json = anyValue as? MJson {
+                return try V.init(json: json)
+            } else {
+                throw MJsonError.valueTypeMismatch(key: key)
+            }
+        } else {
+            throw MJsonError.keyDoesNotExist(key: key)
+        }
+    }
+    
     public func getArray<V: MJsonParsable>(_ key: String) throws -> [V] {
         if let anyValue = self[key] {
             if let jsonArray = anyValue as? MJsonArray {
@@ -51,6 +63,18 @@ extension Dictionary where Key == String, Value == Any {
     public func getOptional<V>(_ key: String) -> V? {
         if let value = self[key] as? V {
             return value
+        } else {
+            return nil
+        }
+    }
+    
+    public func getObjectOptional<V: MJsonParsable>(_ key: String) throws -> V? {
+        if let anyValue = self[key] {
+            if let json = anyValue as? MJson {
+                return try V(json: json)
+            } else {
+                return nil
+            }
         } else {
             return nil
         }
