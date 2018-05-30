@@ -8,15 +8,15 @@
 import Foundation
 
 public enum MJEnumError: Error {
-    case rawValueMismatch
+    case rawValueMismatch(value: String)
 }
 
-extension RawRepresentable {
+extension RawRepresentable where RawValue == String {
     public static func create(_ rawValue: RawValue) throws -> Self {
         if let value = Self.init(rawValue: rawValue) {
             return value
         } else {
-            throw MJEnumError.rawValueMismatch
+            throw MJEnumError.rawValueMismatch(value: rawValue)
         }
     }
 }
