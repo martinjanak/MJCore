@@ -23,15 +23,22 @@ extension Observable {
     }
     
     public func storeArray<M: MJCoreDataModel>(
-        _ coreDataService: MJCoreDataService
+        _ coreDataService: MJCoreDataService,
+        replace: Bool = false
     ) -> Observable<MJResultSimple> where Element == MJResult<[M]> {
         return self.successFlatMapSimple({ [weak coreDataServiceWeak = coreDataService] modelArray in
             guard let coreDataServiceStrong = coreDataServiceWeak else {
-                return Observable<MJResultSimple>.just(
-                    .failure(error: MJCoreDataError.serviceUnavailable)
-                )
+                return .none()
             }
-            return coreDataServiceStrong.create(modelArray)
+            if replace {
+                return coreDataServiceStrong
+                    .delete(M.self)
+                    .successFlatMapSimple({
+                        return coreDataServiceStrong.create(modelArray)
+                    })
+            } else {
+                return coreDataServiceStrong.create(modelArray)
+            }
         })
     }
     
