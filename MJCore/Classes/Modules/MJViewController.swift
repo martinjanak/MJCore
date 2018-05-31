@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import RxSwift
 
 open class MJViewController<View: UIView>: UIViewController {
     
     public let ui: View
+    public var disposeBag: DisposeBag?
     
     public init() {
         ui = View()
@@ -21,14 +23,23 @@ open class MJViewController<View: UIView>: UIViewController {
 //        ui.setup()
         view = ui
         setup()
-        setupBindings()
+    }
+    
+    override open func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        initBindings()
+    }
+    
+    override open func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        disposeBag = nil
     }
     
     open func setup() {
         // optional override
     }
     
-    open func setupBindings() {
+    open func initBindings() {
         // optional override
     }
     
