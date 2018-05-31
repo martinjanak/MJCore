@@ -68,3 +68,19 @@ public func <-> <T>(property: ControlProperty<T>, variable: Variable<T>) -> Disp
         )
     return Disposables.create(bindToUIDisposable, bindToVariable)
 }
+
+public func <-> <T: Equatable>(variableA: Variable<T>, variableB: Variable<T>) -> Disposable {
+    let dA = variableA.asObservable()
+        .filter({ [weak weakVariableB = variableB] value in
+            guard let strongVariableB = weakVariableB else { return false }
+            return strongVariableB.value != value
+        })
+        .bind(to: variableB)
+    let dB = variableB.asObservable()
+        .filter({ [weak weakVariableA = variableA] value in
+            guard let strongVariableA = weakVariableA else { return false }
+            return strongVariableA.value != value
+        })
+        .bind(to: variableA)
+    return Disposables.create(dA, dB)
+}
