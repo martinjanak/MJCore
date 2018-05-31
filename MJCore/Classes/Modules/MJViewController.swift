@@ -25,9 +25,15 @@ open class MJViewController<View: UIView>: UIViewController {
         setup()
     }
     
+    override open func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        disposeBag = DisposeBag()
+        initBindings()
+    }
+    
     override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        initBindings()
+        initBindingsWithAnimations()
     }
     
     override open func viewWillDisappear(_ animated: Bool) {
@@ -40,6 +46,10 @@ open class MJViewController<View: UIView>: UIViewController {
     }
     
     open func initBindings() {
+        // optional override
+    }
+    
+    open func initBindingsWithAnimations() {
         // optional override
     }
     
