@@ -11,7 +11,9 @@ public typealias MJsonArray = [MJson]
 public enum MJsonError: Error {
     case couldNotParseAsJson
     case keyDoesNotExist(key: String)
-    case valueTypeMismatch(key: String)
+    case objectTypeMismatch(key: String, expect: String)
+    case arrayTypeMismatch(key: String)
+    case valueTypeMismatch(key: String, expect: String, metatype: String)
     case couldNotSerializeToString
     case couldNotSerializeString
 }
@@ -25,7 +27,11 @@ extension Dictionary where Key == String, Value == Any {
             if let value = anyValue as? V {
                 return value
             } else {
-                throw MJsonError.valueTypeMismatch(key: key)
+                throw MJsonError.valueTypeMismatch(
+                    key: key,
+                    expect: String(describing: V.self),
+                    metatype: String(describing: type(of: anyValue))
+                )
             }
         } else {
             throw MJsonError.keyDoesNotExist(key: key)
@@ -37,7 +43,10 @@ extension Dictionary where Key == String, Value == Any {
             if let json = anyValue as? MJson {
                 return try V.init(json: json)
             } else {
-                throw MJsonError.valueTypeMismatch(key: key)
+                throw MJsonError.objectTypeMismatch(
+                    key: key,
+                    expect: String(describing: V.self)
+                )
             }
         } else {
             throw MJsonError.keyDoesNotExist(key: key)
@@ -53,7 +62,7 @@ extension Dictionary where Key == String, Value == Any {
                 }
                 return array
             } else {
-                throw MJsonError.valueTypeMismatch(key: key)
+                throw MJsonError.arrayTypeMismatch(key: key)
             }
         } else {
             throw MJsonError.keyDoesNotExist(key: key)
