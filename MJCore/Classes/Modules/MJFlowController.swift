@@ -16,9 +16,9 @@ open class MJFlowController<Service> {
     private weak var parentFlowController: MJFlowController<Service>?
     private var childFlowController: MJFlowController<Service>?
     
-    public lazy var currentViewController: UIViewController? = {
-        return self.navigation?.viewControllers.last
-    }()
+    public var currentViewController: UIViewController? {
+        return navigation?.viewControllers.last
+    }
     
     public init(service: Service) {
         self.service = service
