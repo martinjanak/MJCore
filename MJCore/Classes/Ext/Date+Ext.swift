@@ -8,7 +8,7 @@
 import Foundation
 
 public enum MJDateError: Error {
-    case wrongIsoFormat
+    case wrongFormat(iso: String, options: ISO8601DateFormatter.Options)
 }
 
 extension Date {
@@ -23,25 +23,32 @@ extension Date {
     
     // MARK: ISO
     
-    public static func create(fromIso: String) throws -> Date {
+    public static func create(
+        fromIso: String,
+        options: ISO8601DateFormatter.Options? = nil
+    ) throws -> Date {
+        let formatOptions = options ?? []
         let formatter = ISO8601DateFormatter()
-        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        formatter.formatOptions = formatOptions
         if let date = formatter.date(from: fromIso) {
             return date
         } else {
-            throw MJDateError.wrongIsoFormat
+            throw MJDateError.wrongFormat(iso: fromIso, options: formatOptions)
         }
     }
     
-    public static func createOptional(fromIso: String) -> Date? {
+    public static func createOptional(
+        fromIso: String,
+        options: ISO8601DateFormatter.Options? = nil
+    ) -> Date? {
         let formatter = ISO8601DateFormatter()
-        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        formatter.formatOptions = options ?? []
         return formatter.date(from: fromIso)
     }
     
-    public func getIso() -> String {
+    public func getIso(options: ISO8601DateFormatter.Options? = nil) -> String {
         let formatter = ISO8601DateFormatter()
-        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        formatter.formatOptions = options ?? []
         return formatter.string(from: self)
     }
     
