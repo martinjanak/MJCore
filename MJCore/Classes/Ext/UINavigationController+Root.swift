@@ -14,28 +14,22 @@ extension UINavigationController {
         case pop
     }
     
-    public func set(rootViewController: UIViewController, direction: Direction? = nil) {
+    public func set(root: UIViewController, direction: Direction? = nil) {
         if let direction = direction {
-            addTransition(direction)
+            switch direction {
+            case .pop:
+                viewControllers.insert(root, at: 0)
+                popToRootViewController(animated: true)
+            case .push:
+                setViewControllers([root], animated: true)
+            }
+        } else {
+            if viewControllers.count > 0 {
+                viewControllers.insert(root, at: 0)
+                popToRootViewController(animated: false)
+            } else {
+                pushViewController(root, animated: false)
+            }
         }
-        viewControllers.removeAll()
-        pushViewController(rootViewController, animated: false)
-        popToRootViewController(animated: false)
-    }
-    
-    private func addTransition(_ direction: Direction) {
-        let transition = CATransition()
-        transition.duration = 0.3
-        transition.timingFunction = CAMediaTimingFunction(
-            name: kCAMediaTimingFunctionEaseInEaseOut
-        )
-        transition.type = kCATransitionPush
-        switch direction {
-        case .push:
-            transition.subtype = kCATransitionFromRight
-        case .pop:
-            transition.subtype = kCATransitionFromLeft
-        }
-        view.layer.add(transition, forKey: nil)
     }
 }
