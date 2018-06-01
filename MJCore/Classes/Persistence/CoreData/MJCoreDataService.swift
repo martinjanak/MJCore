@@ -253,6 +253,24 @@ public final class MJCoreDataService {
         }
     }
     
+    public func readOneSync<Model: MJCoreDataModel>(
+        _ modelType: Model.Type,
+        predicate: NSPredicate? = nil,
+        sortDescriptors: [NSSortDescriptor]? = nil
+    ) -> MJResult<Model?> {
+        let result = readSync(
+            modelType,
+            predicate: predicate,
+            sortDescriptors: sortDescriptors
+        )
+        if case .success(let models) = result,
+            models.count > 0 {
+            return .success(value: models[0])
+        } else {
+            return .success(value: nil)
+        }
+    }
+    
     public func read<Model: MJCoreDataModel>(
         _ modelType: Model.Type,
         predicate: NSPredicate? = nil,
@@ -283,6 +301,25 @@ public final class MJCoreDataService {
             })
         }
         return subject
+    }
+    
+    public func readOne<Model: MJCoreDataModel>(
+        _ modelType: Model.Type,
+        predicate: NSPredicate? = nil,
+        sortDescriptors: [NSSortDescriptor]? = nil
+    ) -> Observable<MJResult<Model?>> {
+        return read(
+            modelType,
+            predicate: predicate,
+            sortDescriptors: sortDescriptors
+        )
+            .successMap({ models in
+                if models.count > 0 {
+                    return .success(value: models[0])
+                } else {
+                    return .success(value: nil)
+                }
+            })
     }
     
     // MARK: Delete
