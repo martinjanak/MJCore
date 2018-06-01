@@ -9,31 +9,29 @@ import RxSwift
 
 extension Observable {
 
-    public func store<M: MJCoreDataModel>(
+    public func store<Model: MJCoreDataModel>(
         _ coreDataService: MJCoreDataService
-    ) -> Observable<MJResultSimple> where Element == MJResult<M> {
-        return self.successFlatMapSimple({ [weak coreDataServiceWeak = coreDataService] model in
+    ) -> Observable<MJResult<Model>> where Element == MJResult<Model> {
+        return self.successFlatMap({ [weak coreDataServiceWeak = coreDataService] model in
             guard let coreDataServiceStrong = coreDataServiceWeak else {
-                return Observable<MJResultSimple>.just(
-                    .failure(error: MJCoreDataError.serviceUnavailable)
-                )
+                return .none()
             }
             return coreDataServiceStrong.create(model)
         })
     }
     
-    public func storeArray<M: MJCoreDataModel>(
+    public func storeArray<Model: MJCoreDataModel>(
         _ coreDataService: MJCoreDataService,
         replace: Bool = false
-    ) -> Observable<MJResultSimple> where Element == MJResult<[M]> {
-        return self.successFlatMapSimple({ [weak coreDataServiceWeak = coreDataService] modelArray in
+    ) -> Observable<MJResult<[Model]>> where Element == MJResult<[Model]> {
+        return self.successFlatMap({ [weak coreDataServiceWeak = coreDataService] modelArray in
             guard let coreDataServiceStrong = coreDataServiceWeak else {
                 return .none()
             }
             if replace {
                 return coreDataServiceStrong
-                    .delete(M.self)
-                    .successFlatMapSimple({
+                    .delete(Model.self)
+                    .successFlatMap({
                         return coreDataServiceStrong.create(modelArray)
                     })
             } else {

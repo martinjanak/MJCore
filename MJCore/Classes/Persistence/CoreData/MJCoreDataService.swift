@@ -117,29 +117,31 @@ public final class MJCoreDataService {
         }
     }
     
-    public func create<Model: MJCoreDataModel>(_ model: Model) -> Observable<MJResultSimple> {
-        let subject = PublishSubject<MJResultSimple>()
+    public func create<Model: MJCoreDataModel>(_ model: Model) -> Observable<MJResult<Model>> {
+        let subject = PublishSubject<MJResult<Model>>()
         privateContext.perform {
             let _ = model.createEntity(context: self.privateContext)
-            subject.onNext(MJResultSimple {
+            subject.onNext(MJResult {
                 if self.privateContext.hasChanges {
                     try self.privateContext.save()
                 }
+                return model
             })
         }
         return subject
     }
     
-    public func create<Model: MJCoreDataModel>(_ models: [Model]) -> Observable<MJResultSimple> {
-        let subject = PublishSubject<MJResultSimple>()
+    public func create<Model: MJCoreDataModel>(_ models: [Model]) -> Observable<MJResult<[Model]>> {
+        let subject = PublishSubject<MJResult<[Model]>>()
         privateContext.perform {
             for model in models {
                 let _ = model.createEntity(context: self.privateContext)
             }
-            subject.onNext(MJResultSimple {
+            subject.onNext(MJResult {
                 if self.privateContext.hasChanges {
                     try self.privateContext.save()
                 }
+                return models
             })
         }
         return subject
@@ -193,15 +195,13 @@ public final class MJCoreDataService {
         }
     }
     
-    public func update<Model: MJCoreDataModel>(_ model: Model) -> Observable<MJResultSimple> {
+    public func update<Model: MJCoreDataModel>(_ model: Model) -> Observable<MJResult<Model>> {
         
         guard let id = model.id else {
-            return Observable<MJResultSimple>.just(
-                .failure(error: MJCoreDataError.modelHasNoId)
-            )
+            return .just(.failure(error: MJCoreDataError.modelHasNoId))
         }
         
-        let subject = PublishSubject<MJResultSimple>()
+        let subject = PublishSubject<MJResult<Model>>()
         privateContext.perform {
             
             let existingEntity = self.privateContext.object(with: id)
@@ -209,10 +209,11 @@ public final class MJCoreDataService {
             if !existingEntity.isFault {
                 self.privateContext.delete(existingEntity)
                 let _ = model.createEntity(context: self.privateContext)
-                subject.onNext(MJResultSimple {
+                subject.onNext(MJResult {
                     if self.privateContext.hasChanges {
                         try self.privateContext.save()
                     }
+                    return model
                 })
             } else {
                 subject.onNext(
