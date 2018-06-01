@@ -25,30 +25,38 @@ extension Date {
     
     public static func create(
         fromIso: String,
-        options: ISO8601DateFormatter.Options? = nil
+        additionalOptions: ISO8601DateFormatter.Options? = nil
     ) throws -> Date {
-        let formatOptions = options ?? []
-        let formatter = ISO8601DateFormatter()
-        formatter.formatOptions = formatOptions
-        if let date = formatter.date(from: fromIso) {
+        if let date = createOptional(
+            fromIso: fromIso,
+            additionalOptions: additionalOptions
+        ) {
             return date
         } else {
-            throw MJDateError.wrongFormat(iso: fromIso, options: formatOptions)
+            throw MJDateError.wrongFormat(iso: fromIso, options: additionalOptions ?? [])
         }
     }
     
     public static func createOptional(
         fromIso: String,
-        options: ISO8601DateFormatter.Options? = nil
+        additionalOptions: ISO8601DateFormatter.Options? = nil
     ) -> Date? {
         let formatter = ISO8601DateFormatter()
-        formatter.formatOptions = options ?? []
+        var options: ISO8601DateFormatter.Options = [.withInternetDateTime]
+        if let additionalOptions = additionalOptions {
+            options.formUnion(additionalOptions)
+        }
+        formatter.formatOptions = options
         return formatter.date(from: fromIso)
     }
     
-    public func getIso(options: ISO8601DateFormatter.Options? = nil) -> String {
+    public func getIso(additionalOptions: ISO8601DateFormatter.Options? = nil) -> String {
         let formatter = ISO8601DateFormatter()
-        formatter.formatOptions = options ?? []
+        var options: ISO8601DateFormatter.Options = [.withInternetDateTime]
+        if let additionalOptions = additionalOptions {
+            options.formUnion(additionalOptions)
+        }
+        formatter.formatOptions = options
         return formatter.string(from: self)
     }
     
