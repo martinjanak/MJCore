@@ -64,15 +64,19 @@ open class MJFlowController<Service> {
         direction: UINavigationController.Direction? = nil,
         navBarHidden: Bool = false
     ) {
-        navigation?.setNavigationBarHidden(navBarHidden, animated: direction != nil)
-        navigation?.set(root: controller, direction: direction)
+        dismissBefore(animated: direction != nil) {
+            self.navigation?.setNavigationBarHidden(navBarHidden, animated: direction != nil)
+            self.navigation?.set(root: controller, direction: direction)
+        }
     }
     
     public func push(_ controller: UIViewController, animated: Bool = true, navBarHidden: Bool = false) {
-        if navigation?.isNavigationBarHidden != navBarHidden {
-            navigation?.setNavigationBarHidden(navBarHidden, animated: animated)
+        dismissBefore(animated: animated) {
+            if self.navigation?.isNavigationBarHidden != navBarHidden {
+                self.navigation?.setNavigationBarHidden(navBarHidden, animated: animated)
+            }
+            self.navigation?.pushViewController(controller, animated: animated)
         }
-        navigation?.pushViewController(controller, animated: animated)
     }
     
     public func present(
@@ -80,15 +84,8 @@ open class MJFlowController<Service> {
         animated: Bool = true,
         completion: (() -> Void)? = nil
     ) {
-        guard let navigation = navigation else {
-            return
-        }
-        if navigation.presentedViewController != nil {
-            navigation.dismiss(animated: animated) {
-                navigation.present(controller, animated: animated, completion: completion)
-            }
-        } else {
-            navigation.present(controller, animated: animated, completion: completion)
+        dismissBefore(animated: animated) {
+            self.navigation?.present(controller, animated: animated, completion: completion)
         }
     }
     
@@ -103,4 +100,16 @@ open class MJFlowController<Service> {
         
         present(controller, animated: animated, completion: completion)
     }
+    
+    private func dismissBefore(animated: Bool, action: @escaping () -> Void) {
+        if let navigation = navigation,
+            navigation.presentedViewController != nil {
+            navigation.dismiss(animated: animated) {
+                action()
+            }
+        } else {
+            action()
+        }
+    }
+    
 }
