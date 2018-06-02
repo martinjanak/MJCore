@@ -120,8 +120,8 @@
 		5974A394C565D57256F4E85A9E7629FC /* Stevia+Stacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59698E28EC1D7E2EC187DD4327269B1E /* Stevia+Stacks.swift */; };
 		59ECF56BB9DDF704CC52B7643E2922DF /* MJTwoWayBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C571A544DB48987FBCD2948F63E4028 /* MJTwoWayBinding.swift */; };
 		5B02D5CF20BF176900F29406 /* Observable+None.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B02D5CE20BF176900F29406 /* Observable+None.swift */; };
-		5B054EB620C1BEEE000FE745 /* MJLocalAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B054EB520C1BEEE000FE745 /* MJLocalAuthService.swift */; };
 		5B2E678141CE82223FF84602EBD7B1DC /* MJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCB75FCEDF716FB0813E998EE624ADE /* MJson.swift */; };
+		5B44E5C720C27530003A6AD3 /* MJLocalAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B44E5C620C27530003A6AD3 /* MJLocalAuthService.swift */; };
 		5B7233B147DB364DBE11D645CAA93375 /* Completable+AndThen.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED28D533686DF46636404EEC7E05AF9C /* Completable+AndThen.swift */; };
 		5BF64D327E813388B16A99ED2991A8CD /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD9CFC13A6B7F302EB425E62D84ECFF0 /* RxCocoa.framework */; };
 		5D6F1CF7444E2ABE2A243B6A4812CEBA /* NopDisposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDBC8C0032F6B72541451F56A3C4D93 /* NopDisposable.swift */; };
@@ -549,8 +549,8 @@
 		5AA01DECF8D295A446E7789B598F04FD /* UIScrollView+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIScrollView+Rx.swift"; path = "RxCocoa/iOS/UIScrollView+Rx.swift"; sourceTree = "<group>"; };
 		5AD187CEF1D030FB1095185873380CBB /* NSObject+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSObject+Rx.swift"; path = "RxCocoa/Foundation/NSObject+Rx.swift"; sourceTree = "<group>"; };
 		5B02D5CE20BF176900F29406 /* Observable+None.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+None.swift"; sourceTree = "<group>"; };
-		5B054EB520C1BEEE000FE745 /* MJLocalAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJLocalAuthService.swift; sourceTree = "<group>"; };
 		5B1C053449E8FF44CB648F511C203C5C /* PublishRelay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PublishRelay.swift; path = RxCocoa/Traits/PublishRelay.swift; sourceTree = "<group>"; };
+		5B44E5C620C27530003A6AD3 /* MJLocalAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJLocalAuthService.swift; sourceTree = "<group>"; };
 		5C1BA583AC6D091DCA51DC3F20600752 /* Stevia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Stevia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E9D806EE73393450D9C459931C2DA33 /* Queue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Queue.swift; path = Platform/DataStructures/Queue.swift; sourceTree = "<group>"; };
 		5FEDC574F639AEC9430BB919476EAE4D /* Platform.Linux.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Platform.Linux.swift; path = Platform/Platform.Linux.swift; sourceTree = "<group>"; };
@@ -1083,12 +1083,13 @@
 			name = Pod;
 			sourceTree = "<group>";
 		};
-		5B054EB420C1BEB2000FE745 /* LocalAuthentication */ = {
+		5B44E5C520C27530003A6AD3 /* LocalAuthentication */ = {
 			isa = PBXGroup;
 			children = (
-				5B054EB520C1BEEE000FE745 /* MJLocalAuthService.swift */,
+				5B44E5C620C27530003A6AD3 /* MJLocalAuthService.swift */,
 			);
-			path = LocalAuthentication;
+			name = LocalAuthentication;
+			path = MJCore/Classes/LocalAuthentication;
 			sourceTree = "<group>";
 		};
 		5C0DDB5EF415E05C5120472C3AC32AC0 /* SteviaLayout */ = {
@@ -1440,9 +1441,9 @@
 				9C41D6581043F006969903D945BDF2E0 /* Modules */,
 				E4436D6F8C6A1CD139EA082DDEB8D7BB /* Notification */,
 				2A5FA4DB39C4313F6E0636355E7DBAD7 /* Persistence */,
+				5B44E5C520C27530003A6AD3 /* LocalAuthentication */,
 				4EDB6B4862CD489A884B2EAA45C4AD1B /* Pod */,
 				74E21DA05D9032A5DB10773D4AE55855 /* Rx */,
-				5B054EB420C1BEB2000FE745 /* LocalAuthentication */,
 				CF31C4A2AB73BC219D3C11D576D86371 /* Support Files */,
 			);
 			name = MJCore;
@@ -1998,13 +1999,13 @@
 				A0059E0A03BFCD4E82D3FD2632190711 /* MJReachability.swift in Sources */,
 				E74329E78ECC66E560E487C5E61FCAF9 /* MJRemoteNotification.swift in Sources */,
 				E512F7315C8F6A53D5C978EC00C7B554 /* MJRemoteNotificationService.swift in Sources */,
+				5B44E5C720C27530003A6AD3 /* MJLocalAuthService.swift in Sources */,
 				5B02D5CF20BF176900F29406 /* Observable+None.swift in Sources */,
 				4BE0D73CEB0416296E5CD35493810190 /* MJResendRequest.swift in Sources */,
 				D5368C1C17897F0F8C1F8453FAB851B9 /* MJResult.swift in Sources */,
 				BD4669CA2E6356E0007BED2B036DD4FC /* MJResultWithProgress.swift in Sources */,
 				5B2E678141CE82223FF84602EBD7B1DC /* MJson.swift in Sources */,
 				F7AB6711A6DA8C7A5B64AFCACB5C642F /* MJsonModel.swift in Sources */,
-				5B054EB620C1BEEE000FE745 /* MJLocalAuthService.swift in Sources */,
 				59ECF56BB9DDF704CC52B7643E2922DF /* MJTwoWayBinding.swift in Sources */,
 				ABEBC4A963FF7EC20595D78EE6A40CD9 /* MJUserDefaultsService.swift in Sources */,
 				42FFD9A9CDAC4A9058B8573E0399A5E5 /* MJView.swift in Sources */,

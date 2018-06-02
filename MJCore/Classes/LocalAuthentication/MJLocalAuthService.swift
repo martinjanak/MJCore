@@ -23,6 +23,8 @@ public enum MJLocalAuthError: Error {
 
 public final class MJLocalAuthService {
     
+    public init() { }
+    
     public func biometric(
         reason: String,
         fallBackTitle: String
