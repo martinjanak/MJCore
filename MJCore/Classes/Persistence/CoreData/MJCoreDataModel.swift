@@ -10,8 +10,8 @@ import CoreData
 public protocol MJCoreDataModel {
     associatedtype Entity: NSManagedObject
     
-    init(entity: Entity)
-    func createEntity(context: NSManagedObjectContext) -> Entity
+    init(entity: Entity) throws
+    func createEntity(context: NSManagedObjectContext) throws -> Entity
     
     var id: NSManagedObjectID? { get }
 }

@@ -107,21 +107,21 @@ public final class MJCoreDataService {
     
     // MARK: Create
     
-    public func createSync<Model: MJCoreDataModel>(_ model: Model) {
-        let _ = model.createEntity(context: self.privateContext)
+    public func createSync<Model: MJCoreDataModel>(_ model: Model) throws {
+        let _ = try model.createEntity(context: self.privateContext)
     }
     
-    public func createSync<Model: MJCoreDataModel>(_ models: [Model]) {
+    public func createSync<Model: MJCoreDataModel>(_ models: [Model]) throws {
         for model in models {
-            let _ = model.createEntity(context: self.privateContext)
+            let _ = try model.createEntity(context: self.privateContext)
         }
     }
     
     public func create<Model: MJCoreDataModel>(_ model: Model) -> Observable<MJResult<Model>> {
         let subject = PublishSubject<MJResult<Model>>()
         privateContext.perform {
-            let _ = model.createEntity(context: self.privateContext)
             subject.onNext(MJResult {
+                let _ = try model.createEntity(context: self.privateContext)
                 if self.privateContext.hasChanges {
                     try self.privateContext.save()
                 }
@@ -134,10 +134,10 @@ public final class MJCoreDataService {
     public func create<Model: MJCoreDataModel>(_ models: [Model]) -> Observable<MJResult<[Model]>> {
         let subject = PublishSubject<MJResult<[Model]>>()
         privateContext.perform {
-            for model in models {
-                let _ = model.createEntity(context: self.privateContext)
-            }
             subject.onNext(MJResult {
+                for model in models {
+                    let _ = try model.createEntity(context: self.privateContext)
+                }
                 if self.privateContext.hasChanges {
                     try self.privateContext.save()
                 }
@@ -159,8 +159,9 @@ public final class MJCoreDataService {
         
         if !existingEntity.isFault {
             self.privateContext.delete(existingEntity)
-            let _ = model.createEntity(context: self.privateContext)
-            return .success
+            return MJResultSimple {
+                let _ = try model.createEntity(context: self.privateContext)
+            }
         } else {
             return .failure(error: MJCoreDataError.entityDoesNotExist)
         }
@@ -182,7 +183,9 @@ public final class MJCoreDataService {
             let existingEntity = self.privateContext.object(with: model.id!)
             if !existingEntity.isFault {
                 self.privateContext.delete(existingEntity)
-                let _ = model.createEntity(context: self.privateContext)
+                return MJResultSimple {
+                    let _ = try model.createEntity(context: self.privateContext)
+                }
             } else {
                 success = false
             }
@@ -208,8 +211,8 @@ public final class MJCoreDataService {
             
             if !existingEntity.isFault {
                 self.privateContext.delete(existingEntity)
-                let _ = model.createEntity(context: self.privateContext)
                 subject.onNext(MJResult {
+                    let _ = try model.createEntity(context: self.privateContext)
                     if self.privateContext.hasChanges {
                         try self.privateContext.save()
                     }
@@ -245,7 +248,7 @@ public final class MJCoreDataService {
         return MJResult {
             let rawData = try self.privateContext.fetch(fetchRequest)
             if let entities = rawData as? [Model.Entity] {
-                let data = entities.map({ Model(entity: $0) })
+                let data = try entities.map({ try Model(entity: $0) })
                 return data
             } else {
                 throw MJCoreDataError.couldNotCastToEntity
@@ -293,7 +296,7 @@ public final class MJCoreDataService {
             subject.onNext(MJResult {
                 let rawData = try self.privateContext.fetch(fetchRequest)
                 if let entities = rawData as? [Model.Entity] {
-                    let data = entities.map({ Model(entity: $0) })
+                    let data = try entities.map({ try Model(entity: $0) })
                     return data
                 } else {
                     throw MJCoreDataError.couldNotCastToEntity
