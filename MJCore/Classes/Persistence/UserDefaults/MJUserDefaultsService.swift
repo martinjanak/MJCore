@@ -8,10 +8,11 @@
 import Foundation
 
 public protocol MJUserDefaultsService {
-    associatedtype KeyType: RawRepresentable where KeyType.RawValue == String
+    associatedtype KeyType: MJKeyType
     func set<T>(_ key: KeyType, value: T)
     func get<T>(_ key: KeyType) -> T?
     func delete(_ key: KeyType)
+    func deleteAll()
 }
 
 extension MJUserDefaultsService {
@@ -26,5 +27,11 @@ extension MJUserDefaultsService {
     
     public func delete(_ key: KeyType) {
         UserDefaults.standard.removeObject(forKey: key.rawValue)
+    }
+    
+    public func deleteAll() {
+        for key in KeyType.all {
+            UserDefaults.standard.removeObject(forKey: key.rawValue)
+        }
     }
 }

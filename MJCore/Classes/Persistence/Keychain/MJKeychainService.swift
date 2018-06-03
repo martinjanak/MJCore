@@ -8,31 +8,31 @@
 import Foundation
 
 public protocol MJKeychainService {
-    associatedtype KeyType: RawRepresentable where KeyType.RawValue == String
-    func set(key: KeyType, value: String)
-    func get(key: KeyType) -> String?
-    func get(key: KeyType, defaultValue: String) -> String
-    func delete(key: KeyType)
+    associatedtype KeyType: MJKeyType
+    func set(_ key: KeyType, value: String)
+    func get(_ key: KeyType) -> String?
+    func delete(_ key: KeyType)
+    func deleteAll()
 }
 
 extension MJKeychainService {
     
-    public func set(key: KeyType, value: String) {
+    public func set(_ key: KeyType, value: String) {
         MJKeychain.set(key.rawValue, value: value)
     }
     
-    public func get(key: KeyType) -> String? {
+    public func get(_ key: KeyType) -> String? {
         return MJKeychain.get(key.rawValue)
     }
     
-    public func get(key: KeyType, defaultValue: String) -> String {
-        if let value = MJKeychain.get(key.rawValue) {
-            return value
-        }
-        return defaultValue
-    }
-    
-    public func delete(key: KeyType) {
+    public func delete(_ key: KeyType) {
         MJKeychain.delete(key.rawValue)
     }
+    
+    public func deleteAll() {
+        for key in KeyType.all {
+            MJKeychain.delete(key.rawValue)
+        }
+    }
+    
 }
