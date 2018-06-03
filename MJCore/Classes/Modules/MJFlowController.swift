@@ -10,7 +10,7 @@ import RxSwift
 
 open class MJFlowController<Service> {
     
-    private weak var navigation: UINavigationController?
+    public weak var navigation: UINavigationController?
     public let service: Service
     
     private weak var parentFlowController: MJFlowController<Service>?
