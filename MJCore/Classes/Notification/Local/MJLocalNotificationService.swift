@@ -13,7 +13,7 @@ public final class MJLocalNotificationService<Notification: MJLocalNotifications
     public init() { }
     
     public func create(
-        notification: Notification
+        _ notification: Notification
     ) -> Observable<MJResultSimple> {
         
         return requestAuthorization()
@@ -41,7 +41,7 @@ public final class MJLocalNotificationService<Notification: MJLocalNotifications
                             }
                     }
                 default:
-                    return Observable<MJResultSimple>.just(result)
+                    return .just(result)
                 }
                 return subject.asObservable()
             })

@@ -8,6 +8,10 @@
 import UIKit
 import RxSwift
 
+public enum MJRemoteNotificationError: Error {
+    case alreadyRegistered
+}
+
 open class MJRemoteNotificationService {
     
     public typealias Payload = [AnyHashable: Any]
@@ -53,8 +57,11 @@ open class MJRemoteNotificationService {
         
         if let lastToken = getToken(),
             token == lastToken {
-            return Observable<MJResultSimple>.just(.success)
+            return .just(
+                .failure(error: MJRemoteNotificationError.alreadyRegistered)
+            )
         }
+        
         return storeAndUpload(token: token).simplify()
     }
 
