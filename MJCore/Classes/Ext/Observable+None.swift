@@ -9,6 +9,7 @@ import RxSwift
 
 public enum ObservableError: Error {
     case none
+    case batch(message: String)
 }
 
 extension Observable {
