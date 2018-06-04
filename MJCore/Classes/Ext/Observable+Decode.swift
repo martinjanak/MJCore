@@ -11,17 +11,13 @@ extension Observable where Element == MJResult<Data> {
     
     public func decode<D: Decodable>(_ decodableType: D.Type) -> Observable<MJResult<D>> {
         return self.successMap({ data in
-            return MJResult {
-                return try MJCodableUtil.decode(decodableType: decodableType, data: data)
-            }
+            return try MJCodableUtil.decode(decodableType: decodableType, data: data)
         })
     }
     
     public func decode<D: Decodable>(_ decodableType: [D].Type) -> Observable<MJResult<[D]>> {
         return self.successMap({ data in
-            return MJResult {
-                return try MJCodableUtil.decode(decodableType: decodableType, data: data)
-            }
+            return try MJCodableUtil.decode(decodableType: decodableType, data: data)
         })
     }
     

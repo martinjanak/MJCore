@@ -318,9 +318,9 @@ public final class MJCoreDataService {
         )
             .successMap({ models in
                 if models.count > 0 {
-                    return .success(value: models[0])
+                    return models[0]
                 } else {
-                    return .success(value: nil)
+                    return nil
                 }
             })
     }

@@ -24,12 +24,12 @@ extension Observable {
     }
     
     public func successMap<V, W>(
-        _ handler: @escaping (V) -> W
+        _ handler: @escaping (V) throws -> W
     ) -> Observable<MJResult<W>> where Element == MJResult<V> {
         return self.map({ (response: MJResult<V>) -> MJResult<W> in
             switch response {
             case .success(let value):
-                return .success(value: handler(value))
+                return MJResult{ try handler(value) }
             case .failure(let error):
                 return .failure(error: error)
             }
@@ -121,12 +121,12 @@ extension Observable where Element == MJResultSimple {
     }
     
     public func successMap<W>(
-        _ handler: @escaping () -> W
+        _ handler: @escaping () throws -> W
     ) -> Observable<MJResult<W>> {
         return self.map({ (response: MJResultSimple) -> MJResult<W> in
             switch response {
             case .success:
-                return .success(value: handler())
+                return MJResult{ try handler() }
             case .failure(let error):
                 return .failure(error: error)
             }

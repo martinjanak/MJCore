@@ -153,39 +153,35 @@ extension Dictionary where Key == String, Value == Any {
         }
     }
     
-    public static func parseSync<Model: MJsonParsable>(
+    public static func parseModel<Model: MJsonParsable>(
         _ data: Data,
         key: String? = nil
-    ) -> (() throws -> Model) {
-        return {
-            let json = try MJson.parse(data)
-            if let key = key {
-                let jsonWithKey: MJson = try json.get(key)
-                return try Model(json: jsonWithKey)
-            } else {
-                return try Model(json: json)
-            }
+    ) throws -> Model {
+        let json = try MJson.parse(data)
+        if let key = key {
+            let jsonWithKey: MJson = try json.get(key)
+            return try Model(json: jsonWithKey)
+        } else {
+            return try Model(json: json)
         }
     }
     
-    public static func parseArraySync<Model: MJsonParsable>(
+    public static func parseArrayModel<Model: MJsonParsable>(
         _ data: Data,
         key: String? = nil
-    ) -> (() throws -> [Model]) {
-        return {
-            let jsonArray: MJsonArray
-            if let key = key {
-                let json = try MJson.parse(data)
-                jsonArray = try json.get(key)
-            } else {
-                jsonArray = try MJson.parseArray(data)
-            }
-            var modelArray = [Model]()
-            for json in jsonArray {
-                modelArray.append(try Model(json: json))
-            }
-            return modelArray
+    ) throws -> [Model] {
+        let jsonArray: MJsonArray
+        if let key = key {
+            let json = try MJson.parse(data)
+            jsonArray = try json.get(key)
+        } else {
+            jsonArray = try MJson.parseArray(data)
         }
+        var modelArray = [Model]()
+        for json in jsonArray {
+            modelArray.append(try Model(json: json))
+        }
+        return modelArray
     }
     
     // MARK: Serialize

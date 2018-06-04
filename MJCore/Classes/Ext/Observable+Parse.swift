@@ -14,7 +14,7 @@ extension Observable where Element == MJResult<Data> {
         key: String? = nil
     ) -> Observable<MJResult<Model>> {
         return self.successMap({ data in
-            return MJResult(MJson.parseSync(data, key: key))
+            return try MJson.parseModel(data, key: key)
         })
     }
     
@@ -23,7 +23,7 @@ extension Observable where Element == MJResult<Data> {
         key: String? = nil
     ) -> Observable<MJResult<[Model]>> {
         return self.successMap({ data in
-            return MJResult(MJson.parseArraySync(data, key: key))
+            return try MJson.parseArrayModel(data, key: key)
         })
     }
     
@@ -35,7 +35,7 @@ extension Observable where Element == MJResult<Data> {
             switch response {
             case .success(let data):
                 do {
-                    return try MJson.parseSync(data, key: key)()
+                    return try MJson.parseModel(data, key: key)
                 } catch {
                     return nil
                 }
@@ -53,7 +53,7 @@ extension Observable where Element == MJResult<Data> {
             switch response {
             case .success(let data):
                 do {
-                    return try MJson.parseArraySync(data, key: key)()
+                    return try MJson.parseArrayModel(data, key: key)
                 } catch {
                     return nil
                 }
@@ -72,7 +72,7 @@ extension Observable where Element == MJResult<Data> {
             switch response {
             case .success(let data):
                 do {
-                    return try MJson.parseSync(data, key: key)()
+                    return try MJson.parseModel(data, key: key)
                 } catch {
                     return defaultValue
                 }
@@ -91,7 +91,7 @@ extension Observable where Element == MJResult<Data> {
             switch response {
             case .success(let data):
                 do {
-                    return try MJson.parseArraySync(data, key: key)()
+                    return try MJson.parseArrayModel(data, key: key)
                 } catch {
                     return defaultValue
                 }
