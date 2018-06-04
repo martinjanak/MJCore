@@ -24,25 +24,12 @@ extension Observable {
     }
     
     public func successMap<V, W>(
-        _ handler: @escaping (V) -> MJResult<W>
+        _ handler: @escaping (V) -> W
     ) -> Observable<MJResult<W>> where Element == MJResult<V> {
         return self.map({ (response: MJResult<V>) -> MJResult<W> in
             switch response {
             case .success(let value):
-                return handler(value)
-            case .failure(let error):
-                return .failure(error: error)
-            }
-        })
-    }
-    
-    public func successMapSimple<V>(
-        _ handler: @escaping (V) -> MJResultSimple
-        ) -> Observable<MJResultSimple> where Element == MJResult<V> {
-        return self.map({ (response: MJResult<V>) -> MJResultSimple in
-            switch response {
-            case .success(let value):
-                return handler(value)
+                return .success(value: handler(value))
             case .failure(let error):
                 return .failure(error: error)
             }
@@ -134,12 +121,12 @@ extension Observable where Element == MJResultSimple {
     }
     
     public func successMap<W>(
-        _ handler: @escaping () -> MJResult<W>
+        _ handler: @escaping () -> W
     ) -> Observable<MJResult<W>> {
         return self.map({ (response: MJResultSimple) -> MJResult<W> in
             switch response {
             case .success:
-                return handler()
+                return .success(value: handler())
             case .failure(let error):
                 return .failure(error: error)
             }
@@ -161,13 +148,13 @@ extension Observable where Element == MJResultSimple {
     
     public func successFlatMapSimple(
         _ handler: @escaping () -> Observable<MJResultSimple>
-        ) -> Observable<MJResultSimple> {
+    ) -> Observable<MJResultSimple> {
         return self.flatMap({ (response: MJResultSimple) -> Observable<MJResultSimple> in
             switch response {
             case .success:
                 return handler()
             case .failure(let error):
-                return Observable<MJResultSimple>.just(.failure(error: error))
+                return .just(.failure(error: error))
             }
         })
     }

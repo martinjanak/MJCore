@@ -11,8 +11,8 @@ extension Observable {
     
     public func batch<V>(
         task: @escaping (V) -> Observable<MJResultSimple>
-    ) -> Observable<MJResultSimple> where Element == [V] {
-        return self.flatMap({ values -> Observable<MJResultSimple> in
+    ) -> Observable<MJResultSimple> where Element == MJResult<[V]> {
+        return self.successFlatMapSimple({ values -> Observable<MJResultSimple> in
             guard values.count > 0 else {
                 return .just(.success)
             }
