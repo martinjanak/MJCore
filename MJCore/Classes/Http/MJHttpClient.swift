@@ -14,6 +14,13 @@ public typealias MJHttpRequest = () -> MJHttpResponse
 
 public final class MJHttpClient<Endpoint: MJHttpEndpoints>: MJBaseHttpClient {
     
+    private let log: MJLogService?
+    
+    public init(sessionConfig: URLSessionConfiguration? = nil, log: MJLogService? = nil) {
+        self.log = log
+        super.init(sessionConfig: sessionConfig)
+    }
+    
     @discardableResult
     public func sendRequest(_ endpoint: Endpoint) -> MJHttpResponse {
         
@@ -21,6 +28,7 @@ public final class MJHttpClient<Endpoint: MJHttpEndpoints>: MJBaseHttpClient {
         
         DispatchQueue.global(qos: .userInitiated).async {
             self.sendRequestSync(endpoint) { response in
+                self.log(response: response, endpoint: endpoint)
                 subject.onNext(response)
             }
         }
@@ -39,6 +47,7 @@ public final class MJHttpClient<Endpoint: MJHttpEndpoints>: MJBaseHttpClient {
                     return
                 }
                 self.sendRequestSync(endpoint) { response in
+                    self.log(response: response, endpoint: endpoint)
                     subject.onNext(response)
                 }
             }
@@ -53,7 +62,10 @@ public final class MJHttpClient<Endpoint: MJHttpEndpoints>: MJBaseHttpClient {
                     handler(.failure(error: MJHttpError.clientUnavailable))
                     return
                 }
-                self.sendRequestSync(endpoint, handler: handler)
+                self.sendRequestSync(endpoint) { response in
+                    self.log(response: response, endpoint: endpoint)
+                    handler(response)
+                }
             }
         }
     }
@@ -80,6 +92,17 @@ public final class MJHttpClient<Endpoint: MJHttpEndpoints>: MJBaseHttpClient {
         }
         
         self.send(request: request, handler: handler)
+    }
+    
+    private func log(response: MJResult<Data>, endpoint: Endpoint) {
+        if let log = self.log {
+            switch response {
+            case .success:
+                log.info("Http - \(Endpoint.self)(\(endpoint))", message: "Success")
+            case .failure(let error):
+                log.error("Http - \(Endpoint.self)(\(endpoint))", message: "\(error)")
+            }
+        }
     }
     
 }
