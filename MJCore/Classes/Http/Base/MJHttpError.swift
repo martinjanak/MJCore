@@ -17,7 +17,6 @@ public enum MJHttpError: Error {
     case couldNotAuthenticateRequest
     case timedOut
     case couldNotRefreshAuthentication
-    case clientUnavailable
     
     public var isBadRequest: Bool {
         return isHttpError(400)

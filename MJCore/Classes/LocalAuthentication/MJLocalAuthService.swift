@@ -29,28 +29,32 @@ public final class MJLocalAuthService {
         reason: String,
         fallBackTitle: String
     ) -> Observable<MJResultSimple> {
+        return Observable.create { observer in
         
-        let context = LAContext()
-        context.localizedFallbackTitle = fallBackTitle
-        let policy: LAPolicy = .deviceOwnerAuthenticationWithBiometrics
+            let context = LAContext()
+            context.localizedFallbackTitle = fallBackTitle
+            let policy: LAPolicy = .deviceOwnerAuthenticationWithBiometrics
         
-        var nsError: NSError?
-        guard context.canEvaluatePolicy(policy, error: &nsError) else {
-            return .just(
-                .failure(error: handleCanEvaluateError(nsError))
-            )
-        }
-        let subject = PublishSubject<MJResultSimple>()
-        context.evaluatePolicy(policy, localizedReason: reason) { (success, error) in
-            if success {
-                subject.onNext(.success)
-            } else {
-                subject.onNext(
-                    .failure(error: MJLocalAuthError.failedToAuthenticate(error: error))
+            var nsError: NSError?
+            guard context.canEvaluatePolicy(policy, error: &nsError) else {
+                observer.onNext(
+                    .failure(error: self.handleCanEvaluateError(nsError))
                 )
+                observer.onCompleted()
+                return Disposables.create()
             }
+            context.evaluatePolicy(policy, localizedReason: reason) { (success, error) in
+                if success {
+                    observer.onNext(.success)
+                } else {
+                    observer.onNext(
+                        .failure(error: MJLocalAuthError.failedToAuthenticate(error: error))
+                    )
+                }
+                observer.onCompleted()
+            }
+            return Disposables.create()
         }
-        return subject.asObservable()
     }
     
     private func handleCanEvaluateError(_ error: NSError?) -> MJLocalAuthError {

@@ -7,7 +7,7 @@
 
 import RxSwift
 
-public enum ObservableError: Error {
+public enum MJObservableError: Error {
     case none
     case batch(message: String)
 }
@@ -15,9 +15,7 @@ public enum ObservableError: Error {
 extension Observable {
 
     public static func none<V>() -> Observable<MJResult<V>> where Element == MJResult<V> {
-        return Observable<MJResult<V>>.just(
-            MJResult<V>.failure(error: ObservableError.none)
-        )
+        return .just(.failure(error: MJObservableError.none))
     }
     
 }
@@ -25,9 +23,7 @@ extension Observable {
 extension Observable where Element == MJResultSimple {
     
     public static func none() -> Observable<MJResultSimple> {
-        return Observable<MJResultSimple>.just(
-            MJResultSimple.failure(error: ObservableError.none)
-        )
+        return .just(.failure(error: MJObservableError.none))
     }
     
 }

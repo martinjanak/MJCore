@@ -30,35 +30,37 @@ public final class MJAuthHttpClient<Endpoint: MJHttpEndpoints>: MJBaseAuthHttpCl
     
     @discardableResult
     public func sendRequest(_ endpoint: Endpoint) -> MJHttpResponse {
-        
-        let subject = MJHttpSubject()
-        
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.sendRequestSync(endpoint) { response in
-                self.log(response: response, endpoint: endpoint)
-                subject.onNext(response)
+        return Observable.create { observer in
+            DispatchQueue.global(qos: .userInitiated).async {
+                self.sendRequestSync(endpoint) { response in
+                    self.log(response: response, endpoint: endpoint)
+                    observer.onNext(response)
+                    observer.onCompleted()
+                }
             }
+            return Disposables.create()
         }
-        
-        return subject.asObservable()
     }
     
     public func request(_ endpoint: Endpoint) -> MJHttpRequest {
         return { [weak self] in
-            let subject = MJHttpSubject()
-            DispatchQueue.global(qos: .userInitiated).async {
-                guard let `self` = self else {
-                    subject.onNext(
-                        .failure(error: MJHttpError.clientUnavailable)
-                    )
-                    return
+            return Observable.create { observer in
+                DispatchQueue.global(qos: .userInitiated).async {
+                    guard let `self` = self else {
+                        observer.onNext(
+                            .failure(error: MJObservableError.none)
+                        )
+                        observer.onCompleted()
+                        return
+                    }
+                    self.sendRequestSync(endpoint) { response in
+                        self.log(response: response, endpoint: endpoint)
+                        observer.onNext(response)
+                        observer.onCompleted()
+                    }
                 }
-                self.sendRequestSync(endpoint) { response in
-                    self.log(response: response, endpoint: endpoint)
-                    subject.onNext(response)
-                }
+                return Disposables.create()
             }
-            return subject.asObservable()
         }
     }
     

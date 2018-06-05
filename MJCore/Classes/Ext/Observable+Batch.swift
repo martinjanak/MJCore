@@ -34,7 +34,7 @@ extension Observable {
                         return .success
                     } else {
                         return .failure(
-                            error: ObservableError.batch(message: message)
+                            error: MJObservableError.batch(message: message)
                         )
                     }
                 })

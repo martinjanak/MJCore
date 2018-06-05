@@ -15,67 +15,73 @@ public final class MJLocalNotificationService<Notification: MJLocalNotifications
     public func create(
         _ notification: Notification
     ) -> Observable<MJResultSimple> {
-        
         return requestAuthorization()
             .flatMap({ result -> Observable<MJResultSimple> in
-                let subject = PublishSubject<MJResultSimple>()
-                switch result {
-                case .success:
-                    let content = UNMutableNotificationContent()
-                    content.title = notification.title
-                    content.body = notification.body
-                    content.sound = UNNotificationSound.default()
-                    
-                    let request = UNNotificationRequest(
-                        identifier: notification.id,
-                        content: content,
-                        trigger: notification.trigger
-                    )
-                    UNUserNotificationCenter
-                        .current()
-                        .add(request) { error in
-                            if let error = error {
-                                subject.onNext(.failure(error: error))
-                            } else {
-                                subject.onNext(.success)
+                return Observable.create { observer in
+                    switch result {
+                    case .success:
+                        let content = UNMutableNotificationContent()
+                        content.title = notification.title
+                        content.body = notification.body
+                        content.sound = UNNotificationSound.default()
+                        
+                        let request = UNNotificationRequest(
+                            identifier: notification.id,
+                            content: content,
+                            trigger: notification.trigger
+                        )
+                        UNUserNotificationCenter
+                            .current()
+                            .add(request) { error in
+                                if let error = error {
+                                    observer.onNext(.failure(error: error))
+                                } else {
+                                    observer.onNext(.success)
+                                }
+                                observer.onCompleted()
                             }
+                    default:
+                        observer.onNext(result)
+                        observer.onCompleted()
                     }
-                default:
-                    return .just(result)
+                    return Disposables.create()
                 }
-                return subject.asObservable()
             })
     }
     
     public func requestAuthorization() -> Observable<MJResultSimple> {
-        let subject = PublishSubject<MJResultSimple>()
-        UNUserNotificationCenter
-            .current()
-            .requestAuthorization(
-                options: [.alert, .sound, .badge],
-                completionHandler: { (granted, error) in
-                    if granted {
-                        subject.onNext(.success)
-                    } else if let error = error {
-                        subject.onNext(.failure(error: error))
-                    } else {
-                        subject.onNext(
-                            .failure(error: MJLocalNotificationError.authNotGranted)
-                        )
+        return Observable.create { observer in
+            UNUserNotificationCenter
+                .current()
+                .requestAuthorization(
+                    options: [.alert, .sound, .badge],
+                    completionHandler: { (granted, error) in
+                        if granted {
+                            observer.onNext(.success)
+                        } else if let error = error {
+                            observer.onNext(.failure(error: error))
+                        } else {
+                            observer.onNext(
+                                .failure(error: MJLocalNotificationError.authNotGranted)
+                            )
+                        }
+                        observer.onCompleted()
                     }
-            }
-        )
-        return subject.asObservable()
+            )
+            return Disposables.create()
+        }
     }
     
     public func getPendingRequests() -> Observable<[UNNotificationRequest]> {
-        let subject = PublishSubject<[UNNotificationRequest]>()
-        UNUserNotificationCenter
-            .current()
-            .getPendingNotificationRequests(completionHandler: { requests in
-                subject.onNext(requests)
-            })
-        return subject.asObservable()
+        return Observable.create { observer in
+            UNUserNotificationCenter
+                .current()
+                .getPendingNotificationRequests(completionHandler: { requests in
+                    observer.onNext(requests)
+                    observer.onCompleted()
+                })
+            return Disposables.create()
+        }
     }
     
     public func removeAllPendingRequests() {
