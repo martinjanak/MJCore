@@ -11,19 +11,29 @@ extension Observable where Element == MJResult<Data> {
     
     public func parse<Model: MJsonParsable>(
         _ modelType: Model.Type,
-        key: String? = nil
+        key: String? = nil,
+        defaults: MJson? = nil
     ) -> Observable<MJResult<Model>> {
         return self.successMap({ data in
-            return try MJson.parseModel(data, key: key)
+            return try MJson.parseModel(
+                data,
+                key: key,
+                defaults: defaults
+            )
         })
     }
     
     public func parse<Model: MJsonParsable>(
         _ modelType: [Model].Type,
-        key: String? = nil
+        key: String? = nil,
+        defaults: MJson? = nil
     ) -> Observable<MJResult<[Model]>> {
         return self.successMap({ data in
-            return try MJson.parseArrayModel(data, key: key)
+            return try MJson.parseArrayModel(
+                data,
+                key: key,
+                defaults: defaults
+            )
         })
     }
     

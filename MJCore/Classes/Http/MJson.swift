@@ -155,20 +155,26 @@ extension Dictionary where Key == String, Value == Any {
     
     public static func parseModel<Model: MJsonParsable>(
         _ data: Data,
-        key: String? = nil
+        key: String? = nil,
+        defaults: MJson? = nil
     ) throws -> Model {
-        let json = try MJson.parse(data)
+        var json: MJson
+        let jsonParsed = try MJson.parse(data)
         if let key = key {
-            let jsonWithKey: MJson = try json.get(key)
-            return try Model(json: jsonWithKey)
+            json = try jsonParsed.get(key)
         } else {
-            return try Model(json: json)
+            json = jsonParsed
         }
+        if let defaults = defaults {
+            json.merge(defaults, uniquingKeysWith: { a, _ in a })
+        }
+        return try Model(json: json)
     }
     
     public static func parseArrayModel<Model: MJsonParsable>(
         _ data: Data,
-        key: String? = nil
+        key: String? = nil,
+        defaults: MJson? = nil
     ) throws -> [Model] {
         let jsonArray: MJsonArray
         if let key = key {
@@ -178,8 +184,16 @@ extension Dictionary where Key == String, Value == Any {
             jsonArray = try MJson.parseArray(data)
         }
         var modelArray = [Model]()
-        for json in jsonArray {
-            modelArray.append(try Model(json: json))
+        if let defaults = defaults {
+            for json in jsonArray {
+                var jsonCopy = json
+                jsonCopy.merge(defaults, uniquingKeysWith: { a, _ in a })
+                modelArray.append(try Model(json: jsonCopy))
+            }
+        } else {
+            for json in jsonArray {
+                modelArray.append(try Model(json: json))
+            }
         }
         return modelArray
     }
