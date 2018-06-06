@@ -28,13 +28,13 @@ public final class MJCoreDataService {
         self.modelName = modelName
     }
     
-    func saveChanges() -> Observable<MJResultSimple> {
+    public func saveChanges() -> Observable<MJResultSimple> {
         return transactionSimple { strongSelf in
             try strongSelf.saveChangesSync()
         }
     }
     
-    func saveChangesSync() throws -> Void {
+    public func saveChangesSync() throws -> Void {
         if privateContext.hasChanges {
             try privateContext.save()
         }
