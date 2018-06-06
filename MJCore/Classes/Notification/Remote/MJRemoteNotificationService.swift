@@ -16,6 +16,8 @@ open class MJRemoteNotificationService {
     
     public typealias Payload = [AnyHashable: Any]
     
+    public let disposeBag = DisposeBag()
+    
     public init() { }
     
     open func getToken() -> String? {
@@ -30,11 +32,19 @@ open class MJRemoteNotificationService {
         fatalError("deleteAndRevoke(token:) has not been implemented")
     }
     
-    open func didReceive(
+    open func receive(payload: Payload) -> Observable<UIBackgroundFetchResult> {
+        fatalError("receive(payload:) has not been implemented")
+    }
+    
+    public func didReceive(
         payload: Payload,
         completionHandler: @escaping (UIBackgroundFetchResult) -> Void
     ) {
-        fatalError("didReceive(payload:,completionHandler:) has not been implemented")
+        receive(payload: payload)
+            .bind(onNext: { fetchResult in
+                completionHandler(fetchResult)
+            })
+            .disposed(by: disposeBag)
     }
     
     public func register() {
@@ -47,7 +57,7 @@ open class MJRemoteNotificationService {
         if let deviceToken = getToken() {
             return deleteAndRevoke(token: deviceToken).simplify()
         } else {
-            return Observable<MJResultSimple>.just(.success)
+            return .just(.success)
         }
     }
     
