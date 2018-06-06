@@ -32,19 +32,28 @@ open class MJRemoteNotificationService {
         fatalError("deleteAndRevoke(token:) has not been implemented")
     }
     
-    open func receive(payload: Payload) -> Observable<UIBackgroundFetchResult> {
+    open func receive(json: MJson) -> Observable<UIBackgroundFetchResult> {
         fatalError("receive(payload:) has not been implemented")
+    }
+    
+    open func receiveNotJson() {
+        // override
     }
     
     public func didReceive(
         payload: Payload,
         completionHandler: @escaping (UIBackgroundFetchResult) -> Void
     ) {
-        receive(payload: payload)
-            .bind(onNext: { fetchResult in
-                completionHandler(fetchResult)
-            })
-            .disposed(by: disposeBag)
+        if let json = payload as? MJson {
+            receive(json: json)
+                .bind(onNext: { fetchResult in
+                    completionHandler(fetchResult)
+                })
+                .disposed(by: disposeBag)
+        } else {
+            receiveNotJson()
+            completionHandler(.noData)
+        }
     }
     
     public func register() {
