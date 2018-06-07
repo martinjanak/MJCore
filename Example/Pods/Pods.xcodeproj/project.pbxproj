@@ -125,6 +125,7 @@
 		5B44E5C720C27530003A6AD3 /* MJLocalAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B44E5C620C27530003A6AD3 /* MJLocalAuthService.swift */; };
 		5B50320B20C450790060FC35 /* MJKeyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B50320A20C450790060FC35 /* MJKeyType.swift */; };
 		5B7233B147DB364DBE11D645CAA93375 /* Completable+AndThen.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED28D533686DF46636404EEC7E05AF9C /* Completable+AndThen.swift */; };
+		5BF0283E20C9B2ED00B00A28 /* Observable+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0283D20C9B2ED00B00A28 /* Observable+Empty.swift */; };
 		5BF64D327E813388B16A99ED2991A8CD /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD9CFC13A6B7F302EB425E62D84ECFF0 /* RxCocoa.framework */; };
 		5D6F1CF7444E2ABE2A243B6A4812CEBA /* NopDisposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDBC8C0032F6B72541451F56A3C4D93 /* NopDisposable.swift */; };
 		5DD4BDD37629AA459F3397C84785A618 /* SingleAsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D7D252E57C514328CF70EBFEB16140 /* SingleAsync.swift */; };
@@ -555,6 +556,7 @@
 		5B36180C20C5AFCF0006C3EB /* Observable+Batch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Batch.swift"; sourceTree = "<group>"; };
 		5B44E5C620C27530003A6AD3 /* MJLocalAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJLocalAuthService.swift; sourceTree = "<group>"; };
 		5B50320A20C450790060FC35 /* MJKeyType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJKeyType.swift; sourceTree = "<group>"; };
+		5BF0283D20C9B2ED00B00A28 /* Observable+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Empty.swift"; sourceTree = "<group>"; };
 		5C1BA583AC6D091DCA51DC3F20600752 /* Stevia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Stevia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E9D806EE73393450D9C459931C2DA33 /* Queue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Queue.swift; path = Platform/DataStructures/Queue.swift; sourceTree = "<group>"; };
 		5FEDC574F639AEC9430BB919476EAE4D /* Platform.Linux.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Platform.Linux.swift; path = Platform/Platform.Linux.swift; sourceTree = "<group>"; };
@@ -1422,6 +1424,7 @@
 				C0FD3D70249AB193BA0C11AC77EDC221 /* Observable+Success.swift */,
 				CA3ECF80FA8E5132544E5178DAFA4500 /* Observable+Failure.swift */,
 				5B36180C20C5AFCF0006C3EB /* Observable+Batch.swift */,
+				5BF0283D20C9B2ED00B00A28 /* Observable+Empty.swift */,
 				5B02D5CE20BF176900F29406 /* Observable+None.swift */,
 				18DA5EAADC722B25481647FD5B276948 /* RawRepresentable+Create.swift */,
 				889CE111333EF1906EA841DAAE55F0F9 /* String+Ext.swift */,
@@ -2031,6 +2034,7 @@
 				4105815956827EE44810C49A37EC1DC6 /* Observable+Failure.swift in Sources */,
 				252818B08048054B91773F39C90C3A3D /* Observable+MJLogService.swift in Sources */,
 				EA43B11B82E584161393C427B846B688 /* Observable+MJResultWithProgress.swift in Sources */,
+				5BF0283E20C9B2ED00B00A28 /* Observable+Empty.swift in Sources */,
 				C5B37D11ADD3FA9ED906C8273D24DC08 /* Observable+Parse.swift in Sources */,
 				3FB2E28422A553F901654557D4D4AF1E /* Observable+Simplify.swift in Sources */,
 				7849F7BAA434E4D54FC77727C5723672 /* Observable+Store.swift in Sources */,

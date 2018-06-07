@@ -9,7 +9,7 @@ import RxSwift
 
 extension Observable {
     
-    public func failure<V>(
+    public func onFailure<V>(
         _ handler: @escaping (Error) -> Void
     ) -> Observable<MJResult<V>> where Element == MJResult<V> {
         return self.map({ response in
@@ -27,7 +27,7 @@ extension Observable {
 
 extension Observable where Element == MJResultSimple {
     
-    public func failure(
+    public func onFailure(
         _ handler: @escaping (Error) -> Void
     ) -> Observable<MJResultSimple>  {
         return self.map({ response in

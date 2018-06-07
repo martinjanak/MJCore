@@ -9,7 +9,7 @@ import RxSwift
 
 extension Observable {
     
-    public func success<V>(
+    public func onSuccess<V>(
         _ handler: @escaping (V) -> Void
     ) -> Observable<MJResult<V>> where Element == MJResult<V> {
         return self.map({ response in
@@ -102,11 +102,21 @@ extension Observable {
             .bind(to: variable)
     }
     
+    public func bindSuccess<V>(
+        _ handler: @escaping (V) -> Void
+    ) -> Disposable where Element == MJResult<V> {
+        return self.bind(onNext: { result in
+            if case .success(let value) = result {
+                handler(value)
+            }
+        })
+    }
+    
 }
 
 extension Observable where Element == MJResultSimple {
     
-    public func success(
+    public func onSuccess(
         _ handler: @escaping () -> Void
     ) -> Observable<MJResultSimple> {
         return self.map({ response in
@@ -173,6 +183,16 @@ extension Observable where Element == MJResultSimple {
         return self
             .map({ $0.isSuccess() })
             .bind(to: variable)
+    }
+    
+    public func bindSuccess(
+        _ handler: @escaping () -> Void
+    ) -> Disposable {
+        return self.bind(onNext: { result in
+            if case .success = result {
+                handler()
+            }
+        })
     }
     
 }
