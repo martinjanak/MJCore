@@ -9,13 +9,20 @@ import RxSwift
 
 extension Observable {
     
-    public func log<V>(_ tag: String = "Result", service: MJLogService) -> Observable<MJResult<V>> where Element == MJResult<V> {
-        return self.do(onNext: { [weak weakService = service] response in
+    public func log<Value, LogService: MJLogService>(
+        _ tag: String = "Result",
+        service: LogService
+    ) -> Observable<MJResult<Value>> where Element == MJResult<Value> {
+        return self.flatMap({ [weak weakService = service] response -> Observable<MJResult<Value>> in
             switch response {
             case .success:
-                weakService?.info(tag, message: "Success")
+                return weakService?.info(tag, message: "Success")
+                    .map({ _ in response })
+                    ?? .just(response)
             case .failure(let error):
-                weakService?.error(tag, message: "\(error)")
+                return weakService?.error(tag, message: "\(error)")
+                    .map({ _ in response })
+                    ?? .just(response)
             }
         })
     }
@@ -24,19 +31,28 @@ extension Observable {
 
 extension Observable where Element == MJResult<Data> {
     
-    public func log(_ tag: String = "Result", service: MJLogService) -> Observable<MJResult<Data>> {
-        return self.do(onNext: { [weak weakService = service] response in
+    public func log<LogService: MJLogService>(
+        _ tag: String = "Result",
+        service: LogService
+    ) -> Observable<MJResult<Data>> {
+        return self.flatMap({ [weak weakService = service] response -> Observable<MJResult<Data>> in
             switch response {
             case .success(let data):
+                var message = ""
                 if let json = MJson.parseOptional(data) {
-                    weakService?.info(tag, message: "Success: \(json)")
+                    message = "Success: Json = \(json)"
                 } else if let jsonArray = MJson.parseArrayOptional(data) {
-                    weakService?.info(tag, message: "Success: \(jsonArray)")
+                    message = "Success: JsonArray = \(jsonArray)"
                 } else {
-                    weakService?.info(tag, message: "Success, but could not parse as JSON.")
+                    message = "Success: Could not parse as JSON."
                 }
+                return weakService?.info(tag, message: message)
+                    .map({ _ in response })
+                    ?? .just(response)
             case .failure(let error):
-                weakService?.error(tag, message: "Failure: \(error)")
+                return weakService?.error(tag, message: "\(error)")
+                    .map({ _ in response })
+                    ?? .just(response)
             }
         })
     }
@@ -45,13 +61,20 @@ extension Observable where Element == MJResult<Data> {
 
 extension Observable where Element == MJResultSimple {
     
-    public func log(_ tag: String = "Result", service: MJLogService) -> Observable<MJResultSimple> {
-        return self.do(onNext: { [weak weakService = service] response in
+    public func log<LogService: MJLogService>(
+        _ tag: String = "Result",
+        service: LogService
+    ) -> Observable<MJResultSimple> {
+        return self.flatMap({ [weak weakService = service] response -> Observable<MJResultSimple> in
             switch response {
             case .success:
-                weakService?.info(tag, message: "Success")
+                return weakService?.info(tag, message: "Success")
+                    .map({ _ in response })
+                    ?? .just(response)
             case .failure(let error):
-                weakService?.error(tag, message: "Failure: \(error)")
+                return weakService?.error(tag, message: "\(error)")
+                    .map({ _ in response })
+                    ?? .just(response)
             }
         })
     }
