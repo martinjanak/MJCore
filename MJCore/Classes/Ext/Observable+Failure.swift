@@ -41,4 +41,17 @@ extension Observable where Element == MJResultSimple {
         })
     }
     
+    public func failureFlatMapSimple(
+        _ handler: @escaping (Error) -> Observable<MJResultSimple>
+    ) -> Observable<MJResultSimple> {
+        return self.flatMap({ (response: MJResultSimple) -> Observable<MJResultSimple> in
+            switch response {
+            case .success:
+                return .just(.success)
+            case .failure(let error):
+                return handler(error)
+            }
+        })
+    }
+    
 }
