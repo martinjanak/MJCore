@@ -10,30 +10,11 @@ import RxSwift
 
 public final class MJAuthHttpClient<Endpoint: MJHttpEndpoints>: MJBaseAuthHttpClient {
     
-    private let log: MJLogService?
-    
-    public init(
-        state: State,
-        refresh: @escaping MJBaseHttpRequest,
-        addAuthentication: @escaping (URLRequest) -> URLRequest?,
-        sessionConfig: URLSessionConfiguration? = nil,
-        log: MJLogService? = nil
-    ) {
-        self.log = log
-        super.init(
-            state: state,
-            refresh: refresh,
-            addAuthentication: addAuthentication,
-            sessionConfig: sessionConfig
-        )
-    }
-    
     @discardableResult
     public func sendRequest(_ endpoint: Endpoint) -> MJHttpResponse {
         return Observable.create { observer in
             DispatchQueue.global(qos: .userInitiated).async {
                 self.sendRequestSync(endpoint) { response in
-                    self.log(response: response, endpoint: endpoint)
                     observer.onNext(response)
                     observer.onCompleted()
                 }
@@ -54,7 +35,6 @@ public final class MJAuthHttpClient<Endpoint: MJHttpEndpoints>: MJBaseAuthHttpCl
                         return
                     }
                     self.sendRequestSync(endpoint) { response in
-                        self.log(response: response, endpoint: endpoint)
                         observer.onNext(response)
                         observer.onCompleted()
                     }
@@ -86,17 +66,6 @@ public final class MJAuthHttpClient<Endpoint: MJHttpEndpoints>: MJBaseAuthHttpCl
         }
         
         self.send(request: request, handler: handler)
-    }
-    
-    private func log(response: MJResult<Data>, endpoint: Endpoint) {
-        if let log = self.log {
-            switch response {
-            case .success:
-                log.info("Http - \(Endpoint.self)(\(endpoint))", message: "Success")
-            case .failure(let error):
-                log.error("Http - \(Endpoint.self)(\(endpoint))", message: "\(error)")
-            }
-        }
     }
     
 }
