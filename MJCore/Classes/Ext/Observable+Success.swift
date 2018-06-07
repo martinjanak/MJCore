@@ -23,6 +23,20 @@ extension Observable {
         })
     }
     
+    public func onSuccessAwait<V>(
+        _ handler: @escaping (V) -> Observable<MJResultSimple>
+    ) -> Observable<MJResult<V>> where Element == MJResult<V> {
+        return self.flatMap({ (response: MJResult<V>) -> Observable<MJResult<V>> in
+            switch response {
+            case .success(let value):
+                return handler(value)
+                    .map { _ in response }
+            case .failure:
+                return .just(response)
+            }
+        })
+    }
+    
     public func successMap<V, W>(
         _ handler: @escaping (V) throws -> W
     ) -> Observable<MJResult<W>> where Element == MJResult<V> {
@@ -127,6 +141,20 @@ extension Observable where Element == MJResultSimple {
                 break
             }
             return response
+        })
+    }
+    
+    public func onSuccessAwait(
+        _ handler: @escaping () -> Observable<MJResultSimple>
+    ) -> Observable<MJResultSimple> {
+        return self.flatMap({ (response: MJResultSimple) -> Observable<MJResultSimple> in
+            switch response {
+            case .success:
+                return handler()
+                    .map { _ in response }
+            case .failure:
+                return .just(response)
+            }
         })
     }
     

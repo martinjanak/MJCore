@@ -23,7 +23,7 @@ extension Observable {
         })
     }
     
-    public func failureAwait<V>(
+    public func onFailureAwait<V>(
         _ handler: @escaping (Error) -> Observable<MJResultSimple>
     ) -> Observable<MJResult<V>> where Element == MJResult<V> {
         return self.flatMap({ (response: MJResult<V>) -> Observable<MJResult<V>> in
@@ -65,7 +65,7 @@ extension Observable where Element == MJResultSimple {
         })
     }
     
-    public func failureAwait(
+    public func onFailureAwait(
         _ handler: @escaping (Error) -> Observable<MJResultSimple>
     ) -> Observable<MJResultSimple> {
         return self.flatMap({ (response: MJResultSimple) -> Observable<MJResultSimple> in
