@@ -23,6 +23,30 @@ extension Observable {
         })
     }
     
+    public func failureAwait<V>(
+        _ handler: @escaping (Error) -> Observable<MJResultSimple>
+    ) -> Observable<MJResult<V>> where Element == MJResult<V> {
+        return self.flatMap({ (response: MJResult<V>) -> Observable<MJResult<V>> in
+            switch response {
+            case .success:
+                return .just(response)
+            case .failure(let error):
+                return handler(error)
+                    .map { _ in response }
+            }
+        })
+    }
+    
+    public func bindFailure<V>(
+        _ handler: @escaping (Error) -> Void
+    ) -> Disposable where Element == MJResult<V> {
+        return self.bind(onNext: { result in
+            if case .failure(let error) = result {
+                handler(error)
+            }
+        })
+    }
+    
 }
 
 extension Observable where Element == MJResultSimple {
@@ -41,15 +65,26 @@ extension Observable where Element == MJResultSimple {
         })
     }
     
-    public func failureFlatMapSimple(
+    public func failureAwait(
         _ handler: @escaping (Error) -> Observable<MJResultSimple>
     ) -> Observable<MJResultSimple> {
         return self.flatMap({ (response: MJResultSimple) -> Observable<MJResultSimple> in
             switch response {
             case .success:
-                return .just(.success)
+                return .just(response)
             case .failure(let error):
                 return handler(error)
+                    .map { _ in response }
+            }
+        })
+    }
+    
+    public func bindFailure(
+        _ handler: @escaping (Error) -> Void
+    ) -> Disposable {
+        return self.bind(onNext: { result in
+            if case .failure(let error) = result {
+                handler(error)
             }
         })
     }
