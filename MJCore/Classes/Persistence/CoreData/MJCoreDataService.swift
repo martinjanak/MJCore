@@ -224,7 +224,10 @@ public final class MJCoreDataService {
             entityName: String(describing: Model.Entity.self)
         )
         if let filter = filter {
-            fetchRequest.predicate = filter.predicate
+            guard let predicate = filter.predicate else {
+                throw MJCoreDataFilterError.valueMismatch
+            }
+            fetchRequest.predicate = predicate
         }
         if let sortDescriptors = sortDescriptors {
             fetchRequest.sortDescriptors = sortDescriptors
@@ -301,7 +304,10 @@ public final class MJCoreDataService {
             entityName: String(describing: Model.Entity.self)
         )
         if let filter = filter {
-            fetchRequest.predicate = filter.predicate
+            guard let predicate = filter.predicate else {
+                throw MJCoreDataFilterError.valueMismatch
+            }
+            fetchRequest.predicate = predicate
         }
         
         let rawData = try self.privateContext.fetch(fetchRequest)
