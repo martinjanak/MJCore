@@ -39,7 +39,7 @@ public enum MJPredicate {
 
 extension MJPredicate {
     
-    static func &&(left: MJPredicate, right: MJPredicate) -> MJPredicate {
+    public static func &&(left: MJPredicate, right: MJPredicate) -> MJPredicate {
         return .wrapper(
             NSCompoundPredicate(
                 type: .and,
@@ -51,7 +51,7 @@ extension MJPredicate {
         )
     }
     
-    static func ||(left: MJPredicate, right: MJPredicate) -> MJPredicate {
+    public static func ||(left: MJPredicate, right: MJPredicate) -> MJPredicate {
         return .wrapper(
             NSCompoundPredicate(
                 type: .or,
