@@ -8,7 +8,7 @@
 import CoreData
 
 
-public enum MJPredicate {
+public enum MJCoreDataFilter {
 
     case wrapper(NSPredicate)
     case int(String, Int)
@@ -37,9 +37,9 @@ public enum MJPredicate {
     
 }
 
-extension MJPredicate {
+extension MJCoreDataFilter {
     
-    public static func &&(left: MJPredicate, right: MJPredicate) -> MJPredicate {
+    public static func &&(left: MJCoreDataFilter, right: MJCoreDataFilter) -> MJCoreDataFilter {
         return .wrapper(
             NSCompoundPredicate(
                 type: .and,
@@ -51,7 +51,7 @@ extension MJPredicate {
         )
     }
     
-    public static func ||(left: MJPredicate, right: MJPredicate) -> MJPredicate {
+    public static func ||(left: MJCoreDataFilter, right: MJCoreDataFilter) -> MJCoreDataFilter {
         return .wrapper(
             NSCompoundPredicate(
                 type: .or,

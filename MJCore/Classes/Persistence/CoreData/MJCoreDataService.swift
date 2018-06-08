@@ -215,7 +215,7 @@ public final class MJCoreDataService {
     
     public func readSync<Model: MJCoreDataModel>(
         _ modelType: Model.Type,
-        predicate: NSPredicate? = nil,
+        filter: MJCoreDataFilter? = nil,
         sortDescriptors: [NSSortDescriptor]? = nil,
         limit: Int? = nil
     ) throws -> [Model] {
@@ -223,8 +223,8 @@ public final class MJCoreDataService {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(
             entityName: String(describing: Model.Entity.self)
         )
-        if let predicate = predicate {
-            fetchRequest.predicate = predicate
+        if let filter = filter {
+            fetchRequest.predicate = filter.predicate
         }
         if let sortDescriptors = sortDescriptors {
             fetchRequest.sortDescriptors = sortDescriptors
@@ -244,12 +244,12 @@ public final class MJCoreDataService {
     
     public func readOneSync<Model: MJCoreDataModel>(
         _ modelType: Model.Type,
-        predicate: NSPredicate? = nil,
+        filter: MJCoreDataFilter? = nil,
         sortDescriptors: [NSSortDescriptor]? = nil
     ) throws -> Model? {
         let models = try readSync(
             modelType,
-            predicate: predicate,
+            filter: filter,
             sortDescriptors: sortDescriptors,
             limit: 1
         )
@@ -262,14 +262,14 @@ public final class MJCoreDataService {
     
     public func read<Model: MJCoreDataModel>(
         _ modelType: Model.Type,
-        predicate: NSPredicate? = nil,
+        filter: MJCoreDataFilter? = nil,
         sortDescriptors: [NSSortDescriptor]? = nil,
         limit: Int? = nil
     ) -> Observable<MJResult<[Model]>> {
         return transaction { strongSelf in
             return try strongSelf.readSync(
                 modelType,
-                predicate: predicate,
+                filter: filter,
                 sortDescriptors: sortDescriptors,
                 limit: limit
             )
@@ -278,13 +278,13 @@ public final class MJCoreDataService {
     
     public func readOne<Model: MJCoreDataModel>(
         _ modelType: Model.Type,
-        predicate: NSPredicate? = nil,
+        filter: MJCoreDataFilter? = nil,
         sortDescriptors: [NSSortDescriptor]? = nil
     ) -> Observable<MJResult<Model?>> {
         return transaction { strongSelf in
             return try strongSelf.readOneSync(
                 modelType,
-                predicate: predicate,
+                filter: filter,
                 sortDescriptors: sortDescriptors
             )
         }
@@ -294,14 +294,14 @@ public final class MJCoreDataService {
     
     public func deleteSync<Model: MJCoreDataModel>(
         _ modelType: Model.Type,
-        predicate: NSPredicate? = nil
+        filter: MJCoreDataFilter? = nil
     ) throws -> Void {
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(
             entityName: String(describing: Model.Entity.self)
         )
-        if let predicate = predicate {
-            fetchRequest.predicate = predicate
+        if let filter = filter {
+            fetchRequest.predicate = filter.predicate
         }
         
         let rawData = try self.privateContext.fetch(fetchRequest)
@@ -316,10 +316,10 @@ public final class MJCoreDataService {
     
     public func delete<Model: MJCoreDataModel>(
         _ modelType: Model.Type,
-        predicate: NSPredicate? = nil
+        filter: MJCoreDataFilter? = nil
     ) -> Observable<MJResultSimple> {
         return transactionSimple { strongSelf in
-            try strongSelf.deleteSync(modelType, predicate: predicate)
+            try strongSelf.deleteSync(modelType, filter: filter)
             try strongSelf.saveChangesSync()
         }
     }
