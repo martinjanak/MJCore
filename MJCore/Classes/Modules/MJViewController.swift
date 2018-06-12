@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 
-open class MJViewController<View: UIView>: UIViewController {
+open class MJViewController<View: MJView>: UIViewController {
     
     public let ui: View
     public var disposeBag: DisposeBag?
@@ -20,7 +20,8 @@ open class MJViewController<View: UIView>: UIViewController {
     
     override open func viewDidLoad() {
         super.viewDidLoad()
-//        ui.setup()
+        addChildControllers()
+        ui.setup()
         view = ui
         setup()
     }
@@ -39,6 +40,10 @@ open class MJViewController<View: UIView>: UIViewController {
     override open func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         disposeBag = nil
+    }
+    
+    open func addChildControllers() {
+        // optional override
     }
     
     open func setup() {
