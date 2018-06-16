@@ -123,6 +123,7 @@
 		5B2E678141CE82223FF84602EBD7B1DC /* MJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCB75FCEDF716FB0813E998EE624ADE /* MJson.swift */; };
 		5B36180D20C5AFCF0006C3EB /* Observable+Batch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B36180C20C5AFCF0006C3EB /* Observable+Batch.swift */; };
 		5B44E5C720C27530003A6AD3 /* MJLocalAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B44E5C620C27530003A6AD3 /* MJLocalAuthService.swift */; };
+		5B4B15D020D4F1CB00EBA233 /* MJCoreDataSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B15CF20D4F1CB00EBA233 /* MJCoreDataSort.swift */; };
 		5B50320B20C450790060FC35 /* MJKeyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B50320A20C450790060FC35 /* MJKeyType.swift */; };
 		5B52691B20CEBA01006B3FC2 /* MJCoreDataModelSecured.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52691A20CEBA01006B3FC2 /* MJCoreDataModelSecured.swift */; };
 		5B52691D20CEBB66006B3FC2 /* MJCoreDataCrud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52691C20CEBB66006B3FC2 /* MJCoreDataCrud.swift */; };
@@ -560,6 +561,7 @@
 		5B1C053449E8FF44CB648F511C203C5C /* PublishRelay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PublishRelay.swift; path = RxCocoa/Traits/PublishRelay.swift; sourceTree = "<group>"; };
 		5B36180C20C5AFCF0006C3EB /* Observable+Batch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Batch.swift"; sourceTree = "<group>"; };
 		5B44E5C620C27530003A6AD3 /* MJLocalAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJLocalAuthService.swift; sourceTree = "<group>"; };
+		5B4B15CF20D4F1CB00EBA233 /* MJCoreDataSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJCoreDataSort.swift; sourceTree = "<group>"; };
 		5B50320A20C450790060FC35 /* MJKeyType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJKeyType.swift; sourceTree = "<group>"; };
 		5B52691A20CEBA01006B3FC2 /* MJCoreDataModelSecured.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJCoreDataModelSecured.swift; sourceTree = "<group>"; };
 		5B52691C20CEBB66006B3FC2 /* MJCoreDataCrud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJCoreDataCrud.swift; sourceTree = "<group>"; };
@@ -1183,6 +1185,7 @@
 				5B52692020CEBE22006B3FC2 /* Model */,
 				4C4CED21975213C2BC8098636771ED56 /* MJCoreDataService.swift */,
 				5BF0283F20C9CC2300B00A28 /* MJCoreDataFilter.swift */,
+				5B4B15CF20D4F1CB00EBA233 /* MJCoreDataSort.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -2034,6 +2037,7 @@
 				0C8478F5FF3D1F0E77466A8BE540D1C8 /* MJCoreDataModel.swift in Sources */,
 				2A7342C71F12451379C7D6DBF769611E /* MJCoreDataService.swift in Sources */,
 				49085134AD9F1392774A596C868E1681 /* MJFlowController.swift in Sources */,
+				5B4B15D020D4F1CB00EBA233 /* MJCoreDataSort.swift in Sources */,
 				970F80C207C19B1ADBD527AA6748A595 /* MJHttpAuthClient.swift in Sources */,
 				A39D4E454A87BCD28D6DA7F878E84B0C /* MJHttpClient.swift in Sources */,
 				5B50320B20C450790060FC35 /* MJKeyType.swift in Sources */,

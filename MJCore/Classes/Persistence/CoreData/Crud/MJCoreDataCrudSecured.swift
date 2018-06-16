@@ -114,7 +114,7 @@ extension MJCoreDataService {
     public func readSync<Model: MJCoreDataModelSecured>(
         _ modelType: Model.Type,
         filter: MJCoreDataFilter? = nil,
-        sortDescriptors: [NSSortDescriptor]? = nil,
+        sort: MJCoreDataSort? = nil,
         limit: Int? = nil
     ) throws -> [Model] {
         guard let getKey = getKey, let key = getKey() else {
@@ -129,8 +129,8 @@ extension MJCoreDataService {
             }
             fetchRequest.predicate = predicate
         }
-        if let sortDescriptors = sortDescriptors {
-            fetchRequest.sortDescriptors = sortDescriptors
+        if let sort = sort {
+            fetchRequest.sortDescriptors = sort.descriptors
         }
         if let limit = limit {
             fetchRequest.fetchLimit = limit
@@ -148,12 +148,12 @@ extension MJCoreDataService {
     public func readOneSync<Model: MJCoreDataModelSecured>(
         _ modelType: Model.Type,
         filter: MJCoreDataFilter? = nil,
-        sortDescriptors: [NSSortDescriptor]? = nil
-        ) throws -> Model? {
+        sort: MJCoreDataSort? = nil
+    ) throws -> Model? {
         let models = try readSync(
             modelType,
             filter: filter,
-            sortDescriptors: sortDescriptors,
+            sort: sort,
             limit: 1
         )
         if models.count > 0 {
@@ -166,14 +166,14 @@ extension MJCoreDataService {
     public func read<Model: MJCoreDataModelSecured>(
         _ modelType: Model.Type,
         filter: MJCoreDataFilter? = nil,
-        sortDescriptors: [NSSortDescriptor]? = nil,
+        sort: MJCoreDataSort? = nil,
         limit: Int? = nil
-        ) -> Observable<MJResult<[Model]>> {
+    ) -> Observable<MJResult<[Model]>> {
         return transaction { strongSelf in
             return try strongSelf.readSync(
                 modelType,
                 filter: filter,
-                sortDescriptors: sortDescriptors,
+                sort: sort,
                 limit: limit
             )
         }
@@ -182,13 +182,13 @@ extension MJCoreDataService {
     public func readOne<Model: MJCoreDataModelSecured>(
         _ modelType: Model.Type,
         filter: MJCoreDataFilter? = nil,
-        sortDescriptors: [NSSortDescriptor]? = nil
-        ) -> Observable<MJResult<Model?>> {
+        sort: MJCoreDataSort? = nil
+    ) -> Observable<MJResult<Model?>> {
         return transaction { strongSelf in
             return try strongSelf.readOneSync(
                 modelType,
                 filter: filter,
-                sortDescriptors: sortDescriptors
+                sort: sort
             )
         }
     }

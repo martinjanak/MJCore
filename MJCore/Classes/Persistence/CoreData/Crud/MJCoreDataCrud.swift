@@ -102,9 +102,9 @@ extension MJCoreDataService {
     public func readSync<Model: MJCoreDataModel>(
         _ modelType: Model.Type,
         filter: MJCoreDataFilter? = nil,
-        sortDescriptors: [NSSortDescriptor]? = nil,
+        sort: MJCoreDataSort? = nil,
         limit: Int? = nil
-        ) throws -> [Model] {
+    ) throws -> [Model] {
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(
             entityName: String(describing: Model.Entity.self)
@@ -115,8 +115,8 @@ extension MJCoreDataService {
             }
             fetchRequest.predicate = predicate
         }
-        if let sortDescriptors = sortDescriptors {
-            fetchRequest.sortDescriptors = sortDescriptors
+        if let sort = sort {
+            fetchRequest.sortDescriptors = sort.descriptors
         }
         if let limit = limit {
             fetchRequest.fetchLimit = limit
@@ -134,12 +134,12 @@ extension MJCoreDataService {
     public func readOneSync<Model: MJCoreDataModel>(
         _ modelType: Model.Type,
         filter: MJCoreDataFilter? = nil,
-        sortDescriptors: [NSSortDescriptor]? = nil
-        ) throws -> Model? {
+        sort: MJCoreDataSort? = nil
+    ) throws -> Model? {
         let models = try readSync(
             modelType,
             filter: filter,
-            sortDescriptors: sortDescriptors,
+            sort: sort,
             limit: 1
         )
         if models.count > 0 {
@@ -152,14 +152,14 @@ extension MJCoreDataService {
     public func read<Model: MJCoreDataModel>(
         _ modelType: Model.Type,
         filter: MJCoreDataFilter? = nil,
-        sortDescriptors: [NSSortDescriptor]? = nil,
+        sort: MJCoreDataSort? = nil,
         limit: Int? = nil
-        ) -> Observable<MJResult<[Model]>> {
+    ) -> Observable<MJResult<[Model]>> {
         return transaction { strongSelf in
             return try strongSelf.readSync(
                 modelType,
                 filter: filter,
-                sortDescriptors: sortDescriptors,
+                sort: sort,
                 limit: limit
             )
         }
@@ -168,13 +168,13 @@ extension MJCoreDataService {
     public func readOne<Model: MJCoreDataModel>(
         _ modelType: Model.Type,
         filter: MJCoreDataFilter? = nil,
-        sortDescriptors: [NSSortDescriptor]? = nil
-        ) -> Observable<MJResult<Model?>> {
+        sort: MJCoreDataSort? = nil
+    ) -> Observable<MJResult<Model?>> {
         return transaction { strongSelf in
             return try strongSelf.readOneSync(
                 modelType,
                 filter: filter,
-                sortDescriptors: sortDescriptors
+                sort: sort
             )
         }
     }
@@ -184,7 +184,7 @@ extension MJCoreDataService {
     public func deleteSync<Model: MJCoreDataModel>(
         _ modelType: Model.Type,
         filter: MJCoreDataFilter? = nil
-        ) throws -> Void {
+    ) throws -> Void {
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(
             entityName: String(describing: Model.Entity.self)
@@ -209,7 +209,7 @@ extension MJCoreDataService {
     public func delete<Model: MJCoreDataModel>(
         _ modelType: Model.Type,
         filter: MJCoreDataFilter? = nil
-        ) -> Observable<MJResultSimple> {
+    ) -> Observable<MJResultSimple> {
         return transactionSimple { strongSelf in
             try strongSelf.deleteSync(modelType, filter: filter)
             try strongSelf.saveChangesSync()
