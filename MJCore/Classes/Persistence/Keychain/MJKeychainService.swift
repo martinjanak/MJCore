@@ -15,7 +15,7 @@ public protocol MJKeychainServiceProtocol {
     func deleteAll()
 }
 
-class MJKeychainService<Key: MJKeyType>: MJKeychainServiceAny<Key> {
+public final class MJKeychainService<Key: MJKeyType>: MJKeychainServiceAny<Key> {
     
     public override func set(_ key: Key, value: String) {
         MJKeychain.set(key.rawValue, value: value)
@@ -37,7 +37,7 @@ class MJKeychainService<Key: MJKeyType>: MJKeychainServiceAny<Key> {
     
 }
 
-class MJKeychainServiceMock<Key: MJKeyType>: MJKeychainServiceAny<Key> {
+public final class MJKeychainServiceMock<Key: MJKeyType>: MJKeychainServiceAny<Key> {
     
     private var store = [String: String]()
     
@@ -58,7 +58,7 @@ class MJKeychainServiceMock<Key: MJKeyType>: MJKeychainServiceAny<Key> {
     }
 }
 
-class MJKeychainServiceAny<Key: MJKeyType> {
+open class MJKeychainServiceAny<Key: MJKeyType> {
     public func set(_ key: Key, value: String) { }
     public func get(_ key: Key) -> String? { return nil }
     public func delete(_ key: Key) { }

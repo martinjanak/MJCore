@@ -15,7 +15,7 @@ public protocol MJUserDefaultsServiceProtocol {
     func deleteAll()
 }
 
-class MJUserDefaultsService<Key: MJKeyType>: MJUserDefaultsServiceAny<Key> {
+public final class MJUserDefaultsService<Key: MJKeyType>: MJUserDefaultsServiceAny<Key> {
     
     public override func set<T>(_ key: KeyType, value: T) {
         UserDefaults.standard.set(value, forKey: key.rawValue)
@@ -36,7 +36,7 @@ class MJUserDefaultsService<Key: MJKeyType>: MJUserDefaultsServiceAny<Key> {
     }
 }
 
-class MJUserDefaultsServiceMock<Key: MJKeyType>: MJUserDefaultsServiceAny<Key> {
+public final class MJUserDefaultsServiceMock<Key: MJKeyType>: MJUserDefaultsServiceAny<Key> {
     
     private var store = [String: Any]()
     
