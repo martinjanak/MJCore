@@ -7,23 +7,7 @@
 
 import Foundation
 
-public typealias MJHttpHandler = (MJResult<Data>) -> Void
-public typealias MJBaseHttpRequest = (@escaping MJHttpHandler) -> Void
-
-open class MJBaseHttpClient {
-    
-    private let session: URLSession
-    
-    public init(sessionConfig: URLSessionConfiguration? = nil) {
-        if let sessionConfig = sessionConfig {
-            session = URLSession(configuration: sessionConfig)
-        } else {
-            let sessionConfig = URLSessionConfiguration.default
-            sessionConfig.timeoutIntervalForRequest = 30
-            sessionConfig.timeoutIntervalForResource = 30
-            session = URLSession(configuration: sessionConfig)
-        }
-    }
+internal final class MJHttpHelper {
     
     public func createRequest(
         url: String,
@@ -54,15 +38,15 @@ open class MJBaseHttpClient {
         return request
     }
     
-    public func send(request: URLRequest, handler: @escaping MJHttpHandler) {
+    public func send(session: URLSession, request: URLRequest, handler: @escaping MJHttpHandler) {
         guard MJReachability.status != .notReachable else {
             handler(.failure(error: MJHttpError.noConnection))
             return
         }
-        dataTask(request: request, handler: handler)
+        dataTask(session: session, request: request, handler: handler)
     }
     
-    private func dataTask(request: URLRequest, handler: @escaping MJHttpHandler) {
+    private func dataTask(session: URLSession, request: URLRequest, handler: @escaping MJHttpHandler) {
         
         let task = session.dataTask(with: request) { (data, response, error) in
             

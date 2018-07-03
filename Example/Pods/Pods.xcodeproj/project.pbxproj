@@ -206,7 +206,6 @@
 		91D76B5A9C02D49CE492A63B42F9F200 /* SerialDispatchQueueScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76264700552F142E6996632E642DAE99 /* SerialDispatchQueueScheduler.swift */; };
 		91E12AC9BA969C08CC0E405C8EBD145B /* Bag.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C5D59D9B342A0E8EFCAA6EFC55456D /* Bag.swift */; };
 		951F2BB80D4636216EACC0886B7C85F1 /* AsyncSubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01EFCFB6D4159BEBFEB51D6B1EDBE0 /* AsyncSubject.swift */; };
-		9676D5E3536BE1D185211C65F0085850 /* MJBaseAuthHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD80D5E0F91D8176675926F79614A697 /* MJBaseAuthHttpClient.swift */; };
 		96BDC11C41BC83ED18C1840B76984D65 /* Stevia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC5FE67750CC032F20FBA314E33A419D /* Stevia.framework */; };
 		970F80C207C19B1ADBD527AA6748A595 /* MJHttpAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6749F609639B563A8D190D2E42CB3ACD /* MJHttpAuthClient.swift */; };
 		9737FE48E58B625C1AA9D47C4426A8A2 /* ScheduledItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E032DCE53D0DA5B564CEB0BB56B4AD1 /* ScheduledItemType.swift */; };
@@ -349,7 +348,7 @@
 		EEF421388F3F9747149D13DED592E601 /* UIActivityIndicatorView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FBEABA2C70747CF4412A05C2A3B254 /* UIActivityIndicatorView+Rx.swift */; };
 		EF788E653634273435F789A56BD86A35 /* Skip.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC049B9B56552FF9A49438451F13F64 /* Skip.swift */; };
 		EF9AC0FBA6E6FDF7837CAE8153AD3499 /* Stevia+Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4999030972590A4FB1A070C2ED1085A /* Stevia+Content.swift */; };
-		F09EF50EF2007288A1E3DB8CE69D8442 /* MJBaseHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A420630CEA9DFE4D30C4DD5223A2264 /* MJBaseHttpClient.swift */; };
+		F09EF50EF2007288A1E3DB8CE69D8442 /* MJBaseHttpHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A420630CEA9DFE4D30C4DD5223A2264 /* MJBaseHttpHelper.swift */; };
 		F1782244E0BE7264256E096A024B6D0E /* SchedulerType+SharedSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F5F8B22CD1657058D6BB3BBB75914A /* SchedulerType+SharedSequence.swift */; };
 		F1C268FDA9B2B88C618C59619D64A3AE /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F493958F5C0474A15559F0B30DF72 /* Switch.swift */; };
 		F2AD2674C9A73C1AED0D9A26426B1132 /* DelaySubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D65AEE1B4007221A1A99DF26FF9C5E6 /* DelaySubscription.swift */; };
@@ -599,7 +598,7 @@
 		686B9396ADBFC6D4549165A2B191604E /* Scan.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Scan.swift; path = RxSwift/Observables/Scan.swift; sourceTree = "<group>"; };
 		69442DCDCF1666457B01031A89A54192 /* ObservableType+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ObservableType+Extensions.swift"; path = "RxSwift/ObservableType+Extensions.swift"; sourceTree = "<group>"; };
 		6A3A4B1BFAC11F2567606F430E78EC9D /* ObservableType+PrimitiveSequence.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ObservableType+PrimitiveSequence.swift"; path = "RxSwift/Traits/ObservableType+PrimitiveSequence.swift"; sourceTree = "<group>"; };
-		6A420630CEA9DFE4D30C4DD5223A2264 /* MJBaseHttpClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MJBaseHttpClient.swift; sourceTree = "<group>"; };
+		6A420630CEA9DFE4D30C4DD5223A2264 /* MJBaseHttpHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MJBaseHttpHelper.swift; sourceTree = "<group>"; };
 		6A4D6F5EE8064A9D4EA5628C7EFBC17E /* Stevia+FlexibleMargin.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Stevia+FlexibleMargin.swift"; path = "Source/Stevia+FlexibleMargin.swift"; sourceTree = "<group>"; };
 		6B45D95D440158D169D6DE461508260B /* UITableView+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UITableView+Rx.swift"; path = "RxCocoa/iOS/UITableView+Rx.swift"; sourceTree = "<group>"; };
 		6C93C3F56E261B6C09DD5FBC39801382 /* Bag.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Bag.swift; path = Platform/DataStructures/Bag.swift; sourceTree = "<group>"; };
@@ -710,7 +709,6 @@
 		B997111FE7646EFF3B6BE65CFDE8F3CC /* DisposeBag.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DisposeBag.swift; path = RxSwift/Disposables/DisposeBag.swift; sourceTree = "<group>"; };
 		B9A053E269C500DF0C3C896B4E77C597 /* Pods-MJCore_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MJCore_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		BA99B9D33AB8A94D93EDA19BA1D2F9F9 /* Observable+MJLogService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Observable+MJLogService.swift"; sourceTree = "<group>"; };
-		BD80D5E0F91D8176675926F79614A697 /* MJBaseAuthHttpClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MJBaseAuthHttpClient.swift; sourceTree = "<group>"; };
 		BD8A1DEB772C4E78A9FD921048C05C20 /* MJView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MJView.swift; sourceTree = "<group>"; };
 		BD9E7E6CCF61C54B3A4C540B979B14FD /* WithLatestFrom.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WithLatestFrom.swift; path = RxSwift/Observables/WithLatestFrom.swift; sourceTree = "<group>"; };
 		BE782740272B5328AF3AFD5CF76A460B /* DelegateProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DelegateProxy.swift; path = RxCocoa/Common/DelegateProxy.swift; sourceTree = "<group>"; };
@@ -870,8 +868,7 @@
 		0312CFDF83DFE583CC7E0207CE592041 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				BD80D5E0F91D8176675926F79614A697 /* MJBaseAuthHttpClient.swift */,
-				6A420630CEA9DFE4D30C4DD5223A2264 /* MJBaseHttpClient.swift */,
+				6A420630CEA9DFE4D30C4DD5223A2264 /* MJBaseHttpHelper.swift */,
 				41CA60F3C33EDCD968425F20BE4F9FA4 /* MJHttpError.swift */,
 				6228683C3623E7EA59DEF13CA7F47972 /* MJHttpMethod.swift */,
 				49FD9D8183AB27AB49D1F67A4DD1CD81 /* MJReachability.swift */,
@@ -2041,8 +2038,7 @@
 				3278C0F0850B4AC6CAF8464870A8D2F3 /* Array+MJson.swift in Sources */,
 				6A6DBA6577F847C3A7BD8A8891565CDB /* Date+Ext.swift in Sources */,
 				52F7D891230780D9C6AA185C3B3CF6FB /* MJBackgroundPoller.swift in Sources */,
-				9676D5E3536BE1D185211C65F0085850 /* MJBaseAuthHttpClient.swift in Sources */,
-				F09EF50EF2007288A1E3DB8CE69D8442 /* MJBaseHttpClient.swift in Sources */,
+				F09EF50EF2007288A1E3DB8CE69D8442 /* MJBaseHttpHelper.swift in Sources */,
 				DAE7B8864F2E65B66DC894578BC980E3 /* MJCodableUtil.swift in Sources */,
 				6C7D70176A42E60525ADEA431E4B1B8B /* MJCore-dummy.m in Sources */,
 				0C8478F5FF3D1F0E77466A8BE540D1C8 /* MJCoreDataModel.swift in Sources */,

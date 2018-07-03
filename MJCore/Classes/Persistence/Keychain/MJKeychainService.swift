@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol MJKeychainService {
+public protocol MJKeychainServiceProtocol {
     associatedtype KeyType: MJKeyType
     func set(_ key: KeyType, value: String)
     func get(_ key: KeyType) -> String?
@@ -15,24 +15,52 @@ public protocol MJKeychainService {
     func deleteAll()
 }
 
-extension MJKeychainService {
+class MJKeychainService<Key: MJKeyType>: MJKeychainServiceAny<Key> {
     
-    public func set(_ key: KeyType, value: String) {
+    public override func set(_ key: Key, value: String) {
         MJKeychain.set(key.rawValue, value: value)
     }
     
-    public func get(_ key: KeyType) -> String? {
+    public override func get(_ key: Key) -> String? {
         return MJKeychain.get(key.rawValue)
     }
     
-    public func delete(_ key: KeyType) {
+    public override func delete(_ key: Key) {
         MJKeychain.delete(key.rawValue)
     }
     
-    public func deleteAll() {
-        for key in KeyType.all {
+    public override func deleteAll() {
+        for key in Key.all {
             MJKeychain.delete(key.rawValue)
         }
     }
     
+}
+
+class MJKeychainServiceMock<Key: MJKeyType>: MJKeychainServiceAny<Key> {
+    
+    private var store = [String: String]()
+    
+    public override func set(_ key: Key, value: String) {
+        store[key.rawValue] = value
+    }
+    
+    public override func get(_ key: Key) -> String? {
+        return store[key.rawValue]
+    }
+    
+    public override func delete(_ key: Key) {
+        store.removeValue(forKey: key.rawValue)
+    }
+    
+    public override func deleteAll() {
+        store.removeAll()
+    }
+}
+
+class MJKeychainServiceAny<Key: MJKeyType> {
+    public func set(_ key: Key, value: String) { }
+    public func get(_ key: Key) -> String? { return nil }
+    public func delete(_ key: Key) { }
+    public func deleteAll() { }
 }
