@@ -26,7 +26,7 @@ public struct MJPageViewChange {
 public final class MJHorizontalPageVC: UIPageViewController {
     
     private let disposeBag = DisposeBag()
-    let model = MJHorizontalPageVM()
+    public let model = MJHorizontalPageVM()
     
     override init(
         transitionStyle style: UIPageViewControllerTransitionStyle,
@@ -37,10 +37,10 @@ public final class MJHorizontalPageVC: UIPageViewController {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-        setupBindings()
+        initBindings()
     }
     
-    private func setupBindings() {
+    private func initBindings() {
         delegate = model
         dataSource = model
         

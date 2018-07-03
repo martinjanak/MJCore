@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import RxSwift
 
 open class MJHorizontalScrollVC<View: MJHorizontalScrollView>: UIViewController {
     
+    public let disposeBag = DisposeBag()
     public let ui: View
     private let pageVC: MJHorizontalPageVC
     
@@ -25,14 +27,14 @@ open class MJHorizontalScrollVC<View: MJHorizontalScrollView>: UIViewController 
         view = ui
         pageVC.didMove(toParentViewController: self)
         setup()
-        setupBindings()
+        initBindings()
     }
     
     open func setup() {
         // optional override
     }
     
-    open func setupBindings() {
+    open func initBindings() {
         // optional override
     }
     
