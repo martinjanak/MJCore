@@ -59,6 +59,7 @@ public final class MJKeychainServiceMock<Key: MJKeyType>: MJKeychainServiceAny<K
 }
 
 open class MJKeychainServiceAny<Key: MJKeyType> {
+    public init() { }
     public func set(_ key: Key, value: String) { }
     public func get(_ key: Key) -> String? { return nil }
     public func delete(_ key: Key) { }

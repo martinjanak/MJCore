@@ -59,6 +59,7 @@ public final class MJUserDefaultsServiceMock<Key: MJKeyType>: MJUserDefaultsServ
 
 open class MJUserDefaultsServiceAny<Key: MJKeyType>: MJUserDefaultsServiceProtocol {
     public typealias KeyType = Key
+    public init() { }
     public func set<T>(_ key: Key, value: T) { }
     public func get<T>(_ key: Key) -> T? { return nil }
     public func delete(_ key: Key) { }
