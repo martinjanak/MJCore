@@ -19,7 +19,11 @@ public final class MJHttpClient<Endpoint: MJHttpEndpoints>: MJHttpClientAny<Endp
     private let session: URLSession
     private let urlClosure: ((String) -> String?)?
     
-    public init(domainUrl: String, sessionConfig: URLSessionConfiguration? = nil, urlClosure: ((String) -> String?)?) {
+    public init(
+        domainUrl: String,
+        sessionConfig: URLSessionConfiguration? = nil,
+        urlClosure: ((String) -> String?)? = nil
+    ) {
         self.domainUrl = domainUrl
         if let sessionConfig = sessionConfig {
             session = URLSession(configuration: sessionConfig)
