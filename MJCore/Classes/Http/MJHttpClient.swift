@@ -88,10 +88,12 @@ public final class MJHttpClient<Endpoint: MJHttpEndpoints>: MJHttpClientAny<Endp
         
         let httpHelper = MJHttpHelper()
         
-        guard let request = httpHelper.createRequest(
-            url: "\(endpoint.domainUrl)\(endpoint.path)",
-            method: endpoint.method,
-            data: data
+        guard
+            let domainUrl = endpoint.domainUrl,
+            let request = httpHelper.createRequest(
+                url: "\(domainUrl)\(endpoint.path)",
+                method: endpoint.method,
+                data: data
             ) else {
                 handler(
                     .failure(error: MJHttpError.invalidUrl)

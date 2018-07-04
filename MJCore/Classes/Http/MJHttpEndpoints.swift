@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol MJHttpEndpoints {
-    var domainUrl: String { get }
+    var domainUrl: String? { get }
     var path: String { get }
     var method: MJHttpMethod { get }
     func getPayloadData() throws -> Data?

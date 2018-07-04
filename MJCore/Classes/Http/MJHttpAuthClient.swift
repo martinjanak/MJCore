@@ -89,15 +89,17 @@ public final class MJAuthHttpClient<Endpoint: MJHttpEndpoints>: MJHttpClientAny<
         }
         
         let httpHelper = MJHttpHelper()
-        guard let request = httpHelper.createRequest(
-            url: "\(endpoint.domainUrl)\(endpoint.path)",
-            method: endpoint.method,
-            data: data
-        ) else {
-            handler(
-                .failure(error: MJHttpError.invalidUrl)
-            )
-            return
+        guard
+            let domainUrl = endpoint.domainUrl,
+            let request = httpHelper.createRequest(
+                url: "\(domainUrl)\(endpoint.path)",
+                method: endpoint.method,
+                data: data
+            ) else {
+                handler(
+                    .failure(error: MJHttpError.invalidUrl)
+                )
+                return
         }
         
         lock.async {
