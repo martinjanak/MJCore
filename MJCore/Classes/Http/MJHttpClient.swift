@@ -15,9 +15,12 @@ public typealias MJHttpRequest = () -> MJHttpResponse
 
 public final class MJHttpClient<Endpoint: MJHttpEndpoints>: MJHttpClientAny<Endpoint> {
     
+    private let domainUrl: String
     private let session: URLSession
+    private let urlClosure: ((String) -> String?)?
     
-    public init(sessionConfig: URLSessionConfiguration? = nil) {
+    public init(domainUrl: String, sessionConfig: URLSessionConfiguration? = nil, urlClosure: ((String) -> String?)?) {
+        self.domainUrl = domainUrl
         if let sessionConfig = sessionConfig {
             session = URLSession(configuration: sessionConfig)
         } else {
@@ -26,6 +29,7 @@ public final class MJHttpClient<Endpoint: MJHttpEndpoints>: MJHttpClientAny<Endp
             sessionConfig.timeoutIntervalForResource = 30
             session = URLSession(configuration: sessionConfig)
         }
+        self.urlClosure = urlClosure
     }
     
     @discardableResult
@@ -86,19 +90,28 @@ public final class MJHttpClient<Endpoint: MJHttpEndpoints>: MJHttpClientAny<Endp
             return
         }
         
-        let httpHelper = MJHttpHelper()
-        
-        guard
-            let domainUrl = endpoint.domainUrl,
-            let request = httpHelper.createRequest(
-                url: "\(domainUrl)\(endpoint.path)",
-                method: endpoint.method,
-                data: data
-            ) else {
+        var url = domainUrl
+        if let urlClosure = urlClosure {
+            guard let urlAdjusted = urlClosure(url) else {
                 handler(
                     .failure(error: MJHttpError.invalidUrl)
                 )
                 return
+            }
+            url = urlAdjusted
+        }
+        url = url + endpoint.path
+        
+        let httpHelper = MJHttpHelper()
+        guard let request = httpHelper.createRequest(
+            url: url,
+            method: endpoint.method,
+            data: data
+        ) else {
+            handler(
+                .failure(error: MJHttpError.invalidUrl)
+            )
+            return
         }
         
         httpHelper.send(session: session, request: request, handler: handler)
