@@ -15,16 +15,13 @@ public typealias MJHttpRequest = () -> MJHttpResponse
 
 public final class MJHttpClient<Endpoint: MJHttpEndpoints>: MJHttpClientAny<Endpoint> {
     
-    private let domainUrl: String
     private let session: URLSession
     private let urlClosure: ((String) -> String?)?
     
     public init(
-        domainUrl: String,
         sessionConfig: URLSessionConfiguration? = nil,
         urlClosure: ((String) -> String?)? = nil
     ) {
-        self.domainUrl = domainUrl
         if let sessionConfig = sessionConfig {
             session = URLSession(configuration: sessionConfig)
         } else {
@@ -94,7 +91,7 @@ public final class MJHttpClient<Endpoint: MJHttpEndpoints>: MJHttpClientAny<Endp
             return
         }
         
-        var url = domainUrl
+        var url = endpoint.domainUrl
         if let urlClosure = urlClosure {
             guard let urlAdjusted = urlClosure(url) else {
                 handler(

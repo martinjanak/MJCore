@@ -16,7 +16,6 @@ public final class MJAuthHttpClient<Endpoint: MJHttpEndpoints>: MJHttpClientAny<
         case accessExpired
     }
     
-    private let domainUrl: String
     private let session: URLSession
     private let urlClosure: ((String) -> String?)?
     
@@ -28,14 +27,12 @@ public final class MJAuthHttpClient<Endpoint: MJHttpEndpoints>: MJHttpClientAny<
     private let authenticateClosure: (URLRequest) -> URLRequest?
     
     public init(
-        domainUrl: String,
         state: State,
         refresh: @escaping MJBaseHttpRequest,
         authenticateClosure: @escaping (URLRequest) -> URLRequest?,
         sessionConfig: URLSessionConfiguration? = nil,
         urlClosure: ((String) -> String?)? = nil
     ) {
-        self.domainUrl = domainUrl
         if let sessionConfig = sessionConfig {
             session = URLSession(configuration: sessionConfig)
         } else {
@@ -94,7 +91,7 @@ public final class MJAuthHttpClient<Endpoint: MJHttpEndpoints>: MJHttpClientAny<
             return
         }
         
-        var url = domainUrl
+        var url = endpoint.domainUrl
         if let urlClosure = urlClosure {
             guard let urlAdjusted = urlClosure(url) else {
                 handler(
