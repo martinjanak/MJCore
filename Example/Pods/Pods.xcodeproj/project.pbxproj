@@ -120,6 +120,7 @@
 		5974A394C565D57256F4E85A9E7629FC /* Stevia+Stacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59698E28EC1D7E2EC187DD4327269B1E /* Stevia+Stacks.swift */; };
 		59ECF56BB9DDF704CC52B7643E2922DF /* MJTwoWayBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C571A544DB48987FBCD2948F63E4028 /* MJTwoWayBinding.swift */; };
 		5B02D5CF20BF176900F29406 /* Observable+None.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B02D5CE20BF176900F29406 /* Observable+None.swift */; };
+		5B0870D720F1EE3D007DD392 /* MJViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0870D620F1EE3D007DD392 /* MJViewModel.swift */; };
 		5B2181A720EBA5CA00C623BE /* MJHorizontalPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2181A320EBA5CA00C623BE /* MJHorizontalPageVC.swift */; };
 		5B2181A820EBA5CA00C623BE /* MJHorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2181A420EBA5CA00C623BE /* MJHorizontalScrollView.swift */; };
 		5B2181A920EBA5CA00C623BE /* MJHorizontalScrollVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2181A520EBA5CA00C623BE /* MJHorizontalScrollVC.swift */; };
@@ -562,6 +563,7 @@
 		5AA01DECF8D295A446E7789B598F04FD /* UIScrollView+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIScrollView+Rx.swift"; path = "RxCocoa/iOS/UIScrollView+Rx.swift"; sourceTree = "<group>"; };
 		5AD187CEF1D030FB1095185873380CBB /* NSObject+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSObject+Rx.swift"; path = "RxCocoa/Foundation/NSObject+Rx.swift"; sourceTree = "<group>"; };
 		5B02D5CE20BF176900F29406 /* Observable+None.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+None.swift"; sourceTree = "<group>"; };
+		5B0870D620F1EE3D007DD392 /* MJViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJViewModel.swift; sourceTree = "<group>"; };
 		5B1C053449E8FF44CB648F511C203C5C /* PublishRelay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PublishRelay.swift; path = RxCocoa/Traits/PublishRelay.swift; sourceTree = "<group>"; };
 		5B2181A320EBA5CA00C623BE /* MJHorizontalPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJHorizontalPageVC.swift; sourceTree = "<group>"; };
 		5B2181A420EBA5CA00C623BE /* MJHorizontalScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJHorizontalScrollView.swift; sourceTree = "<group>"; };
@@ -1415,6 +1417,7 @@
 				BD8A1DEB772C4E78A9FD921048C05C20 /* MJView.swift */,
 				5BC13E2620D0502A00454828 /* MJViewComponent.swift */,
 				48F2DCD12131E7880F3D527BB704A5DA /* MJViewController.swift */,
+				5B0870D620F1EE3D007DD392 /* MJViewModel.swift */,
 			);
 			name = Modules;
 			path = MJCore/Classes/Modules;
@@ -2088,6 +2091,7 @@
 				5BF0284020C9CC2300B00A28 /* MJCoreDataFilter.swift in Sources */,
 				5B52691B20CEBA01006B3FC2 /* MJCoreDataModelSecured.swift in Sources */,
 				E512F7315C8F6A53D5C978EC00C7B554 /* MJRemoteNotificationService.swift in Sources */,
+				5B0870D720F1EE3D007DD392 /* MJViewModel.swift in Sources */,
 				5B44E5C720C27530003A6AD3 /* MJLocalAuthService.swift in Sources */,
 				5B02D5CF20BF176900F29406 /* Observable+None.swift in Sources */,
 				5B52691D20CEBB66006B3FC2 /* MJCoreDataCrud.swift in Sources */,

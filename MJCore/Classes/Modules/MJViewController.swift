@@ -8,13 +8,15 @@
 import UIKit
 import RxSwift
 
-open class MJViewController<View: MJView>: UIViewController {
+open class MJViewController<View: MJView, Model: MJViewModel>: UIViewController {
     
     public let ui: View
+    public let model: Model
     public let disposeBag = DisposeBag()
     
     public init() {
         ui = View()
+        model = Model()
         super.init(nibName: nil, bundle: nil)
     }
     
