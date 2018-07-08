@@ -1110,7 +1110,7 @@
 			name = Pod;
 			sourceTree = "<group>";
 		};
-		5B2181A220EBA5CA00C623BE /* View */ = {
+		5B0870D820F1F442007DD392 /* HorizontalScroll */ = {
 			isa = PBXGroup;
 			children = (
 				5B2181A420EBA5CA00C623BE /* MJHorizontalScrollView.swift */,
@@ -1118,8 +1118,7 @@
 				5B2181A320EBA5CA00C623BE /* MJHorizontalPageVC.swift */,
 				5B2181A620EBA5CA00C623BE /* MJHorizontalPageVM.swift */,
 			);
-			name = View;
-			path = MJCore/Classes/View;
+			path = HorizontalScroll;
 			sourceTree = "<group>";
 		};
 		5B44E5C520C27530003A6AD3 /* LocalAuthentication */ = {
@@ -1413,6 +1412,7 @@
 		9C41D6581043F006969903D945BDF2E0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				5B0870D820F1F442007DD392 /* HorizontalScroll */,
 				970479B89BE7BCB05D0525CDA7607B6E /* MJFlowController.swift */,
 				BD8A1DEB772C4E78A9FD921048C05C20 /* MJView.swift */,
 				5BC13E2620D0502A00454828 /* MJViewComponent.swift */,
@@ -1527,7 +1527,6 @@
 				5B44E5C520C27530003A6AD3 /* LocalAuthentication */,
 				4EDB6B4862CD489A884B2EAA45C4AD1B /* Pod */,
 				74E21DA05D9032A5DB10773D4AE55855 /* Rx */,
-				5B2181A220EBA5CA00C623BE /* View */,
 				CF31C4A2AB73BC219D3C11D576D86371 /* Support Files */,
 			);
 			name = MJCore;
