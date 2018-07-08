@@ -9,8 +9,8 @@ import RxSwift
 
 open class MJViewModel {
     
-    let errorMessage = Variable<String?>(nil)
-    let isLoading = Variable<Bool>(false)
+    public let errorMessage = Variable<String?>(nil)
+    public let isLoading = Variable<Bool>(false)
     
     required public init() { }
     
