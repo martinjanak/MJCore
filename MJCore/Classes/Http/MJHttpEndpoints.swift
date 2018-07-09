@@ -11,6 +11,7 @@ public protocol MJHttpEndpoints {
     var domainUrl: String { get }
     var path: String { get }
     var method: MJHttpMethod { get }
+    var additionalHeaders: [String: String]? { get }
     func getPayloadData() throws -> Data?
     func getTestData() throws -> Data?
 }
