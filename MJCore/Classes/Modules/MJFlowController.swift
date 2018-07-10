@@ -89,7 +89,29 @@ open class MJFlowController<Service> {
         }
     }
     
-    public func presentModal(
+    @discardableResult
+    public func presentModal<View, Result>(
+        _ controller: MJModalViewController<View, Result>,
+        animated: Bool = true,
+        completion: (() -> Void)? = nil
+    ) -> Observable<Result> {
+        
+        let subject = PublishSubject<Result>()
+        
+        controller.modalPresentationStyle = .overFullScreen
+        controller.modalTransitionStyle = .crossDissolve
+        controller.close = { result in
+            self.back(animated: animated) {
+                subject.onNext(result)
+                subject.onCompleted()
+            }
+        }
+        
+        present(controller, animated: animated, completion: completion)
+        return subject.asObservable()
+    }
+    
+    public func presentModally(
         _ controller: UIViewController,
         animated: Bool = true,
         completion: (() -> Void)? = nil

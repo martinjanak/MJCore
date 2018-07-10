@@ -136,6 +136,7 @@
 		5B52691F20CEBBB4006B3FC2 /* MJCoreDataCrudSecured.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52691E20CEBBB4006B3FC2 /* MJCoreDataCrudSecured.swift */; };
 		5B7233B147DB364DBE11D645CAA93375 /* Completable+AndThen.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED28D533686DF46636404EEC7E05AF9C /* Completable+AndThen.swift */; };
 		5B754E6B20F4E17A0035D643 /* Observable+Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B754E6A20F4E17A0035D643 /* Observable+Unwrap.swift */; };
+		5B754E7420F4EB5D0035D643 /* MJModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B754E7320F4EB5D0035D643 /* MJModalViewController.swift */; };
 		5BC13E2720D0502A00454828 /* MJViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC13E2620D0502A00454828 /* MJViewComponent.swift */; };
 		5BF0283E20C9B2ED00B00A28 /* Observable+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0283D20C9B2ED00B00A28 /* Observable+Empty.swift */; };
 		5BF0284020C9CC2300B00A28 /* MJCoreDataFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0283F20C9CC2300B00A28 /* MJCoreDataFilter.swift */; };
@@ -579,6 +580,7 @@
 		5B52691C20CEBB66006B3FC2 /* MJCoreDataCrud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJCoreDataCrud.swift; sourceTree = "<group>"; };
 		5B52691E20CEBBB4006B3FC2 /* MJCoreDataCrudSecured.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJCoreDataCrudSecured.swift; sourceTree = "<group>"; };
 		5B754E6A20F4E17A0035D643 /* Observable+Unwrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Unwrap.swift"; sourceTree = "<group>"; };
+		5B754E7320F4EB5D0035D643 /* MJModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJModalViewController.swift; sourceTree = "<group>"; };
 		5BC13E2620D0502A00454828 /* MJViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJViewComponent.swift; sourceTree = "<group>"; };
 		5BF0283D20C9B2ED00B00A28 /* Observable+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Empty.swift"; sourceTree = "<group>"; };
 		5BF0283F20C9CC2300B00A28 /* MJCoreDataFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJCoreDataFilter.swift; sourceTree = "<group>"; };
@@ -1420,6 +1422,7 @@
 				5BC13E2620D0502A00454828 /* MJViewComponent.swift */,
 				48F2DCD12131E7880F3D527BB704A5DA /* MJViewController.swift */,
 				5B0870D620F1EE3D007DD392 /* MJViewModel.swift */,
+				5B754E7320F4EB5D0035D643 /* MJModalViewController.swift */,
 			);
 			name = Modules;
 			path = MJCore/Classes/Modules;
@@ -2118,6 +2121,7 @@
 				3FB2E28422A553F901654557D4D4AF1E /* Observable+Simplify.swift in Sources */,
 				7849F7BAA434E4D54FC77727C5723672 /* Observable+Store.swift in Sources */,
 				A3A95C4674A4A35947F2E4DC0A4369A8 /* Observable+Success.swift in Sources */,
+				5B754E7420F4EB5D0035D643 /* MJModalViewController.swift in Sources */,
 				605DD648ECBCE3EAC4F5822BCFBD9FF5 /* RawRepresentable+Create.swift in Sources */,
 				A238273A732B47D48DAF6B31373F33A9 /* String+Ext.swift in Sources */,
 				5B754E6B20F4E17A0035D643 /* Observable+Unwrap.swift in Sources */,
