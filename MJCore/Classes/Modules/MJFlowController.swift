@@ -89,6 +89,10 @@ open class MJFlowController<Service> {
         }
     }
     
+    public func present(flow: MJFlowController) {
+        // todo
+    }
+    
     @discardableResult
     public func presentModal<View, Result>(
         _ controller: MJModalViewController<View, Result>,
