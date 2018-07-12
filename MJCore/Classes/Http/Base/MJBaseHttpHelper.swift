@@ -13,14 +13,39 @@ internal final class MJHttpHelper {
         url: String,
         method: MJHttpMethod,
         data: Data?,
-        headers: [String: String]? = nil
+        query: [String: String]?,
+        headers: [String: String]?
     ) -> URLRequest? {
         
-        guard let url = URL(string: url) else {
+        guard var urlComponents = URLComponents(string: url) else {
             return nil
         }
+        
+        // MARK: Query
+        
+        var queryItems: [URLQueryItem]? = nil
+        if let query = query, query.count > 0 {
+            queryItems = [URLQueryItem]()
+            for (key, value) in query {
+                queryItems!.append(URLQueryItem(name: key, value: value))
+            }
+        }
+        urlComponents.queryItems = queryItems
+        
+        // MARK: Url
+        
+        guard let url = urlComponents.url else {
+            return nil
+        }
+        
         var request = URLRequest(url: url)
+        
+        // MARK: Method
+        
         request.httpMethod = method.rawValue
+        
+        // MARK: Headers
+        
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("utf-8", forHTTPHeaderField: "Accept-Charset")
@@ -30,6 +55,8 @@ internal final class MJHttpHelper {
                 request.addValue(value, forHTTPHeaderField: headerField)
             }
         }
+        
+        // MARK: Data
         
         if let data = data {
             request.httpBody = data

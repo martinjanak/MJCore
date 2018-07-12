@@ -104,23 +104,17 @@ public final class MJAuthHttpClient<Endpoint: MJHttpEndpoints>: MJHttpClientAny<
         url = url + endpoint.path
         
         let httpHelper = MJHttpHelper()
-        guard var request = httpHelper.createRequest(
+        guard let request = httpHelper.createRequest(
             url: url,
             method: endpoint.method,
-            data: data
-            ) else {
-                handler(
-                    .failure(error: MJHttpError.invalidUrl)
-                )
-                return
-        }
-        
-        if
-            let additionalHeaders = endpoint.additionalHeaders,
-            additionalHeaders.count > 0 {
-            for (key, value) in additionalHeaders {
-                request.addValue(value, forHTTPHeaderField: key)
-            }
+            data: data,
+            query: endpoint.query,
+            headers: endpoint.additionalHeaders
+        ) else {
+            handler(
+                .failure(error: MJHttpError.invalidUrl)
+            )
+            return
         }
         
         lock.async {
