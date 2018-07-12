@@ -76,4 +76,8 @@ extension Date {
         return Calendar.current.dateComponents(Set<Calendar.Component>([.minute]), from: date, to: self).minute
     }
     
+    public var yearMonth: MJYearMonth {
+        return MJYearMonth(date: self)
+    }
+    
 }
