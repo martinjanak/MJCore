@@ -13,8 +13,7 @@ open class MJFlowController<Service> {
     public weak var navigation: UINavigationController?
     public let service: Service
     
-    private weak var parentFlowController: MJFlowController<Service>?
-    private var childFlowController: MJFlowController<Service>?
+    public var endClosure: (() -> Void)?
     
     public var currentViewController: UIViewController? {
         return navigation?.viewControllers.last
@@ -29,20 +28,50 @@ open class MJFlowController<Service> {
         // override and present/push/root view controller
     }
     
-    public func startParentFlow() {
-        guard let navigation = navigation else {
+    public func end() {
+        guard let endClosure = endClosure else {
             return
         }
-        parentFlowController?.start(navigation: navigation)
+        endClosure()
     }
     
-    public func start(_ flowController: MJFlowController<Service>) {
-        guard let navigation = navigation else {
-            return
+    public func connect(_ flowController: MJFlowController<Service>) {
+        guard
+            let navigation = navigation,
+            let currentVC = currentViewController
+            else {
+                return
         }
-        childFlowController = flowController
-        flowController.parentFlowController = self
+        flowController.endClosure = { [weak navigationWeak = navigation, weak currentVCWeak = currentVC] in
+            guard
+                let navigationStrong = navigationWeak,
+                let currentVCStrong = currentVCWeak
+                else {
+                    return
+            }
+            navigationStrong.popToViewController(currentVCStrong, animated: true)
+        }
         flowController.start(navigation: navigation)
+    }
+    
+    public func present(
+        _ flowController: MJFlowController<Service>,
+        animated: Bool = true,
+        completion: (() -> Void)? = nil
+    ) {
+        guard let navigation = navigation else { return }
+        flowController.endClosure = { [weak flowControllerWeak = flowController, weak navigationWeak = navigation] in
+            flowControllerWeak?.dismissBefore(animated: animated) {
+                navigationWeak?.dismiss(animated: animated, completion: nil)
+            }
+        }
+        let navigationController = UINavigationController()
+        flowController.start(navigation: navigationController)
+        navigation.present(
+            navigationController,
+            animated: animated,
+            completion: completion
+        )
     }
     
     public func back(
@@ -54,8 +83,10 @@ open class MJFlowController<Service> {
         }
         if navigation.presentedViewController != nil {
             navigation.dismiss(animated: animated, completion: completion)
-        } else {
+        } else if navigation.viewControllers.count > 1 {
             navigation.popViewController(animated: animated)
+        } else {
+            end()
         }
     }
     
@@ -127,7 +158,7 @@ open class MJFlowController<Service> {
         present(controller, animated: animated, completion: completion)
     }
     
-    private func dismissBefore(animated: Bool, action: @escaping () -> Void) {
+    public func dismissBefore(animated: Bool, action: @escaping () -> Void) {
         if let navigation = navigation,
             navigation.presentedViewController != nil {
             navigation.dismiss(animated: animated) {

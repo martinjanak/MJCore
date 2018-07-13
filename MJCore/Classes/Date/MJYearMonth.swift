@@ -12,9 +12,14 @@ public struct MJYearMonth: Comparable, Hashable {
     public let year: Int
     public let month: MJMonth
     
-    public init(year: Int, month: Int) {
+    public init(year: Int, month: MJMonth) {
         self.year = year
-        self.month = MJMonth(rawValue: month) ?? .january
+        self.month = month
+    }
+    
+    public init(year: Int, monthNumber: Int) {
+        self.year = year
+        self.month = MJMonth(rawValue: monthNumber) ?? .january
     }
     
     public init(date: Date) {
