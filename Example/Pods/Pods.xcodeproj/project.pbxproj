@@ -144,6 +144,12 @@
 		5BC13E2720D0502A00454828 /* MJViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC13E2620D0502A00454828 /* MJViewComponent.swift */; };
 		5BF0283E20C9B2ED00B00A28 /* Observable+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0283D20C9B2ED00B00A28 /* Observable+Empty.swift */; };
 		5BF0284020C9CC2300B00A28 /* MJCoreDataFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0283F20C9CC2300B00A28 /* MJCoreDataFilter.swift */; };
+		5BF265CC20FB83F2006D8838 /* MJTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF265CB20FB83F2006D8838 /* MJTextField.swift */; };
+		5BF265D320FB8417006D8838 /* MJFormInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF265CE20FB8416006D8838 /* MJFormInput.swift */; };
+		5BF265D420FB8417006D8838 /* MJForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF265CF20FB8416006D8838 /* MJForm.swift */; };
+		5BF265D520FB8417006D8838 /* MJFormInputState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF265D020FB8416006D8838 /* MJFormInputState.swift */; };
+		5BF265D620FB8417006D8838 /* MJValidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF265D120FB8416006D8838 /* MJValidable.swift */; };
+		5BF265D720FB8417006D8838 /* MJStringValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF265D220FB8416006D8838 /* MJStringValidator.swift */; };
 		5BF64D327E813388B16A99ED2991A8CD /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD9CFC13A6B7F302EB425E62D84ECFF0 /* RxCocoa.framework */; };
 		5D6F1CF7444E2ABE2A243B6A4812CEBA /* NopDisposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDBC8C0032F6B72541451F56A3C4D93 /* NopDisposable.swift */; };
 		5DD4BDD37629AA459F3397C84785A618 /* SingleAsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D7D252E57C514328CF70EBFEB16140 /* SingleAsync.swift */; };
@@ -592,6 +598,12 @@
 		5BC13E2620D0502A00454828 /* MJViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJViewComponent.swift; sourceTree = "<group>"; };
 		5BF0283D20C9B2ED00B00A28 /* Observable+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Empty.swift"; sourceTree = "<group>"; };
 		5BF0283F20C9CC2300B00A28 /* MJCoreDataFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJCoreDataFilter.swift; sourceTree = "<group>"; };
+		5BF265CB20FB83F2006D8838 /* MJTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJTextField.swift; sourceTree = "<group>"; };
+		5BF265CE20FB8416006D8838 /* MJFormInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJFormInput.swift; sourceTree = "<group>"; };
+		5BF265CF20FB8416006D8838 /* MJForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJForm.swift; sourceTree = "<group>"; };
+		5BF265D020FB8416006D8838 /* MJFormInputState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJFormInputState.swift; sourceTree = "<group>"; };
+		5BF265D120FB8416006D8838 /* MJValidable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJValidable.swift; sourceTree = "<group>"; };
+		5BF265D220FB8416006D8838 /* MJStringValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJStringValidator.swift; sourceTree = "<group>"; };
 		5C1BA583AC6D091DCA51DC3F20600752 /* Stevia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Stevia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E9D806EE73393450D9C459931C2DA33 /* Queue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Queue.swift; path = Platform/DataStructures/Queue.swift; sourceTree = "<group>"; };
 		5FEDC574F639AEC9430BB919476EAE4D /* Platform.Linux.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Platform.Linux.swift; path = Platform/Platform.Linux.swift; sourceTree = "<group>"; };
@@ -1197,6 +1209,36 @@
 			path = MJCore/Classes/Date;
 			sourceTree = "<group>";
 		};
+		5BF265C920FB83F2006D8838 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5BF265CA20FB83F2006D8838 /* TextField */,
+			);
+			name = View;
+			path = MJCore/Classes/View;
+			sourceTree = "<group>";
+		};
+		5BF265CA20FB83F2006D8838 /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				5BF265CB20FB83F2006D8838 /* MJTextField.swift */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
+		5BF265CD20FB8416006D8838 /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				5BF265CE20FB8416006D8838 /* MJFormInput.swift */,
+				5BF265CF20FB8416006D8838 /* MJForm.swift */,
+				5BF265D020FB8416006D8838 /* MJFormInputState.swift */,
+				5BF265D120FB8416006D8838 /* MJValidable.swift */,
+				5BF265D220FB8416006D8838 /* MJStringValidator.swift */,
+			);
+			name = Validation;
+			path = MJCore/Classes/Validation;
+			sourceTree = "<group>";
+		};
 		5C0DDB5EF415E05C5120472C3AC32AC0 /* SteviaLayout */ = {
 			isa = PBXGroup;
 			children = (
@@ -1564,6 +1606,8 @@
 				4EDB6B4862CD489A884B2EAA45C4AD1B /* Pod */,
 				74E21DA05D9032A5DB10773D4AE55855 /* Rx */,
 				CF31C4A2AB73BC219D3C11D576D86371 /* Support Files */,
+				5BF265CD20FB8416006D8838 /* Validation */,
+				5BF265C920FB83F2006D8838 /* View */,
 			);
 			name = MJCore;
 			path = ../..;
@@ -2115,6 +2159,7 @@
 				5B2181A720EBA5CA00C623BE /* MJHorizontalPageVC.swift in Sources */,
 				00B17B62B2E97722A8AEFFD00CDA1105 /* MJHttpError.swift in Sources */,
 				70AD87B96CC2180BF7B6A0306F5CBD92 /* MJHttpMethod.swift in Sources */,
+				5BF265D520FB8417006D8838 /* MJFormInputState.swift in Sources */,
 				5BA06F7F20F738F300B0E504 /* MJMonth.swift in Sources */,
 				DA48F5A9F98A6D2331EA21B849D68722 /* MJKeychain.swift in Sources */,
 				4CB1A9995051DAD2560863064A221199 /* MJKeychainService.swift in Sources */,
@@ -2122,6 +2167,7 @@
 				5B4B15D620D53F0300EBA233 /* Animation.swift in Sources */,
 				CA530C754B1A511E6CCBA32B139F3A4A /* MJLocalNotifications.swift in Sources */,
 				9087FE4E0B8E24D6D44DA36FD0572EB8 /* MJLocalNotificationService.swift in Sources */,
+				5BF265D420FB8417006D8838 /* MJForm.swift in Sources */,
 				5BC13E2720D0502A00454828 /* MJViewComponent.swift in Sources */,
 				EB9123A2B6CE9B0C2CB40BA6EF3E88F9 /* MJLogService.swift in Sources */,
 				651FBEB6B0F33433E460F2BC43458D4F /* MJPoller.swift in Sources */,
@@ -2135,6 +2181,7 @@
 				5B02D5CF20BF176900F29406 /* Observable+None.swift in Sources */,
 				5B52691D20CEBB66006B3FC2 /* MJCoreDataCrud.swift in Sources */,
 				4BE0D73CEB0416296E5CD35493810190 /* MJResendRequest.swift in Sources */,
+				5BF265D320FB8417006D8838 /* MJFormInput.swift in Sources */,
 				5B2181A820EBA5CA00C623BE /* MJHorizontalScrollView.swift in Sources */,
 				D5368C1C17897F0F8C1F8453FAB851B9 /* MJResult.swift in Sources */,
 				BD4669CA2E6356E0007BED2B036DD4FC /* MJResultWithProgress.swift in Sources */,
@@ -2143,6 +2190,7 @@
 				59ECF56BB9DDF704CC52B7643E2922DF /* MJTwoWayBinding.swift in Sources */,
 				ABEBC4A963FF7EC20595D78EE6A40CD9 /* MJUserDefaultsService.swift in Sources */,
 				42FFD9A9CDAC4A9058B8573E0399A5E5 /* MJView.swift in Sources */,
+				5BF265CC20FB83F2006D8838 /* MJTextField.swift in Sources */,
 				FB05AB2712249FDC66C2286DFA5A601C /* MJViewController.swift in Sources */,
 				7801225063DEB1BDBCCCFF891A11E0FE /* Observable+Debug.swift in Sources */,
 				A16D57686B250C8D695A9859462732B4 /* Observable+Decode.swift in Sources */,
@@ -2152,6 +2200,7 @@
 				EA43B11B82E584161393C427B846B688 /* Observable+MJResultWithProgress.swift in Sources */,
 				5BF0283E20C9B2ED00B00A28 /* Observable+Empty.swift in Sources */,
 				C5B37D11ADD3FA9ED906C8273D24DC08 /* Observable+Parse.swift in Sources */,
+				5BF265D720FB8417006D8838 /* MJStringValidator.swift in Sources */,
 				3FB2E28422A553F901654557D4D4AF1E /* Observable+Simplify.swift in Sources */,
 				7849F7BAA434E4D54FC77727C5723672 /* Observable+Store.swift in Sources */,
 				A3A95C4674A4A35947F2E4DC0A4369A8 /* Observable+Success.swift in Sources */,
@@ -2162,6 +2211,7 @@
 				5B36180D20C5AFCF0006C3EB /* Observable+Batch.swift in Sources */,
 				34C497AE556AE03275643E0D62EEF86D /* UINavigationController+Root.swift in Sources */,
 				12252DB55373C62061B2D744ACC1C383 /* UIView+TopSafeConstraint.swift in Sources */,
+				5BF265D620FB8417006D8838 /* MJValidable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

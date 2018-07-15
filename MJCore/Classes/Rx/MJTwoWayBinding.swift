@@ -84,3 +84,21 @@ public func <-> <T: Equatable>(variableA: Variable<T>, variableB: Variable<T>) -
         .bind(to: variableA)
     return Disposables.create(dA, dB)
 }
+
+public func <-> (textField: MJTextField, formInput: MJFormInput<String>) -> Disposable {
+    
+    let textDisposable = textField.rx.textInput <-> formInput.variable
+    
+    let isDirtyDisposable = textField.didEndEditing
+        .bind(onNext: { [weak formInputWeak = formInput] _ in
+            formInputWeak?.isDirty.value = true
+        })
+    
+    let viewStateDisposable = textField.viewState <-> formInput.viewState
+    
+    return Disposables.create(
+        textDisposable,
+        isDirtyDisposable,
+        viewStateDisposable
+    )
+}
