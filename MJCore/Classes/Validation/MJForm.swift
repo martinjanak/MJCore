@@ -13,6 +13,8 @@ public final class MJForm {
     private var inputs = [MJValidable]()
     public let isValid = Variable<Bool>(false)
     
+    public init() { }
+    
     public func createInput<Value>(
         value: Value,
         validator: @escaping (Value) -> Bool,
