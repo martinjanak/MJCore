@@ -8,15 +8,11 @@
 import UIKit
 import Stevia
 
-open class MJViewComponent: UIView {
+open class MJViewComponent: MJView {
     
     public init() {
         super.init(frame: .zero)
         setup()
-    }
-    
-    open func setup() {
-        fatalError("setup() has not been implemented")
     }
     
     required public init?(coder aDecoder: NSCoder) {

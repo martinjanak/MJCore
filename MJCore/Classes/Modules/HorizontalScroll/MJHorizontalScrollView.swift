@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class MJHorizontalScrollView: UIView {
+open class MJHorizontalScrollView: MJView {
     
     open func setup(_ pageView: UIView) {
         // to be overriden
