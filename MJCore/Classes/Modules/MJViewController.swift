@@ -14,6 +14,8 @@ open class MJViewController<View: MJView, Model: MJViewModel>: UIViewController 
     public let model: Model
     public let disposeBag = DisposeBag()
     
+    private var endEditingTapGR: UITapGestureRecognizer?
+    
     public init() {
         ui = View()
         model = Model()
@@ -40,6 +42,22 @@ open class MJViewController<View: MJView, Model: MJViewModel>: UIViewController 
     
     open func initBindings() {
         // optional override
+    }
+    
+    public var endsEditingOnTap: Bool = false {
+        didSet {
+            if endsEditingOnTap {
+                endEditingTapGR = UITapGestureRecognizer(
+                    target: view,
+                    action: #selector(view.endEditing)
+                )
+                view.addGestureRecognizer(endEditingTapGR!)
+            } else {
+                if let endEditingTapGR = endEditingTapGR {
+                    view.removeGestureRecognizer(endEditingTapGR)
+                }
+            }
+        }
     }
     
     required public init?(coder aDecoder: NSCoder) {
