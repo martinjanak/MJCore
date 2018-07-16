@@ -16,11 +16,11 @@ public class MJHorizontalPageVM: NSObject {
     public let currentVC = Variable<UIViewController?>(nil)
     
     private let countVariable = Variable<Int>(0)
-    lazy var count = countVariable
+    public lazy var count = countVariable
         .asObservable()
         .distinctUntilChanged()
     private let indexVariable = Variable<Int>(0)
-    lazy var index = indexVariable
+    public lazy var index = indexVariable
         .asObservable()
         .distinctUntilChanged()
     
