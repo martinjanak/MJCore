@@ -16,17 +16,17 @@ open class MJTextField: UITextField {
     
     public let viewState = Variable<MJFormInputState>(.none)
     
-    public var shouldClear: (UITextField) -> Bool = { _ in true }
-    public var shouldReturn: (UITextField) -> Bool = { _ in true }
+    public var shouldClear: () -> Bool = { true }
+    public var shouldReturn: () -> Bool = { true }
     
-    public var shouldBeginEditing: (UITextField) -> Bool = { _ in true }
+    public var shouldBeginEditing: () -> Bool = { true }
     
-    private let didBeginEditingSubject = PublishSubject<UITextField>()
+    private let didBeginEditingSubject = PublishSubject<Void>()
     public lazy var didBeginEditing = didBeginEditingSubject.asObservable()
     
-    public var shouldEndEditing: (UITextField) -> Bool = { _ in true }
+    public var shouldEndEditing: () -> Bool = { true }
     
-    private let didEndEditingSubject = PublishSubject<UITextField>()
+    private let didEndEditingSubject = PublishSubject<Void>()
     public lazy var didEndEditing = didEndEditingSubject.asObservable()
     
     public init() {
@@ -50,19 +50,19 @@ extension MJTextField: UITextFieldDelegate {
     // MARK: Editing
     
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        return shouldBeginEditing(textField)
+        return shouldBeginEditing()
     }
     
     public func textFieldDidBeginEditing(_ textField: UITextField) {
-        didBeginEditingSubject.onNext(textField)
+        didBeginEditingSubject.onNext(())
     }
     
     public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        return shouldEndEditing(textField)
+        return shouldEndEditing()
     }
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
-        didEndEditingSubject.onNext(textField)
+        didEndEditingSubject.onNext(())
     }
     
     // MARK: Text
@@ -95,11 +95,11 @@ extension MJTextField: UITextFieldDelegate {
     }
     
     public func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        return shouldClear(textField)
+        return shouldClear()
     }
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        return shouldReturn(textField)
+        return shouldReturn()
     }
     
 }
