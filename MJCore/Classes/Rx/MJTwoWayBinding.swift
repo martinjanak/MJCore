@@ -94,7 +94,7 @@ public func <-> (textField: MJTextField, formInput: MJFormInput<String>) -> Disp
             formInputWeak?.isDirty.value = true
         })
     
-    let viewStateDisposable = textField.viewState <-> formInput.viewState
+    let viewStateDisposable = textField.validityState <-> formInput.validityState
     
     return Disposables.create(
         textDisposable,

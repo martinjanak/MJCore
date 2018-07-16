@@ -150,7 +150,7 @@
 		5BF265CC20FB83F2006D8838 /* MJTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF265CB20FB83F2006D8838 /* MJTextField.swift */; };
 		5BF265D320FB8417006D8838 /* MJFormInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF265CE20FB8416006D8838 /* MJFormInput.swift */; };
 		5BF265D420FB8417006D8838 /* MJForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF265CF20FB8416006D8838 /* MJForm.swift */; };
-		5BF265D520FB8417006D8838 /* MJFormInputState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF265D020FB8416006D8838 /* MJFormInputState.swift */; };
+		5BF265D520FB8417006D8838 /* MJValidityState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF265D020FB8416006D8838 /* MJValidityState.swift */; };
 		5BF265D620FB8417006D8838 /* MJValidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF265D120FB8416006D8838 /* MJValidable.swift */; };
 		5BF265D720FB8417006D8838 /* MJStringValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF265D220FB8416006D8838 /* MJStringValidator.swift */; };
 		5BF64D327E813388B16A99ED2991A8CD /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD9CFC13A6B7F302EB425E62D84ECFF0 /* RxCocoa.framework */; };
@@ -607,7 +607,7 @@
 		5BF265CB20FB83F2006D8838 /* MJTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJTextField.swift; sourceTree = "<group>"; };
 		5BF265CE20FB8416006D8838 /* MJFormInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJFormInput.swift; sourceTree = "<group>"; };
 		5BF265CF20FB8416006D8838 /* MJForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJForm.swift; sourceTree = "<group>"; };
-		5BF265D020FB8416006D8838 /* MJFormInputState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJFormInputState.swift; sourceTree = "<group>"; };
+		5BF265D020FB8416006D8838 /* MJValidityState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJValidityState.swift; sourceTree = "<group>"; };
 		5BF265D120FB8416006D8838 /* MJValidable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJValidable.swift; sourceTree = "<group>"; };
 		5BF265D220FB8416006D8838 /* MJStringValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJStringValidator.swift; sourceTree = "<group>"; };
 		5C1BA583AC6D091DCA51DC3F20600752 /* Stevia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Stevia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1238,7 +1238,7 @@
 			children = (
 				5BF265CE20FB8416006D8838 /* MJFormInput.swift */,
 				5BF265CF20FB8416006D8838 /* MJForm.swift */,
-				5BF265D020FB8416006D8838 /* MJFormInputState.swift */,
+				5BF265D020FB8416006D8838 /* MJValidityState.swift */,
 				5BF265D120FB8416006D8838 /* MJValidable.swift */,
 				5BF265D220FB8416006D8838 /* MJStringValidator.swift */,
 			);
@@ -2170,7 +2170,7 @@
 				5B2181A720EBA5CA00C623BE /* MJHorizontalPageVC.swift in Sources */,
 				00B17B62B2E97722A8AEFFD00CDA1105 /* MJHttpError.swift in Sources */,
 				70AD87B96CC2180BF7B6A0306F5CBD92 /* MJHttpMethod.swift in Sources */,
-				5BF265D520FB8417006D8838 /* MJFormInputState.swift in Sources */,
+				5BF265D520FB8417006D8838 /* MJValidityState.swift in Sources */,
 				5BA06F7F20F738F300B0E504 /* MJMonth.swift in Sources */,
 				DA48F5A9F98A6D2331EA21B849D68722 /* MJKeychain.swift in Sources */,
 				4CB1A9995051DAD2560863064A221199 /* MJKeychainService.swift in Sources */,

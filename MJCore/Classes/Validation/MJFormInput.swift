@@ -14,7 +14,7 @@ public final class MJFormInput<Value>: MJValidable {
     public let variable: Variable<Value>
     public let isValid: Variable<Bool>
     public let isDirty: Variable<Bool>
-    public let viewState: Variable<MJFormInputState>
+    public let validityState: Variable<MJValidityState>
     
     private let notValidMessage: String?
     
@@ -23,7 +23,7 @@ public final class MJFormInput<Value>: MJValidable {
         variable = Variable<Value>(value)
         isValid = Variable<Bool>(validator(value))
         isDirty = Variable<Bool>(false)
-        viewState = Variable<MJFormInputState>(.none)
+        validityState = Variable<MJValidityState>(.notSpecified)
         bindIsValid(validator)
         bindViewState()
     }
@@ -40,14 +40,14 @@ public final class MJFormInput<Value>: MJValidable {
             isValid.asObservable(),
             isDirty.asObservable()
         )
-            .map { [weak self] (isValid, isDirty) -> MJFormInputState in
+            .map { [weak self] (isValid, isDirty) -> MJValidityState in
                 if isDirty {
                     return isValid ? .valid : .notValid(self?.notValidMessage)
                 } else {
-                    return .none
+                    return .notSpecified
                 }
             }
-            .bind(to: viewState)
+            .bind(to: validityState)
             .disposed(by: disposeBag)
     }
     

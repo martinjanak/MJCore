@@ -7,15 +7,15 @@
 
 import Foundation
 
-public enum MJFormInputState: Equatable {
+public enum MJValidityState: Equatable {
     
-    case none
+    case notSpecified
     case valid
     case notValid(String?)
     
-    public static func == (lhs: MJFormInputState, rhs: MJFormInputState) -> Bool {
+    public static func == (lhs: MJValidityState, rhs: MJValidityState) -> Bool {
         switch (lhs, rhs) {
-        case (.none, .none):
+        case (.notSpecified, .notSpecified):
             return true
         case (.valid, .valid):
             return true

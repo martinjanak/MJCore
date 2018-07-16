@@ -11,10 +11,14 @@ import RxCocoa
 
 open class MJTextField: UITextField {
     
+    private let disposeBag = DisposeBag()
+    
     public var maxCount: Int?
     public var allowedCharacterSet: CharacterSet?
     
-    public let viewState = Variable<MJFormInputState>(.none)
+    public let hasSomeText = Variable<Bool>(false)
+    public let inEditingState = Variable<Bool>(false)
+    public let validityState = Variable<MJValidityState>(.notSpecified)
     
     public var shouldClear: () -> Bool = { true }
     public var shouldReturn: () -> Bool = { true }
@@ -32,7 +36,21 @@ open class MJTextField: UITextField {
     public init() {
         super.init(frame: .zero)
         delegate = self
+        bindHasSomeText()
         setup()
+    }
+    
+    private func bindHasSomeText() {
+        rx.text.asObservable()
+            .map { text in
+                if let text = text, text.count > 0 {
+                    return true
+                } else {
+                    return false
+                }
+            }
+            .bind(to: hasSomeText)
+            .disposed(by: disposeBag)
     }
     
     open func setup() {
@@ -54,6 +72,7 @@ extension MJTextField: UITextFieldDelegate {
     }
     
     public func textFieldDidBeginEditing(_ textField: UITextField) {
+        inEditingState.value = true
         didBeginEditingSubject.onNext(())
     }
     
@@ -62,6 +81,7 @@ extension MJTextField: UITextFieldDelegate {
     }
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
+        inEditingState.value = false
         didEndEditingSubject.onNext(())
     }
     
