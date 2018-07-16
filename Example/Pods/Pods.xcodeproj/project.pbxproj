@@ -121,6 +121,7 @@
 		59ECF56BB9DDF704CC52B7643E2922DF /* MJTwoWayBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C571A544DB48987FBCD2948F63E4028 /* MJTwoWayBinding.swift */; };
 		5B02D5CF20BF176900F29406 /* Observable+None.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B02D5CE20BF176900F29406 /* Observable+None.swift */; };
 		5B0870D720F1EE3D007DD392 /* MJViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0870D620F1EE3D007DD392 /* MJViewModel.swift */; };
+		5B15B9EA20FC857B009D24C7 /* MJHorizonatlScrollVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B15B9E920FC857B009D24C7 /* MJHorizonatlScrollVM.swift */; };
 		5B2181A720EBA5CA00C623BE /* MJHorizontalPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2181A320EBA5CA00C623BE /* MJHorizontalPageVC.swift */; };
 		5B2181A820EBA5CA00C623BE /* MJHorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2181A420EBA5CA00C623BE /* MJHorizontalScrollView.swift */; };
 		5B2181A920EBA5CA00C623BE /* MJHorizontalScrollVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2181A520EBA5CA00C623BE /* MJHorizontalScrollVC.swift */; };
@@ -576,6 +577,7 @@
 		5AD187CEF1D030FB1095185873380CBB /* NSObject+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSObject+Rx.swift"; path = "RxCocoa/Foundation/NSObject+Rx.swift"; sourceTree = "<group>"; };
 		5B02D5CE20BF176900F29406 /* Observable+None.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+None.swift"; sourceTree = "<group>"; };
 		5B0870D620F1EE3D007DD392 /* MJViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJViewModel.swift; sourceTree = "<group>"; };
+		5B15B9E920FC857B009D24C7 /* MJHorizonatlScrollVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJHorizonatlScrollVM.swift; sourceTree = "<group>"; };
 		5B1C053449E8FF44CB648F511C203C5C /* PublishRelay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PublishRelay.swift; path = RxCocoa/Traits/PublishRelay.swift; sourceTree = "<group>"; };
 		5B2181A320EBA5CA00C623BE /* MJHorizontalPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJHorizontalPageVC.swift; sourceTree = "<group>"; };
 		5B2181A420EBA5CA00C623BE /* MJHorizontalScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJHorizontalScrollView.swift; sourceTree = "<group>"; };
@@ -1139,6 +1141,7 @@
 			children = (
 				5B2181A420EBA5CA00C623BE /* MJHorizontalScrollView.swift */,
 				5B2181A520EBA5CA00C623BE /* MJHorizontalScrollVC.swift */,
+				5B15B9E920FC857B009D24C7 /* MJHorizonatlScrollVM.swift */,
 				5B2181A320EBA5CA00C623BE /* MJHorizontalPageVC.swift */,
 				5B2181A620EBA5CA00C623BE /* MJHorizontalPageVM.swift */,
 			);
@@ -2149,6 +2152,7 @@
 				5B5C2E7F20F9E1E1001ED90C /* MJLocalizedString.swift in Sources */,
 				5BA06F7E20F738F300B0E504 /* MJYearMonth.swift in Sources */,
 				5B5C2E8020F9E1E1001ED90C /* MJLanguage.swift in Sources */,
+				5B15B9EA20FC857B009D24C7 /* MJHorizonatlScrollVM.swift in Sources */,
 				2A7342C71F12451379C7D6DBF769611E /* MJCoreDataService.swift in Sources */,
 				49085134AD9F1392774A596C868E1681 /* MJFlowController.swift in Sources */,
 				5B4B15D020D4F1CB00EBA233 /* MJCoreDataSort.swift in Sources */,

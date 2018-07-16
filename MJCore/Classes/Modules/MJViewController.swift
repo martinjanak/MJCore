@@ -17,6 +17,7 @@ open class MJViewController<View: MJView, Model: MJViewModel>: UIViewController 
     public init() {
         ui = View()
         model = Model()
+        model.initBindings()
         super.init(nibName: nil, bundle: nil)
     }
     

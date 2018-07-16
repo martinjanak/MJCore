@@ -14,4 +14,8 @@ open class MJViewModel {
     
     required public init() { }
     
+    open func initBindings() {
+        // override
+    }
+    
 }
