@@ -123,6 +123,7 @@
 		5B0870D720F1EE3D007DD392 /* MJViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0870D620F1EE3D007DD392 /* MJViewModel.swift */; };
 		5B15B9EA20FC857B009D24C7 /* MJHorizonatlScrollVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B15B9E920FC857B009D24C7 /* MJHorizonatlScrollVM.swift */; };
 		5B15B9EC20FC9A6D009D24C7 /* UIView+GestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B15B9EB20FC9A6D009D24C7 /* UIView+GestureRecognizer.swift */; };
+		5B15B9EE20FCC3B8009D24C7 /* UIScrollView+ScrollTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B15B9ED20FCC3B8009D24C7 /* UIScrollView+ScrollTo.swift */; };
 		5B2181A720EBA5CA00C623BE /* MJHorizontalPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2181A320EBA5CA00C623BE /* MJHorizontalPageVC.swift */; };
 		5B2181A820EBA5CA00C623BE /* MJHorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2181A420EBA5CA00C623BE /* MJHorizontalScrollView.swift */; };
 		5B2181A920EBA5CA00C623BE /* MJHorizontalScrollVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2181A520EBA5CA00C623BE /* MJHorizontalScrollVC.swift */; };
@@ -580,6 +581,7 @@
 		5B0870D620F1EE3D007DD392 /* MJViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJViewModel.swift; sourceTree = "<group>"; };
 		5B15B9E920FC857B009D24C7 /* MJHorizonatlScrollVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJHorizonatlScrollVM.swift; sourceTree = "<group>"; };
 		5B15B9EB20FC9A6D009D24C7 /* UIView+GestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+GestureRecognizer.swift"; sourceTree = "<group>"; };
+		5B15B9ED20FCC3B8009D24C7 /* UIScrollView+ScrollTo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+ScrollTo.swift"; sourceTree = "<group>"; };
 		5B1C053449E8FF44CB648F511C203C5C /* PublishRelay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PublishRelay.swift; path = RxCocoa/Traits/PublishRelay.swift; sourceTree = "<group>"; };
 		5B2181A320EBA5CA00C623BE /* MJHorizontalPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJHorizontalPageVC.swift; sourceTree = "<group>"; };
 		5B2181A420EBA5CA00C623BE /* MJHorizontalScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJHorizontalScrollView.swift; sourceTree = "<group>"; };
@@ -1576,6 +1578,7 @@
 				81DFAA67ED320D7952499B720E455C71 /* UINavigationController+Root.swift */,
 				5B15B9EB20FC9A6D009D24C7 /* UIView+GestureRecognizer.swift */,
 				A2D62BBD28590E6EB1B8785323B3FE48 /* UIView+TopSafeConstraint.swift */,
+				5B15B9ED20FCC3B8009D24C7 /* UIScrollView+ScrollTo.swift */,
 			);
 			name = Ext;
 			path = MJCore/Classes/Ext;
@@ -2205,6 +2208,7 @@
 				4105815956827EE44810C49A37EC1DC6 /* Observable+Failure.swift in Sources */,
 				252818B08048054B91773F39C90C3A3D /* Observable+MJLogService.swift in Sources */,
 				5B2181AA20EBA5CA00C623BE /* MJHorizontalPageVM.swift in Sources */,
+				5B15B9EE20FCC3B8009D24C7 /* UIScrollView+ScrollTo.swift in Sources */,
 				EA43B11B82E584161393C427B846B688 /* Observable+MJResultWithProgress.swift in Sources */,
 				5BF0283E20C9B2ED00B00A28 /* Observable+Empty.swift in Sources */,
 				C5B37D11ADD3FA9ED906C8273D24DC08 /* Observable+Parse.swift in Sources */,
