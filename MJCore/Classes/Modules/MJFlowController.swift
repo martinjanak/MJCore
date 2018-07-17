@@ -14,6 +14,8 @@ open class MJFlowController<Service> {
     public let service: Service
     
     public var endClosure: (() -> Void)?
+    public weak var parentFlowController: MJFlowController<Service>?
+    public var childFlowController: MJFlowController<Service>?
     
     public var currentViewController: UIViewController? {
         return navigation?.viewControllers.last
@@ -60,6 +62,8 @@ open class MJFlowController<Service> {
         completion: (() -> Void)? = nil
     ) {
         guard let navigation = navigation else { return }
+        childFlowController = flowController
+        flowController.parentFlowController = self
         flowController.endClosure = { [weak flowControllerWeak = flowController, weak navigationWeak = navigation] in
             flowControllerWeak?.dismissBefore(animated: animated) {
                 navigationWeak?.dismiss(animated: animated, completion: nil)
