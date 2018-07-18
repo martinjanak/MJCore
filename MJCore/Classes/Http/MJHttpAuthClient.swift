@@ -14,7 +14,7 @@ public enum MJAuthHttpClientState {
     case accessExpired
 }
 
-public final class MJAuthHttpClient<Endpoint: MJHttpEndpoints>: MJHttpClientAny<Endpoint> {
+public final class MJAuthHttpClient<Endpoint: MJHttpEndpoints>: MJAuthHttpClientAny<Endpoint> {
     
     private let session: URLSession
     private let urlClosure: ((String) -> String?)?
