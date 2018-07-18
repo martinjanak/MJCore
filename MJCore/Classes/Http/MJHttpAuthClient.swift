@@ -8,26 +8,26 @@
 import Foundation
 import RxSwift
 
+public enum MJAuthHttpClientState {
+    case unauthenticated
+    case accessValid
+    case accessExpired
+}
+
 public final class MJAuthHttpClient<Endpoint: MJHttpEndpoints>: MJHttpClientAny<Endpoint> {
-    
-    public enum State {
-        case unauthenticated
-        case accessValid
-        case accessExpired
-    }
     
     private let session: URLSession
     private let urlClosure: ((String) -> String?)?
     
     private let lock = DispatchQueue(label: "MJAuthHttpClientQueue")
-    private var state: State
+    private var state: MJAuthHttpClientState
     private var resendRequestBuffer = [MJResendRequest]()
     
     private let refreshClosure: MJBaseHttpRequest
     private let authenticateClosure: (URLRequest) -> URLRequest?
     
     public init(
-        state: State,
+        state: MJAuthHttpClientState,
         refresh: @escaping MJBaseHttpRequest,
         authenticateClosure: @escaping (URLRequest) -> URLRequest?,
         sessionConfig: URLSessionConfiguration? = nil,
@@ -183,7 +183,7 @@ public final class MJAuthHttpClient<Endpoint: MJHttpEndpoints>: MJHttpClientAny<
         }
     }
     
-    public func set(state: State) {
+    public func set(state: MJAuthHttpClientState) {
         lock.async {
             self.state = state
         }
@@ -220,4 +220,28 @@ public final class MJAuthHttpClient<Endpoint: MJHttpEndpoints>: MJHttpClientAny<
         }
     }
     
+}
+
+open class MJAuthHttpClientAny<Endpoint: MJHttpEndpoints>: MJAuthHttpClientProtocol {
+    public typealias EndpointType = Endpoint
+    
+    public func sendRequest(_ endpoint: Endpoint) -> MJHttpResponse {
+        return .just(MJResult {
+            return try MJson().serialize()
+        })
+    }
+    
+    public func isAuthenticated() -> Bool {
+        return false
+    }
+    
+    public func set(state: MJAuthHttpClientState) { }
+    
+}
+
+public protocol MJAuthHttpClientProtocol {
+    associatedtype EndpointType: MJHttpEndpoints
+    func sendRequest(_ endpoint: EndpointType) -> MJHttpResponse
+    func isAuthenticated() -> Bool
+    func set(state: MJAuthHttpClientState)
 }
