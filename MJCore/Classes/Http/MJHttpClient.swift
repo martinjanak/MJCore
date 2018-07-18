@@ -33,7 +33,6 @@ public final class MJHttpClient<Endpoint: MJHttpEndpoints>: MJHttpClientAny<Endp
         self.urlClosure = urlClosure
     }
     
-    @discardableResult
     public override func sendRequest(_ endpoint: Endpoint) -> MJHttpResponse {
         return Observable.create { observer in
             DispatchQueue.global(qos: .userInitiated).async {
