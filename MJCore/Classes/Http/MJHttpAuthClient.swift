@@ -183,13 +183,13 @@ public final class MJAuthHttpClient<Endpoint: MJHttpEndpoints>: MJAuthHttpClient
         }
     }
     
-    public func set(state: MJAuthHttpClientState) {
+    override public func set(state: MJAuthHttpClientState) {
         lock.async {
             self.state = state
         }
     }
     
-    public func isAuthenticated() -> Bool {
+    override public func isAuthenticated() -> Bool {
         var auth = false
         lock.sync {
             if case .unauthenticated = self.state {
