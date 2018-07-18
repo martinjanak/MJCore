@@ -32,7 +32,12 @@ public enum MJLanguage: String {
     case slovak = "sk"
     
     public static var current: MJLanguage? {
-        return MJLanguage(rawValue: Locale.current.languageCode ?? "")
+        if let preferred = Locale.preferredLanguages.first {
+            let code = String(preferred.split(separator: "-")[0])
+            return MJLanguage(rawValue: code)
+        } else {
+            return nil
+        }
     }
     
     public static var all: [MJLanguage] {
