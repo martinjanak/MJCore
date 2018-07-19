@@ -33,6 +33,7 @@ public final class MJHorizontalPageVC: UIPageViewController {
         navigationOrientation: UIPageViewControllerNavigationOrientation, options: [String: Any]? = nil
     ) {
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: options)
+        initBindings()
     }
     
     private func initBindings() {
@@ -55,7 +56,7 @@ public final class MJHorizontalPageVC: UIPageViewController {
                     completion: { _ in
                         self?.model.changeCompleted.onNext(true)
                         self?.model.currentVC.value = pageViewChange.viewController
-                }
+                    }
                 )
             })
             .disposed(by: disposeBag)
