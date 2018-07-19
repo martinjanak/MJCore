@@ -33,12 +33,7 @@ public class MJHorizontalPageVM: NSObject {
         return viewControllers.value.count
     }
     
-    public override init() {
-        super.init()
-        initBindings()
-    }
-    
-    private func initBindings() {
+    internal func initBindings() {
         bindCount()
         bindViewControllers()
         bindIndex()

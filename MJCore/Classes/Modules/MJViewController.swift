@@ -24,11 +24,11 @@ open class MJViewController<View: MJView, Model: MJViewModel>: UIViewController 
     
     override open func viewDidLoad() {
         super.viewDidLoad()
-        model.initBindings()
         beforeViewSetup()
         ui.setup()
         view = ui
         afterViewSetup()
+        model.initBindings()
         initBindings()
     }
     
