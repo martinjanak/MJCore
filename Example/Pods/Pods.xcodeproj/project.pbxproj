@@ -129,7 +129,9 @@
 		5B2181A920EBA5CA00C623BE /* MJHorizontalScrollVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2181A520EBA5CA00C623BE /* MJHorizontalScrollVC.swift */; };
 		5B2181AA20EBA5CA00C623BE /* MJHorizontalPageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2181A620EBA5CA00C623BE /* MJHorizontalPageVM.swift */; };
 		5B2E678141CE82223FF84602EBD7B1DC /* MJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCB75FCEDF716FB0813E998EE624ADE /* MJson.swift */; };
-		5B36180D20C5AFCF0006C3EB /* Observable+Batch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B36180C20C5AFCF0006C3EB /* Observable+Batch.swift */; };
+		5B2FCAD22100585B00983C71 /* Observable+Batch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FCAD12100585B00983C71 /* Observable+Batch.swift */; };
+		5B2FCAD421005B8000983C71 /* Observable+BatchParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FCAD321005B8000983C71 /* Observable+BatchParse.swift */; };
+		5B36180D20C5AFCF0006C3EB /* Observable+BatchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B36180C20C5AFCF0006C3EB /* Observable+BatchResult.swift */; };
 		5B44E5C720C27530003A6AD3 /* MJLocalAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B44E5C620C27530003A6AD3 /* MJLocalAuthService.swift */; };
 		5B4B15D020D4F1CB00EBA233 /* MJCoreDataSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B15CF20D4F1CB00EBA233 /* MJCoreDataSort.swift */; };
 		5B4B15D620D53F0300EBA233 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B15D520D53F0300EBA233 /* Animation.swift */; };
@@ -587,7 +589,9 @@
 		5B2181A420EBA5CA00C623BE /* MJHorizontalScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJHorizontalScrollView.swift; sourceTree = "<group>"; };
 		5B2181A520EBA5CA00C623BE /* MJHorizontalScrollVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJHorizontalScrollVC.swift; sourceTree = "<group>"; };
 		5B2181A620EBA5CA00C623BE /* MJHorizontalPageVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJHorizontalPageVM.swift; sourceTree = "<group>"; };
-		5B36180C20C5AFCF0006C3EB /* Observable+Batch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Batch.swift"; sourceTree = "<group>"; };
+		5B2FCAD12100585B00983C71 /* Observable+Batch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Batch.swift"; sourceTree = "<group>"; };
+		5B2FCAD321005B8000983C71 /* Observable+BatchParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+BatchParse.swift"; sourceTree = "<group>"; };
+		5B36180C20C5AFCF0006C3EB /* Observable+BatchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+BatchResult.swift"; sourceTree = "<group>"; };
 		5B44E5C620C27530003A6AD3 /* MJLocalAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJLocalAuthService.swift; sourceTree = "<group>"; };
 		5B4B15CF20D4F1CB00EBA233 /* MJCoreDataSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJCoreDataSort.swift; sourceTree = "<group>"; };
 		5B4B15D520D53F0300EBA233 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
@@ -1569,7 +1573,9 @@
 				C9F89D9EC8E560166193B3557B2ACA0B /* Observable+Store.swift */,
 				C0FD3D70249AB193BA0C11AC77EDC221 /* Observable+Success.swift */,
 				CA3ECF80FA8E5132544E5178DAFA4500 /* Observable+Failure.swift */,
-				5B36180C20C5AFCF0006C3EB /* Observable+Batch.swift */,
+				5B2FCAD12100585B00983C71 /* Observable+Batch.swift */,
+				5B36180C20C5AFCF0006C3EB /* Observable+BatchResult.swift */,
+				5B2FCAD321005B8000983C71 /* Observable+BatchParse.swift */,
 				5BF0283D20C9B2ED00B00A28 /* Observable+Empty.swift */,
 				5B02D5CE20BF176900F29406 /* Observable+None.swift */,
 				5B754E6A20F4E17A0035D643 /* Observable+Unwrap.swift */,
@@ -2194,6 +2200,7 @@
 				4BE0D73CEB0416296E5CD35493810190 /* MJResendRequest.swift in Sources */,
 				5BF265D320FB8417006D8838 /* MJFormInput.swift in Sources */,
 				5B2181A820EBA5CA00C623BE /* MJHorizontalScrollView.swift in Sources */,
+				5B2FCAD22100585B00983C71 /* Observable+Batch.swift in Sources */,
 				D5368C1C17897F0F8C1F8453FAB851B9 /* MJResult.swift in Sources */,
 				BD4669CA2E6356E0007BED2B036DD4FC /* MJResultWithProgress.swift in Sources */,
 				5B2E678141CE82223FF84602EBD7B1DC /* MJson.swift in Sources */,
@@ -2217,10 +2224,11 @@
 				7849F7BAA434E4D54FC77727C5723672 /* Observable+Store.swift in Sources */,
 				A3A95C4674A4A35947F2E4DC0A4369A8 /* Observable+Success.swift in Sources */,
 				5B754E7420F4EB5D0035D643 /* MJModalViewController.swift in Sources */,
+				5B2FCAD421005B8000983C71 /* Observable+BatchParse.swift in Sources */,
 				605DD648ECBCE3EAC4F5822BCFBD9FF5 /* RawRepresentable+Create.swift in Sources */,
 				A238273A732B47D48DAF6B31373F33A9 /* String+Ext.swift in Sources */,
 				5B754E6B20F4E17A0035D643 /* Observable+Unwrap.swift in Sources */,
-				5B36180D20C5AFCF0006C3EB /* Observable+Batch.swift in Sources */,
+				5B36180D20C5AFCF0006C3EB /* Observable+BatchResult.swift in Sources */,
 				34C497AE556AE03275643E0D62EEF86D /* UINavigationController+Root.swift in Sources */,
 				12252DB55373C62061B2D744ACC1C383 /* UIView+TopSafeConstraint.swift in Sources */,
 				5BF265D620FB8417006D8838 /* MJValidable.swift in Sources */,

@@ -1,55 +1,59 @@
 //
-//  Observable+Batch.swift
+//  Observable+BatchParse.swift
 //  MJCore
 //
-//  Created by Martin Janák on 04/06/2018.
+//  Created by Martin Janák on 19/07/2018.
 //
 
+import Foundation
 import RxSwift
 
 extension Observable {
     
-    public static func batchResult(_ observables: [Observable<MJResultSimple>]) -> Observable<MJResultSimple> {
-        return Observable<MJResultSimple>.combineLatest(observables)
-            .map({ (results: [MJResultSimple]) -> MJResultSimple in
+    public static func batch<Value>(
+        _ observables: [Observable<MJResult<Value>>]
+    ) -> Observable<MJResult<[Value]>> {
+        return Observable<MJResult<Value>>.combineLatest(observables)
+            .map { (results: [MJResult<Value>]) -> MJResult<[Value]> in
                 var allSuccess = true
                 var message = ""
+                var values = [Value]()
                 for result in results {
                     switch result {
-                    case .success:
-                        break
+                    case .success(let value):
+                        values.append(value)
                     case .failure(let error):
                         allSuccess = false
                         message.append("{\(error)} ")
                     }
                 }
                 if allSuccess {
-                    return .success
+                    return .success(value: values)
                 } else {
                     return .failure(
                         error: MJObservableError.batch(message: message)
                     )
                 }
-            })
+        }
     }
     
-    public static func batchResult<V>(
-        values: [V],
-        task: @escaping (V) -> Observable<MJResultSimple>
-    ) -> Observable<MJResultSimple> {
-        let observables = values.map(task)
-        return Observable.batchResult(observables)
+    public static func batch<Value, Argument>(
+        arguments: [Argument],
+        task: @escaping (Argument) -> Observable<MJResult<Value>>
+    ) -> Observable<MJResult<[Value]>> {
+        let observables = arguments.map(task)
+        return Observable.batch(observables)
     }
     
-    public func batch<V>(
-        task: @escaping (V) -> Observable<MJResultSimple>
-    ) -> Observable<MJResultSimple> where Element == MJResult<[V]> {
-        return self.successFlatMapSimple({ values -> Observable<MJResultSimple> in
+    public func batch<Value, Argument>(
+        task: @escaping (Argument) -> Observable<MJResult<Value>>
+    ) -> Observable<MJResult<[Value]>> where Element == MJResult<[Argument]> {
+        return self.successFlatMap { values -> Observable<MJResult<[Value]>> in
             guard values.count > 0 else {
-                return .just(.success)
+                return .just(.success(value: [Value]()))
             }
-            return Observable.batchResult(values: values, task: task)
-        })
+            return Observable.batch(arguments: values, task: task)
+        }
     }
     
 }
