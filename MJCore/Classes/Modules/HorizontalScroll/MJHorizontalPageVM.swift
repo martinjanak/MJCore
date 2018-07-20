@@ -36,6 +36,7 @@ public class MJHorizontalPageVM: NSObject {
         bindCount()
         bindViewControllers()
         bindIndex()
+        bindIndexSelection()
     }
     
     private func bindViewControllers() {
