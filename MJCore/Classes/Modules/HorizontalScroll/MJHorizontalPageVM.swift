@@ -19,10 +19,9 @@ public class MJHorizontalPageVM: NSObject {
     public lazy var count = countVariable
         .asObservable()
         .distinctUntilChanged()
-    private let indexVariable = Variable<Int>(0)
-    public lazy var index = indexVariable
-        .asObservable()
-        .distinctUntilChanged()
+    public let index = Variable<Int>(0)
+    
+    
     
     private let changeSubject = PublishSubject<MJPageViewChange>()
     public lazy var change = changeSubject.asObservable()
@@ -73,7 +72,32 @@ public class MJHorizontalPageVM: NSObject {
                     }
             }
             )
-            .bind(to: indexVariable)
+            .bind(to: index)
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindIndexSelection() {
+        index.asObservable()
+            .distinctUntilChanged()
+            .withLatestFrom(viewControllers.asObservable()) { ($0, $1) }
+            .withLatestFrom(currentVC.asObservable()) { ($0.0, $0.1, $1) }
+            .bind(onNext: { [weak self] index, controllers, currentVC in
+                guard let currentVC = currentVC,
+                    let currentIndex = controllers.index(of: currentVC),
+                    index != currentIndex,
+                    index < controllers.count,
+                    index >= 0
+                    else {
+                    return
+                }
+                self?.changeSubject.onNext(
+                    MJPageViewChange(
+                        viewController: controllers[index],
+                        direction: index < currentIndex ? .reverse : .forward,
+                        animated: true
+                    )
+                )
+            })
             .disposed(by: disposeBag)
     }
     
@@ -110,7 +134,7 @@ extension MJHorizontalPageVM: UIPageViewControllerDataSource {
     public func pageViewController(
         _ pageViewController: UIPageViewController,
         viewControllerBefore viewController: UIViewController
-        ) -> UIViewController? {
+    ) -> UIViewController? {
         return getController(before: viewController)
     }
     
@@ -119,7 +143,7 @@ extension MJHorizontalPageVM: UIPageViewControllerDataSource {
     public func pageViewController(
         _ pageViewController: UIPageViewController,
         viewControllerAfter viewController: UIViewController
-        ) -> UIViewController? {
+    ) -> UIViewController? {
         return getController(after: viewController)
     }
 }
