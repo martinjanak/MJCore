@@ -21,8 +21,6 @@ public class MJHorizontalPageVM: NSObject {
         .distinctUntilChanged()
     public let index = Variable<Int>(0)
     
-    
-    
     private let changeSubject = PublishSubject<MJPageViewChange>()
     public lazy var change = changeSubject.asObservable()
     
@@ -41,9 +39,11 @@ public class MJHorizontalPageVM: NSObject {
     
     private func bindViewControllers() {
         viewControllers.asObservable()
-            .map({ VCs in
+            .with(index.asObservable())
+            .map({ VCs, index in
+                let initialIndex = (index >= 0 && index < VCs.count) ? index : 0
                 return MJPageViewChange(
-                    viewController: VCs.count > 0 ? VCs[0] : nil,
+                    viewController: VCs.count > 0 ? VCs[initialIndex] : nil,
                     direction: .forward,
                     animated: false
                 )
@@ -71,7 +71,7 @@ public class MJHorizontalPageVM: NSObject {
                     } else {
                         return 0
                     }
-            }
+                }
             )
             .bind(to: index)
             .disposed(by: disposeBag)
@@ -156,7 +156,7 @@ extension MJHorizontalPageVM: UIPageViewControllerDelegate {
         didFinishAnimating finished: Bool,
         previousViewControllers: [UIViewController],
         transitionCompleted completed: Bool
-        ) {
+    ) {
         guard
             finished,
             completed,

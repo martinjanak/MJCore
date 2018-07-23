@@ -144,6 +144,7 @@
 		5B7233B147DB364DBE11D645CAA93375 /* Completable+AndThen.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED28D533686DF46636404EEC7E05AF9C /* Completable+AndThen.swift */; };
 		5B754E6B20F4E17A0035D643 /* Observable+Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B754E6A20F4E17A0035D643 /* Observable+Unwrap.swift */; };
 		5B754E7420F4EB5D0035D643 /* MJModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B754E7320F4EB5D0035D643 /* MJModalViewController.swift */; };
+		5B901F982105BC7700E3E289 /* Observable+With.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B901F972105BC7700E3E289 /* Observable+With.swift */; };
 		5BA06F7E20F738F300B0E504 /* MJYearMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA06F7C20F738F300B0E504 /* MJYearMonth.swift */; };
 		5BA06F7F20F738F300B0E504 /* MJMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA06F7D20F738F300B0E504 /* MJMonth.swift */; };
 		5BC13E2720D0502A00454828 /* MJViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC13E2620D0502A00454828 /* MJViewComponent.swift */; };
@@ -603,6 +604,7 @@
 		5B5C2E7E20F9E1E0001ED90C /* MJLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJLanguage.swift; sourceTree = "<group>"; };
 		5B754E6A20F4E17A0035D643 /* Observable+Unwrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Unwrap.swift"; sourceTree = "<group>"; };
 		5B754E7320F4EB5D0035D643 /* MJModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJModalViewController.swift; sourceTree = "<group>"; };
+		5B901F972105BC7700E3E289 /* Observable+With.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+With.swift"; sourceTree = "<group>"; };
 		5BA06F7C20F738F300B0E504 /* MJYearMonth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJYearMonth.swift; sourceTree = "<group>"; };
 		5BA06F7D20F738F300B0E504 /* MJMonth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJMonth.swift; sourceTree = "<group>"; };
 		5BC13E2620D0502A00454828 /* MJViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJViewComponent.swift; sourceTree = "<group>"; };
@@ -1579,6 +1581,7 @@
 				5BF0283D20C9B2ED00B00A28 /* Observable+Empty.swift */,
 				5B02D5CE20BF176900F29406 /* Observable+None.swift */,
 				5B754E6A20F4E17A0035D643 /* Observable+Unwrap.swift */,
+				5B901F972105BC7700E3E289 /* Observable+With.swift */,
 				18DA5EAADC722B25481647FD5B276948 /* RawRepresentable+Create.swift */,
 				889CE111333EF1906EA841DAAE55F0F9 /* String+Ext.swift */,
 				81DFAA67ED320D7952499B720E455C71 /* UINavigationController+Root.swift */,
@@ -2181,6 +2184,7 @@
 				DA48F5A9F98A6D2331EA21B849D68722 /* MJKeychain.swift in Sources */,
 				4CB1A9995051DAD2560863064A221199 /* MJKeychainService.swift in Sources */,
 				5B52691F20CEBBB4006B3FC2 /* MJCoreDataCrudSecured.swift in Sources */,
+				5B901F982105BC7700E3E289 /* Observable+With.swift in Sources */,
 				5B4B15D620D53F0300EBA233 /* Animation.swift in Sources */,
 				CA530C754B1A511E6CCBA32B139F3A4A /* MJLocalNotifications.swift in Sources */,
 				9087FE4E0B8E24D6D44DA36FD0572EB8 /* MJLocalNotificationService.swift in Sources */,
