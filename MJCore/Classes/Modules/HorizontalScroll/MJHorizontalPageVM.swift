@@ -39,11 +39,12 @@ public class MJHorizontalPageVM: NSObject {
     
     private func bindViewControllers() {
         viewControllers.asObservable()
+            .filter { $0.count > 0 }
             .with(index.asObservable())
             .map({ VCs, index in
                 let initialIndex = (index >= 0 && index < VCs.count) ? index : 0
                 return MJPageViewChange(
-                    viewController: VCs.count > 0 ? VCs[initialIndex] : nil,
+                    viewController: VCs[initialIndex],
                     direction: .forward,
                     animated: false
                 )
