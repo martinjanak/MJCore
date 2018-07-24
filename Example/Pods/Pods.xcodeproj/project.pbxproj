@@ -157,6 +157,7 @@
 		5BF265D620FB8417006D8838 /* MJValidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF265D120FB8416006D8838 /* MJValidable.swift */; };
 		5BF265D720FB8417006D8838 /* MJStringValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF265D220FB8416006D8838 /* MJStringValidator.swift */; };
 		5BF64D327E813388B16A99ED2991A8CD /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD9CFC13A6B7F302EB425E62D84ECFF0 /* RxCocoa.framework */; };
+		5BF87628210769AB0003E9E8 /* Collection+Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF87627210769AB0003E9E8 /* Collection+Group.swift */; };
 		5D6F1CF7444E2ABE2A243B6A4812CEBA /* NopDisposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDBC8C0032F6B72541451F56A3C4D93 /* NopDisposable.swift */; };
 		5DD4BDD37629AA459F3397C84785A618 /* SingleAsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D7D252E57C514328CF70EBFEB16140 /* SingleAsync.swift */; };
 		5E05E01C68DCD0F9FE315FB46A1B7DE5 /* Single.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EC4F6A9CEB120527DC72AF9F70CF35 /* Single.swift */; };
@@ -616,6 +617,7 @@
 		5BF265D020FB8416006D8838 /* MJValidityState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJValidityState.swift; sourceTree = "<group>"; };
 		5BF265D120FB8416006D8838 /* MJValidable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJValidable.swift; sourceTree = "<group>"; };
 		5BF265D220FB8416006D8838 /* MJStringValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJStringValidator.swift; sourceTree = "<group>"; };
+		5BF87627210769AB0003E9E8 /* Collection+Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Group.swift"; sourceTree = "<group>"; };
 		5C1BA583AC6D091DCA51DC3F20600752 /* Stevia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Stevia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E9D806EE73393450D9C459931C2DA33 /* Queue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Queue.swift; path = Platform/DataStructures/Queue.swift; sourceTree = "<group>"; };
 		5FEDC574F639AEC9430BB919476EAE4D /* Platform.Linux.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Platform.Linux.swift; path = Platform/Platform.Linux.swift; sourceTree = "<group>"; };
@@ -1588,6 +1590,7 @@
 				5B15B9EB20FC9A6D009D24C7 /* UIView+GestureRecognizer.swift */,
 				A2D62BBD28590E6EB1B8785323B3FE48 /* UIView+TopSafeConstraint.swift */,
 				5B15B9ED20FCC3B8009D24C7 /* UIScrollView+ScrollTo.swift */,
+				5BF87627210769AB0003E9E8 /* Collection+Group.swift */,
 			);
 			name = Ext;
 			path = MJCore/Classes/Ext;
@@ -2176,6 +2179,7 @@
 				A39D4E454A87BCD28D6DA7F878E84B0C /* MJHttpClient.swift in Sources */,
 				5B50320B20C450790060FC35 /* MJKeyType.swift in Sources */,
 				7EC90AFF0B5D728EED73E24A26B8F8BB /* MJHttpEndpoints.swift in Sources */,
+				5BF87628210769AB0003E9E8 /* Collection+Group.swift in Sources */,
 				5B2181A720EBA5CA00C623BE /* MJHorizontalPageVC.swift in Sources */,
 				00B17B62B2E97722A8AEFFD00CDA1105 /* MJHttpError.swift in Sources */,
 				70AD87B96CC2180BF7B6A0306F5CBD92 /* MJHttpMethod.swift in Sources */,
