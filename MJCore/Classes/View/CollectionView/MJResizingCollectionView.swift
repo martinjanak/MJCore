@@ -8,7 +8,7 @@
 import UIKit
 import Stevia
 
-open class AXResizingCollectionView: UICollectionView {
+open class MJResizingCollectionView: UICollectionView {
     
     override open func layoutSubviews() {
         super.layoutSubviews()
