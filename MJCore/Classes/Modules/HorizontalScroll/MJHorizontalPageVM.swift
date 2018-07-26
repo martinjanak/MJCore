@@ -19,16 +19,13 @@ public class MJHorizontalPageVM: NSObject {
     public lazy var count = countVariable
         .asObservable()
         .distinctUntilChanged()
+    
     public let index = Variable<Int>(0)
     
     private let changeSubject = PublishSubject<MJPageViewChange>()
     public lazy var change = changeSubject.asObservable()
     
     public let changeCompleted = PublishSubject<Bool>()
-    
-    public var viewControllersCount: Int {
-        return viewControllers.value.count
-    }
     
     internal func initBindings() {
         bindCount()

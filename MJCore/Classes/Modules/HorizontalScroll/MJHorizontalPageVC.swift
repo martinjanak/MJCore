@@ -30,13 +30,15 @@ public final class MJHorizontalPageVC: UIPageViewController {
     
     override init(
         transitionStyle style: UIPageViewControllerTransitionStyle,
-        navigationOrientation: UIPageViewControllerNavigationOrientation, options: [String: Any]? = nil
+        navigationOrientation: UIPageViewControllerNavigationOrientation,
+        options: [String: Any]? = nil
     ) {
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: options)
         initBindings()
     }
     
     private func initBindings() {
+        
         delegate = model
         dataSource = model
         

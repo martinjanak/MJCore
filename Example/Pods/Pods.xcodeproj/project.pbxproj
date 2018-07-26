@@ -139,6 +139,7 @@
 		5B52691B20CEBA01006B3FC2 /* MJCoreDataModelSecured.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52691A20CEBA01006B3FC2 /* MJCoreDataModelSecured.swift */; };
 		5B52691D20CEBB66006B3FC2 /* MJCoreDataCrud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52691C20CEBB66006B3FC2 /* MJCoreDataCrud.swift */; };
 		5B52691F20CEBBB4006B3FC2 /* MJCoreDataCrudSecured.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52691E20CEBBB4006B3FC2 /* MJCoreDataCrudSecured.swift */; };
+		5B557FA021099BEF00A4EA0C /* UIStackView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B557F9F21099BEF00A4EA0C /* UIStackView+Ext.swift */; };
 		5B5C2E7F20F9E1E1001ED90C /* MJLocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5C2E7D20F9E1E0001ED90C /* MJLocalizedString.swift */; };
 		5B5C2E8020F9E1E1001ED90C /* MJLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5C2E7E20F9E1E0001ED90C /* MJLanguage.swift */; };
 		5B7233B147DB364DBE11D645CAA93375 /* Completable+AndThen.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED28D533686DF46636404EEC7E05AF9C /* Completable+AndThen.swift */; };
@@ -602,6 +603,7 @@
 		5B52691A20CEBA01006B3FC2 /* MJCoreDataModelSecured.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJCoreDataModelSecured.swift; sourceTree = "<group>"; };
 		5B52691C20CEBB66006B3FC2 /* MJCoreDataCrud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJCoreDataCrud.swift; sourceTree = "<group>"; };
 		5B52691E20CEBBB4006B3FC2 /* MJCoreDataCrudSecured.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJCoreDataCrudSecured.swift; sourceTree = "<group>"; };
+		5B557F9F21099BEF00A4EA0C /* UIStackView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Ext.swift"; sourceTree = "<group>"; };
 		5B5C2E7D20F9E1E0001ED90C /* MJLocalizedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJLocalizedString.swift; sourceTree = "<group>"; };
 		5B5C2E7E20F9E1E0001ED90C /* MJLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJLanguage.swift; sourceTree = "<group>"; };
 		5B754E6A20F4E17A0035D643 /* Observable+Unwrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Unwrap.swift"; sourceTree = "<group>"; };
@@ -1602,6 +1604,7 @@
 				A2D62BBD28590E6EB1B8785323B3FE48 /* UIView+TopSafeConstraint.swift */,
 				5B15B9ED20FCC3B8009D24C7 /* UIScrollView+ScrollTo.swift */,
 				5BF87627210769AB0003E9E8 /* Collection+Group.swift */,
+				5B557F9F21099BEF00A4EA0C /* UIStackView+Ext.swift */,
 			);
 			name = Ext;
 			path = MJCore/Classes/Ext;
@@ -2193,6 +2196,7 @@
 				5BF87628210769AB0003E9E8 /* Collection+Group.swift in Sources */,
 				5B2181A720EBA5CA00C623BE /* MJHorizontalPageVC.swift in Sources */,
 				00B17B62B2E97722A8AEFFD00CDA1105 /* MJHttpError.swift in Sources */,
+				5B557FA021099BEF00A4EA0C /* UIStackView+Ext.swift in Sources */,
 				70AD87B96CC2180BF7B6A0306F5CBD92 /* MJHttpMethod.swift in Sources */,
 				5BF265D520FB8417006D8838 /* MJValidityState.swift in Sources */,
 				5BA06F7F20F738F300B0E504 /* MJMonth.swift in Sources */,
