@@ -38,14 +38,14 @@ public class MJHorizontalPageVM: NSObject {
         viewControllers.asObservable()
             .filter { $0.count > 0 }
             .with(index.asObservable())
-            .map({ VCs, index in
+            .map { VCs, index in
                 let initialIndex = (index >= 0 && index < VCs.count) ? index : 0
                 return MJPageViewChange(
                     viewController: VCs[initialIndex],
                     direction: .forward,
                     animated: false
                 )
-            })
+            }
             .bind(to: changeSubject)
             .disposed(by: disposeBag)
     }

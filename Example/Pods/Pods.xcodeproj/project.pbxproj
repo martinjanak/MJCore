@@ -131,6 +131,7 @@
 		5B2E678141CE82223FF84602EBD7B1DC /* MJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCB75FCEDF716FB0813E998EE624ADE /* MJson.swift */; };
 		5B2FCAD22100585B00983C71 /* Observable+Batch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FCAD12100585B00983C71 /* Observable+Batch.swift */; };
 		5B2FCAD421005B8000983C71 /* Observable+BatchParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FCAD321005B8000983C71 /* Observable+BatchParse.swift */; };
+		5B31F9D7210C548C008F5AB5 /* Driver+Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B31F9D6210C548C008F5AB5 /* Driver+Unwrap.swift */; };
 		5B36180D20C5AFCF0006C3EB /* Observable+BatchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B36180C20C5AFCF0006C3EB /* Observable+BatchResult.swift */; };
 		5B44E5C720C27530003A6AD3 /* MJLocalAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B44E5C620C27530003A6AD3 /* MJLocalAuthService.swift */; };
 		5B4B15D020D4F1CB00EBA233 /* MJCoreDataSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B15CF20D4F1CB00EBA233 /* MJCoreDataSort.swift */; };
@@ -595,6 +596,7 @@
 		5B2181A620EBA5CA00C623BE /* MJHorizontalPageVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJHorizontalPageVM.swift; sourceTree = "<group>"; };
 		5B2FCAD12100585B00983C71 /* Observable+Batch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Batch.swift"; sourceTree = "<group>"; };
 		5B2FCAD321005B8000983C71 /* Observable+BatchParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+BatchParse.swift"; sourceTree = "<group>"; };
+		5B31F9D6210C548C008F5AB5 /* Driver+Unwrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Driver+Unwrap.swift"; sourceTree = "<group>"; };
 		5B36180C20C5AFCF0006C3EB /* Observable+BatchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+BatchResult.swift"; sourceTree = "<group>"; };
 		5B44E5C620C27530003A6AD3 /* MJLocalAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJLocalAuthService.swift; sourceTree = "<group>"; };
 		5B4B15CF20D4F1CB00EBA233 /* MJCoreDataSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJCoreDataSort.swift; sourceTree = "<group>"; };
@@ -1596,6 +1598,7 @@
 				5BF0283D20C9B2ED00B00A28 /* Observable+Empty.swift */,
 				5B02D5CE20BF176900F29406 /* Observable+None.swift */,
 				5B754E6A20F4E17A0035D643 /* Observable+Unwrap.swift */,
+				5B31F9D6210C548C008F5AB5 /* Driver+Unwrap.swift */,
 				5B901F972105BC7700E3E289 /* Observable+With.swift */,
 				18DA5EAADC722B25481647FD5B276948 /* RawRepresentable+Create.swift */,
 				889CE111333EF1906EA841DAAE55F0F9 /* String+Ext.swift */,
@@ -2179,6 +2182,7 @@
 				F09EF50EF2007288A1E3DB8CE69D8442 /* MJBaseHttpHelper.swift in Sources */,
 				DAE7B8864F2E65B66DC894578BC980E3 /* MJCodableUtil.swift in Sources */,
 				6C7D70176A42E60525ADEA431E4B1B8B /* MJCore-dummy.m in Sources */,
+				5B31F9D7210C548C008F5AB5 /* Driver+Unwrap.swift in Sources */,
 				5B2181A920EBA5CA00C623BE /* MJHorizontalScrollVC.swift in Sources */,
 				0C8478F5FF3D1F0E77466A8BE540D1C8 /* MJCoreDataModel.swift in Sources */,
 				5B5C2E7F20F9E1E1001ED90C /* MJLocalizedString.swift in Sources */,

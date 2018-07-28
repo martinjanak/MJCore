@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 open class MJFlowController<Service> {
     
@@ -133,9 +134,9 @@ open class MJFlowController<Service> {
         _ controller: MJModalViewController<View, Result>,
         animated: Bool = true,
         completion: (() -> Void)? = nil
-    ) -> Observable<Result> {
+    ) -> Driver<Result> {
         
-        let subject = PublishSubject<Result>()
+        let subject = PublishSubject<Result?>()
         
         controller.modalPresentationStyle = .overFullScreen
         controller.modalTransitionStyle = .crossDissolve
@@ -147,7 +148,9 @@ open class MJFlowController<Service> {
         }
         
         present(controller, animated: animated, completion: completion)
-        return subject.asObservable()
+        return subject
+            .asDriver(onErrorJustReturn: nil)
+            .unwrap()
     }
     
     public func presentModally(
