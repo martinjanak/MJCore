@@ -143,6 +143,10 @@
 		5B557FA021099BEF00A4EA0C /* UIStackView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B557F9F21099BEF00A4EA0C /* UIStackView+Ext.swift */; };
 		5B5C2E7F20F9E1E1001ED90C /* MJLocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5C2E7D20F9E1E0001ED90C /* MJLocalizedString.swift */; };
 		5B5C2E8020F9E1E1001ED90C /* MJLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5C2E7E20F9E1E0001ED90C /* MJLanguage.swift */; };
+		5B6D8047210DBB4000D9EAB2 /* MJCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D8046210DBB4000D9EAB2 /* MJCollectionView.swift */; };
+		5B6D8049210DBB4E00D9EAB2 /* MJCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D8048210DBB4E00D9EAB2 /* MJCollectionViewCell.swift */; };
+		5B6D804C210DBCBC00D9EAB2 /* MJTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D804B210DBCBC00D9EAB2 /* MJTableView.swift */; };
+		5B6D804E210DBCC800D9EAB2 /* MJTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D804D210DBCC800D9EAB2 /* MJTableViewCell.swift */; };
 		5B7233B147DB364DBE11D645CAA93375 /* Completable+AndThen.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED28D533686DF46636404EEC7E05AF9C /* Completable+AndThen.swift */; };
 		5B754E6B20F4E17A0035D643 /* Observable+Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B754E6A20F4E17A0035D643 /* Observable+Unwrap.swift */; };
 		5B754E7420F4EB5D0035D643 /* MJModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B754E7320F4EB5D0035D643 /* MJModalViewController.swift */; };
@@ -608,6 +612,10 @@
 		5B557F9F21099BEF00A4EA0C /* UIStackView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Ext.swift"; sourceTree = "<group>"; };
 		5B5C2E7D20F9E1E0001ED90C /* MJLocalizedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJLocalizedString.swift; sourceTree = "<group>"; };
 		5B5C2E7E20F9E1E0001ED90C /* MJLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJLanguage.swift; sourceTree = "<group>"; };
+		5B6D8046210DBB4000D9EAB2 /* MJCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJCollectionView.swift; sourceTree = "<group>"; };
+		5B6D8048210DBB4E00D9EAB2 /* MJCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJCollectionViewCell.swift; sourceTree = "<group>"; };
+		5B6D804B210DBCBC00D9EAB2 /* MJTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJTableView.swift; sourceTree = "<group>"; };
+		5B6D804D210DBCC800D9EAB2 /* MJTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJTableViewCell.swift; sourceTree = "<group>"; };
 		5B754E6A20F4E17A0035D643 /* Observable+Unwrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Unwrap.swift"; sourceTree = "<group>"; };
 		5B754E7320F4EB5D0035D643 /* MJModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJModalViewController.swift; sourceTree = "<group>"; };
 		5B901F972105BC7700E3E289 /* Observable+With.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+With.swift"; sourceTree = "<group>"; };
@@ -1220,6 +1228,15 @@
 			path = MJCore/Classes/Localization;
 			sourceTree = "<group>";
 		};
+		5B6D804A210DBCA800D9EAB2 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				5B6D804B210DBCBC00D9EAB2 /* MJTableView.swift */,
+				5B6D804D210DBCC800D9EAB2 /* MJTableViewCell.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
 		5BA06F7B20F738F300B0E504 /* Date */ = {
 			isa = PBXGroup;
 			children = (
@@ -1234,6 +1251,7 @@
 			isa = PBXGroup;
 			children = (
 				5BF87629210779060003E9E8 /* CollectionView */,
+				5B6D804A210DBCA800D9EAB2 /* TableView */,
 				5BF265CA20FB83F2006D8838 /* TextField */,
 			);
 			name = View;
@@ -1264,6 +1282,8 @@
 		5BF87629210779060003E9E8 /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				5B6D8046210DBB4000D9EAB2 /* MJCollectionView.swift */,
+				5B6D8048210DBB4E00D9EAB2 /* MJCollectionViewCell.swift */,
 				5BF8762A210779270003E9E8 /* MJResizingCollectionView.swift */,
 			);
 			path = CollectionView;
@@ -2197,6 +2217,7 @@
 				A39D4E454A87BCD28D6DA7F878E84B0C /* MJHttpClient.swift in Sources */,
 				5B50320B20C450790060FC35 /* MJKeyType.swift in Sources */,
 				7EC90AFF0B5D728EED73E24A26B8F8BB /* MJHttpEndpoints.swift in Sources */,
+				5B6D8049210DBB4E00D9EAB2 /* MJCollectionViewCell.swift in Sources */,
 				5BF87628210769AB0003E9E8 /* Collection+Group.swift in Sources */,
 				5B2181A720EBA5CA00C623BE /* MJHorizontalPageVC.swift in Sources */,
 				00B17B62B2E97722A8AEFFD00CDA1105 /* MJHttpError.swift in Sources */,
@@ -2215,6 +2236,7 @@
 				5BC13E2720D0502A00454828 /* MJViewComponent.swift in Sources */,
 				EB9123A2B6CE9B0C2CB40BA6EF3E88F9 /* MJLogService.swift in Sources */,
 				651FBEB6B0F33433E460F2BC43458D4F /* MJPoller.swift in Sources */,
+				5B6D804C210DBCBC00D9EAB2 /* MJTableView.swift in Sources */,
 				A0059E0A03BFCD4E82D3FD2632190711 /* MJReachability.swift in Sources */,
 				E74329E78ECC66E560E487C5E61FCAF9 /* MJRemoteNotification.swift in Sources */,
 				5BF0284020C9CC2300B00A28 /* MJCoreDataFilter.swift in Sources */,
@@ -2232,6 +2254,7 @@
 				BD4669CA2E6356E0007BED2B036DD4FC /* MJResultWithProgress.swift in Sources */,
 				5B2E678141CE82223FF84602EBD7B1DC /* MJson.swift in Sources */,
 				F7AB6711A6DA8C7A5B64AFCACB5C642F /* MJsonModel.swift in Sources */,
+				5B6D804E210DBCC800D9EAB2 /* MJTableViewCell.swift in Sources */,
 				59ECF56BB9DDF704CC52B7643E2922DF /* MJTwoWayBinding.swift in Sources */,
 				ABEBC4A963FF7EC20595D78EE6A40CD9 /* MJUserDefaultsService.swift in Sources */,
 				42FFD9A9CDAC4A9058B8573E0399A5E5 /* MJView.swift in Sources */,
@@ -2256,6 +2279,7 @@
 				605DD648ECBCE3EAC4F5822BCFBD9FF5 /* RawRepresentable+Create.swift in Sources */,
 				A238273A732B47D48DAF6B31373F33A9 /* String+Ext.swift in Sources */,
 				5B754E6B20F4E17A0035D643 /* Observable+Unwrap.swift in Sources */,
+				5B6D8047210DBB4000D9EAB2 /* MJCollectionView.swift in Sources */,
 				5B36180D20C5AFCF0006C3EB /* Observable+BatchResult.swift in Sources */,
 				34C497AE556AE03275643E0D62EEF86D /* UINavigationController+Root.swift in Sources */,
 				12252DB55373C62061B2D744ACC1C383 /* UIView+TopSafeConstraint.swift in Sources */,
