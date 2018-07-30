@@ -47,14 +47,13 @@ extension MJCoreDataService {
         guard let id = model.id else {
             throw MJCoreDataError.modelHasNoId
         }
-        let existingEntity = self.privateContext.object(with: id)
-        if !existingEntity.isFault {
-            self.privateContext.delete(existingEntity)
-            _ = try model.createEntity(context: self.privateContext)
-            return model
-        } else {
+        let existingEntity = try self.privateContext.existingObject(with: id)
+        guard !existingEntity.isFault else {
             throw MJCoreDataError.entityDoesNotExist
         }
+        self.privateContext.delete(existingEntity)
+        _ = try model.createEntity(context: self.privateContext)
+        return model
     }
     
     public func updateSync<Model: MJCoreDataModel>(_ models: [Model]) throws -> [Model] {
@@ -66,7 +65,7 @@ extension MJCoreDataService {
         }
         var success = true
         for model in models {
-            let existingEntity = self.privateContext.object(with: model.id!)
+            let existingEntity = try self.privateContext.existingObject(with: model.id!)
             if !existingEntity.isFault {
                 self.privateContext.delete(existingEntity)
                 _ = try model.createEntity(context: self.privateContext)
