@@ -79,6 +79,30 @@ open class MJFlowController<Service> {
         )
     }
     
+    public func presentModally(
+        _ flowController: MJFlowController<Service>,
+        animated: Bool = true,
+        completion: (() -> Void)? = nil
+    ) {
+        guard let navigation = navigation else { return }
+        childFlowController = flowController
+        flowController.parentFlowController = self
+        flowController.endClosure = { [weak flowControllerWeak = flowController, weak navigationWeak = navigation] in
+            flowControllerWeak?.dismissBefore(animated: animated) {
+                navigationWeak?.dismiss(animated: animated, completion: nil)
+            }
+        }
+        let navigationController = UINavigationController()
+        flowController.start(navigation: navigationController)
+        navigationController.modalPresentationStyle = .overFullScreen
+        navigationController.modalTransitionStyle = .crossDissolve
+        navigation.present(
+            navigationController,
+            animated: animated,
+            completion: completion
+        )
+    }
+    
     public func back(
         animated: Bool = true,
         completion: (() -> Void)? = nil
@@ -123,10 +147,6 @@ open class MJFlowController<Service> {
         dismissBefore(animated: animated) {
             self.navigation?.present(controller, animated: animated, completion: completion)
         }
-    }
-    
-    public func present(flow: MJFlowController) {
-        // todo
     }
     
     @discardableResult
