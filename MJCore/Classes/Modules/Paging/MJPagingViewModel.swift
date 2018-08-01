@@ -43,7 +43,8 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
         .asObservable()
         .distinctUntilChanged()
     
-    private let currentIndex = Variable<Int>(0)
+    private let currentIndexVariable = Variable<Int>(0)
+    public lazy var currentIndex = currentIndexVariable.asObservable()
     
     private let changeSubject = PublishSubject<MJPagingChange?>()
     public lazy var change = changeSubject.asObservable()
@@ -107,7 +108,7 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
             .observeOn(privateScheduler)
             .distinctUntilChanged()
             .withLatestFrom(pageModules.asObservable()) { ($0, $1) }
-            .withLatestFrom(currentIndex.asObservable()) { ($0.0, $0.1, $1) }
+            .withLatestFrom(currentIndexVariable.asObservable()) { ($0.0, $0.1, $1) }
             .bind(onNext: { [weak self] index, modules, currentIndex in
                 guard
                     index != currentIndex,
@@ -135,7 +136,7 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
             .map { (pageViewController, models) in
                 return models.index(of: pageViewController) ?? 0
             }
-            .bind(to: currentIndex)
+            .bind(to: currentIndexVariable)
             .disposed(by: disposeBag)
     }
     
@@ -219,7 +220,7 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
         }
         let models = pagingModels.value
         if let index = models.index(of: pageViewController) {
-            currentIndex.value = index
+            currentIndexVariable.value = index
         }
     }
     
