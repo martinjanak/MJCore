@@ -38,6 +38,9 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
     public let pagingModels = Variable([PagingModel]())
     public let pageModules = Variable([MJPageModule<PagingModel>]())
     
+    private let currentModuleVariable = Variable<MJPageModule<PagingModel>?>(nil)
+    public lazy var currentModule = currentModuleVariable.asObservable()
+    
     private let countVariable = Variable<Int>(0)
     public lazy var count = countVariable
         .asObservable()
@@ -58,6 +61,7 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
         bindCount()
         bindIndexSelection()
         bindChangeCompletedWith()
+        bindCurrentModule()
     }
     
     private func bindPagingModels() {
@@ -106,7 +110,6 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
     private func bindIndexSelection() {
         setIndex.asObservable()
             .observeOn(privateScheduler)
-            .distinctUntilChanged()
             .withLatestFrom(pageModules.asObservable()) { ($0, $1) }
             .withLatestFrom(currentIndexVariable.asObservable()) { ($0.0, $0.1, $1) }
             .bind(onNext: { [weak self] index, modules, currentIndex in
@@ -137,6 +140,17 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
                 return models.index(of: pageViewController) ?? 0
             }
             .bind(to: currentIndexVariable)
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindCurrentModule() {
+        currentIndexVariable.asObservable()
+            .observeOn(privateScheduler)
+            .with(pageModules.asObservable())
+            .map { (currentIndex, modules) in
+                return modules[currentIndex]
+            }
+            .bind(to: currentModuleVariable)
             .disposed(by: disposeBag)
     }
     
