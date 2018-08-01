@@ -124,10 +124,8 @@
 		5B15B9EA20FC857B009D24C7 /* MJHorizonatlScrollVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B15B9E920FC857B009D24C7 /* MJHorizonatlScrollVM.swift */; };
 		5B15B9EC20FC9A6D009D24C7 /* UIView+GestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B15B9EB20FC9A6D009D24C7 /* UIView+GestureRecognizer.swift */; };
 		5B15B9EE20FCC3B8009D24C7 /* UIScrollView+ScrollTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B15B9ED20FCC3B8009D24C7 /* UIScrollView+ScrollTo.swift */; };
-		5B2181A720EBA5CA00C623BE /* MJHorizontalPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2181A320EBA5CA00C623BE /* MJHorizontalPageVC.swift */; };
 		5B2181A820EBA5CA00C623BE /* MJHorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2181A420EBA5CA00C623BE /* MJHorizontalScrollView.swift */; };
 		5B2181A920EBA5CA00C623BE /* MJHorizontalScrollVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2181A520EBA5CA00C623BE /* MJHorizontalScrollVC.swift */; };
-		5B2181AA20EBA5CA00C623BE /* MJHorizontalPageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2181A620EBA5CA00C623BE /* MJHorizontalPageVM.swift */; };
 		5B2E678141CE82223FF84602EBD7B1DC /* MJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCB75FCEDF716FB0813E998EE624ADE /* MJson.swift */; };
 		5B2FCAD22100585B00983C71 /* Observable+Batch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FCAD12100585B00983C71 /* Observable+Batch.swift */; };
 		5B2FCAD421005B8000983C71 /* Observable+BatchParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FCAD321005B8000983C71 /* Observable+BatchParse.swift */; };
@@ -152,6 +150,16 @@
 		5B754E6B20F4E17A0035D643 /* Observable+Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B754E6A20F4E17A0035D643 /* Observable+Unwrap.swift */; };
 		5B754E7420F4EB5D0035D643 /* MJModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B754E7320F4EB5D0035D643 /* MJModalViewController.swift */; };
 		5B901F982105BC7700E3E289 /* Observable+With.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B901F972105BC7700E3E289 /* Observable+With.swift */; };
+		5B99710D211173BC00C20776 /* MJHorizontalPageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B99710B211173BC00C20776 /* MJHorizontalPageVM.swift */; };
+		5B99710E211173BC00C20776 /* MJHorizontalPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B99710C211173BC00C20776 /* MJHorizontalPageVC.swift */; };
+		5B9971112111747400C20776 /* MJPagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9971102111747400C20776 /* MJPagingViewController.swift */; };
+		5B9971132111748000C20776 /* MJPagingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9971122111748000C20776 /* MJPagingViewModel.swift */; };
+		5B997115211174BA00C20776 /* MJPagingModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B997114211174BA00C20776 /* MJPagingModelType.swift */; };
+		5B997117211175D900C20776 /* MJPagingViewControllerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B997116211175D900C20776 /* MJPagingViewControllerType.swift */; };
+		5B9971192111774E00C20776 /* Array+Paging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9971182111774E00C20776 /* Array+Paging.swift */; };
+		5B99711B211179E800C20776 /* MJPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B99711A211179E800C20776 /* MJPageViewModel.swift */; };
+		5B99711D21117D9000C20776 /* Array+Equals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B99711C21117D9000C20776 /* Array+Equals.swift */; };
+		5B99711F21117F8B00C20776 /* MJPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B99711E21117F8B00C20776 /* MJPageViewController.swift */; };
 		5BA06F7E20F738F300B0E504 /* MJYearMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA06F7C20F738F300B0E504 /* MJYearMonth.swift */; };
 		5BA06F7F20F738F300B0E504 /* MJMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA06F7D20F738F300B0E504 /* MJMonth.swift */; };
 		5BC13E2720D0502A00454828 /* MJViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC13E2620D0502A00454828 /* MJViewComponent.swift */; };
@@ -595,10 +603,8 @@
 		5B15B9EB20FC9A6D009D24C7 /* UIView+GestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+GestureRecognizer.swift"; sourceTree = "<group>"; };
 		5B15B9ED20FCC3B8009D24C7 /* UIScrollView+ScrollTo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+ScrollTo.swift"; sourceTree = "<group>"; };
 		5B1C053449E8FF44CB648F511C203C5C /* PublishRelay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PublishRelay.swift; path = RxCocoa/Traits/PublishRelay.swift; sourceTree = "<group>"; };
-		5B2181A320EBA5CA00C623BE /* MJHorizontalPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJHorizontalPageVC.swift; sourceTree = "<group>"; };
 		5B2181A420EBA5CA00C623BE /* MJHorizontalScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJHorizontalScrollView.swift; sourceTree = "<group>"; };
 		5B2181A520EBA5CA00C623BE /* MJHorizontalScrollVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJHorizontalScrollVC.swift; sourceTree = "<group>"; };
-		5B2181A620EBA5CA00C623BE /* MJHorizontalPageVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJHorizontalPageVM.swift; sourceTree = "<group>"; };
 		5B2FCAD12100585B00983C71 /* Observable+Batch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Batch.swift"; sourceTree = "<group>"; };
 		5B2FCAD321005B8000983C71 /* Observable+BatchParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+BatchParse.swift"; sourceTree = "<group>"; };
 		5B31F9D6210C548C008F5AB5 /* Driver+Unwrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Driver+Unwrap.swift"; sourceTree = "<group>"; };
@@ -621,6 +627,16 @@
 		5B754E6A20F4E17A0035D643 /* Observable+Unwrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Unwrap.swift"; sourceTree = "<group>"; };
 		5B754E7320F4EB5D0035D643 /* MJModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJModalViewController.swift; sourceTree = "<group>"; };
 		5B901F972105BC7700E3E289 /* Observable+With.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+With.swift"; sourceTree = "<group>"; };
+		5B99710B211173BC00C20776 /* MJHorizontalPageVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJHorizontalPageVM.swift; sourceTree = "<group>"; };
+		5B99710C211173BC00C20776 /* MJHorizontalPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJHorizontalPageVC.swift; sourceTree = "<group>"; };
+		5B9971102111747400C20776 /* MJPagingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJPagingViewController.swift; sourceTree = "<group>"; };
+		5B9971122111748000C20776 /* MJPagingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJPagingViewModel.swift; sourceTree = "<group>"; };
+		5B997114211174BA00C20776 /* MJPagingModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJPagingModelType.swift; sourceTree = "<group>"; };
+		5B997116211175D900C20776 /* MJPagingViewControllerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJPagingViewControllerType.swift; sourceTree = "<group>"; };
+		5B9971182111774E00C20776 /* Array+Paging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Paging.swift"; sourceTree = "<group>"; };
+		5B99711A211179E800C20776 /* MJPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJPageViewModel.swift; sourceTree = "<group>"; };
+		5B99711C21117D9000C20776 /* Array+Equals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Equals.swift"; sourceTree = "<group>"; };
+		5B99711E21117F8B00C20776 /* MJPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJPageViewController.swift; sourceTree = "<group>"; };
 		5BA06F7C20F738F300B0E504 /* MJYearMonth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJYearMonth.swift; sourceTree = "<group>"; };
 		5BA06F7D20F738F300B0E504 /* MJMonth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJMonth.swift; sourceTree = "<group>"; };
 		5BC13E2620D0502A00454828 /* MJViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJViewComponent.swift; sourceTree = "<group>"; };
@@ -1170,8 +1186,8 @@
 				5B2181A420EBA5CA00C623BE /* MJHorizontalScrollView.swift */,
 				5B2181A520EBA5CA00C623BE /* MJHorizontalScrollVC.swift */,
 				5B15B9E920FC857B009D24C7 /* MJHorizonatlScrollVM.swift */,
-				5B2181A320EBA5CA00C623BE /* MJHorizontalPageVC.swift */,
-				5B2181A620EBA5CA00C623BE /* MJHorizontalPageVM.swift */,
+				5B99710C211173BC00C20776 /* MJHorizontalPageVC.swift */,
+				5B99710B211173BC00C20776 /* MJHorizontalPageVM.swift */,
 			);
 			path = HorizontalScroll;
 			sourceTree = "<group>";
@@ -1278,6 +1294,20 @@
 				A2D62BBD28590E6EB1B8785323B3FE48 /* UIView+TopSafeConstraint.swift */,
 			);
 			path = UIView;
+			sourceTree = "<group>";
+		};
+		5B99710F2111741500C20776 /* Paging */ = {
+			isa = PBXGroup;
+			children = (
+				5B9971102111747400C20776 /* MJPagingViewController.swift */,
+				5B9971122111748000C20776 /* MJPagingViewModel.swift */,
+				5B997114211174BA00C20776 /* MJPagingModelType.swift */,
+				5B997116211175D900C20776 /* MJPagingViewControllerType.swift */,
+				5B9971182111774E00C20776 /* Array+Paging.swift */,
+				5B99711E21117F8B00C20776 /* MJPageViewController.swift */,
+				5B99711A211179E800C20776 /* MJPageViewModel.swift */,
+			);
+			path = Paging;
 			sourceTree = "<group>";
 		};
 		5BA06F7B20F738F300B0E504 /* Date */ = {
@@ -1579,6 +1609,7 @@
 		9C41D6581043F006969903D945BDF2E0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				5B99710F2111741500C20776 /* Paging */,
 				5B0870D820F1F442007DD392 /* HorizontalScroll */,
 				970479B89BE7BCB05D0525CDA7607B6E /* MJFlowController.swift */,
 				BD8A1DEB772C4E78A9FD921048C05C20 /* MJView.swift */,
@@ -1655,6 +1686,7 @@
 				5B15B9ED20FCC3B8009D24C7 /* UIScrollView+ScrollTo.swift */,
 				5BF87627210769AB0003E9E8 /* Collection+Group.swift */,
 				5B557F9F21099BEF00A4EA0C /* UIStackView+Ext.swift */,
+				5B99711C21117D9000C20776 /* Array+Equals.swift */,
 			);
 			name = Ext;
 			path = MJCore/Classes/Ext;
@@ -2224,11 +2256,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				3278C0F0850B4AC6CAF8464870A8D2F3 /* Array+MJson.swift in Sources */,
+				5B9971112111747400C20776 /* MJPagingViewController.swift in Sources */,
 				6A6DBA6577F847C3A7BD8A8891565CDB /* Date+Ext.swift in Sources */,
 				52F7D891230780D9C6AA185C3B3CF6FB /* MJBackgroundPoller.swift in Sources */,
 				F09EF50EF2007288A1E3DB8CE69D8442 /* MJBaseHttpHelper.swift in Sources */,
 				DAE7B8864F2E65B66DC894578BC980E3 /* MJCodableUtil.swift in Sources */,
 				6C7D70176A42E60525ADEA431E4B1B8B /* MJCore-dummy.m in Sources */,
+				5B997117211175D900C20776 /* MJPagingViewControllerType.swift in Sources */,
+				5B99711F21117F8B00C20776 /* MJPageViewController.swift in Sources */,
 				5B31F9D7210C548C008F5AB5 /* Driver+Unwrap.swift in Sources */,
 				5B2181A920EBA5CA00C623BE /* MJHorizontalScrollVC.swift in Sources */,
 				0C8478F5FF3D1F0E77466A8BE540D1C8 /* MJCoreDataModel.swift in Sources */,
@@ -2246,7 +2281,6 @@
 				7EC90AFF0B5D728EED73E24A26B8F8BB /* MJHttpEndpoints.swift in Sources */,
 				5B6D8049210DBB4E00D9EAB2 /* MJCollectionViewCell.swift in Sources */,
 				5BF87628210769AB0003E9E8 /* Collection+Group.swift in Sources */,
-				5B2181A720EBA5CA00C623BE /* MJHorizontalPageVC.swift in Sources */,
 				00B17B62B2E97722A8AEFFD00CDA1105 /* MJHttpError.swift in Sources */,
 				5B557FA021099BEF00A4EA0C /* UIStackView+Ext.swift in Sources */,
 				70AD87B96CC2180BF7B6A0306F5CBD92 /* MJHttpMethod.swift in Sources */,
@@ -2259,6 +2293,7 @@
 				5B4B15D620D53F0300EBA233 /* Animation.swift in Sources */,
 				CA530C754B1A511E6CCBA32B139F3A4A /* MJLocalNotifications.swift in Sources */,
 				9087FE4E0B8E24D6D44DA36FD0572EB8 /* MJLocalNotificationService.swift in Sources */,
+				5B9971192111774E00C20776 /* Array+Paging.swift in Sources */,
 				5BF265D420FB8417006D8838 /* MJForm.swift in Sources */,
 				5BC13E2720D0502A00454828 /* MJViewComponent.swift in Sources */,
 				EB9123A2B6CE9B0C2CB40BA6EF3E88F9 /* MJLogService.swift in Sources */,
@@ -2274,6 +2309,7 @@
 				5B44E5C720C27530003A6AD3 /* MJLocalAuthService.swift in Sources */,
 				5B02D5CF20BF176900F29406 /* Observable+None.swift in Sources */,
 				5B52691D20CEBB66006B3FC2 /* MJCoreDataCrud.swift in Sources */,
+				5B9971132111748000C20776 /* MJPagingViewModel.swift in Sources */,
 				4BE0D73CEB0416296E5CD35493810190 /* MJResendRequest.swift in Sources */,
 				5BF265D320FB8417006D8838 /* MJFormInput.swift in Sources */,
 				5B2181A820EBA5CA00C623BE /* MJHorizontalScrollView.swift in Sources */,
@@ -2284,6 +2320,9 @@
 				F7AB6711A6DA8C7A5B64AFCACB5C642F /* MJsonModel.swift in Sources */,
 				5B6D804E210DBCC800D9EAB2 /* MJTableViewCell.swift in Sources */,
 				59ECF56BB9DDF704CC52B7643E2922DF /* MJTwoWayBinding.swift in Sources */,
+				5B997115211174BA00C20776 /* MJPagingModelType.swift in Sources */,
+				5B99710D211173BC00C20776 /* MJHorizontalPageVM.swift in Sources */,
+				5B99711D21117D9000C20776 /* Array+Equals.swift in Sources */,
 				ABEBC4A963FF7EC20595D78EE6A40CD9 /* MJUserDefaultsService.swift in Sources */,
 				42FFD9A9CDAC4A9058B8573E0399A5E5 /* MJView.swift in Sources */,
 				5BF265CC20FB83F2006D8838 /* MJTextField.swift in Sources */,
@@ -2292,16 +2331,17 @@
 				A16D57686B250C8D695A9859462732B4 /* Observable+Decode.swift in Sources */,
 				4105815956827EE44810C49A37EC1DC6 /* Observable+Failure.swift in Sources */,
 				252818B08048054B91773F39C90C3A3D /* Observable+MJLogService.swift in Sources */,
-				5B2181AA20EBA5CA00C623BE /* MJHorizontalPageVM.swift in Sources */,
 				5B15B9EE20FCC3B8009D24C7 /* UIScrollView+ScrollTo.swift in Sources */,
 				EA43B11B82E584161393C427B846B688 /* Observable+MJResultWithProgress.swift in Sources */,
 				5BF0283E20C9B2ED00B00A28 /* Observable+Empty.swift in Sources */,
 				C5B37D11ADD3FA9ED906C8273D24DC08 /* Observable+Parse.swift in Sources */,
+				5B99710E211173BC00C20776 /* MJHorizontalPageVC.swift in Sources */,
 				5BF265D720FB8417006D8838 /* MJStringValidator.swift in Sources */,
 				5BF8762B210779270003E9E8 /* MJResizingCollectionView.swift in Sources */,
 				3FB2E28422A553F901654557D4D4AF1E /* Observable+Simplify.swift in Sources */,
 				7849F7BAA434E4D54FC77727C5723672 /* Observable+Store.swift in Sources */,
 				A3A95C4674A4A35947F2E4DC0A4369A8 /* Observable+Success.swift in Sources */,
+				5B99711B211179E800C20776 /* MJPageViewModel.swift in Sources */,
 				5B754E7420F4EB5D0035D643 /* MJModalViewController.swift in Sources */,
 				5B2FCAD421005B8000983C71 /* Observable+BatchParse.swift in Sources */,
 				605DD648ECBCE3EAC4F5822BCFBD9FF5 /* RawRepresentable+Create.swift in Sources */,
