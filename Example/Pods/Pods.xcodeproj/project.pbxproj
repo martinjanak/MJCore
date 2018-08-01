@@ -160,6 +160,9 @@
 		5B99711B211179E800C20776 /* MJPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B99711A211179E800C20776 /* MJPageViewModel.swift */; };
 		5B99711D21117D9000C20776 /* Array+Equals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B99711C21117D9000C20776 /* Array+Equals.swift */; };
 		5B99711F21117F8B00C20776 /* MJPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B99711E21117F8B00C20776 /* MJPageViewController.swift */; };
+		5B99712121118C8600C20776 /* MJPagingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B99712021118C8600C20776 /* MJPagingScrollView.swift */; };
+		5B99712321118C9700C20776 /* MJPagingScrollVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B99712221118C9700C20776 /* MJPagingScrollVC.swift */; };
+		5B99712521118CEA00C20776 /* MJPagingScrollVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B99712421118CEA00C20776 /* MJPagingScrollVM.swift */; };
 		5BA06F7E20F738F300B0E504 /* MJYearMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA06F7C20F738F300B0E504 /* MJYearMonth.swift */; };
 		5BA06F7F20F738F300B0E504 /* MJMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA06F7D20F738F300B0E504 /* MJMonth.swift */; };
 		5BC13E2720D0502A00454828 /* MJViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC13E2620D0502A00454828 /* MJViewComponent.swift */; };
@@ -637,6 +640,9 @@
 		5B99711A211179E800C20776 /* MJPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJPageViewModel.swift; sourceTree = "<group>"; };
 		5B99711C21117D9000C20776 /* Array+Equals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Equals.swift"; sourceTree = "<group>"; };
 		5B99711E21117F8B00C20776 /* MJPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJPageViewController.swift; sourceTree = "<group>"; };
+		5B99712021118C8600C20776 /* MJPagingScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJPagingScrollView.swift; sourceTree = "<group>"; };
+		5B99712221118C9700C20776 /* MJPagingScrollVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJPagingScrollVC.swift; sourceTree = "<group>"; };
+		5B99712421118CEA00C20776 /* MJPagingScrollVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJPagingScrollVM.swift; sourceTree = "<group>"; };
 		5BA06F7C20F738F300B0E504 /* MJYearMonth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJYearMonth.swift; sourceTree = "<group>"; };
 		5BA06F7D20F738F300B0E504 /* MJMonth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJMonth.swift; sourceTree = "<group>"; };
 		5BC13E2620D0502A00454828 /* MJViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJViewComponent.swift; sourceTree = "<group>"; };
@@ -1299,6 +1305,9 @@
 		5B99710F2111741500C20776 /* Paging */ = {
 			isa = PBXGroup;
 			children = (
+				5B99712021118C8600C20776 /* MJPagingScrollView.swift */,
+				5B99712221118C9700C20776 /* MJPagingScrollVC.swift */,
+				5B99712421118CEA00C20776 /* MJPagingScrollVM.swift */,
 				5B9971102111747400C20776 /* MJPagingViewController.swift */,
 				5B9971122111748000C20776 /* MJPagingViewModel.swift */,
 				5B997114211174BA00C20776 /* MJPagingModelType.swift */,
@@ -2291,6 +2300,7 @@
 				5B52691F20CEBBB4006B3FC2 /* MJCoreDataCrudSecured.swift in Sources */,
 				5B901F982105BC7700E3E289 /* Observable+With.swift in Sources */,
 				5B4B15D620D53F0300EBA233 /* Animation.swift in Sources */,
+				5B99712121118C8600C20776 /* MJPagingScrollView.swift in Sources */,
 				CA530C754B1A511E6CCBA32B139F3A4A /* MJLocalNotifications.swift in Sources */,
 				9087FE4E0B8E24D6D44DA36FD0572EB8 /* MJLocalNotificationService.swift in Sources */,
 				5B9971192111774E00C20776 /* Array+Paging.swift in Sources */,
@@ -2318,6 +2328,7 @@
 				BD4669CA2E6356E0007BED2B036DD4FC /* MJResultWithProgress.swift in Sources */,
 				5B2E678141CE82223FF84602EBD7B1DC /* MJson.swift in Sources */,
 				F7AB6711A6DA8C7A5B64AFCACB5C642F /* MJsonModel.swift in Sources */,
+				5B99712521118CEA00C20776 /* MJPagingScrollVM.swift in Sources */,
 				5B6D804E210DBCC800D9EAB2 /* MJTableViewCell.swift in Sources */,
 				59ECF56BB9DDF704CC52B7643E2922DF /* MJTwoWayBinding.swift in Sources */,
 				5B997115211174BA00C20776 /* MJPagingModelType.swift in Sources */,
@@ -2345,6 +2356,7 @@
 				5B754E7420F4EB5D0035D643 /* MJModalViewController.swift in Sources */,
 				5B2FCAD421005B8000983C71 /* Observable+BatchParse.swift in Sources */,
 				605DD648ECBCE3EAC4F5822BCFBD9FF5 /* RawRepresentable+Create.swift in Sources */,
+				5B99712321118C9700C20776 /* MJPagingScrollVC.swift in Sources */,
 				A238273A732B47D48DAF6B31373F33A9 /* String+Ext.swift in Sources */,
 				5B754E6B20F4E17A0035D643 /* Observable+Unwrap.swift in Sources */,
 				5B6D8047210DBB4000D9EAB2 /* MJCollectionView.swift in Sources */,
