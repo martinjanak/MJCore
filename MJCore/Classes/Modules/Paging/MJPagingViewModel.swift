@@ -30,7 +30,6 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
     
     public typealias MJPageConstructor = (PagingModel) -> MJPageModule<PagingModel>
     
-    private let privateScheduler = SerialDispatchQueueScheduler(internalSerialQueueName: "PagingQueue")
     private let disposeBag = DisposeBag()
     
     private var pageContructors = [String: MJPageConstructor]()
@@ -66,7 +65,7 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
     
     private func bindPagingModels() {
         pagingModels.asObservable()
-            .observeOn(privateScheduler)
+            .observeOn(MainScheduler.instance)
             .with(pageModules.asObservable())
             .map { [weak self] (pagingModels, pageModules) -> MJPagingChange? in
                 guard let strongSelf = self else { return nil }
@@ -101,7 +100,7 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
     
     private func bindCount() {
         pageModules.asObservable()
-            .observeOn(privateScheduler)
+            .observeOn(MainScheduler.instance)
             .map { $0.count }
             .bind(to: countVariable)
             .disposed(by: disposeBag)
@@ -109,7 +108,7 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
     
     private func bindIndexSelection() {
         setIndex.asObservable()
-            .observeOn(privateScheduler)
+            .observeOn(MainScheduler.instance)
             .withLatestFrom(pageModules.asObservable()) { ($0, $1) }
             .withLatestFrom(currentIndexVariable.asObservable()) { ($0.0, $0.1, $1) }
             .bind(onNext: { [weak self] index, modules, currentIndex in
@@ -134,7 +133,7 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
     
     private func bindChangeCompletedWith() {
         changeCompletedWith.asObservable()
-            .observeOn(privateScheduler)
+            .observeOn(MainScheduler.instance)
             .unwrap()
             .with(pagingModels.asObservable())
             .map { (pageViewController, models) in
@@ -146,7 +145,7 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
     
     private func bindCurrentModule() {
         currentIndexVariable.asObservable()
-            .observeOn(privateScheduler)
+            .observeOn(MainScheduler.instance)
             .with(pageModules.asObservable())
             .map { (currentIndex, modules) -> MJPageModule<PagingModel>? in
                 guard let currentIndex = currentIndex,
