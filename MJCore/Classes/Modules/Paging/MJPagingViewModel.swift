@@ -10,8 +10,8 @@ import RxSwift
 
 public struct MJPageModule<PagingModel: MJPagingModelType>: MJPagingModelType {
     
-    let viewController: MJPageViewControllerType
-    let pageViewModel: MJPageViewModel<PagingModel>
+    public let viewController: MJPageViewControllerType
+    public let pageViewModel: MJPageViewModel<PagingModel>
     
     public var key: String {
         return pageViewModel.pagingModel.value?.key ?? ""
