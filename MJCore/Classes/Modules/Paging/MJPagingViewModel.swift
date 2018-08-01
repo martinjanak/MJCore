@@ -28,7 +28,7 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
     , UIPageViewControllerDataSource
     , UIPageViewControllerDelegate {
     
-    public typealias MJPageConstructor = (PagingModel) -> MJPageModule<PagingModel>
+    public typealias MJPageConstructor = (Int, PagingModel) -> MJPageModule<PagingModel>
     
     private let disposeBag = DisposeBag()
     
@@ -82,9 +82,9 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
                 }
                 
                 var newModules = [MJPageModule<PagingModel>]()
-                for pagingModel in pagingModels {
-                    if let constructor = strongSelf.pageContructors[pagingModel.key] {
-                        newModules.append(constructor(pagingModel))
+                for i in 0..<pagingModels.count {
+                    if let constructor = strongSelf.pageContructors[pagingModels[i].key] {
+                        newModules.append(constructor(i, pagingModels[i]))
                     }
                 }
                 strongSelf.pageModules.value = newModules
@@ -210,12 +210,12 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
         PageViewController: MJPageViewController<PagingModel, View, Model>
     >(
         _ type: PageViewController.Type,
-        additionalSetup: ((inout PageViewController) -> Void)? = nil
+        additionalSetup: ((Int, PagingModel, inout PageViewController) -> Void)? = nil
     ) {
         let key = PageViewController.getKey()
-        pageContructors[key] = { model in
+        pageContructors[key] = { index, model in
             var pageVC = PageViewController(model)
-            additionalSetup?(&pageVC)
+            additionalSetup?(index, model, &pageVC)
             return MJPageModule<PagingModel>(
                 viewController: pageVC,
                 pageViewModel: pageVC.model
