@@ -23,7 +23,7 @@ open class MJPageViewController<
         return model.pagingModel.value?.uniqueId ?? ""
     }
     
-    open static var key: String {
+    open class func getKey() -> String {
         // override!
         return ""
     }

@@ -9,5 +9,5 @@ import Foundation
 
 public protocol MJPagingViewControllerType: class {
     var uniqueId: String { get }
-    static var key: String { get }
+    static func getKey() -> String
 }

@@ -197,7 +197,7 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
         _ type: PageViewController.Type,
         additionalSetup: ((inout PageViewController) -> Void)? = nil
     ) {
-        let key = PageViewController.key
+        let key = PageViewController.getKey()
         pageContructors[key] = { model in
             var pageVC = PageViewController(model)
             additionalSetup?(&pageVC)
