@@ -96,12 +96,14 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
                 if let setIndex = setIndex,
                     0 <= setIndex,
                     setIndex < newModules.count {
+                    strongSelf.currentIndexVariable.value = setIndex
                     return MJPagingChange(
                         viewController: newModules[setIndex].viewController,
                         direction: .forward,
                         animated: false
                     )
                 } else {
+                    strongSelf.currentIndexVariable.value = 0
                     return MJPagingChange(
                         viewController: newModules[0].viewController,
                         direction: .forward,
