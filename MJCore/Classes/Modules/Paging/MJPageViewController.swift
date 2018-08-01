@@ -14,8 +14,9 @@ open class MJPageViewController<
 >
     : MJViewController<View, Model>, MJPagingViewControllerType {
     
-    required public override init() {
+    required public init(_ pagingModel: PagingModel) {
         super.init()
+        model.pagingModel.value = pagingModel
     }
     
     open var uniqueId: String {

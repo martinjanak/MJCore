@@ -178,7 +178,7 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
     ) {
         let key = PageViewController.key
         pageContructors[key] = { model in
-            let pageVC = PageViewController()
+            let pageVC = PageViewController(model)
             return MJPageModule<PagingModel>(
                 viewController: pageVC,
                 pageViewModel: pageVC.model
