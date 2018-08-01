@@ -24,8 +24,7 @@ open class MJPageViewController<
     }
     
     open class func getKey() -> String {
-        // override!
-        return ""
+        fatalError("getKey() has not been implemented")
     }
     
     required public init?(coder aDecoder: NSCoder) {

@@ -51,7 +51,7 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
     private let changeSubject = PublishSubject<MJPagingChange?>()
     public lazy var change = changeSubject.asObservable()
     
-    public let setIndex = PublishSubject<Int>()
+    public let setIndex = Variable<Int?>(nil)
     
     public let changeCompletedWith = PublishSubject<MJPageViewControllerType?>()
     
@@ -67,7 +67,8 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
         pagingModels.asObservable()
             .observeOn(MainScheduler.instance)
             .with(pageModules.asObservable())
-            .map { [weak self] (pagingModels, pageModules) -> MJPagingChange? in
+            .withLatestFrom(setIndex.asObservable()) { ($0.0, $0.1, $1) }
+            .map { [weak self] (pagingModels, pageModules, setIndex) -> MJPagingChange? in
                 guard let strongSelf = self else { return nil }
                 
                 let newSignature = pagingModels.map { $0.uniqueId }
@@ -88,11 +89,25 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
                 }
                 strongSelf.pageModules.value = newModules
                 
-                return MJPagingChange(
-                    viewController: newModules[0].viewController,
-                    direction: .forward,
-                    animated: false
-                )
+                guard newModules.count > 0 else {
+                    return nil
+                }
+                
+                if let setIndex = setIndex,
+                    0 <= setIndex,
+                    setIndex < newModules.count {
+                    return MJPagingChange(
+                        viewController: newModules[setIndex].viewController,
+                        direction: .forward,
+                        animated: false
+                    )
+                } else {
+                    return MJPagingChange(
+                        viewController: newModules[0].viewController,
+                        direction: .forward,
+                        animated: false
+                    )
+                }
             }
             .bind(to: changeSubject)
             .disposed(by: disposeBag)
@@ -113,6 +128,7 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
             .withLatestFrom(currentIndexVariable.asObservable()) { ($0.0, $0.1, $1) }
             .bind(onNext: { [weak self] index, modules, currentIndex in
                 guard
+                    let index = index,
                     let currentIndex = currentIndex,
                     index != currentIndex,
                     0 <= index,
