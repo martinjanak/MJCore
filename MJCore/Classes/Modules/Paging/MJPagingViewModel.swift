@@ -189,11 +189,13 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
         Model: MJPageViewModel<PagingModel>,
         PageViewController: MJPageViewController<PagingModel, View, Model>
     >(
-        _ type: PageViewController.Type
+        _ type: PageViewController.Type,
+        additionalSetup: ((inout PageViewController) -> Void)? = nil
     ) {
         let key = PageViewController.key
         pageContructors[key] = { model in
-            let pageVC = PageViewController(model)
+            var pageVC = PageViewController(model)
+            additionalSetup?(&pageVC)
             return MJPageModule<PagingModel>(
                 viewController: pageVC,
                 pageViewModel: pageVC.model
