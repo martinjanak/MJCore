@@ -9,18 +9,14 @@ import Foundation
 
 infix operator === : DefaultPrecedence
 
-extension Array where Element: Equatable {
-    
-    public static func ===(left: Array<Element>, right: Array<Element>) -> Bool {
-        guard left.count == right.count else {
+public func ===<E: Equatable>(left: Array<E>, right: Array<E>) -> Bool {
+    guard left.count == right.count else {
+        return false
+    }
+    for i in 0..<left.count {
+        if left[i] != right[i] {
             return false
         }
-        for i in 0..<left.count {
-            if left[i] != right[i] {
-                return false
-            }
-        }
-        return true
     }
-    
+    return true
 }
