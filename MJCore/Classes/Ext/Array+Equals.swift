@@ -7,9 +7,9 @@
 
 import Foundation
 
-infix operator === : DefaultPrecedence
+infix operator ~~ : DefaultPrecedence
 
-public func ===<E: Equatable>(left: Array<E>, right: Array<E>) -> Bool {
+public func ~~<E: Equatable>(left: Array<E>, right: Array<E>) -> Bool {
     guard left.count == right.count else {
         return false
     }

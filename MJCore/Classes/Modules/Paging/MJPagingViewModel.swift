@@ -74,7 +74,7 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
                 let newSignature = pagingModels.map { $0.uniqueId }
                 let oldSignature = pageModules.map { $0.uniqueId }
                 
-                if newSignature === oldSignature {
+                if newSignature ~~ oldSignature {
                     for i in 0..<pagingModels.count {
                         pageModules[i].pageViewModel.pagingModel.value = pagingModels[i]
                     }
