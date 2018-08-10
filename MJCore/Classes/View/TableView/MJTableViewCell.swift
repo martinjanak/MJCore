@@ -18,7 +18,7 @@ open class MJTableViewCell<CellModel>: UITableViewCell {
         fatalError("setup() has not been implemented")
     }
     
-    open func setup(row: Int, model: CellModel) {
+    open func setup(tableView: UITableView?, row: Int, model: CellModel) {
         fatalError("setup(row:,model:) has not been implemented")
     }
     

@@ -86,13 +86,13 @@ open class MJTableView<TableModel>
     ) {
         let cellId = "\(cellClass)Id"
         register(cellClass, forCellReuseIdentifier: cellId)
-        cellConstructors.append({ cellModel in
+        cellConstructors.append({ [weak self] cellModel in
             return { tableView, indexPath, model in
                 if var cell = tableView.dequeueReusableCell(
                     withIdentifier: cellId,
                     for: indexPath
                 ) as? Cell {
-                    cell.setup(row: indexPath.item, model: cellModel)
+                    cell.setup(tableView: self, row: indexPath.item, model: cellModel)
                     additionalSetup?(&cell)
                     return cell
                 }
@@ -117,7 +117,7 @@ open class MJTableView<TableModel>
                         withIdentifier: cellId,
                         for: indexPath
                     ) as? Cell {
-                        cell.setup(row: indexPath.item, model: cellModel)
+                        cell.setup(tableView: self, row: indexPath.item, model: cellModel)
                         additionalSetup?(&cell)
                         return cell
                     }
