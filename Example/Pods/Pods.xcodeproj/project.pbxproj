@@ -166,6 +166,7 @@
 		5BA06F7E20F738F300B0E504 /* MJYearMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA06F7C20F738F300B0E504 /* MJYearMonth.swift */; };
 		5BA06F7F20F738F300B0E504 /* MJMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA06F7D20F738F300B0E504 /* MJMonth.swift */; };
 		5BC13E2720D0502A00454828 /* MJViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC13E2620D0502A00454828 /* MJViewComponent.swift */; };
+		5BC972292116DCB600C021A8 /* Array+TableChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC972282116DCB600C021A8 /* Array+TableChange.swift */; };
 		5BF0283E20C9B2ED00B00A28 /* Observable+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0283D20C9B2ED00B00A28 /* Observable+Empty.swift */; };
 		5BF0284020C9CC2300B00A28 /* MJCoreDataFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0283F20C9CC2300B00A28 /* MJCoreDataFilter.swift */; };
 		5BF265CC20FB83F2006D8838 /* MJTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF265CB20FB83F2006D8838 /* MJTextField.swift */; };
@@ -646,6 +647,7 @@
 		5BA06F7C20F738F300B0E504 /* MJYearMonth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJYearMonth.swift; sourceTree = "<group>"; };
 		5BA06F7D20F738F300B0E504 /* MJMonth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJMonth.swift; sourceTree = "<group>"; };
 		5BC13E2620D0502A00454828 /* MJViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJViewComponent.swift; sourceTree = "<group>"; };
+		5BC972282116DCB600C021A8 /* Array+TableChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+TableChange.swift"; sourceTree = "<group>"; };
 		5BF0283D20C9B2ED00B00A28 /* Observable+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Empty.swift"; sourceTree = "<group>"; };
 		5BF0283F20C9CC2300B00A28 /* MJCoreDataFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJCoreDataFilter.swift; sourceTree = "<group>"; };
 		5BF265CB20FB83F2006D8838 /* MJTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJTextField.swift; sourceTree = "<group>"; };
@@ -1696,6 +1698,7 @@
 				5BF87627210769AB0003E9E8 /* Collection+Group.swift */,
 				5B557F9F21099BEF00A4EA0C /* UIStackView+Ext.swift */,
 				5B99711C21117D9000C20776 /* Array+Equals.swift */,
+				5BC972282116DCB600C021A8 /* Array+TableChange.swift */,
 			);
 			name = Ext;
 			path = MJCore/Classes/Ext;
@@ -2275,6 +2278,7 @@
 				5B99711F21117F8B00C20776 /* MJPageViewController.swift in Sources */,
 				5B31F9D7210C548C008F5AB5 /* Driver+Unwrap.swift in Sources */,
 				5B2181A920EBA5CA00C623BE /* MJHorizontalScrollVC.swift in Sources */,
+				5BC972292116DCB600C021A8 /* Array+TableChange.swift in Sources */,
 				0C8478F5FF3D1F0E77466A8BE540D1C8 /* MJCoreDataModel.swift in Sources */,
 				5B5C2E7F20F9E1E1001ED90C /* MJLocalizedString.swift in Sources */,
 				5BA06F7E20F738F300B0E504 /* MJYearMonth.swift in Sources */,
