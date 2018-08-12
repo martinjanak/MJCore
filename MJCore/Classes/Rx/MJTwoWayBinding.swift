@@ -96,6 +96,11 @@ public func <-> (textField: MJTextField, formInput: MJFormInput<String>) -> Disp
     
     let viewStateDisposable = textField.validityState <-> formInput.validityState
     
+    // initial value problem
+    DispatchQueue.main.async {
+        textField.didBindSubject.onNext(())
+    }
+    
     return Disposables.create(
         textDisposable,
         isDirtyDisposable,

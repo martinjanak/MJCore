@@ -33,6 +33,10 @@ open class MJTextField: UITextField {
     private let didEndEditingSubject = PublishSubject<Void>()
     public lazy var didEndEditing = didEndEditingSubject.asObservable()
     
+    // initial value problem
+    internal let didBindSubject = PublishSubject<Void>()
+    public lazy var didBind = didBindSubject.asObservable()
+    
     public init() {
         super.init(frame: .zero)
         delegate = self
