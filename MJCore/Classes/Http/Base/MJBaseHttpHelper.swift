@@ -75,6 +75,8 @@ internal final class MJHttpHelper {
     
     private func dataTask(session: URLSession, request: URLRequest, handler: @escaping MJHttpHandler) {
         
+        debug("[http]: Request \(request.httpMethod ?? "No Method") \(request.url?.absoluteString ?? "No URL")")
+        
         let task = session.dataTask(with: request) { (data, response, error) in
             
             if let error = error {
@@ -85,20 +87,24 @@ internal final class MJHttpHelper {
                 } else {
                     handler(.failure(error: error))
                 }
+                debug("[http]: System error: \(error)")
                 return
             }
             
             if let statusCode = (response as? HTTPURLResponse)?.statusCode {
                 if statusCode < 200 || statusCode > 299 {
+                    debug("[http]: Response error status code: \(statusCode)")
                     handler(.failure(error: MJHttpError.http(statusCode: statusCode)))
                     return
                 }
             }
             
             guard let data = data else {
+                debug("[http]: Response error: no data returned")
                 handler(.failure(error: MJHttpError.noDataReturned))
                 return
             }
+            debug("[http]: Response OK")
             handler(.success(value: data))
         }
         

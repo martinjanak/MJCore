@@ -139,6 +139,8 @@
 		5B52691D20CEBB66006B3FC2 /* MJCoreDataCrud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52691C20CEBB66006B3FC2 /* MJCoreDataCrud.swift */; };
 		5B52691F20CEBBB4006B3FC2 /* MJCoreDataCrudSecured.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52691E20CEBBB4006B3FC2 /* MJCoreDataCrudSecured.swift */; };
 		5B557FA021099BEF00A4EA0C /* UIStackView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B557F9F21099BEF00A4EA0C /* UIStackView+Ext.swift */; };
+		5B5598DB2121AF1100B16537 /* MJSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5598DA2121AF1100B16537 /* MJSettings.swift */; };
+		5B5598DD2121B3B100B16537 /* MJGlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5598DC2121B3B100B16537 /* MJGlobalFunctions.swift */; };
 		5B5C2E7F20F9E1E1001ED90C /* MJLocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5C2E7D20F9E1E0001ED90C /* MJLocalizedString.swift */; };
 		5B5C2E8020F9E1E1001ED90C /* MJLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5C2E7E20F9E1E0001ED90C /* MJLanguage.swift */; };
 		5B6D8047210DBB4000D9EAB2 /* MJCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D8046210DBB4000D9EAB2 /* MJCollectionView.swift */; };
@@ -621,6 +623,8 @@
 		5B52691C20CEBB66006B3FC2 /* MJCoreDataCrud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJCoreDataCrud.swift; sourceTree = "<group>"; };
 		5B52691E20CEBBB4006B3FC2 /* MJCoreDataCrudSecured.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJCoreDataCrudSecured.swift; sourceTree = "<group>"; };
 		5B557F9F21099BEF00A4EA0C /* UIStackView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Ext.swift"; sourceTree = "<group>"; };
+		5B5598DA2121AF1100B16537 /* MJSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJSettings.swift; sourceTree = "<group>"; };
+		5B5598DC2121B3B100B16537 /* MJGlobalFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJGlobalFunctions.swift; sourceTree = "<group>"; };
 		5B5C2E7D20F9E1E0001ED90C /* MJLocalizedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJLocalizedString.swift; sourceTree = "<group>"; };
 		5B5C2E7E20F9E1E0001ED90C /* MJLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJLanguage.swift; sourceTree = "<group>"; };
 		5B6D8046210DBB4000D9EAB2 /* MJCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJCollectionView.swift; sourceTree = "<group>"; };
@@ -1221,6 +1225,8 @@
 			isa = PBXGroup;
 			children = (
 				5B50320A20C450790060FC35 /* MJKeyType.swift */,
+				5B5598DA2121AF1100B16537 /* MJSettings.swift */,
+				5B5598DC2121B3B100B16537 /* MJGlobalFunctions.swift */,
 			);
 			name = Common;
 			path = MJCore/Classes/Common;
@@ -2285,6 +2291,7 @@
 				5B5C2E8020F9E1E1001ED90C /* MJLanguage.swift in Sources */,
 				5B15B9EA20FC857B009D24C7 /* MJHorizonatlScrollVM.swift in Sources */,
 				2A7342C71F12451379C7D6DBF769611E /* MJCoreDataService.swift in Sources */,
+				5B5598DD2121B3B100B16537 /* MJGlobalFunctions.swift in Sources */,
 				5B15B9EC20FC9A6D009D24C7 /* UIView+GestureRecognizer.swift in Sources */,
 				49085134AD9F1392774A596C868E1681 /* MJFlowController.swift in Sources */,
 				5B4B15D020D4F1CB00EBA233 /* MJCoreDataSort.swift in Sources */,
@@ -2320,6 +2327,7 @@
 				E512F7315C8F6A53D5C978EC00C7B554 /* MJRemoteNotificationService.swift in Sources */,
 				5B0870D720F1EE3D007DD392 /* MJViewModel.swift in Sources */,
 				5B6D8050210DBF5600D9EAB2 /* Driver+Datasource.swift in Sources */,
+				5B5598DB2121AF1100B16537 /* MJSettings.swift in Sources */,
 				5B44E5C720C27530003A6AD3 /* MJLocalAuthService.swift in Sources */,
 				5B02D5CF20BF176900F29406 /* Observable+None.swift in Sources */,
 				5B52691D20CEBB66006B3FC2 /* MJCoreDataCrud.swift in Sources */,
