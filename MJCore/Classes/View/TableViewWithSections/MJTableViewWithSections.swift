@@ -1,26 +1,44 @@
 //
-//  MJTableView.swift
+//  MJTableViewWithSections.swift
 //  MJCore
 //
-//  Created by Martin Janák on 29/07/2018.
+//  Created by Martin Janák on 16/08/2018.
 //
+
+import Foundation
 
 import UIKit
 import RxSwift
 import RxCocoa
 
-open class MJTableView<TableModel>
+open class MJTableViewWithSections<SectionTableModel: MJSectionTableModel>
     : UITableView
     , UITableViewDataSource
     , UITableViewDelegate {
     
-    private typealias CellConstructor = (TableModel) -> (
-        ((UITableView, IndexPath, TableModel) -> UITableViewCell)?
+    private typealias CellConstructor = (SectionTableModel.ItemModel) -> (
+        ((UITableView, IndexPath, SectionTableModel.ItemModel) -> UITableViewCell)?
     )
+    
+    public var sectionHeaderConstructor: ((UITableView, Int, SectionTableModel.HeaderModel) -> UIView) = { _, section, _ in
+        let label = UILabel()
+        label.text = "Section \(section)"
+        return label
+    }
+    
+    public func set<SectionHeaderView: MJTableSectionHeaderView<SectionTableModel.HeaderModel>>(
+        sectionHeaderViewType: SectionHeaderView.Type
+    ) {
+        sectionHeaderConstructor = { tableView, section, model in
+            let header = SectionHeaderView()
+            header.setup(tableView: tableView, section: section, model: model)
+            return header
+        }
+    }
     
     private let disposeBag = DisposeBag()
     
-    public let data = Variable([TableModel]())
+    public let data = Variable([SectionTableModel]())
     private var cellConstructors = [CellConstructor]()
     
     public var willSelectItem: (IndexPath) -> IndexPath? = { $0 }
@@ -32,7 +50,7 @@ open class MJTableView<TableModel>
     private let didDeselectItemSubject = PublishSubject<IndexPath>()
     public lazy var didDeselectItem = didDeselectItemSubject.asObservable()
     
-    private let didSelectModelSubject = PublishSubject<TableModel?>()
+    private let didSelectModelSubject = PublishSubject<SectionTableModel.ItemModel?>()
     public lazy var didDeselectModel = didSelectModelSubject
         .asDriver(onErrorJustReturn: nil)
         .unwrap()
@@ -80,9 +98,9 @@ open class MJTableView<TableModel>
     
     // MARK: Homogenous table
     
-    public func register<Cell: MJTableViewCell<TableModel>>(
+    public func register<Cell: MJTableViewCell<SectionTableModel.ItemModel>>(
         _ cellClass: Cell.Type,
-        additionalSetup: ((UITableView, IndexPath, TableModel, inout Cell) -> Void)? = nil
+        additionalSetup: ((UITableView, IndexPath, SectionTableModel.ItemModel, inout Cell) -> Void)? = nil
     ) {
         let cellId = "\(cellClass)Id"
         register(cellClass, forCellReuseIdentifier: cellId)
@@ -135,24 +153,32 @@ open class MJTableView<TableModel>
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        return data.value.count
+        return data.value[section].items.count
     }
     
     public func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return data.value.count
     }
     
     public func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        let model = data.value[indexPath.item]
+        let model = data.value[indexPath.section].items[indexPath.item]
         for cellConstructor in cellConstructors {
             if let cellSetup = cellConstructor(model) {
                 return cellSetup(tableView, indexPath, model)
             }
         }
         return UITableViewCell()
+    }
+    
+    public func tableView(
+        _ tableView: UITableView,
+        viewForHeaderInSection section: Int
+    ) -> UIView? {
+        let header = data.value[section].header
+        return sectionHeaderConstructor(tableView, section, header)
     }
     
     // MARK: Delegate
@@ -169,7 +195,7 @@ open class MJTableView<TableModel>
         didSelectRowAt indexPath: IndexPath
     ) {
         didSelectItemSubject.onNext(indexPath)
-        let model = data.value[indexPath.item]
+        let model = data.value[indexPath.section].items[indexPath.item]
         didSelectModelSubject.onNext(model)
     }
     

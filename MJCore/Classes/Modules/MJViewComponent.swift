@@ -10,7 +10,7 @@ import Stevia
 
 open class MJViewComponent: MJView {
     
-    public init() {
+    required public init() {
         super.init(frame: .zero)
         setup()
     }
