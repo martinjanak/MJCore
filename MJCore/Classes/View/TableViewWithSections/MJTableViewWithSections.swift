@@ -17,7 +17,7 @@ open class MJTableViewWithSections<SectionTableModel: MJSectionTableModel>
     , UITableViewDelegate {
     
     private typealias CellConstructor = (SectionTableModel.ItemModel) -> (
-        ((UITableView, IndexPath, SectionTableModel.ItemModel) -> UITableViewCell)?
+        ((UITableView, IndexPath) -> UITableViewCell)?
     )
     
     public var sectionHeaderConstructor: ((UITableView, Int, SectionTableModel.HeaderModel) -> UIView) = { _, section, _ in
@@ -105,7 +105,7 @@ open class MJTableViewWithSections<SectionTableModel: MJSectionTableModel>
         let cellId = "\(cellClass)Id"
         register(cellClass, forCellReuseIdentifier: cellId)
         cellConstructors.append({ cellModel in
-            return { tableView, indexPath, model in
+            return { tableView, indexPath in
                 if var cell = tableView.dequeueReusableCell(
                     withIdentifier: cellId,
                     for: indexPath
@@ -130,7 +130,7 @@ open class MJTableViewWithSections<SectionTableModel: MJSectionTableModel>
         register(cellClass, forCellReuseIdentifier: cellId)
         cellConstructors.append({ tableModel in
             if let cellModel = tableModel as? CellModel {
-                return { tableView, indexPath, model in
+                return { tableView, indexPath in
                     if var cell = tableView.dequeueReusableCell(
                         withIdentifier: cellId,
                         for: indexPath
@@ -167,7 +167,7 @@ open class MJTableViewWithSections<SectionTableModel: MJSectionTableModel>
         let model = data.value[indexPath.section].items[indexPath.item]
         for cellConstructor in cellConstructors {
             if let cellSetup = cellConstructor(model) {
-                return cellSetup(tableView, indexPath, model)
+                return cellSetup(tableView, indexPath)
             }
         }
         return UITableViewCell()

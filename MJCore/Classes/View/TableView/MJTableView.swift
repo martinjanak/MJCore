@@ -15,7 +15,7 @@ open class MJTableView<TableModel>
     , UITableViewDelegate {
     
     private typealias CellConstructor = (TableModel) -> (
-        ((UITableView, IndexPath, TableModel) -> UITableViewCell)?
+        ((UITableView, IndexPath) -> UITableViewCell)?
     )
     
     private let disposeBag = DisposeBag()
@@ -87,7 +87,7 @@ open class MJTableView<TableModel>
         let cellId = "\(cellClass)Id"
         register(cellClass, forCellReuseIdentifier: cellId)
         cellConstructors.append({ cellModel in
-            return { tableView, indexPath, model in
+            return { tableView, indexPath in
                 if var cell = tableView.dequeueReusableCell(
                     withIdentifier: cellId,
                     for: indexPath
@@ -112,7 +112,7 @@ open class MJTableView<TableModel>
         register(cellClass, forCellReuseIdentifier: cellId)
         cellConstructors.append({ tableModel in
             if let cellModel = tableModel as? CellModel {
-                return { tableView, indexPath, model in
+                return { tableView, indexPath in
                     if var cell = tableView.dequeueReusableCell(
                         withIdentifier: cellId,
                         for: indexPath
@@ -149,7 +149,7 @@ open class MJTableView<TableModel>
         let model = data.value[indexPath.item]
         for cellConstructor in cellConstructors {
             if let cellSetup = cellConstructor(model) {
-                return cellSetup(tableView, indexPath, model)
+                return cellSetup(tableView, indexPath)
             }
         }
         return UITableViewCell()

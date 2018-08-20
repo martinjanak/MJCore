@@ -29,4 +29,23 @@ extension SharedSequenceConvertibleType where SharingStrategy == DriverSharingSt
             .drive(tableView.data)
     }
     
+    public func dataSource<StackModel>(
+        _ dynamicStackView: MJDynamicStackView<StackModel>
+    ) -> Disposable where E == [StackModel] {
+        return self.drive(dynamicStackView.data)
+    }
+    
+    public func dataSource<CellModel, StackModel>(
+        _ dynamicStackView: MJDynamicStackView<StackModel>
+    ) -> Disposable where E == [CellModel] {
+        return self
+            .filter { data in
+                return data.reduce(true, { isStackModel, value in
+                    return isStackModel && (value is StackModel)
+                })
+            }
+            .map { $0.map { $0 as! StackModel } }
+            .drive(dynamicStackView.data)
+    }
+    
 }

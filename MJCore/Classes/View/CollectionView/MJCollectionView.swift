@@ -15,7 +15,7 @@ open class MJCollectionView<CollectionModel>
     , UICollectionViewDelegate {
     
     private typealias CellConstructor = (CollectionModel) -> (
-        ((UICollectionView, IndexPath, CollectionModel) -> UICollectionViewCell)?
+        ((UICollectionView, IndexPath) -> UICollectionViewCell)?
     )
     
     private let disposeBag = DisposeBag()
@@ -92,7 +92,7 @@ open class MJCollectionView<CollectionModel>
         let cellId = "\(cellClass)Id"
         register(cellClass, forCellWithReuseIdentifier: cellId)
         cellConstructors.append({ cellModel in
-            return { tableView, indexPath, model in
+            return { tableView, indexPath in
                 if var cell = tableView.dequeueReusableCell(
                     withReuseIdentifier: cellId,
                     for: indexPath
@@ -117,7 +117,7 @@ open class MJCollectionView<CollectionModel>
         register(cellClass, forCellWithReuseIdentifier: cellId)
         cellConstructors.append({ collectionModel in
             if let cellModel = collectionModel as? CellModel {
-                return { tableView, indexPath, model in
+                return { tableView, indexPath in
                     if var cell = tableView.dequeueReusableCell(
                         withReuseIdentifier: cellId,
                         for: indexPath
@@ -154,7 +154,7 @@ open class MJCollectionView<CollectionModel>
         let model = data.value[indexPath.item]
         for cellConstructor in cellConstructors {
             if let cellSetup = cellConstructor(model) {
-                return cellSetup(collectionView, indexPath, model)
+                return cellSetup(collectionView, indexPath)
             }
         }
         return UICollectionViewCell()

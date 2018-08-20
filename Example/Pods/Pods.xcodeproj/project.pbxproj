@@ -121,6 +121,8 @@
 		59ECF56BB9DDF704CC52B7643E2922DF /* MJTwoWayBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C571A544DB48987FBCD2948F63E4028 /* MJTwoWayBinding.swift */; };
 		5B02D5CF20BF176900F29406 /* Observable+None.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B02D5CE20BF176900F29406 /* Observable+None.swift */; };
 		5B0870D720F1EE3D007DD392 /* MJViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0870D620F1EE3D007DD392 /* MJViewModel.swift */; };
+		5B0E07C52129569A00692481 /* MJDynamicStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0E07C42129569A00692481 /* MJDynamicStackView.swift */; };
+		5B0E07C7212964F500692481 /* MJStackViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0E07C6212964F500692481 /* MJStackViewCell.swift */; };
 		5B15B9EA20FC857B009D24C7 /* MJHorizonatlScrollVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B15B9E920FC857B009D24C7 /* MJHorizonatlScrollVM.swift */; };
 		5B15B9EC20FC9A6D009D24C7 /* UIView+GestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B15B9EB20FC9A6D009D24C7 /* UIView+GestureRecognizer.swift */; };
 		5B15B9EE20FCC3B8009D24C7 /* UIScrollView+ScrollTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B15B9ED20FCC3B8009D24C7 /* UIScrollView+ScrollTo.swift */; };
@@ -613,6 +615,8 @@
 		5AD187CEF1D030FB1095185873380CBB /* NSObject+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSObject+Rx.swift"; path = "RxCocoa/Foundation/NSObject+Rx.swift"; sourceTree = "<group>"; };
 		5B02D5CE20BF176900F29406 /* Observable+None.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+None.swift"; sourceTree = "<group>"; };
 		5B0870D620F1EE3D007DD392 /* MJViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJViewModel.swift; sourceTree = "<group>"; };
+		5B0E07C42129569A00692481 /* MJDynamicStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJDynamicStackView.swift; sourceTree = "<group>"; };
+		5B0E07C6212964F500692481 /* MJStackViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJStackViewCell.swift; sourceTree = "<group>"; };
 		5B15B9E920FC857B009D24C7 /* MJHorizonatlScrollVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJHorizonatlScrollVM.swift; sourceTree = "<group>"; };
 		5B15B9EB20FC9A6D009D24C7 /* UIView+GestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+GestureRecognizer.swift"; sourceTree = "<group>"; };
 		5B15B9ED20FCC3B8009D24C7 /* UIScrollView+ScrollTo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+ScrollTo.swift"; sourceTree = "<group>"; };
@@ -1220,6 +1224,15 @@
 			path = HorizontalScroll;
 			sourceTree = "<group>";
 		};
+		5B0E07C32129568000692481 /* StackView */ = {
+			isa = PBXGroup;
+			children = (
+				5B0E07C42129569A00692481 /* MJDynamicStackView.swift */,
+				5B0E07C6212964F500692481 /* MJStackViewCell.swift */,
+			);
+			path = StackView;
+			sourceTree = "<group>";
+		};
 		5B44E5C520C27530003A6AD3 /* LocalAuthentication */ = {
 			isa = PBXGroup;
 			children = (
@@ -1368,6 +1381,7 @@
 		5BF265C920FB83F2006D8838 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5B0E07C32129568000692481 /* StackView */,
 				5BF87629210779060003E9E8 /* CollectionView */,
 				5B6D804A210DBCA800D9EAB2 /* TableView */,
 				5B99DF0F21255A8E00A0F6E1 /* TableViewWithSections */,
@@ -2321,6 +2335,7 @@
 				5B5C2E7F20F9E1E1001ED90C /* MJLocalizedString.swift in Sources */,
 				5BA06F7E20F738F300B0E504 /* MJYearMonth.swift in Sources */,
 				5B5C2E8020F9E1E1001ED90C /* MJLanguage.swift in Sources */,
+				5B0E07C7212964F500692481 /* MJStackViewCell.swift in Sources */,
 				5B15B9EA20FC857B009D24C7 /* MJHorizonatlScrollVM.swift in Sources */,
 				2A7342C71F12451379C7D6DBF769611E /* MJCoreDataService.swift in Sources */,
 				5B5598DD2121B3B100B16537 /* MJGlobalFunctions.swift in Sources */,
@@ -2348,6 +2363,7 @@
 				5B99DF19212573C400A0F6E1 /* Driver+Cast.swift in Sources */,
 				5B4B15D620D53F0300EBA233 /* Animation.swift in Sources */,
 				5B99712121118C8600C20776 /* MJPagingScrollView.swift in Sources */,
+				5B0E07C52129569A00692481 /* MJDynamicStackView.swift in Sources */,
 				CA530C754B1A511E6CCBA32B139F3A4A /* MJLocalNotifications.swift in Sources */,
 				9087FE4E0B8E24D6D44DA36FD0572EB8 /* MJLocalNotificationService.swift in Sources */,
 				5B9971192111774E00C20776 /* Array+Paging.swift in Sources */,
