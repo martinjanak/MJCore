@@ -7,7 +7,7 @@
 
 import Foundation
 
-open class MJStackViewCell<Model>: UIView {
+open class MJStackViewCell<Model>: MJViewComponent {
     
     open func setup(stackView: UIStackView, index: Int, model: Model) {
         // override
