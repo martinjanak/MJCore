@@ -43,6 +43,8 @@ open class MJCollectionView<CollectionModel>
             .map { $0 as! Model }
     }
     
+    public var resizesHeight: Bool = false
+    
     public init() {
         super.init(frame: .zero, collectionViewLayout: UICollectionViewLayout())
         initSetup()
@@ -81,6 +83,13 @@ open class MJCollectionView<CollectionModel>
                 self?.reloadData()
             })
             .disposed(by: disposeBag)
+    }
+    
+    override open func layoutSubviews() {
+        super.layoutSubviews()
+        if resizesHeight {
+            heightConstraint?.constant = collectionViewLayout.collectionViewContentSize.height
+        }
     }
     
     // MARK: Homogenous collection
