@@ -18,7 +18,7 @@ open class MJCollectionViewCell<CellModel>: UICollectionViewCell {
         // optional override
     }
     
-    open func setup(row: Int, model: CellModel) {
+    open func setup(collectionView: UICollectionView, indexPath: IndexPath, model: CellModel) {
         fatalError("setup(row:,model:) has not been implemented")
     }
     

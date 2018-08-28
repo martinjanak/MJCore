@@ -96,18 +96,18 @@ open class MJCollectionView<CollectionModel>
     
     public func register<Cell: MJCollectionViewCell<CollectionModel>>(
         _ cellClass: Cell.Type,
-        additionalSetup: ((inout Cell) -> Void)?
+        additionalSetup: ((UICollectionView, IndexPath, CollectionModel, inout Cell) -> Void)?
     ) {
         let cellId = "\(cellClass)Id"
         register(cellClass, forCellWithReuseIdentifier: cellId)
         cellConstructors.append({ cellModel in
-            return { tableView, indexPath in
-                if var cell = tableView.dequeueReusableCell(
+            return { collectionView, indexPath in
+                if var cell = collectionView.dequeueReusableCell(
                     withReuseIdentifier: cellId,
                     for: indexPath
-                    ) as? Cell {
-                    cell.setup(row: indexPath.item, model: cellModel)
-                    additionalSetup?(&cell)
+                ) as? Cell {
+                    cell.setup(collectionView: collectionView, indexPath: indexPath, model: cellModel)
+                    additionalSetup?(collectionView, indexPath, cellModel, &cell)
                     return cell
                 }
                 return UICollectionViewCell()
@@ -120,19 +120,19 @@ open class MJCollectionView<CollectionModel>
     
     public func register<CellModel, Cell: MJCollectionViewCell<CellModel>>(
         _ cellClass: Cell.Type,
-        additionalSetup: ((inout Cell) -> Void)?
+        additionalSetup: ((UICollectionView, IndexPath, CellModel, inout Cell) -> Void)?
     ) {
         let cellId = "\(cellClass)Id"
         register(cellClass, forCellWithReuseIdentifier: cellId)
         cellConstructors.append({ collectionModel in
             if let cellModel = collectionModel as? CellModel {
-                return { tableView, indexPath in
-                    if var cell = tableView.dequeueReusableCell(
+                return { collectionView, indexPath in
+                    if var cell = collectionView.dequeueReusableCell(
                         withReuseIdentifier: cellId,
                         for: indexPath
                     ) as? Cell {
-                        cell.setup(row: indexPath.item, model: cellModel)
-                        additionalSetup?(&cell)
+                        cell.setup(collectionView: collectionView, indexPath: indexPath, model: cellModel)
+                        additionalSetup?(collectionView, indexPath, cellModel, &cell)
                         return cell
                     }
                     return UICollectionViewCell()
