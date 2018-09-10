@@ -126,6 +126,7 @@
 		5B15B9EA20FC857B009D24C7 /* MJHorizonatlScrollVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B15B9E920FC857B009D24C7 /* MJHorizonatlScrollVM.swift */; };
 		5B15B9EC20FC9A6D009D24C7 /* UIView+GestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B15B9EB20FC9A6D009D24C7 /* UIView+GestureRecognizer.swift */; };
 		5B15B9EE20FCC3B8009D24C7 /* UIScrollView+ScrollTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B15B9ED20FCC3B8009D24C7 /* UIScrollView+ScrollTo.swift */; };
+		5B1D2C98214673420004326E /* UIColor+hexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1D2C97214673420004326E /* UIColor+hexString.swift */; };
 		5B1D7C112122B28600F520AE /* UIViewController+ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1D7C102122B28600F520AE /* UIViewController+ShowAlert.swift */; };
 		5B2181A820EBA5CA00C623BE /* MJHorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2181A420EBA5CA00C623BE /* MJHorizontalScrollView.swift */; };
 		5B2181A920EBA5CA00C623BE /* MJHorizontalScrollVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2181A520EBA5CA00C623BE /* MJHorizontalScrollVC.swift */; };
@@ -620,6 +621,7 @@
 		5B15B9EB20FC9A6D009D24C7 /* UIView+GestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+GestureRecognizer.swift"; sourceTree = "<group>"; };
 		5B15B9ED20FCC3B8009D24C7 /* UIScrollView+ScrollTo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+ScrollTo.swift"; sourceTree = "<group>"; };
 		5B1C053449E8FF44CB648F511C203C5C /* PublishRelay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PublishRelay.swift; path = RxCocoa/Traits/PublishRelay.swift; sourceTree = "<group>"; };
+		5B1D2C97214673420004326E /* UIColor+hexString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hexString.swift"; sourceTree = "<group>"; };
 		5B1D7C102122B28600F520AE /* UIViewController+ShowAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ShowAlert.swift"; sourceTree = "<group>"; };
 		5B2181A420EBA5CA00C623BE /* MJHorizontalScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJHorizontalScrollView.swift; sourceTree = "<group>"; };
 		5B2181A520EBA5CA00C623BE /* MJHorizontalScrollVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJHorizontalScrollVC.swift; sourceTree = "<group>"; };
@@ -1748,6 +1750,7 @@
 				5B99711C21117D9000C20776 /* Array+Equals.swift */,
 				5BC972282116DCB600C021A8 /* Array+TableChange.swift */,
 				5B1D7C102122B28600F520AE /* UIViewController+ShowAlert.swift */,
+				5B1D2C97214673420004326E /* UIColor+hexString.swift */,
 			);
 			name = Ext;
 			path = MJCore/Classes/Ext;
@@ -2416,6 +2419,7 @@
 				7849F7BAA434E4D54FC77727C5723672 /* Observable+Store.swift in Sources */,
 				A3A95C4674A4A35947F2E4DC0A4369A8 /* Observable+Success.swift in Sources */,
 				5B99711B211179E800C20776 /* MJPageViewModel.swift in Sources */,
+				5B1D2C98214673420004326E /* UIColor+hexString.swift in Sources */,
 				5B754E7420F4EB5D0035D643 /* MJModalViewController.swift in Sources */,
 				5B2FCAD421005B8000983C71 /* Observable+BatchParse.swift in Sources */,
 				605DD648ECBCE3EAC4F5822BCFBD9FF5 /* RawRepresentable+Create.swift in Sources */,
