@@ -10,7 +10,7 @@ import UIKit
 
 extension UIColor {
     
-    convenience init(hexString: String) {
+    public convenience init(hexString: String) {
         
         let hexString: String = (hexString as NSString).trimmingCharacters(in: .whitespacesAndNewlines)
         let scanner = Scanner(string: hexString as String)
