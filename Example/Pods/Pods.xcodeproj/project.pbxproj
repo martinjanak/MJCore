@@ -236,7 +236,7 @@
 		7C9C3EB4A50F6FD58DDE2EE721441778 /* RxCocoa.h in Headers */ = {isa = PBXBuildFile; fileRef = 67D020E2CC985BC8372A22D8A508E1D9 /* RxCocoa.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7DC3FFF64CC010824819D4A1FF62B145 /* Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63693810A127879845B99D387A5AEBF6 /* Driver.swift */; };
 		7EAA80DF843B1C46C5AC5ED6DAD3C878 /* UIImageView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DC9C303C86C2601889F638377C608C /* UIImageView+Rx.swift */; };
-		7EC90AFF0B5D728EED73E24A26B8F8BB /* MJHttpEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2E8CB7CE6EB7AC7FA01A6432905758 /* MJHttpEndpoints.swift */; };
+		7EC90AFF0B5D728EED73E24A26B8F8BB /* MJHttpEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2E8CB7CE6EB7AC7FA01A6432905758 /* MJHttpEndpoint.swift */; };
 		7F1E5068CC74F60FE0EA866DBF98946C /* Stevia+Percentage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D48227F54320268EC2F36FF28CB41C /* Stevia+Percentage.swift */; };
 		7FF952CAE3AA0495DC0B1C3D888807F4 /* UIApplication+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46E61A705BAC3AD3345ACA7CDBDF28 /* UIApplication+Rx.swift */; };
 		823F6248EA5ABBD29F0794E930A70511 /* AsyncLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEE795237A9749237AA4E3146D92C26 /* AsyncLock.swift */; };
@@ -404,7 +404,7 @@
 		EEF421388F3F9747149D13DED592E601 /* UIActivityIndicatorView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FBEABA2C70747CF4412A05C2A3B254 /* UIActivityIndicatorView+Rx.swift */; };
 		EF788E653634273435F789A56BD86A35 /* Skip.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC049B9B56552FF9A49438451F13F64 /* Skip.swift */; };
 		EF9AC0FBA6E6FDF7837CAE8153AD3499 /* Stevia+Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4999030972590A4FB1A070C2ED1085A /* Stevia+Content.swift */; };
-		F09EF50EF2007288A1E3DB8CE69D8442 /* MJBaseHttpHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A420630CEA9DFE4D30C4DD5223A2264 /* MJBaseHttpHelper.swift */; };
+		F09EF50EF2007288A1E3DB8CE69D8442 /* MJHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A420630CEA9DFE4D30C4DD5223A2264 /* MJHttp.swift */; };
 		F1782244E0BE7264256E096A024B6D0E /* SchedulerType+SharedSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F5F8B22CD1657058D6BB3BBB75914A /* SchedulerType+SharedSequence.swift */; };
 		F1C268FDA9B2B88C618C59619D64A3AE /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F493958F5C0474A15559F0B30DF72 /* Switch.swift */; };
 		F2AD2674C9A73C1AED0D9A26426B1132 /* DelaySubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D65AEE1B4007221A1A99DF26FF9C5E6 /* DelaySubscription.swift */; };
@@ -710,7 +710,7 @@
 		686B9396ADBFC6D4549165A2B191604E /* Scan.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Scan.swift; path = RxSwift/Observables/Scan.swift; sourceTree = "<group>"; };
 		69442DCDCF1666457B01031A89A54192 /* ObservableType+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ObservableType+Extensions.swift"; path = "RxSwift/ObservableType+Extensions.swift"; sourceTree = "<group>"; };
 		6A3A4B1BFAC11F2567606F430E78EC9D /* ObservableType+PrimitiveSequence.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ObservableType+PrimitiveSequence.swift"; path = "RxSwift/Traits/ObservableType+PrimitiveSequence.swift"; sourceTree = "<group>"; };
-		6A420630CEA9DFE4D30C4DD5223A2264 /* MJBaseHttpHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MJBaseHttpHelper.swift; sourceTree = "<group>"; };
+		6A420630CEA9DFE4D30C4DD5223A2264 /* MJHttp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MJHttp.swift; sourceTree = "<group>"; };
 		6A4D6F5EE8064A9D4EA5628C7EFBC17E /* Stevia+FlexibleMargin.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Stevia+FlexibleMargin.swift"; path = "Source/Stevia+FlexibleMargin.swift"; sourceTree = "<group>"; };
 		6B45D95D440158D169D6DE461508260B /* UITableView+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UITableView+Rx.swift"; path = "RxCocoa/iOS/UITableView+Rx.swift"; sourceTree = "<group>"; };
 		6C93C3F56E261B6C09DD5FBC39801382 /* Bag.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Bag.swift; path = Platform/DataStructures/Bag.swift; sourceTree = "<group>"; };
@@ -924,7 +924,7 @@
 		FED5931C07ACD530277E3937C77CF39D /* Array+MJson.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Array+MJson.swift"; sourceTree = "<group>"; };
 		FEEF2A5B7ABD57A5AF3650C8AF5EE10B /* Observable+Bind.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Observable+Bind.swift"; path = "RxCocoa/Common/Observable+Bind.swift"; sourceTree = "<group>"; };
 		FF022A8B8498F07E05F563D89A8F2938 /* UISlider+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UISlider+Rx.swift"; path = "RxCocoa/iOS/UISlider+Rx.swift"; sourceTree = "<group>"; };
-		FF2E8CB7CE6EB7AC7FA01A6432905758 /* MJHttpEndpoints.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MJHttpEndpoints.swift; sourceTree = "<group>"; };
+		FF2E8CB7CE6EB7AC7FA01A6432905758 /* MJHttpEndpoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MJHttpEndpoint.swift; sourceTree = "<group>"; };
 		FF56D15ABBFABF57F15A5AC289100D91 /* Zip.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Zip.swift; path = RxSwift/Observables/Zip.swift; sourceTree = "<group>"; };
 		FF95844C99E980002284F1CD5D0656F3 /* MJResendRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MJResendRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -980,11 +980,12 @@
 		0312CFDF83DFE583CC7E0207CE592041 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				6A420630CEA9DFE4D30C4DD5223A2264 /* MJBaseHttpHelper.swift */,
+				6A420630CEA9DFE4D30C4DD5223A2264 /* MJHttp.swift */,
 				41CA60F3C33EDCD968425F20BE4F9FA4 /* MJHttpError.swift */,
 				6228683C3623E7EA59DEF13CA7F47972 /* MJHttpMethod.swift */,
 				49FD9D8183AB27AB49D1F67A4DD1CD81 /* MJReachability.swift */,
 				FF95844C99E980002284F1CD5D0656F3 /* MJResendRequest.swift */,
+				FF2E8CB7CE6EB7AC7FA01A6432905758 /* MJHttpEndpoint.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1724,7 +1725,6 @@
 				0312CFDF83DFE583CC7E0207CE592041 /* Base */,
 				64BE243BD79AF1A6A0F0C1019491BFAB /* MJHttpClient.swift */,
 				6749F609639B563A8D190D2E42CB3ACD /* MJHttpAuthClient.swift */,
-				FF2E8CB7CE6EB7AC7FA01A6432905758 /* MJHttpEndpoints.swift */,
 				3F0471FA1A4F7E9916EF61EC52EE9220 /* MJCodableUtil.swift */,
 				AFCB75FCEDF716FB0813E998EE624ADE /* MJson.swift */,
 				12F1E338F1EADF86A2F6E2E68E24FB65 /* MJsonModel.swift */,
@@ -2323,7 +2323,7 @@
 				5B9971112111747400C20776 /* MJPagingViewController.swift in Sources */,
 				6A6DBA6577F847C3A7BD8A8891565CDB /* Date+Ext.swift in Sources */,
 				52F7D891230780D9C6AA185C3B3CF6FB /* MJBackgroundPoller.swift in Sources */,
-				F09EF50EF2007288A1E3DB8CE69D8442 /* MJBaseHttpHelper.swift in Sources */,
+				F09EF50EF2007288A1E3DB8CE69D8442 /* MJHttp.swift in Sources */,
 				DAE7B8864F2E65B66DC894578BC980E3 /* MJCodableUtil.swift in Sources */,
 				6C7D70176A42E60525ADEA431E4B1B8B /* MJCore-dummy.m in Sources */,
 				5B997117211175D900C20776 /* MJPagingViewControllerType.swift in Sources */,
@@ -2345,7 +2345,7 @@
 				970F80C207C19B1ADBD527AA6748A595 /* MJHttpAuthClient.swift in Sources */,
 				A39D4E454A87BCD28D6DA7F878E84B0C /* MJHttpClient.swift in Sources */,
 				5B50320B20C450790060FC35 /* MJKeyType.swift in Sources */,
-				7EC90AFF0B5D728EED73E24A26B8F8BB /* MJHttpEndpoints.swift in Sources */,
+				7EC90AFF0B5D728EED73E24A26B8F8BB /* MJHttpEndpoint.swift in Sources */,
 				5B6D8049210DBB4E00D9EAB2 /* MJCollectionViewCell.swift in Sources */,
 				5B2A1B282123FF2300F95811 /* MJTimer.swift in Sources */,
 				5B99DF1521256A3A00A0F6E1 /* MJTableSectionHeaderView.swift in Sources */,

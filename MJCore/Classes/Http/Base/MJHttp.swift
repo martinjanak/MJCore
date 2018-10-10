@@ -7,24 +7,22 @@
 
 import Foundation
 
-internal final class MJHttpHelper {
+public final class MJHttp {
     
-    public func createRequest(
-        url: String,
-        method: MJHttpMethod,
-        data: Data?,
-        query: [String: String]?,
-        headers: [String: String]?
-    ) -> URLRequest? {
+    private init() { }
+    
+    public static func createRequest(endpoint: MJHttpEndpoint) -> MJResult<URLRequest> {
         
-        guard var urlComponents = URLComponents(string: url) else {
-            return nil
+        let urlString = endpoint.domainUrl + endpoint.path
+        
+        guard var urlComponents = URLComponents(string: urlString) else {
+            return .failure(error: MJHttpError.invalidUrlComponents)
         }
         
         // MARK: Query
         
         var queryItems: [URLQueryItem]? = nil
-        if let query = query, query.count > 0 {
+        if let query = endpoint.query, query.count > 0 {
             queryItems = [URLQueryItem]()
             for (key, value) in query {
                 queryItems!.append(URLQueryItem(name: key, value: value))
@@ -35,14 +33,14 @@ internal final class MJHttpHelper {
         // MARK: Url
         
         guard let url = urlComponents.url else {
-            return nil
+            return .failure(error: MJHttpError.invalidUrl)
         }
         
         var request = URLRequest(url: url)
         
         // MARK: Method
         
-        request.httpMethod = method.rawValue
+        request.httpMethod = endpoint.method.rawValue
         
         // MARK: Headers
         
@@ -50,7 +48,7 @@ internal final class MJHttpHelper {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("utf-8", forHTTPHeaderField: "Accept-Charset")
         
-        if let headers = headers {
+        if let headers = endpoint.headers {
             for (headerField, value) in headers {
                 request.addValue(value, forHTTPHeaderField: headerField)
             }
@@ -58,14 +56,21 @@ internal final class MJHttpHelper {
         
         // MARK: Data
         
+        var data: Data? = nil
+        do {
+            data = try endpoint.getPayloadData()
+        } catch let error {
+            return .failure(error: error)
+        }
+        
         if let data = data {
             request.httpBody = data
         }
         
-        return request
+        return .success(value: request)
     }
     
-    public func send(session: URLSession, request: URLRequest, handler: @escaping MJHttpHandler) {
+    public static func send(_ request: URLRequest, with session: URLSession, handler: @escaping MJHttpHandler) {
         guard MJReachability.status != .notReachable else {
             handler(.failure(error: MJHttpError.noConnection))
             return
@@ -73,7 +78,7 @@ internal final class MJHttpHelper {
         dataTask(session: session, request: request, handler: handler)
     }
     
-    private func dataTask(session: URLSession, request: URLRequest, handler: @escaping MJHttpHandler) {
+    private static func dataTask(session: URLSession, request: URLRequest, handler: @escaping MJHttpHandler) {
         
         debug("[http]: Request \(request.httpMethod ?? "No Method") \(request.url?.absoluteString ?? "No URL")")
         

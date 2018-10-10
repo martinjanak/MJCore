@@ -10,6 +10,7 @@ import RxSwift
 
 public enum MJHttpError: Error {
     case noConnection
+    case invalidUrlComponents
     case invalidUrl
     case http(statusCode: Int)
     case noDataReturned

@@ -7,17 +7,18 @@
 
 import Foundation
 
-public protocol MJHttpEndpoints {
+public protocol MJHttpEndpoint {
     var domainUrl: String { get }
     var path: String { get }
     var method: MJHttpMethod { get }
+    
     var query: [String: String]? { get }
-    var additionalHeaders: [String: String]? { get }
+    var headers: [String: String]? { get }
     func getPayloadData() throws -> Data?
     func getTestData() throws -> Data?
 }
 
-extension MJHttpEndpoints {
+extension MJHttpEndpoint {
     
     public var query: [String: String]? {
         return nil
