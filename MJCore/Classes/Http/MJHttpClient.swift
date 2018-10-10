@@ -18,12 +18,12 @@ public final class MJHttpClient<Endpoint: MJHttpEndpoint>: MJHttpClientAny<Endpo
     private let session: URLSession
     
     private let basePathClosure: ((Endpoint) -> String?)?
-    private let requestClosure: ((Endpoint, URLRequest) -> URLRequest)?
+    private let requestClosure: ((Endpoint, URLRequest) -> MJResult<URLRequest>)?
     
     public init(
         sessionConfig: URLSessionConfiguration? = nil,
         basePathClosure: ((Endpoint) -> String?)? = nil,
-        requestClosure: ((Endpoint, URLRequest) -> URLRequest)? = nil
+        requestClosure: ((Endpoint, URLRequest) -> MJResult<URLRequest>)? = nil
     ) {
         if let sessionConfig = sessionConfig {
             session = URLSession(configuration: sessionConfig)
@@ -155,7 +155,12 @@ public final class MJHttpClient<Endpoint: MJHttpEndpoint>: MJHttpClientAny<Endpo
         }
         
         if let requestClosure = requestClosure {
-            request = requestClosure(endpoint, request)
+            switch requestClosure(endpoint, request) {
+            case .success(let request):
+                return .success(value: request)
+            case .failure(let error):
+                return .failure(error: error)
+            }
         }
         
         return .success(value: request)
