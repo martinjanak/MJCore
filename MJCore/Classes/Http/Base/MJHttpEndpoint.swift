@@ -24,7 +24,7 @@ extension MJHttpEndpoint {
         return nil
     }
     
-    public var additionalHeaders: [String: String]? {
+    public var headers: [String: String]? {
         return nil
     }
     
