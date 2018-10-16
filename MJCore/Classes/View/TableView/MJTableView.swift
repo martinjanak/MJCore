@@ -104,7 +104,7 @@ open class MJTableView<TableModel>
     // MARK: Heterogenous table
     // - CellModel has to implement CollectionModel protocol or extend CollectionModel class
     
-    public func register<CellModel, Cell: MJTableViewCell<CellModel>>(
+    public func registerHeterogenous<CellModel, Cell: MJTableViewCell<CellModel>>(
         _ cellClass: Cell.Type,
         additionalSetup: ((UITableView, IndexPath, CellModel, inout Cell) -> Void)?
     ) {

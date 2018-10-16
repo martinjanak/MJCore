@@ -118,7 +118,7 @@ open class MJCollectionView<CollectionModel>
     // MARK: Heterogenous collection
     // - CellModel has to implement CollectionModel protocol or extend CollectionModel class
     
-    public func register<CellModel, Cell: MJCollectionViewCell<CellModel>>(
+    public func registerHeterogenous<CellModel, Cell: MJCollectionViewCell<CellModel>>(
         _ cellClass: Cell.Type,
         additionalSetup: ((UICollectionView, IndexPath, CellModel, inout Cell) -> Void)?
     ) {
