@@ -26,7 +26,7 @@ open class MJDynamicStackView<StackModel>: UIStackView {
     private func initSetup() {
         alignment = .fill
         axis = .vertical
-        distribution = .fillEqually
+        distribution = .fill
         initBindings()
         setup()
     }
