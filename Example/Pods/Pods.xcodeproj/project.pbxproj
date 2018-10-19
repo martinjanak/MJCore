@@ -126,6 +126,8 @@
 		5B15B9EA20FC857B009D24C7 /* MJHorizonatlScrollVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B15B9E920FC857B009D24C7 /* MJHorizonatlScrollVM.swift */; };
 		5B15B9EC20FC9A6D009D24C7 /* UIView+GestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B15B9EB20FC9A6D009D24C7 /* UIView+GestureRecognizer.swift */; };
 		5B15B9EE20FCC3B8009D24C7 /* UIScrollView+ScrollTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B15B9ED20FCC3B8009D24C7 /* UIScrollView+ScrollTo.swift */; };
+		5B18291A2179CD1800A183E5 /* Observable+ScanPrevious.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1829192179CD1800A183E5 /* Observable+ScanPrevious.swift */; };
+		5B18291C2179CFCC00A183E5 /* MJTableViewLCS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B18291B2179CFCC00A183E5 /* MJTableViewLCS.swift */; };
 		5B1D2C98214673420004326E /* UIColor+hexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1D2C97214673420004326E /* UIColor+hexString.swift */; };
 		5B1D7C112122B28600F520AE /* UIViewController+ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1D7C102122B28600F520AE /* UIViewController+ShowAlert.swift */; };
 		5B2181A820EBA5CA00C623BE /* MJHorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2181A420EBA5CA00C623BE /* MJHorizontalScrollView.swift */; };
@@ -620,6 +622,8 @@
 		5B15B9E920FC857B009D24C7 /* MJHorizonatlScrollVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJHorizonatlScrollVM.swift; sourceTree = "<group>"; };
 		5B15B9EB20FC9A6D009D24C7 /* UIView+GestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+GestureRecognizer.swift"; sourceTree = "<group>"; };
 		5B15B9ED20FCC3B8009D24C7 /* UIScrollView+ScrollTo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+ScrollTo.swift"; sourceTree = "<group>"; };
+		5B1829192179CD1800A183E5 /* Observable+ScanPrevious.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+ScanPrevious.swift"; sourceTree = "<group>"; };
+		5B18291B2179CFCC00A183E5 /* MJTableViewLCS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJTableViewLCS.swift; sourceTree = "<group>"; };
 		5B1C053449E8FF44CB648F511C203C5C /* PublishRelay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PublishRelay.swift; path = RxCocoa/Traits/PublishRelay.swift; sourceTree = "<group>"; };
 		5B1D2C97214673420004326E /* UIColor+hexString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hexString.swift"; sourceTree = "<group>"; };
 		5B1D7C102122B28600F520AE /* UIViewController+ShowAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ShowAlert.swift"; sourceTree = "<group>"; };
@@ -1294,6 +1298,7 @@
 			isa = PBXGroup;
 			children = (
 				5B6D804B210DBCBC00D9EAB2 /* MJTableView.swift */,
+				5B18291B2179CFCC00A183E5 /* MJTableViewLCS.swift */,
 				5B6D804D210DBCC800D9EAB2 /* MJTableViewCell.swift */,
 			);
 			path = TableView;
@@ -1319,6 +1324,7 @@
 				5B754E6A20F4E17A0035D643 /* Observable+Unwrap.swift */,
 				5B99DF16212572AE00A0F6E1 /* Observable+Cast.swift */,
 				5B901F972105BC7700E3E289 /* Observable+With.swift */,
+				5B1829192179CD1800A183E5 /* Observable+ScanPrevious.swift */,
 			);
 			path = Observable;
 			sourceTree = "<group>";
@@ -2359,6 +2365,7 @@
 				4CB1A9995051DAD2560863064A221199 /* MJKeychainService.swift in Sources */,
 				5B52691F20CEBBB4006B3FC2 /* MJCoreDataCrudSecured.swift in Sources */,
 				5B901F982105BC7700E3E289 /* Observable+With.swift in Sources */,
+				5B18291C2179CFCC00A183E5 /* MJTableViewLCS.swift in Sources */,
 				5B2A1B2A2123FFDF00F95811 /* MJCountDownTimer.swift in Sources */,
 				5B99DF19212573C400A0F6E1 /* Driver+Cast.swift in Sources */,
 				5B4B15D620D53F0300EBA233 /* Animation.swift in Sources */,
@@ -2429,6 +2436,7 @@
 				5B6D8047210DBB4000D9EAB2 /* MJCollectionView.swift in Sources */,
 				5B36180D20C5AFCF0006C3EB /* Observable+BatchResult.swift in Sources */,
 				34C497AE556AE03275643E0D62EEF86D /* UINavigationController+Root.swift in Sources */,
+				5B18291A2179CD1800A183E5 /* Observable+ScanPrevious.swift in Sources */,
 				5B99DF1321255AEF00A0F6E1 /* MJSectionTableModel.swift in Sources */,
 				12252DB55373C62061B2D744ACC1C383 /* UIView+TopSafeConstraint.swift in Sources */,
 				5BF265D620FB8417006D8838 /* MJValidable.swift in Sources */,

@@ -12,7 +12,9 @@ extension Array where Element: Equatable {
     
     public func tableChange(with second: Array<Element>) -> MJTableChange<Element> {
         let lcs = self.lcs(with: second)
-        return diff(lcs: lcs, with: second, i: self.count, j: second.count)
+        var diff = self.diff(lcs: lcs, with: second, i: self.count, j: second.count)
+        diff.inserts.reverse()
+        return diff
     }
     
     private func diff(lcs C: [[Int]], with second: Array<Element>, i: Int, j: Int) -> MJTableChange<Element> {
@@ -23,7 +25,7 @@ extension Array where Element: Equatable {
             updates: [MJTableRowChange<Element>]()
         )
         if i > 0, j > 0, first[i-1] == second[j-1] {
-            diff.updates.append(MJTableRowChange<Element>(model: second[j-1], index: j-1))
+            diff.updates.append(MJTableRowChange<Element>(model: second[j-1], index: i-1))
             diff = diff + self.diff(lcs: C, with: second, i: i-1, j: j-1)
             return diff
         } else if j > 0, (i == 0 || C[i][j-1] >= C[i-1][j]) {
