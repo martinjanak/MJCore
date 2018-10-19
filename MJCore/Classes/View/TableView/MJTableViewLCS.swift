@@ -76,7 +76,9 @@ open class MJTableViewLCS<TableModel: Equatable>
             .bind(onNext: { [weak self] scanner in
                 guard let strongSelf = self else { return }
                 if let previousData = scanner.previous,
-                    let currentData = scanner.current {
+                    let currentData = scanner.current,
+                    previousData.count > 0,
+                    currentData.count > 0 {
                     let changes = previousData.tableChange(with: currentData)
                     DispatchQueue.main.async {
                         strongSelf.apply(changes: changes)
