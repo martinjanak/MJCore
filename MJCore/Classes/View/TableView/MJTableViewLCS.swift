@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-open class MJTableViewLCS<TableModel: Equatable>
+open class MJTableViewLCS<TableModel: MJTableCellModelType>
     : UITableView
     , UITableViewDataSource
     , UITableViewDelegate {
@@ -79,9 +79,11 @@ open class MJTableViewLCS<TableModel: Equatable>
                     let currentData = scanner.current,
                     previousData.count > 0,
                     currentData.count > 0 {
-                    let changes = previousData.tableChange(with: currentData)
-                    DispatchQueue.main.async {
-                        strongSelf.apply(changes: changes)
+                    let tableChange = previousData.tableChange(with: currentData)
+                    if tableChange.hasAny {
+                        DispatchQueue.main.async {
+                            strongSelf.apply(changes: tableChange)
+                        }
                     }
                 } else {
                     DispatchQueue.main.async {

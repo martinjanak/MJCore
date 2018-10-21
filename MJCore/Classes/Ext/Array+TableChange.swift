@@ -8,7 +8,7 @@
 import Foundation
 
 // https://en.wikipedia.org/wiki/Longest_common_subsequence_problem
-extension Array where Element: Equatable {
+extension Array where Element: MJTableCellModelType {
     
     public func tableChange(with second: Array<Element>) -> MJTableChange<Element> {
         let lcs = self.lcs(with: second)
@@ -20,27 +20,29 @@ extension Array where Element: Equatable {
     private func diff(lcs C: [[Int]], with second: Array<Element>, i: Int, j: Int) -> MJTableChange<Element> {
         let first = self
         var diff = MJTableChange<Element>(
-            inserts: [MJTableRowChange<Element>](),
-            deletes: [MJTableRowChange<Element>](),
-            updates: [MJTableRowChange<Element>]()
+            inserts: [MJTableCellChange<Element>](),
+            deletes: [MJTableCellChange<Element>](),
+            updates: [MJTableCellChange<Element>]()
         )
         if i > 0, j > 0, first[i-1] == second[j-1] {
-            diff.updates.append(MJTableRowChange<Element>(model: second[j-1], index: i-1))
+            if first[i-1].updateSignature != second[j-1].updateSignature {
+                diff.updates.append(MJTableCellChange<Element>(model: second[j-1], index: i-1))
+            }
             diff = diff + self.diff(lcs: C, with: second, i: i-1, j: j-1)
             return diff
         } else if j > 0, (i == 0 || C[i][j-1] >= C[i-1][j]) {
-            diff.inserts.append(MJTableRowChange<Element>(model: second[j-1], index: j-1))
+            diff.inserts.append(MJTableCellChange<Element>(model: second[j-1], index: j-1))
             diff = diff + self.diff(lcs: C, with: second, i: i, j: j-1)
             return diff
         } else if i > 0, (j == 0 || C[i][j-1] < C[i-1][j]) {
-            diff.deletes.append(MJTableRowChange<Element>(model: first[i-1], index: i-1))
+            diff.deletes.append(MJTableCellChange<Element>(model: first[i-1], index: i-1))
             diff = diff + self.diff(lcs: C, with: second, i: i-1, j: j)
             return diff
         } else {
             return MJTableChange<Element>(
-                inserts: [MJTableRowChange<Element>](),
-                deletes: [MJTableRowChange<Element>](),
-                updates: [MJTableRowChange<Element>]()
+                inserts: [MJTableCellChange<Element>](),
+                deletes: [MJTableCellChange<Element>](),
+                updates: [MJTableCellChange<Element>]()
             )
         }
     }
@@ -62,18 +64,29 @@ extension Array where Element: Equatable {
     
 }
 
-public struct MJTableRowChange<Model> {
+public typealias MJTableCellModelType = Equatable & MJUpdatable
+
+public protocol MJUpdatable {
+    var updateSignature: String { get }
+}
+
+public struct MJTableCellChange<Model: MJTableCellModelType> {
     public var model: Model
     public var index: Int
 }
 
-public struct MJTableChange<E> {
-    public var inserts: [MJTableRowChange<E>]
-    public var deletes: [MJTableRowChange<E>]
-    public var updates: [MJTableRowChange<E>]
+public struct MJTableChange<E: MJTableCellModelType> {
+    public var inserts: [MJTableCellChange<E>]
+    public var deletes: [MJTableCellChange<E>]
+    public var updates: [MJTableCellChange<E>]
+    
+    public var hasAny: Bool {
+        return inserts.count + deletes.count + updates.count > 0
+    }
+    
 }
 
-extension MJTableChange where E: Equatable {
+extension MJTableChange {
     
     public static func +(left: MJTableChange<E>, right: MJTableChange<E>) -> MJTableChange<E> {
         return MJTableChange<E>(
