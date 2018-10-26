@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-open class MJFlowController<Service>: NSObject, UINavigationControllerDelegate {
+open class MJFlowController<Service> {
     
     public weak var navigation: UINavigationController?
     public let service: Service
@@ -28,7 +28,6 @@ open class MJFlowController<Service>: NSObject, UINavigationControllerDelegate {
     
     open func start(navigation: UINavigationController) {
         self.navigation = navigation
-        navigation.delegate = self
         // override and present/push/root view controller
     }
     
@@ -195,20 +194,6 @@ open class MJFlowController<Service>: NSObject, UINavigationControllerDelegate {
         } else {
             action()
         }
-    }
-    
-    // MARK: Navigation controller delegate
-    @objc
-    func navigationController(
-        _ navigationController: UINavigationController,
-        animationControllerFor operation: UINavigationController.Operation,
-        from fromVC: UIViewController,
-        to toVC: UIViewController
-    ) -> UIViewControllerAnimatedTransitioning? {
-        if let fromVC = fromVC as? MJHasCustomTransitioning {
-            return fromVC.getCustomTransitioning(toVC: toVC, operation: operation)
-        }
-        return nil
     }
     
 }

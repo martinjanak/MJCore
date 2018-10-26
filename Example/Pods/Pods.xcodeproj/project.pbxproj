@@ -181,6 +181,7 @@
 		5BA06F7E20F738F300B0E504 /* MJYearMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA06F7C20F738F300B0E504 /* MJYearMonth.swift */; };
 		5BA06F7F20F738F300B0E504 /* MJMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA06F7D20F738F300B0E504 /* MJMonth.swift */; };
 		5BB1B0AF21830BF1007F5973 /* MJHasCustomTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1B0AE21830BF1007F5973 /* MJHasCustomTransitioning.swift */; };
+		5BB1B0B121831553007F5973 /* MJNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1B0B021831553007F5973 /* MJNavigationController.swift */; };
 		5BC13E2720D0502A00454828 /* MJViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC13E2620D0502A00454828 /* MJViewComponent.swift */; };
 		5BC972292116DCB600C021A8 /* Array+Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC972282116DCB600C021A8 /* Array+Group.swift */; };
 		5BF0283E20C9B2ED00B00A28 /* Observable+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0283D20C9B2ED00B00A28 /* Observable+Empty.swift */; };
@@ -677,6 +678,7 @@
 		5BA06F7C20F738F300B0E504 /* MJYearMonth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJYearMonth.swift; sourceTree = "<group>"; };
 		5BA06F7D20F738F300B0E504 /* MJMonth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJMonth.swift; sourceTree = "<group>"; };
 		5BB1B0AE21830BF1007F5973 /* MJHasCustomTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJHasCustomTransitioning.swift; sourceTree = "<group>"; };
+		5BB1B0B021831553007F5973 /* MJNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJNavigationController.swift; sourceTree = "<group>"; };
 		5BC13E2620D0502A00454828 /* MJViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJViewComponent.swift; sourceTree = "<group>"; };
 		5BC972282116DCB600C021A8 /* Array+Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Group.swift"; sourceTree = "<group>"; };
 		5BF0283D20C9B2ED00B00A28 /* Observable+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Empty.swift"; sourceTree = "<group>"; };
@@ -1392,6 +1394,7 @@
 			children = (
 				970479B89BE7BCB05D0525CDA7607B6E /* MJFlowController.swift */,
 				5BB1B0AE21830BF1007F5973 /* MJHasCustomTransitioning.swift */,
+				5BB1B0B021831553007F5973 /* MJNavigationController.swift */,
 			);
 			path = Flow;
 			sourceTree = "<group>";
@@ -2379,6 +2382,7 @@
 				5B18291C2179CFCC00A183E5 /* MJTableViewLCS.swift in Sources */,
 				5B2A1B2A2123FFDF00F95811 /* MJCountDownTimer.swift in Sources */,
 				5B99DF19212573C400A0F6E1 /* Driver+Cast.swift in Sources */,
+				5BB1B0B121831553007F5973 /* MJNavigationController.swift in Sources */,
 				5B4B15D620D53F0300EBA233 /* Animation.swift in Sources */,
 				5B99712121118C8600C20776 /* MJPagingScrollView.swift in Sources */,
 				5B0E07C52129569A00692481 /* MJDynamicStackView.swift in Sources */,
