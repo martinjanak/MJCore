@@ -182,6 +182,8 @@
 		5BA06F7F20F738F300B0E504 /* MJMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA06F7D20F738F300B0E504 /* MJMonth.swift */; };
 		5BB1B0AF21830BF1007F5973 /* MJHasCustomTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1B0AE21830BF1007F5973 /* MJHasCustomTransitioning.swift */; };
 		5BB1B0B121831553007F5973 /* MJNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1B0B021831553007F5973 /* MJNavigationController.swift */; };
+		5BB1B0B9218327FC007F5973 /* MJOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1B0B8218327FC007F5973 /* MJOperators.swift */; };
+		5BB1B0BB2183285F007F5973 /* MJUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1B0BA2183285F007F5973 /* MJUpdatable.swift */; };
 		5BC13E2720D0502A00454828 /* MJViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC13E2620D0502A00454828 /* MJViewComponent.swift */; };
 		5BC972292116DCB600C021A8 /* Array+Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC972282116DCB600C021A8 /* Array+Group.swift */; };
 		5BF0283E20C9B2ED00B00A28 /* Observable+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0283D20C9B2ED00B00A28 /* Observable+Empty.swift */; };
@@ -679,6 +681,8 @@
 		5BA06F7D20F738F300B0E504 /* MJMonth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJMonth.swift; sourceTree = "<group>"; };
 		5BB1B0AE21830BF1007F5973 /* MJHasCustomTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJHasCustomTransitioning.swift; sourceTree = "<group>"; };
 		5BB1B0B021831553007F5973 /* MJNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJNavigationController.swift; sourceTree = "<group>"; };
+		5BB1B0B8218327FC007F5973 /* MJOperators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJOperators.swift; sourceTree = "<group>"; };
+		5BB1B0BA2183285F007F5973 /* MJUpdatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJUpdatable.swift; sourceTree = "<group>"; };
 		5BC13E2620D0502A00454828 /* MJViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJViewComponent.swift; sourceTree = "<group>"; };
 		5BC972282116DCB600C021A8 /* Array+Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Group.swift"; sourceTree = "<group>"; };
 		5BF0283D20C9B2ED00B00A28 /* Observable+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Empty.swift"; sourceTree = "<group>"; };
@@ -1262,9 +1266,11 @@
 		5B50320920C450790060FC35 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				5BB1B0B8218327FC007F5973 /* MJOperators.swift */,
 				5B50320A20C450790060FC35 /* MJKeyType.swift */,
 				5B5598DA2121AF1100B16537 /* MJSettings.swift */,
 				5B5598DC2121B3B100B16537 /* MJGlobalFunctions.swift */,
+				5BB1B0BA2183285F007F5973 /* MJUpdatable.swift */,
 			);
 			name = Common;
 			path = MJCore/Classes/Common;
@@ -2404,6 +2410,7 @@
 				5B6D8050210DBF5600D9EAB2 /* Driver+Datasource.swift in Sources */,
 				5B5598DB2121AF1100B16537 /* MJSettings.swift in Sources */,
 				5B44E5C720C27530003A6AD3 /* MJLocalAuthService.swift in Sources */,
+				5BB1B0BB2183285F007F5973 /* MJUpdatable.swift in Sources */,
 				5B02D5CF20BF176900F29406 /* Observable+None.swift in Sources */,
 				5B52691D20CEBB66006B3FC2 /* MJCoreDataCrud.swift in Sources */,
 				5B9971132111748000C20776 /* MJPagingViewModel.swift in Sources */,
@@ -2439,6 +2446,7 @@
 				5BF265D720FB8417006D8838 /* MJStringValidator.swift in Sources */,
 				3FB2E28422A553F901654557D4D4AF1E /* Observable+Simplify.swift in Sources */,
 				7849F7BAA434E4D54FC77727C5723672 /* Observable+Store.swift in Sources */,
+				5BB1B0B9218327FC007F5973 /* MJOperators.swift in Sources */,
 				A3A95C4674A4A35947F2E4DC0A4369A8 /* Observable+Success.swift in Sources */,
 				5BB1B0AF21830BF1007F5973 /* MJHasCustomTransitioning.swift in Sources */,
 				5B99711B211179E800C20776 /* MJPageViewModel.swift in Sources */,

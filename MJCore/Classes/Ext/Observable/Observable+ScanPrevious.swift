@@ -18,6 +18,6 @@ extension Observable {
 }
 
 public struct PreviousScanner<Value> {
-    let previous: Value?
-    let current: Value?
+    public let previous: Value?
+    public let current: Value?
 }

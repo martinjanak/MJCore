@@ -25,7 +25,7 @@ extension Array where Element: MJGroupElementType {
             updates: [MJGroupElementChange<Element>]()
         )
         if i > 0, j > 0, first[i-1] == second[j-1] {
-            if first[i-1].updateSignature != second[j-1].updateSignature {
+            if first[i-1] !~ second[j-1] {
                 diff.updates.append(MJGroupElementChange<Element>(model: second[j-1], index: i-1))
             }
             diff = diff + self.diff(lcs: C, with: second, i: i-1, j: j-1)
@@ -65,10 +65,6 @@ extension Array where Element: MJGroupElementType {
 }
 
 public typealias MJGroupElementType = Equatable & MJUpdatable
-
-public protocol MJUpdatable {
-    var updateSignature: String { get }
-}
 
 public struct MJGroupElementChange<Model: MJGroupElementType> {
     public var model: Model
