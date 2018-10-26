@@ -198,10 +198,10 @@ open class MJFlowController<Service>: NSObject, UINavigationControllerDelegate {
     }
     
     // MARK: Navigation controller delegate
-    
-    private func navigationController(
+    @objc
+    func navigationController(
         _ navigationController: UINavigationController,
-        animationControllerFor operation: UINavigationControllerOperation,
+        animationControllerFor operation: UINavigationController.Operation,
         from fromVC: UIViewController,
         to toVC: UIViewController
     ) -> UIViewControllerAnimatedTransitioning? {
