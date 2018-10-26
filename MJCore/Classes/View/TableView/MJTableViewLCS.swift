@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-open class MJTableViewLCS<TableModel: MJTableCellModelType>
+open class MJTableViewLCS<TableModel: MJGroupElementType>
     : UITableView
     , UITableViewDataSource
     , UITableViewDelegate {
@@ -79,7 +79,7 @@ open class MJTableViewLCS<TableModel: MJTableCellModelType>
                     let currentData = scanner.current,
                     previousData.count > 0,
                     currentData.count > 0 {
-                    let tableChange = previousData.tableChange(with: currentData)
+                    let tableChange = previousData.lcsChange(with: currentData)
                     if tableChange.hasAny {
                         DispatchQueue.main.async {
                             strongSelf.apply(changes: tableChange)
@@ -99,7 +99,7 @@ open class MJTableViewLCS<TableModel: MJTableCellModelType>
     public func register<Cell: MJTableViewCell<TableModel>>(
         _ cellClass: Cell.Type,
         additionalSetup: ((UITableView, IndexPath, TableModel, inout Cell) -> Void)? = nil
-        ) {
+    ) {
         let cellId = "\(cellClass)Id"
         register(cellClass, forCellReuseIdentifier: cellId)
         cellConstructors.append({ cellModel in
@@ -219,7 +219,7 @@ open class MJTableViewLCS<TableModel: MJTableCellModelType>
         deleteAnimation = delete
     }
     
-    private func apply(changes: MJTableChange<TableModel>) {
+    private func apply(changes: MJGroupChange<TableModel>) {
         beginUpdates()
         deleteRows(at: changes.deletes.map { IndexPath(item: $0.index, section: 0) }, with: deleteAnimation)
         insertRows(at: changes.inserts.map { IndexPath(item: $0.index, section: 0) }, with: insertAnimation)

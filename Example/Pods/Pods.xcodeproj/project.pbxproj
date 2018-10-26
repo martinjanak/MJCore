@@ -180,8 +180,9 @@
 		5B99DF19212573C400A0F6E1 /* Driver+Cast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B99DF18212573C400A0F6E1 /* Driver+Cast.swift */; };
 		5BA06F7E20F738F300B0E504 /* MJYearMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA06F7C20F738F300B0E504 /* MJYearMonth.swift */; };
 		5BA06F7F20F738F300B0E504 /* MJMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA06F7D20F738F300B0E504 /* MJMonth.swift */; };
+		5BB1B0AF21830BF1007F5973 /* MJHasCustomTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1B0AE21830BF1007F5973 /* MJHasCustomTransitioning.swift */; };
 		5BC13E2720D0502A00454828 /* MJViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC13E2620D0502A00454828 /* MJViewComponent.swift */; };
-		5BC972292116DCB600C021A8 /* Array+TableChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC972282116DCB600C021A8 /* Array+TableChange.swift */; };
+		5BC972292116DCB600C021A8 /* Array+Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC972282116DCB600C021A8 /* Array+Group.swift */; };
 		5BF0283E20C9B2ED00B00A28 /* Observable+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0283D20C9B2ED00B00A28 /* Observable+Empty.swift */; };
 		5BF0284020C9CC2300B00A28 /* MJCoreDataFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0283F20C9CC2300B00A28 /* MJCoreDataFilter.swift */; };
 		5BF265CC20FB83F2006D8838 /* MJTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF265CB20FB83F2006D8838 /* MJTextField.swift */; };
@@ -675,8 +676,9 @@
 		5B99DF18212573C400A0F6E1 /* Driver+Cast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Driver+Cast.swift"; sourceTree = "<group>"; };
 		5BA06F7C20F738F300B0E504 /* MJYearMonth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJYearMonth.swift; sourceTree = "<group>"; };
 		5BA06F7D20F738F300B0E504 /* MJMonth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJMonth.swift; sourceTree = "<group>"; };
+		5BB1B0AE21830BF1007F5973 /* MJHasCustomTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJHasCustomTransitioning.swift; sourceTree = "<group>"; };
 		5BC13E2620D0502A00454828 /* MJViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJViewComponent.swift; sourceTree = "<group>"; };
-		5BC972282116DCB600C021A8 /* Array+TableChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+TableChange.swift"; sourceTree = "<group>"; };
+		5BC972282116DCB600C021A8 /* Array+Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Group.swift"; sourceTree = "<group>"; };
 		5BF0283D20C9B2ED00B00A28 /* Observable+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Empty.swift"; sourceTree = "<group>"; };
 		5BF0283F20C9CC2300B00A28 /* MJCoreDataFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJCoreDataFilter.swift; sourceTree = "<group>"; };
 		5BF265CB20FB83F2006D8838 /* MJTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJTextField.swift; sourceTree = "<group>"; };
@@ -1385,6 +1387,15 @@
 			path = MJCore/Classes/Date;
 			sourceTree = "<group>";
 		};
+		5BB1B0AD21830BA7007F5973 /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				970479B89BE7BCB05D0525CDA7607B6E /* MJFlowController.swift */,
+				5BB1B0AE21830BF1007F5973 /* MJHasCustomTransitioning.swift */,
+			);
+			path = Flow;
+			sourceTree = "<group>";
+		};
 		5BF265C920FB83F2006D8838 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1677,9 +1688,9 @@
 		9C41D6581043F006969903D945BDF2E0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				5BB1B0AD21830BA7007F5973 /* Flow */,
 				5B99710F2111741500C20776 /* Paging */,
 				5B0870D820F1F442007DD392 /* HorizontalScroll */,
-				970479B89BE7BCB05D0525CDA7607B6E /* MJFlowController.swift */,
 				BD8A1DEB772C4E78A9FD921048C05C20 /* MJView.swift */,
 				5BC13E2620D0502A00454828 /* MJViewComponent.swift */,
 				48F2DCD12131E7880F3D527BB704A5DA /* MJViewController.swift */,
@@ -1754,7 +1765,7 @@
 				5BF87627210769AB0003E9E8 /* Collection+Group.swift */,
 				5B557F9F21099BEF00A4EA0C /* UIStackView+Ext.swift */,
 				5B99711C21117D9000C20776 /* Array+Equals.swift */,
-				5BC972282116DCB600C021A8 /* Array+TableChange.swift */,
+				5BC972282116DCB600C021A8 /* Array+Group.swift */,
 				5B1D7C102122B28600F520AE /* UIViewController+ShowAlert.swift */,
 				5B1D2C97214673420004326E /* UIColor+hexString.swift */,
 			);
@@ -2336,7 +2347,7 @@
 				5B99711F21117F8B00C20776 /* MJPageViewController.swift in Sources */,
 				5B31F9D7210C548C008F5AB5 /* Driver+Unwrap.swift in Sources */,
 				5B2181A920EBA5CA00C623BE /* MJHorizontalScrollVC.swift in Sources */,
-				5BC972292116DCB600C021A8 /* Array+TableChange.swift in Sources */,
+				5BC972292116DCB600C021A8 /* Array+Group.swift in Sources */,
 				0C8478F5FF3D1F0E77466A8BE540D1C8 /* MJCoreDataModel.swift in Sources */,
 				5B5C2E7F20F9E1E1001ED90C /* MJLocalizedString.swift in Sources */,
 				5BA06F7E20F738F300B0E504 /* MJYearMonth.swift in Sources */,
@@ -2425,6 +2436,7 @@
 				3FB2E28422A553F901654557D4D4AF1E /* Observable+Simplify.swift in Sources */,
 				7849F7BAA434E4D54FC77727C5723672 /* Observable+Store.swift in Sources */,
 				A3A95C4674A4A35947F2E4DC0A4369A8 /* Observable+Success.swift in Sources */,
+				5BB1B0AF21830BF1007F5973 /* MJHasCustomTransitioning.swift in Sources */,
 				5B99711B211179E800C20776 /* MJPageViewModel.swift in Sources */,
 				5B1D2C98214673420004326E /* UIColor+hexString.swift in Sources */,
 				5B754E7420F4EB5D0035D643 /* MJModalViewController.swift in Sources */,
