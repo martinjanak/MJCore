@@ -47,7 +47,7 @@ extension Array where Element: MJGroupElementType {
         }
     }
     
-    public func lcs(with second: Array<Element>) -> [[Int]] {
+    private func lcs(with second: Array<Element>) -> [[Int]] {
         let first = self
         var C = [[Int]](repeating: [Int](repeating: 0, count: second.count + 1), count: first.count + 1)
         for i in 1...first.count {
@@ -60,37 +60,6 @@ extension Array where Element: MJGroupElementType {
             }
         }
         return C
-    }
-    
-}
-
-public typealias MJGroupElementType = Equatable & MJUpdatable
-
-public struct MJGroupElementChange<Model: MJGroupElementType> {
-    public var model: Model
-    public var index: Int
-}
-
-public struct MJGroupChange<Element: MJGroupElementType> {
-    
-    public var inserts: [MJGroupElementChange<Element>]
-    public var deletes: [MJGroupElementChange<Element>]
-    public var updates: [MJGroupElementChange<Element>]
-    
-    public var hasAny: Bool {
-        return inserts.count + deletes.count + updates.count > 0
-    }
-    
-}
-
-extension MJGroupChange {
-    
-    public static func +(left: MJGroupChange<Element>, right: MJGroupChange<Element>) -> MJGroupChange<Element> {
-        return MJGroupChange<Element>(
-            inserts: left.inserts + right.inserts,
-            deletes: left.deletes + right.deletes,
-            updates: left.updates + right.updates
-        )
     }
     
 }

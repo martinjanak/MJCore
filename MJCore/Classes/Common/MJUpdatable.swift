@@ -8,12 +8,16 @@
 import Foundation
 
 public protocol MJUpdatable {
-    static func ~~ (lhs: Self, rhs: Self) -> Bool
+    var updateSignature: String { get }
 }
 
 extension MJUpdatable {
     
-    static func !~ (lhs: Self, rhs: Self) -> Bool {
+    public static func ~~ (lhs: Self, rhs: Self) -> Bool {
+        return lhs.updateSignature == rhs.updateSignature
+    }
+    
+    public static func !~ (lhs: Self, rhs: Self) -> Bool {
         return !(lhs ~~ rhs)
     }
     

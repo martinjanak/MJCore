@@ -73,10 +73,10 @@ open class MJTableViewLCS<TableModel: MJGroupElementType>
     private func initBindings() {
         data.asObservable()
             .scanPrevious()
-            .bind(onNext: { [weak self] scanner in
+            .bind(onNext: { [weak self] data in
                 guard let strongSelf = self else { return }
-                if let previousData = scanner.previous,
-                    let currentData = scanner.current,
+                if let previousData = data.previous,
+                    let currentData = data.current,
                     previousData.count > 0,
                     currentData.count > 0 {
                     let tableChange = previousData.lcsChange(with: currentData)

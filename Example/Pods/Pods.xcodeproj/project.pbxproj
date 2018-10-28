@@ -159,6 +159,8 @@
 		5B7233B147DB364DBE11D645CAA93375 /* Completable+AndThen.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED28D533686DF46636404EEC7E05AF9C /* Completable+AndThen.swift */; };
 		5B754E6B20F4E17A0035D643 /* Observable+Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B754E6A20F4E17A0035D643 /* Observable+Unwrap.swift */; };
 		5B754E7420F4EB5D0035D643 /* MJModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B754E7320F4EB5D0035D643 /* MJModalViewController.swift */; };
+		5B8963CD21861467001B2E7D /* MJUniqueIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8963CC21861467001B2E7D /* MJUniqueIdentifiable.swift */; };
+		5B8963CF218614FA001B2E7D /* MJGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8963CE218614FA001B2E7D /* MJGroup.swift */; };
 		5B901F982105BC7700E3E289 /* Observable+With.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B901F972105BC7700E3E289 /* Observable+With.swift */; };
 		5B99710D211173BC00C20776 /* MJHorizontalPageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B99710B211173BC00C20776 /* MJHorizontalPageVM.swift */; };
 		5B99710E211173BC00C20776 /* MJHorizontalPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B99710C211173BC00C20776 /* MJHorizontalPageVC.swift */; };
@@ -184,8 +186,10 @@
 		5BB1B0B121831553007F5973 /* MJNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1B0B021831553007F5973 /* MJNavigationController.swift */; };
 		5BB1B0B9218327FC007F5973 /* MJOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1B0B8218327FC007F5973 /* MJOperators.swift */; };
 		5BB1B0BB2183285F007F5973 /* MJUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1B0BA2183285F007F5973 /* MJUpdatable.swift */; };
+		5BB1B0BD21833226007F5973 /* Observable+FindOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1B0BC21833226007F5973 /* Observable+FindOne.swift */; };
+		5BB1B0BF218335F8007F5973 /* Driver+FindOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1B0BE218335F8007F5973 /* Driver+FindOne.swift */; };
 		5BC13E2720D0502A00454828 /* MJViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC13E2620D0502A00454828 /* MJViewComponent.swift */; };
-		5BC972292116DCB600C021A8 /* Array+Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC972282116DCB600C021A8 /* Array+Group.swift */; };
+		5BC972292116DCB600C021A8 /* Array+LSC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC972282116DCB600C021A8 /* Array+LSC.swift */; };
 		5BF0283E20C9B2ED00B00A28 /* Observable+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0283D20C9B2ED00B00A28 /* Observable+Empty.swift */; };
 		5BF0284020C9CC2300B00A28 /* MJCoreDataFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0283F20C9CC2300B00A28 /* MJCoreDataFilter.swift */; };
 		5BF265CC20FB83F2006D8838 /* MJTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF265CB20FB83F2006D8838 /* MJTextField.swift */; };
@@ -658,6 +662,8 @@
 		5B6D804F210DBF5600D9EAB2 /* Driver+Datasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Driver+Datasource.swift"; sourceTree = "<group>"; };
 		5B754E6A20F4E17A0035D643 /* Observable+Unwrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Unwrap.swift"; sourceTree = "<group>"; };
 		5B754E7320F4EB5D0035D643 /* MJModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJModalViewController.swift; sourceTree = "<group>"; };
+		5B8963CC21861467001B2E7D /* MJUniqueIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJUniqueIdentifiable.swift; sourceTree = "<group>"; };
+		5B8963CE218614FA001B2E7D /* MJGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJGroup.swift; sourceTree = "<group>"; };
 		5B901F972105BC7700E3E289 /* Observable+With.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+With.swift"; sourceTree = "<group>"; };
 		5B99710B211173BC00C20776 /* MJHorizontalPageVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJHorizontalPageVM.swift; sourceTree = "<group>"; };
 		5B99710C211173BC00C20776 /* MJHorizontalPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJHorizontalPageVC.swift; sourceTree = "<group>"; };
@@ -683,8 +689,10 @@
 		5BB1B0B021831553007F5973 /* MJNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJNavigationController.swift; sourceTree = "<group>"; };
 		5BB1B0B8218327FC007F5973 /* MJOperators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJOperators.swift; sourceTree = "<group>"; };
 		5BB1B0BA2183285F007F5973 /* MJUpdatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJUpdatable.swift; sourceTree = "<group>"; };
+		5BB1B0BC21833226007F5973 /* Observable+FindOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+FindOne.swift"; sourceTree = "<group>"; };
+		5BB1B0BE218335F8007F5973 /* Driver+FindOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Driver+FindOne.swift"; sourceTree = "<group>"; };
 		5BC13E2620D0502A00454828 /* MJViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJViewComponent.swift; sourceTree = "<group>"; };
-		5BC972282116DCB600C021A8 /* Array+Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Group.swift"; sourceTree = "<group>"; };
+		5BC972282116DCB600C021A8 /* Array+LSC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+LSC.swift"; sourceTree = "<group>"; };
 		5BF0283D20C9B2ED00B00A28 /* Observable+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Empty.swift"; sourceTree = "<group>"; };
 		5BF0283F20C9CC2300B00A28 /* MJCoreDataFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJCoreDataFilter.swift; sourceTree = "<group>"; };
 		5BF265CB20FB83F2006D8838 /* MJTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJTextField.swift; sourceTree = "<group>"; };
@@ -1270,7 +1278,9 @@
 				5B50320A20C450790060FC35 /* MJKeyType.swift */,
 				5B5598DA2121AF1100B16537 /* MJSettings.swift */,
 				5B5598DC2121B3B100B16537 /* MJGlobalFunctions.swift */,
+				5B8963CC21861467001B2E7D /* MJUniqueIdentifiable.swift */,
 				5BB1B0BA2183285F007F5973 /* MJUpdatable.swift */,
+				5B8963CE218614FA001B2E7D /* MJGroup.swift */,
 			);
 			name = Common;
 			path = MJCore/Classes/Common;
@@ -1335,6 +1345,7 @@
 				5B99DF16212572AE00A0F6E1 /* Observable+Cast.swift */,
 				5B901F972105BC7700E3E289 /* Observable+With.swift */,
 				5B1829192179CD1800A183E5 /* Observable+ScanPrevious.swift */,
+				5BB1B0BC21833226007F5973 /* Observable+FindOne.swift */,
 			);
 			path = Observable;
 			sourceTree = "<group>";
@@ -1345,6 +1356,7 @@
 				5B6D804F210DBF5600D9EAB2 /* Driver+Datasource.swift */,
 				5B31F9D6210C548C008F5AB5 /* Driver+Unwrap.swift */,
 				5B99DF18212573C400A0F6E1 /* Driver+Cast.swift */,
+				5BB1B0BE218335F8007F5973 /* Driver+FindOne.swift */,
 			);
 			path = Driver;
 			sourceTree = "<group>";
@@ -1774,7 +1786,7 @@
 				5BF87627210769AB0003E9E8 /* Collection+Group.swift */,
 				5B557F9F21099BEF00A4EA0C /* UIStackView+Ext.swift */,
 				5B99711C21117D9000C20776 /* Array+Equals.swift */,
-				5BC972282116DCB600C021A8 /* Array+Group.swift */,
+				5BC972282116DCB600C021A8 /* Array+LSC.swift */,
 				5B1D7C102122B28600F520AE /* UIViewController+ShowAlert.swift */,
 				5B1D2C97214673420004326E /* UIColor+hexString.swift */,
 			);
@@ -2355,8 +2367,9 @@
 				5B997117211175D900C20776 /* MJPagingViewControllerType.swift in Sources */,
 				5B99711F21117F8B00C20776 /* MJPageViewController.swift in Sources */,
 				5B31F9D7210C548C008F5AB5 /* Driver+Unwrap.swift in Sources */,
+				5B8963CF218614FA001B2E7D /* MJGroup.swift in Sources */,
 				5B2181A920EBA5CA00C623BE /* MJHorizontalScrollVC.swift in Sources */,
-				5BC972292116DCB600C021A8 /* Array+Group.swift in Sources */,
+				5BC972292116DCB600C021A8 /* Array+LSC.swift in Sources */,
 				0C8478F5FF3D1F0E77466A8BE540D1C8 /* MJCoreDataModel.swift in Sources */,
 				5B5C2E7F20F9E1E1001ED90C /* MJLocalizedString.swift in Sources */,
 				5BA06F7E20F738F300B0E504 /* MJYearMonth.swift in Sources */,
@@ -2388,6 +2401,7 @@
 				5B18291C2179CFCC00A183E5 /* MJTableViewLCS.swift in Sources */,
 				5B2A1B2A2123FFDF00F95811 /* MJCountDownTimer.swift in Sources */,
 				5B99DF19212573C400A0F6E1 /* Driver+Cast.swift in Sources */,
+				5BB1B0BF218335F8007F5973 /* Driver+FindOne.swift in Sources */,
 				5BB1B0B121831553007F5973 /* MJNavigationController.swift in Sources */,
 				5B4B15D620D53F0300EBA233 /* Animation.swift in Sources */,
 				5B99712121118C8600C20776 /* MJPagingScrollView.swift in Sources */,
@@ -2433,6 +2447,7 @@
 				ABEBC4A963FF7EC20595D78EE6A40CD9 /* MJUserDefaultsService.swift in Sources */,
 				42FFD9A9CDAC4A9058B8573E0399A5E5 /* MJView.swift in Sources */,
 				5BF265CC20FB83F2006D8838 /* MJTextField.swift in Sources */,
+				5B8963CD21861467001B2E7D /* MJUniqueIdentifiable.swift in Sources */,
 				FB05AB2712249FDC66C2286DFA5A601C /* MJViewController.swift in Sources */,
 				7801225063DEB1BDBCCCFF891A11E0FE /* Observable+Debug.swift in Sources */,
 				A16D57686B250C8D695A9859462732B4 /* Observable+Decode.swift in Sources */,
@@ -2462,6 +2477,7 @@
 				34C497AE556AE03275643E0D62EEF86D /* UINavigationController+Root.swift in Sources */,
 				5B18291A2179CD1800A183E5 /* Observable+ScanPrevious.swift in Sources */,
 				5B99DF1321255AEF00A0F6E1 /* MJSectionTableModel.swift in Sources */,
+				5BB1B0BD21833226007F5973 /* Observable+FindOne.swift in Sources */,
 				12252DB55373C62061B2D744ACC1C383 /* UIView+TopSafeConstraint.swift in Sources */,
 				5BF265D620FB8417006D8838 /* MJValidable.swift in Sources */,
 			);
