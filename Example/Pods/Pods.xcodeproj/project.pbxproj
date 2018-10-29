@@ -126,6 +126,7 @@
 		5B15B9EA20FC857B009D24C7 /* MJHorizonatlScrollVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B15B9E920FC857B009D24C7 /* MJHorizonatlScrollVM.swift */; };
 		5B15B9EC20FC9A6D009D24C7 /* UIView+GestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B15B9EB20FC9A6D009D24C7 /* UIView+GestureRecognizer.swift */; };
 		5B15B9EE20FCC3B8009D24C7 /* UIScrollView+ScrollTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B15B9ED20FCC3B8009D24C7 /* UIScrollView+ScrollTo.swift */; };
+		5B163DFD218702F50047A690 /* Driver+With.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B163DFC218702F50047A690 /* Driver+With.swift */; };
 		5B18291A2179CD1800A183E5 /* Observable+ScanPrevious.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1829192179CD1800A183E5 /* Observable+ScanPrevious.swift */; };
 		5B18291C2179CFCC00A183E5 /* MJTableViewLCS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B18291B2179CFCC00A183E5 /* MJTableViewLCS.swift */; };
 		5B1D2C98214673420004326E /* UIColor+hexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1D2C97214673420004326E /* UIColor+hexString.swift */; };
@@ -630,6 +631,7 @@
 		5B15B9E920FC857B009D24C7 /* MJHorizonatlScrollVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJHorizonatlScrollVM.swift; sourceTree = "<group>"; };
 		5B15B9EB20FC9A6D009D24C7 /* UIView+GestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+GestureRecognizer.swift"; sourceTree = "<group>"; };
 		5B15B9ED20FCC3B8009D24C7 /* UIScrollView+ScrollTo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+ScrollTo.swift"; sourceTree = "<group>"; };
+		5B163DFC218702F50047A690 /* Driver+With.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Driver+With.swift"; sourceTree = "<group>"; };
 		5B1829192179CD1800A183E5 /* Observable+ScanPrevious.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+ScanPrevious.swift"; sourceTree = "<group>"; };
 		5B18291B2179CFCC00A183E5 /* MJTableViewLCS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJTableViewLCS.swift; sourceTree = "<group>"; };
 		5B1C053449E8FF44CB648F511C203C5C /* PublishRelay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PublishRelay.swift; path = RxCocoa/Traits/PublishRelay.swift; sourceTree = "<group>"; };
@@ -1356,6 +1358,7 @@
 				5B6D804F210DBF5600D9EAB2 /* Driver+Datasource.swift */,
 				5B31F9D6210C548C008F5AB5 /* Driver+Unwrap.swift */,
 				5B99DF18212573C400A0F6E1 /* Driver+Cast.swift */,
+				5B163DFC218702F50047A690 /* Driver+With.swift */,
 				5BB1B0BE218335F8007F5973 /* Driver+FindOne.swift */,
 			);
 			path = Driver;
@@ -2392,6 +2395,7 @@
 				00B17B62B2E97722A8AEFFD00CDA1105 /* MJHttpError.swift in Sources */,
 				5B557FA021099BEF00A4EA0C /* UIStackView+Ext.swift in Sources */,
 				70AD87B96CC2180BF7B6A0306F5CBD92 /* MJHttpMethod.swift in Sources */,
+				5B163DFD218702F50047A690 /* Driver+With.swift in Sources */,
 				5BF265D520FB8417006D8838 /* MJValidityState.swift in Sources */,
 				5BA06F7F20F738F300B0E504 /* MJMonth.swift in Sources */,
 				DA48F5A9F98A6D2331EA21B849D68722 /* MJKeychain.swift in Sources */,

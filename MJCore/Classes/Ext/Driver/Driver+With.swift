@@ -1,31 +1,32 @@
 //
-//  Observable+With.swift
+//  Driver+With.swift
 //  MJCore
 //
-//  Created by Martin Janák on 23/07/2018.
+//  Created by Martin Janák on 29/10/2018.
 //
 
 import RxSwift
+import RxCocoa
 
-extension Observable {
+extension SharedSequenceConvertibleType where SharingStrategy == DriverSharingStrategy {
     
     public func with<WithElement>(
-        _ observable: Observable<WithElement>
-    ) -> Observable<(Element, WithElement)> {
+        _ observable: Driver<WithElement>
+    ) -> Driver<(E, WithElement)> {
         return self.withLatestFrom(observable) { ($0, $1) }
     }
     
     public func with<A, B>(
-        _ tuple: (Observable<A>, Observable<B>)
-    ) -> Observable<(Element, A, B)> {
+        _ tuple: (Driver<A>, Driver<B>)
+    ) -> Driver<(E, A, B)> {
         return self
             .withLatestFrom(tuple.0) { ($0, $1) }
             .withLatestFrom(tuple.1) { ($0.0, $0.1, $1) }
     }
     
     public func with<A, B, C>(
-        _ tuple: (Observable<A>, Observable<B>, Observable<C>)
-    ) -> Observable<(Element, A, B, C)> {
+        _ tuple: (Driver<A>, Driver<B>, Driver<C>)
+    ) -> Driver<(E, A, B, C)> {
         return self
             .withLatestFrom(tuple.0) { ($0, $1) }
             .withLatestFrom(tuple.1) { ($0.0, $0.1, $1) }
@@ -33,8 +34,8 @@ extension Observable {
     }
     
     public func with<A, B, C, D>(
-        _ tuple: (Observable<A>, Observable<B>, Observable<C>, Observable<D>)
-    ) -> Observable<(Element, A, B, C, D)> {
+        _ tuple: (Driver<A>, Driver<B>, Driver<C>, Driver<D>)
+    ) -> Driver<(E, A, B, C, D)> {
         return self
             .withLatestFrom(tuple.0) { ($0, $1) }
             .withLatestFrom(tuple.1) { ($0.0, $0.1, $1) }
