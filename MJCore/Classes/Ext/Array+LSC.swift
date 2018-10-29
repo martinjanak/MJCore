@@ -10,39 +10,39 @@ import Foundation
 // https://en.wikipedia.org/wiki/Longest_common_subsequence_problem
 extension Array where Element: MJGroupElementType {
     
-    public func lcsChange(with second: Array<Element>) -> MJGroupChange<Element> {
+    public func lcsOperations(with second: Array<Element>) -> MJGroupModelOperations<Element> {
         let lcs = self.lcs(with: second)
         var diff = self.diff(lcs: lcs, with: second, i: self.count, j: second.count)
         diff.inserts.reverse()
         return diff
     }
     
-    private func diff(lcs C: [[Int]], with second: Array<Element>, i: Int, j: Int) -> MJGroupChange<Element> {
+    private func diff(lcs C: [[Int]], with second: Array<Element>, i: Int, j: Int) -> MJGroupModelOperations<Element> {
         let first = self
-        var diff = MJGroupChange<Element>(
-            inserts: [MJGroupElementChange<Element>](),
-            deletes: [MJGroupElementChange<Element>](),
-            updates: [MJGroupElementChange<Element>]()
+        var diff = MJGroupModelOperations<Element>(
+            inserts: [MJGroupElementOperation<Element>](),
+            deletes: [MJGroupElementOperation<Element>](),
+            updates: [MJGroupElementOperation<Element>]()
         )
         if i > 0, j > 0, first[i-1] == second[j-1] {
             if first[i-1] !~ second[j-1] {
-                diff.updates.append(MJGroupElementChange<Element>(model: second[j-1], index: i-1))
+                diff.updates.append(MJGroupElementOperation<Element>(model: second[j-1], index: i-1))
             }
             diff = diff + self.diff(lcs: C, with: second, i: i-1, j: j-1)
             return diff
         } else if j > 0, (i == 0 || C[i][j-1] >= C[i-1][j]) {
-            diff.inserts.append(MJGroupElementChange<Element>(model: second[j-1], index: j-1))
+            diff.inserts.append(MJGroupElementOperation<Element>(model: second[j-1], index: j-1))
             diff = diff + self.diff(lcs: C, with: second, i: i, j: j-1)
             return diff
         } else if i > 0, (j == 0 || C[i][j-1] < C[i-1][j]) {
-            diff.deletes.append(MJGroupElementChange<Element>(model: first[i-1], index: i-1))
+            diff.deletes.append(MJGroupElementOperation<Element>(model: first[i-1], index: i-1))
             diff = diff + self.diff(lcs: C, with: second, i: i-1, j: j)
             return diff
         } else {
-            return MJGroupChange<Element>(
-                inserts: [MJGroupElementChange<Element>](),
-                deletes: [MJGroupElementChange<Element>](),
-                updates: [MJGroupElementChange<Element>]()
+            return MJGroupModelOperations<Element>(
+                inserts: [MJGroupElementOperation<Element>](),
+                deletes: [MJGroupElementOperation<Element>](),
+                updates: [MJGroupElementOperation<Element>]()
             )
         }
     }

@@ -79,10 +79,10 @@ open class MJTableViewLCS<TableModel: MJGroupElementType>
                     let currentData = data.current,
                     previousData.count > 0,
                     currentData.count > 0 {
-                    let tableChange = previousData.lcsChange(with: currentData)
-                    if tableChange.hasAny {
+                    let tableOperations = previousData.lcsOperations(with: currentData)
+                    if tableOperations.hasAny {
                         DispatchQueue.main.async {
-                            strongSelf.apply(changes: tableChange)
+                            strongSelf.apply(operations: tableOperations)
                         }
                     }
                 } else {
@@ -219,11 +219,11 @@ open class MJTableViewLCS<TableModel: MJGroupElementType>
         deleteAnimation = delete
     }
     
-    private func apply(changes: MJGroupChange<TableModel>) {
+    private func apply(operations: MJGroupModelOperations<TableModel>) {
         beginUpdates()
-        deleteRows(at: changes.deletes.map { IndexPath(item: $0.index, section: 0) }, with: deleteAnimation)
-        insertRows(at: changes.inserts.map { IndexPath(item: $0.index, section: 0) }, with: insertAnimation)
-        reloadRows(at: changes.updates.map { IndexPath(item: $0.index, section: 0) }, with: reloadAnimation)
+        deleteRows(at: operations.deletes.map { IndexPath(item: $0.index, section: 0) }, with: deleteAnimation)
+        insertRows(at: operations.inserts.map { IndexPath(item: $0.index, section: 0) }, with: insertAnimation)
+        reloadRows(at: operations.updates.map { IndexPath(item: $0.index, section: 0) }, with: reloadAnimation)
         endUpdates()
     }
     
