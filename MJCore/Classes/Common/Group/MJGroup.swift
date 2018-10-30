@@ -33,7 +33,9 @@ public class MJGroup<Element: MJGroupElementType> {
                 return
             }
             if let index = elements.getCylicPermutationIndex(of: newElements) {
-                self.changeSubject.onNext(.cyclicPermutation(index: index))
+                if index > 0 {
+                    self.changeSubject.onNext(.cyclicPermutation(index: index))
+                }
             } else {
                 let operations = elements.lcsOperations(with: newElements)
                 self.changeSubject.onNext(.model(operations: operations))
@@ -61,6 +63,26 @@ public class MJGroup<Element: MJGroupElementType> {
                 + Array(elements[0...(index-1)])
             self.elements = newElements
             self.changeSubject.onNext(.cyclicPermutation(index: index))
+        }
+    }
+    
+    public func update(element: Element) {
+        queue.async {
+            guard var elements = self.elements else { return }
+            let indexOptional = elements.firstIndex { $0.uniqueIdType == element.uniqueIdType }
+            guard let index = indexOptional else { return }
+            
+            if elements[index].updateSignature != element.updateSignature {
+                elements[index] = element
+                let operations = MJGroupModelOperations(
+                    inserts: [MJGroupElementOperation<Element>](),
+                    deletes: [MJGroupElementOperation<Element>](),
+                    updates: [
+                        MJGroupElementOperation<Element>(model: element, index: index)
+                    ]
+                )
+                self.changeSubject.onNext(.model(operations: operations))
+            }
         }
     }
     
