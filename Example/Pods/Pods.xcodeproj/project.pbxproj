@@ -166,6 +166,7 @@
 		5B7643E92188549000C28D66 /* MJGroupChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7643E82188549000C28D66 /* MJGroupChange.swift */; };
 		5B7643EB2188712200C28D66 /* MJFixedOrderGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7643EA2188712200C28D66 /* MJFixedOrderGroup.swift */; };
 		5B7643ED218871D000C28D66 /* MJFixedOrderGroupChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7643EC218871D000C28D66 /* MJFixedOrderGroupChange.swift */; };
+		5B7643F2218883F100C28D66 /* Observable+BindToGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7643F1218883F100C28D66 /* Observable+BindToGroup.swift */; };
 		5B8963CD21861467001B2E7D /* MJUniqueIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8963CC21861467001B2E7D /* MJUniqueIdentifiable.swift */; };
 		5B8963CF218614FA001B2E7D /* MJGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8963CE218614FA001B2E7D /* MJGroup.swift */; };
 		5B901F982105BC7700E3E289 /* Observable+With.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B901F972105BC7700E3E289 /* Observable+With.swift */; };
@@ -676,6 +677,7 @@
 		5B7643E82188549000C28D66 /* MJGroupChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJGroupChange.swift; sourceTree = "<group>"; };
 		5B7643EA2188712200C28D66 /* MJFixedOrderGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJFixedOrderGroup.swift; sourceTree = "<group>"; };
 		5B7643EC218871D000C28D66 /* MJFixedOrderGroupChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJFixedOrderGroupChange.swift; sourceTree = "<group>"; };
+		5B7643F1218883F100C28D66 /* Observable+BindToGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+BindToGroup.swift"; sourceTree = "<group>"; };
 		5B8963CC21861467001B2E7D /* MJUniqueIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJUniqueIdentifiable.swift; sourceTree = "<group>"; };
 		5B8963CE218614FA001B2E7D /* MJGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJGroup.swift; sourceTree = "<group>"; };
 		5B901F972105BC7700E3E289 /* Observable+With.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+With.swift"; sourceTree = "<group>"; };
@@ -1394,6 +1396,7 @@
 				5B7643E82188549000C28D66 /* MJGroupChange.swift */,
 				5B7643EA2188712200C28D66 /* MJFixedOrderGroup.swift */,
 				5B7643EC218871D000C28D66 /* MJFixedOrderGroupChange.swift */,
+				5B7643F1218883F100C28D66 /* Observable+BindToGroup.swift */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -2488,6 +2491,7 @@
 				5B1D7C112122B28600F520AE /* UIViewController+ShowAlert.swift in Sources */,
 				5B99711D21117D9000C20776 /* Array+Equals.swift in Sources */,
 				ABEBC4A963FF7EC20595D78EE6A40CD9 /* MJUserDefaultsService.swift in Sources */,
+				5B7643F2218883F100C28D66 /* Observable+BindToGroup.swift in Sources */,
 				5B0DC93A21875ECE0087C56D /* Observable+Group.swift in Sources */,
 				42FFD9A9CDAC4A9058B8573E0399A5E5 /* MJView.swift in Sources */,
 				5BF265CC20FB83F2006D8838 /* MJTextField.swift in Sources */,
