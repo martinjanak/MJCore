@@ -162,6 +162,8 @@
 		5B7233B147DB364DBE11D645CAA93375 /* Completable+AndThen.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED28D533686DF46636404EEC7E05AF9C /* Completable+AndThen.swift */; };
 		5B754E6B20F4E17A0035D643 /* Observable+Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B754E6A20F4E17A0035D643 /* Observable+Unwrap.swift */; };
 		5B754E7420F4EB5D0035D643 /* MJModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B754E7320F4EB5D0035D643 /* MJModalViewController.swift */; };
+		5B7643E72188545B00C28D66 /* MJGroupElementType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7643E62188545B00C28D66 /* MJGroupElementType.swift */; };
+		5B7643E92188549000C28D66 /* MJGroupChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7643E82188549000C28D66 /* MJGroupChange.swift */; };
 		5B8963CD21861467001B2E7D /* MJUniqueIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8963CC21861467001B2E7D /* MJUniqueIdentifiable.swift */; };
 		5B8963CF218614FA001B2E7D /* MJGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8963CE218614FA001B2E7D /* MJGroup.swift */; };
 		5B901F982105BC7700E3E289 /* Observable+With.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B901F972105BC7700E3E289 /* Observable+With.swift */; };
@@ -668,6 +670,8 @@
 		5B6D804F210DBF5600D9EAB2 /* Driver+Datasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Driver+Datasource.swift"; sourceTree = "<group>"; };
 		5B754E6A20F4E17A0035D643 /* Observable+Unwrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Unwrap.swift"; sourceTree = "<group>"; };
 		5B754E7320F4EB5D0035D643 /* MJModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJModalViewController.swift; sourceTree = "<group>"; };
+		5B7643E62188545B00C28D66 /* MJGroupElementType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJGroupElementType.swift; sourceTree = "<group>"; };
+		5B7643E82188549000C28D66 /* MJGroupChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJGroupChange.swift; sourceTree = "<group>"; };
 		5B8963CC21861467001B2E7D /* MJUniqueIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJUniqueIdentifiable.swift; sourceTree = "<group>"; };
 		5B8963CE218614FA001B2E7D /* MJGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJGroup.swift; sourceTree = "<group>"; };
 		5B901F972105BC7700E3E289 /* Observable+With.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+With.swift"; sourceTree = "<group>"; };
@@ -1280,13 +1284,13 @@
 		5B50320920C450790060FC35 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				5B7643E52188543A00C28D66 /* Group */,
 				5BB1B0B8218327FC007F5973 /* MJOperators.swift */,
 				5B50320A20C450790060FC35 /* MJKeyType.swift */,
 				5B5598DA2121AF1100B16537 /* MJSettings.swift */,
 				5B5598DC2121B3B100B16537 /* MJGlobalFunctions.swift */,
 				5B8963CC21861467001B2E7D /* MJUniqueIdentifiable.swift */,
 				5BB1B0BA2183285F007F5973 /* MJUpdatable.swift */,
-				5B8963CE218614FA001B2E7D /* MJGroup.swift */,
 			);
 			name = Common;
 			path = MJCore/Classes/Common;
@@ -1376,6 +1380,16 @@
 				A2D62BBD28590E6EB1B8785323B3FE48 /* UIView+TopSafeConstraint.swift */,
 			);
 			path = UIView;
+			sourceTree = "<group>";
+		};
+		5B7643E52188543A00C28D66 /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				5B8963CE218614FA001B2E7D /* MJGroup.swift */,
+				5B7643E62188545B00C28D66 /* MJGroupElementType.swift */,
+				5B7643E82188549000C28D66 /* MJGroupChange.swift */,
+			);
+			path = Group;
 			sourceTree = "<group>";
 		};
 		5B99710F2111741500C20776 /* Paging */ = {
@@ -2387,6 +2401,7 @@
 				5B0E07C7212964F500692481 /* MJStackViewCell.swift in Sources */,
 				5B15B9EA20FC857B009D24C7 /* MJHorizonatlScrollVM.swift in Sources */,
 				2A7342C71F12451379C7D6DBF769611E /* MJCoreDataService.swift in Sources */,
+				5B7643E72188545B00C28D66 /* MJGroupElementType.swift in Sources */,
 				5B5598DD2121B3B100B16537 /* MJGlobalFunctions.swift in Sources */,
 				5B15B9EC20FC9A6D009D24C7 /* UIView+GestureRecognizer.swift in Sources */,
 				49085134AD9F1392774A596C868E1681 /* MJFlowController.swift in Sources */,
@@ -2453,6 +2468,7 @@
 				5B997115211174BA00C20776 /* MJPagingModelType.swift in Sources */,
 				5B99710D211173BC00C20776 /* MJHorizontalPageVM.swift in Sources */,
 				5B99DF1121255AB300A0F6E1 /* MJTableViewWithSections.swift in Sources */,
+				5B7643E92188549000C28D66 /* MJGroupChange.swift in Sources */,
 				5B1D7C112122B28600F520AE /* UIViewController+ShowAlert.swift in Sources */,
 				5B99711D21117D9000C20776 /* Array+Equals.swift in Sources */,
 				ABEBC4A963FF7EC20595D78EE6A40CD9 /* MJUserDefaultsService.swift in Sources */,

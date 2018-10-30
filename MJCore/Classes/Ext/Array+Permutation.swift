@@ -32,8 +32,7 @@ extension Array where Element: MJGroupElementType {
         guard self.count > 1, self.count == array.count else { return nil }
         let testArray: [Element] = self + self
         let indexOptional = testArray.firstIndex { element in
-            return element.uniqueIdType == array[0].uniqueIdType
-                && element.updateSignature == array[0].updateSignature
+            return element.totalId == array[0].totalId
         }
         guard let index = indexOptional else { return nil }
         for i in 0...self.count-1 {
