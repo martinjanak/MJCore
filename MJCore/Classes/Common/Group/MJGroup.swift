@@ -46,13 +46,6 @@ public class MJGroup<Element: MJGroupElementType> {
     
     // MARK: Operations
     
-    public func initialize(elements: [Element]) {
-        queue.async {
-            self.elements = elements
-            self.changeSubject.onNext(.initialization(elements: elements))
-        }
-    }
-    
     public func cyclicPermutate(index: Int) {
         queue.async {
             guard let elements = self.elements else {

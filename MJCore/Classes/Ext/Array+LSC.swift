@@ -17,6 +17,23 @@ extension Array where Element: MJGroupElementType {
         return diff
     }
     
+    public func fixedOrderLcsOperations(with second: Array<Element>) -> MJFixedOrderGroupModelOperations<Element> {
+        let lcs = self.lcs(with: second)
+        var diff = self.diff(lcs: lcs, with: second, i: self.count, j: second.count)
+        diff.inserts.sort { $0.index < $1.index }
+        
+        var updates = [String: Element]()
+        for update in diff.updates {
+            updates[update.model.uniqueIdType] = update.model
+        }
+        
+        return MJFixedOrderGroupModelOperations<Element>(
+            deletes: diff.deletes.map { $0.model.uniqueIdType },
+            appends: diff.inserts.map { $0.model },
+            updates: updates
+        )
+    }
+    
     private func diff(lcs C: [[Int]], with second: Array<Element>, i: Int, j: Int) -> MJGroupModelOperations<Element> {
         let first = self
         var diff = MJGroupModelOperations<Element>(
