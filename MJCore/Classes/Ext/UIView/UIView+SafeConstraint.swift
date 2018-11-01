@@ -19,4 +19,14 @@ extension UIView {
         return self
     }
     
+    @discardableResult
+    public func bottomSafe(_ constant: CGFloat = 0) -> UIView {
+        if let spv = superview {
+            self.topAnchor
+                .constraint(equalTo: spv.safeAreaLayoutGuide.bottomAnchor, constant: constant)
+                .isActive = true
+        }
+        return self
+    }
+    
 }

@@ -27,7 +27,7 @@
 		1041AA399A381B01CA1679ED1E7E713C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2019EB4B74681E62FF684EE7AFB2A75B /* Foundation.framework */; };
 		10837D586E76BD74466A40714D328FE2 /* UINavigationController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8600E940D3F016DECD54E81FB4BE4B0 /* UINavigationController+Rx.swift */; };
 		11AA271BA4C773D094AB88DDC7DCE836 /* ConnectableObservableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07124AB4B8D445F1E2C28CEE8ADFBF7B /* ConnectableObservableType.swift */; };
-		12252DB55373C62061B2D744ACC1C383 /* UIView+TopSafeConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D62BBD28590E6EB1B8785323B3FE48 /* UIView+TopSafeConstraint.swift */; };
+		12252DB55373C62061B2D744ACC1C383 /* UIView+SafeConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D62BBD28590E6EB1B8785323B3FE48 /* UIView+SafeConstraint.swift */; };
 		1398AC19CDCEA5A0D367D8CC89FBDF04 /* ScheduledItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DC036877BCB921EC827FF265FF343D /* ScheduledItem.swift */; };
 		1572C028DAF235E5595FDE439127FE0B /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4E28A329AC29308BD74E368A7BEC2D /* Debug.swift */; };
 		164518D81A7D45C241977D1297C6A8BD /* UITabBarItem+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100387B49FE3D42B0646D3C257E45B8D /* UITabBarItem+Rx.swift */; };
@@ -142,6 +142,7 @@
 		5B2FCAD421005B8000983C71 /* Observable+BatchParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FCAD321005B8000983C71 /* Observable+BatchParse.swift */; };
 		5B31F9D7210C548C008F5AB5 /* Driver+Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B31F9D6210C548C008F5AB5 /* Driver+Unwrap.swift */; };
 		5B36180D20C5AFCF0006C3EB /* Observable+BatchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B36180C20C5AFCF0006C3EB /* Observable+BatchResult.swift */; };
+		5B376C06218ADE93000C0DE0 /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B376C05218ADE93000C0DE0 /* Display.swift */; };
 		5B44E5C720C27530003A6AD3 /* MJLocalAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B44E5C620C27530003A6AD3 /* MJLocalAuthService.swift */; };
 		5B4B15D020D4F1CB00EBA233 /* MJCoreDataSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B15CF20D4F1CB00EBA233 /* MJCoreDataSort.swift */; };
 		5B4B15D620D53F0300EBA233 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B15D520D53F0300EBA233 /* Animation.swift */; };
@@ -655,6 +656,7 @@
 		5B2FCAD321005B8000983C71 /* Observable+BatchParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+BatchParse.swift"; sourceTree = "<group>"; };
 		5B31F9D6210C548C008F5AB5 /* Driver+Unwrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Driver+Unwrap.swift"; sourceTree = "<group>"; };
 		5B36180C20C5AFCF0006C3EB /* Observable+BatchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+BatchResult.swift"; sourceTree = "<group>"; };
+		5B376C05218ADE93000C0DE0 /* Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Display.swift; sourceTree = "<group>"; };
 		5B44E5C620C27530003A6AD3 /* MJLocalAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJLocalAuthService.swift; sourceTree = "<group>"; };
 		5B4B15CF20D4F1CB00EBA233 /* MJCoreDataSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJCoreDataSort.swift; sourceTree = "<group>"; };
 		5B4B15D520D53F0300EBA233 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
@@ -821,7 +823,7 @@
 		9F632EC46B0580F2A61B80A5861B136F /* SteviaLayout-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SteviaLayout-umbrella.h"; sourceTree = "<group>"; };
 		A1E449997A2938A1F6E5CD71B9CC71E8 /* Enumerated.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Enumerated.swift; path = RxSwift/Observables/Enumerated.swift; sourceTree = "<group>"; };
 		A259F7301F1F66A2A0C99E9F8C3C5E14 /* RxWebViewDelegateProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxWebViewDelegateProxy.swift; path = RxCocoa/iOS/Proxies/RxWebViewDelegateProxy.swift; sourceTree = "<group>"; };
-		A2D62BBD28590E6EB1B8785323B3FE48 /* UIView+TopSafeConstraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+TopSafeConstraint.swift"; sourceTree = "<group>"; };
+		A2D62BBD28590E6EB1B8785323B3FE48 /* UIView+SafeConstraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+SafeConstraint.swift"; sourceTree = "<group>"; };
 		A4BE1E1E9EFDD3BB9D47FAC4A72D7385 /* DispatchQueue+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Extensions.swift"; path = "Platform/DispatchQueue+Extensions.swift"; sourceTree = "<group>"; };
 		A5F5B53936D439C8998D99AE6402CC15 /* RxSwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RxSwift.xcconfig; sourceTree = "<group>"; };
 		A5F5F8B22CD1657058D6BB3BBB75914A /* SchedulerType+SharedSequence.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SchedulerType+SharedSequence.swift"; path = "RxCocoa/Traits/SharedSequence/SchedulerType+SharedSequence.swift"; sourceTree = "<group>"; };
@@ -1272,6 +1274,26 @@
 			path = StackView;
 			sourceTree = "<group>";
 		};
+		5B376C03218ADE27000C0DE0 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				5B0E07C32129568000692481 /* StackView */,
+				5BF87629210779060003E9E8 /* CollectionView */,
+				5B6D804A210DBCA800D9EAB2 /* TableView */,
+				5B99DF0F21255A8E00A0F6E1 /* TableViewWithSections */,
+				5BF265CA20FB83F2006D8838 /* TextField */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		5B376C04218ADE48000C0DE0 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				5B376C05218ADE93000C0DE0 /* Display.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		5B44E5C520C27530003A6AD3 /* LocalAuthentication */ = {
 			isa = PBXGroup;
 			children = (
@@ -1385,7 +1407,7 @@
 			isa = PBXGroup;
 			children = (
 				5B15B9EB20FC9A6D009D24C7 /* UIView+GestureRecognizer.swift */,
-				A2D62BBD28590E6EB1B8785323B3FE48 /* UIView+TopSafeConstraint.swift */,
+				A2D62BBD28590E6EB1B8785323B3FE48 /* UIView+SafeConstraint.swift */,
 				5B7643F32188CED200C28D66 /* UIView+SetConstraint.swift */,
 			);
 			path = UIView;
@@ -1465,11 +1487,8 @@
 		5BF265C920FB83F2006D8838 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5B0E07C32129568000692481 /* StackView */,
-				5BF87629210779060003E9E8 /* CollectionView */,
-				5B6D804A210DBCA800D9EAB2 /* TableView */,
-				5B99DF0F21255A8E00A0F6E1 /* TableViewWithSections */,
-				5BF265CA20FB83F2006D8838 /* TextField */,
+				5B376C04218ADE48000C0DE0 /* Util */,
+				5B376C03218ADE27000C0DE0 /* Components */,
 			);
 			name = View;
 			path = MJCore/Classes/View;
@@ -2475,6 +2494,7 @@
 				5BB1B0BB2183285F007F5973 /* MJUpdatable.swift in Sources */,
 				5B02D5CF20BF176900F29406 /* Observable+None.swift in Sources */,
 				5B52691D20CEBB66006B3FC2 /* MJCoreDataCrud.swift in Sources */,
+				5B376C06218ADE93000C0DE0 /* Display.swift in Sources */,
 				5B9971132111748000C20776 /* MJPagingViewModel.swift in Sources */,
 				4BE0D73CEB0416296E5CD35493810190 /* MJResendRequest.swift in Sources */,
 				5BF265D320FB8417006D8838 /* MJFormInput.swift in Sources */,
@@ -2530,7 +2550,7 @@
 				5B18291A2179CD1800A183E5 /* Observable+ScanPrevious.swift in Sources */,
 				5B99DF1321255AEF00A0F6E1 /* MJSectionTableModel.swift in Sources */,
 				5BB1B0BD21833226007F5973 /* Observable+First.swift in Sources */,
-				12252DB55373C62061B2D744ACC1C383 /* UIView+TopSafeConstraint.swift in Sources */,
+				12252DB55373C62061B2D744ACC1C383 /* UIView+SafeConstraint.swift in Sources */,
 				5BF265D620FB8417006D8838 /* MJValidable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
