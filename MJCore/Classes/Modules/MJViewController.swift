@@ -8,27 +8,27 @@
 import UIKit
 import RxSwift
 
-open class MJViewController<View: MJView, Model: MJViewModel>: UIViewController {
+open class MJViewController<View: MJView, ViewModel: MJViewModel>: UIViewController {
     
     public let ui: View
-    public let model: Model
+    public let viewModel: ViewModel
     public let disposeBag = DisposeBag()
     
-    private var endEditingTapGR: UITapGestureRecognizer?
+    private(set) public var endEditingTapGR: UITapGestureRecognizer?
     
     public init() {
         ui = View()
-        model = Model()
+        viewModel = ViewModel()
         super.init(nibName: nil, bundle: nil)
     }
     
     override open func viewDidLoad() {
         super.viewDidLoad()
         beforeViewSetup()
-        ui.setup()
+        ui.initView()
         view = ui
         afterViewSetup()
-        model.initBindings()
+        viewModel.initBindings()
         initBindings()
     }
     

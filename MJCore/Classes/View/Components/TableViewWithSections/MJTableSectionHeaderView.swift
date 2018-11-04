@@ -7,10 +7,6 @@
 
 import UIKit
 
-open class MJTableSectionHeaderView<HeaderModel>: MJViewComponent {
-    
-    open func setup(tableView: UITableView, section: Int, model: HeaderModel) {
-        fatalError("setup(tableView:,section:,model:) has not been implemented")
-    }
+open class MJTableSectionHeaderView<Model>: MJViewComponent<MJTableSectionHeaderModel<Model>> {
     
 }

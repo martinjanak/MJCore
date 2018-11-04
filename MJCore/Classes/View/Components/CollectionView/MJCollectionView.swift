@@ -69,11 +69,11 @@ open class MJCollectionView<CollectionModel>
         backgroundColor = .clear
         delegate = self
         dataSource = self
-        setup()
+        initView()
         initBindings()
     }
     
-    open func setup() {
+    open func initView() {
         // optional override
     }
     
@@ -106,7 +106,11 @@ open class MJCollectionView<CollectionModel>
                     withReuseIdentifier: cellId,
                     for: indexPath
                 ) as? Cell {
-                    cell.setup(collectionView: collectionView, indexPath: indexPath, model: cellModel)
+                    cell.model.value = MJCollectionViewCellModel(
+                        collectionView: collectionView,
+                        indexPath: indexPath,
+                        cell: cellModel
+                    )
                     additionalSetup?(collectionView, indexPath, cellModel, &cell)
                     return cell
                 }
@@ -131,7 +135,11 @@ open class MJCollectionView<CollectionModel>
                         withReuseIdentifier: cellId,
                         for: indexPath
                     ) as? Cell {
-                        cell.setup(collectionView: collectionView, indexPath: indexPath, model: cellModel)
+                        cell.model.value = MJCollectionViewCellModel(
+                            collectionView: collectionView,
+                            indexPath: indexPath,
+                            cell: cellModel
+                        )
                         additionalSetup?(collectionView, indexPath, cellModel, &cell)
                         return cell
                     }

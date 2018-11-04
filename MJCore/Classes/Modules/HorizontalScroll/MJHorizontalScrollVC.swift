@@ -26,17 +26,12 @@ open class MJHorizontalScrollVC<View: MJHorizontalScrollView, Model: MJHorizonta
     override open func viewDidLoad() {
         super.viewDidLoad()
         addChildViewController(pageVC)
-        ui.setup(pageVC.view)
+        ui.initView(pageVC.view)
         view = ui
         pageVC.didMove(toParentViewController: self)
-        setup()
         model.initBindings()
         pageVC.model.initBindings()
         initBindings()
-    }
-    
-    open func setup() {
-        // optional override
     }
     
     open func initBindings() {

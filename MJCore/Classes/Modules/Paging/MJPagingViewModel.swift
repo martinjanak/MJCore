@@ -220,7 +220,7 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
             additionalSetup?(index, model, &pageVC)
             return MJPageModule<PagingModel>(
                 viewController: pageVC,
-                pageViewModel: pageVC.model
+                pageViewModel: pageVC.viewModel
             )
         }
     }

@@ -21,7 +21,7 @@ open class MJModalViewController<View: MJView, Result>: UIViewController {
     override open func viewDidLoad() {
         super.viewDidLoad()
         beforeViewSetup()
-        ui.setup()
+        ui.initView()
         view = ui
         afterViewSetup()
         initBindings()

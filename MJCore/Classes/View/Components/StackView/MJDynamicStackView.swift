@@ -20,15 +20,11 @@ open class MJDynamicStackView<StackModel>: UIStackView {
     
     public init() {
         super.init(frame: .zero)
-        initSetup()
-    }
-    
-    private func initSetup() {
         alignment = .fill
         axis = .vertical
         distribution = .fill
+        initView()
         initBindings()
-        setup()
     }
     
     private func initBindings() {
@@ -57,7 +53,11 @@ open class MJDynamicStackView<StackModel>: UIStackView {
         cellConstructors.append({ cellModel in
             return { stackView, index in
                 var cell = Cell()
-                cell.setup(stackView: stackView, index: index, model: cellModel)
+                cell.model.value = MJStackViewCellModel(
+                    stackView: stackView,
+                    index: index,
+                    model: cellModel
+                )
                 additionalSetup?(stackView, index, cellModel, &cell)
                 return cell
             }
@@ -75,7 +75,11 @@ open class MJDynamicStackView<StackModel>: UIStackView {
             if let cellModel = stackModel as? CellModel {
                 return { stackView, index in
                     var cell = Cell()
-                    cell.setup(stackView: stackView, index: index, model: cellModel)
+                    cell.model.value = MJStackViewCellModel(
+                        stackView: stackView,
+                        index: index,
+                        model: cellModel
+                    )
                     additionalSetup?(stackView, index, cellModel, &cell)
                     return cell
                 }
@@ -85,7 +89,7 @@ open class MJDynamicStackView<StackModel>: UIStackView {
         })
     }
     
-    open func setup() {
+    open func initView() {
         // override
     }
     

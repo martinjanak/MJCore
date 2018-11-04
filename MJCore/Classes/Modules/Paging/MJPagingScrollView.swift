@@ -9,9 +9,8 @@ import UIKit
 
 open class MJPagingScrollView: MJView {
     
-    open func setup(_ pagingView: UIView) {
-        // to be overriden
-        fatalError("Subclasses need to implement the `setup(pagingView:)` method.")
+    open func initView(_ pagingView: UIView) {
+        fatalError("Subclasses need to implement the `initView(pagingView:)` method.")
     }
     
 }

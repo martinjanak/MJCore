@@ -41,7 +41,7 @@ open class MJTextField: UITextField {
         super.init(frame: .zero)
         delegate = self
         bindHasSomeText()
-        setup()
+        initView()
     }
     
     private func bindHasSomeText() {
@@ -57,7 +57,7 @@ open class MJTextField: UITextField {
             .disposed(by: disposeBag)
     }
     
-    open func setup() {
+    open func initView() {
         // override
     }
     

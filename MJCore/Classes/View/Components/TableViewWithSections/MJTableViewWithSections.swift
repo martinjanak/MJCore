@@ -31,7 +31,11 @@ open class MJTableViewWithSections<SectionTableModel: MJSectionTableModel>
     ) {
         sectionHeaderConstructor = { tableView, section, model in
             let header = SectionHeaderView()
-            header.setup(tableView: tableView, section: section, model: model)
+            header.model.value = MJTableSectionHeaderModel(
+                tableView: tableView,
+                section: section,
+                model: model
+            )
             return header
         }
     }
@@ -80,11 +84,11 @@ open class MJTableViewWithSections<SectionTableModel: MJSectionTableModel>
         backgroundColor = .clear
         delegate = self
         dataSource = self
-        setup()
+        initView()
         initBindings()
     }
     
-    open func setup() {
+    open func initView() {
         // optional override
     }
     
@@ -110,7 +114,11 @@ open class MJTableViewWithSections<SectionTableModel: MJSectionTableModel>
                     withIdentifier: cellId,
                     for: indexPath
                 ) as? Cell {
-                    cell.setup(tableView: tableView, indexPath: indexPath, model: cellModel)
+                    cell.model.value = MJTableViewCellModel(
+                        tableView: tableView,
+                        indexPath: indexPath,
+                        cell: cellModel
+                    )
                     additionalSetup?(tableView, indexPath, cellModel, &cell)
                     return cell
                 }
@@ -135,7 +143,11 @@ open class MJTableViewWithSections<SectionTableModel: MJSectionTableModel>
                         withIdentifier: cellId,
                         for: indexPath
                     ) as? Cell {
-                        cell.setup(tableView: tableView, indexPath: indexPath, model: cellModel)
+                        cell.model.value = MJTableViewCellModel(
+                            tableView: tableView,
+                            indexPath: indexPath,
+                            cell: cellModel
+                        )
                         additionalSetup?(tableView, indexPath, cellModel, &cell)
                         return cell
                     }

@@ -1,27 +1,24 @@
 //
-//  MJCollectionViewCell.swift
+//  MJViewComponent.swift
 //  MJCore
 //
-//  Created by Martin Janák on 29/07/2018.
+//  Created by Martin Janák on 12/06/2018.
 //
 
 import UIKit
 import RxSwift
+import RxCocoa
 
-open class MJCollectionViewCell<Model>: UICollectionViewCell {
+open class MJViewComponent<Model>: MJView {
     
     private let disposeBag = DisposeBag()
-    public let model: Variable<MJCollectionViewCellModel<Model>?>
+    public let model: Variable<Model?>
     
-    override public init(frame: CGRect) {
-        self.model = Variable<MJCollectionViewCellModel<Model>?>(nil)
+    required public init(model: Model? = nil) {
+        self.model = Variable<Model?>(model)
         super.init(frame: .zero)
         initView()
         initBindings()
-    }
-    
-    open func initView() {
-        fatalError("initView() has not been implemented")
     }
     
     private func initBindings() {
@@ -32,7 +29,7 @@ open class MJCollectionViewCell<Model>: UICollectionViewCell {
             .disposed(by: disposeBag)
     }
     
-    open func set(model: MJCollectionViewCellModel<Model>?) {
+    open func set(model: Model?) {
         fatalError("init(coder:) has not been implemented")
     }
     

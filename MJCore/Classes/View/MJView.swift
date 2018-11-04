@@ -10,8 +10,8 @@ import Stevia
 
 open class MJView: UIView {
     
-    open func setup() {
-        fatalError("setup() has not been implemented")
+    open func initView() {
+        fatalError("initView() has not been implemented")
     }
     
 }

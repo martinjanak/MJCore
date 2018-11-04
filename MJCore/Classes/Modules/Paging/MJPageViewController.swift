@@ -16,11 +16,11 @@ open class MJPageViewController<
     
     required public init(_ pagingModel: PagingModel) {
         super.init()
-        model.pagingModel.value = pagingModel
+        viewModel.pagingModel.value = pagingModel
     }
     
     open var uniqueId: String {
-        return model.pagingModel.value?.uniqueId ?? ""
+        return viewModel.pagingModel.value?.uniqueId ?? ""
     }
     
     open class func getKey() -> String {

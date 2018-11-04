@@ -62,11 +62,11 @@ open class MJTableViewLCS<TableModel: MJGroupElementType>
         backgroundColor = .clear
         delegate = self
         dataSource = self
-        setup()
+        initView()
         initBindings()
     }
     
-    open func setup() {
+    open func initView() {
         // optional override
     }
     
@@ -108,7 +108,11 @@ open class MJTableViewLCS<TableModel: MJGroupElementType>
                     withIdentifier: cellId,
                     for: indexPath
                     ) as? Cell {
-                    cell.setup(tableView: tableView, indexPath: indexPath, model: cellModel)
+                    cell.model.value = MJTableViewCellModel(
+                        tableView: tableView,
+                        indexPath: indexPath,
+                        cell: cellModel
+                    )
                     additionalSetup?(tableView, indexPath, cellModel, &cell)
                     return cell
                 }
@@ -133,7 +137,11 @@ open class MJTableViewLCS<TableModel: MJGroupElementType>
                         withIdentifier: cellId,
                         for: indexPath
                         ) as? Cell {
-                        cell.setup(tableView: tableView, indexPath: indexPath, model: cellModel)
+                        cell.model.value = MJTableViewCellModel(
+                            tableView: tableView,
+                            indexPath: indexPath,
+                            cell: cellModel
+                        )
                         additionalSetup?(tableView, indexPath, cellModel, &cell)
                         return cell
                     }

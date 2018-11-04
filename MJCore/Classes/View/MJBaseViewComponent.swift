@@ -1,18 +1,17 @@
 //
-//  MJViewComponent.swift
+//  MJBaseViewComponent.swift
 //  MJCore
 //
-//  Created by Martin Janák on 12/06/2018.
+//  Created by Martin Janák on 04/11/2018.
 //
 
 import UIKit
-import Stevia
 
-open class MJViewComponent: MJView {
+open class MJBaseViewComponent: MJView {
     
     required public init() {
         super.init(frame: .zero)
-        setup()
+        initView()
     }
     
     required public init?(coder aDecoder: NSCoder) {
