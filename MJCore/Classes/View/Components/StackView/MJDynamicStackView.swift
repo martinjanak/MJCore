@@ -56,7 +56,7 @@ open class MJDynamicStackView<StackModel>: UIStackView {
                 cell.model.value = MJStackViewCellModel(
                     stackView: stackView,
                     index: index,
-                    model: cellModel
+                    cell: cellModel
                 )
                 additionalSetup?(stackView, index, cellModel, &cell)
                 return cell
@@ -78,7 +78,7 @@ open class MJDynamicStackView<StackModel>: UIStackView {
                     cell.model.value = MJStackViewCellModel(
                         stackView: stackView,
                         index: index,
-                        model: cellModel
+                        cell: cellModel
                     )
                     additionalSetup?(stackView, index, cellModel, &cell)
                     return cell
