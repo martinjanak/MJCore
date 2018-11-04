@@ -145,7 +145,6 @@
 		5B376C06218ADE93000C0DE0 /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B376C05218ADE93000C0DE0 /* Display.swift */; };
 		5B44E5C720C27530003A6AD3 /* MJLocalAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B44E5C620C27530003A6AD3 /* MJLocalAuthService.swift */; };
 		5B4B15D020D4F1CB00EBA233 /* MJCoreDataSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B15CF20D4F1CB00EBA233 /* MJCoreDataSort.swift */; };
-		5B4B15D620D53F0300EBA233 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B15D520D53F0300EBA233 /* Animation.swift */; };
 		5B50320B20C450790060FC35 /* MJKeyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B50320A20C450790060FC35 /* MJKeyType.swift */; };
 		5B52691B20CEBA01006B3FC2 /* MJCoreDataModelSecured.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52691A20CEBA01006B3FC2 /* MJCoreDataModelSecured.swift */; };
 		5B52691D20CEBB66006B3FC2 /* MJCoreDataCrud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52691C20CEBB66006B3FC2 /* MJCoreDataCrud.swift */; };
@@ -665,7 +664,6 @@
 		5B376C05218ADE93000C0DE0 /* Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Display.swift; sourceTree = "<group>"; };
 		5B44E5C620C27530003A6AD3 /* MJLocalAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJLocalAuthService.swift; sourceTree = "<group>"; };
 		5B4B15CF20D4F1CB00EBA233 /* MJCoreDataSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJCoreDataSort.swift; sourceTree = "<group>"; };
-		5B4B15D520D53F0300EBA233 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		5B50320A20C450790060FC35 /* MJKeyType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJKeyType.swift; sourceTree = "<group>"; };
 		5B52691A20CEBA01006B3FC2 /* MJCoreDataModelSecured.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJCoreDataModelSecured.swift; sourceTree = "<group>"; };
 		5B52691C20CEBB66006B3FC2 /* MJCoreDataCrud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJCoreDataCrud.swift; sourceTree = "<group>"; };
@@ -1316,14 +1314,6 @@
 			path = MJCore/Classes/LocalAuthentication;
 			sourceTree = "<group>";
 		};
-		5B4B15D420D53EEE00EBA233 /* Animation */ = {
-			isa = PBXGroup;
-			children = (
-				5B4B15D520D53F0300EBA233 /* Animation.swift */,
-			);
-			path = Animation;
-			sourceTree = "<group>";
-		};
 		5B50320920C450790060FC35 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -1891,7 +1881,6 @@
 		D0B40C79606EFC3D128FFF37222FE455 /* MJCore */ = {
 			isa = PBXGroup;
 			children = (
-				5B4B15D420D53EEE00EBA233 /* Animation */,
 				5B50320920C450790060FC35 /* Common */,
 				5BA06F7B20F738F300B0E504 /* Date */,
 				CEDFD71359D1AFA56F5931C601427FBD /* Ext */,
@@ -2489,7 +2478,6 @@
 				5B99DF19212573C400A0F6E1 /* Driver+Cast.swift in Sources */,
 				5BB1B0BF218335F8007F5973 /* Driver+First.swift in Sources */,
 				5BB1B0B121831553007F5973 /* MJNavigationController.swift in Sources */,
-				5B4B15D620D53F0300EBA233 /* Animation.swift in Sources */,
 				5B99712121118C8600C20776 /* MJPagingScrollView.swift in Sources */,
 				5B0E07C52129569A00692481 /* MJDynamicStackView.swift in Sources */,
 				CA530C754B1A511E6CCBA32B139F3A4A /* MJLocalNotifications.swift in Sources */,
