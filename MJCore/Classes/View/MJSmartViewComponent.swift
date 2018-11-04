@@ -15,6 +15,7 @@ open class MJSmartViewComponent<ViewModel: MJViewModel>: MJView {
     required public init() {
         super.init(frame: .zero)
         initView()
+        viewModel.initBindings()
         initBindings()
     }
     
