@@ -7,8 +7,8 @@
 
 import UIKit
 
-public struct MJStackViewCellModel<Model> {
-    let stackView: UIStackView
-    let index: Int
-    let model: Model
+public struct MJStackViewCellModel<CellModel> {
+    public let stackView: UIStackView
+    public let index: Int
+    public let cell: CellModel
 }

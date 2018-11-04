@@ -8,7 +8,7 @@
 import UIKit
 
 public struct MJTableViewCellModel<CellModel> {
-    let tableView: UITableView
-    let indexPath: IndexPath
-    let cell: CellModel
+    public let tableView: UITableView
+    public let indexPath: IndexPath
+    public let cell: CellModel
 }

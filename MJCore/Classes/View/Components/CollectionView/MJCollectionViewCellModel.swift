@@ -7,8 +7,8 @@
 
 import UIKit
 
-public struct MJCollectionViewCellModel<Cell> {
-    let collectionView: UICollectionView
-    let indexPath: IndexPath
-    let cell: Cell
+public struct MJCollectionViewCellModel<CellModel> {
+    public let collectionView: UICollectionView
+    public let indexPath: IndexPath
+    public let cell: CellModel
 }

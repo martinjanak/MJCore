@@ -5,7 +5,7 @@
 //  Created by Martin Janák on 01/11/2018.
 //
 
-import Foundation
+import UIKit
 
 public final class Display {
     
@@ -23,7 +23,7 @@ public final class Display {
     }
     
     public static var bottomSafeArea: CGFloat? {
-        if #available(iOS 11.0, tvOS 11.0, *) {
+        if #available(iOS 11.0, *) {
             // with home indicator: 34.0 on iPhone X, XS, XS Max, XR.
             return UIApplication.shared.delegate?.window??.safeAreaInsets.bottom
         }
