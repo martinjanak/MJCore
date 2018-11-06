@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 public struct MJPageModule<PagingModel: MJPagingModelType>: MJPagingModelType {
     
@@ -34,26 +35,26 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
     
     private var pageContructors = [String: MJPageConstructor]()
     
-    public let pagingModels = Variable([PagingModel]())
-    public let pageModules = Variable([MJPageModule<PagingModel>]())
+    public let pagingModels = BehaviorRelay(value: [PagingModel]())
+    public let pageModules = BehaviorRelay(value: [MJPageModule<PagingModel>]())
     
-    private let currentModuleVariable = Variable<MJPageModule<PagingModel>?>(nil)
-    public lazy var currentModule = currentModuleVariable.asObservable()
+    private let currentModuleRelay = BehaviorRelay<MJPageModule<PagingModel>?>(value: nil)
+    public lazy var currentModule = currentModuleRelay.asObservable()
     
-    private let countVariable = Variable<Int>(0)
-    public lazy var count = countVariable
+    private let countRelay = BehaviorRelay<Int>(value: 0)
+    public lazy var count = countRelay
         .asObservable()
         .distinctUntilChanged()
     
-    private let currentIndexVariable = Variable<Int?>(nil)
-    public lazy var currentIndex = currentIndexVariable.asObservable()
+    private let currentIndexRelay = BehaviorRelay<Int?>(value: nil)
+    public lazy var currentIndex = currentIndexRelay.asObservable()
     
-    private let changeSubject = PublishSubject<MJPagingChange?>()
-    public lazy var change = changeSubject.asObservable()
+    private let changeRelay = PublishRelay<MJPagingChange?>()
+    public lazy var change = changeRelay.asObservable()
     
-    public let setIndex = Variable<Int?>(nil)
+    public let setIndex = BehaviorRelay<Int?>(value: nil)
     
-    public let changeCompletedWith = PublishSubject<MJPageViewControllerType?>()
+    public let changeCompletedWith = PublishRelay<MJPageViewControllerType?>()
     
     internal func initBindings() {
         bindPagingModels()
@@ -87,7 +88,7 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
                         newModules.append(constructor(i, pagingModels[i]))
                     }
                 }
-                strongSelf.pageModules.value = newModules
+                strongSelf.pageModules.accept(newModules)
                 
                 guard newModules.count > 0 else {
                     return nil
@@ -96,14 +97,14 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
                 if let setIndex = setIndex,
                     0 <= setIndex,
                     setIndex < newModules.count {
-                    strongSelf.currentIndexVariable.value = setIndex
+                    strongSelf.currentIndexRelay.accept(setIndex)
                     return MJPagingChange(
                         viewController: newModules[setIndex].viewController,
                         direction: .forward,
                         animated: false
                     )
                 } else {
-                    strongSelf.currentIndexVariable.value = 0
+                    strongSelf.currentIndexRelay.accept(0)
                     return MJPagingChange(
                         viewController: newModules[0].viewController,
                         direction: .forward,
@@ -111,7 +112,7 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
                     )
                 }
             }
-            .bind(to: changeSubject)
+            .bind(to: changeRelay)
             .disposed(by: disposeBag)
     }
     
@@ -119,7 +120,7 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
         pageModules.asObservable()
             .observeOn(MainScheduler.instance)
             .map { $0.count }
-            .bind(to: countVariable)
+            .bind(to: countRelay)
             .disposed(by: disposeBag)
     }
     
@@ -127,7 +128,7 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
         setIndex.asObservable()
             .observeOn(MainScheduler.instance)
             .withLatestFrom(pageModules.asObservable()) { ($0, $1) }
-            .withLatestFrom(currentIndexVariable.asObservable()) { ($0.0, $0.1, $1) }
+            .withLatestFrom(currentIndexRelay.asObservable()) { ($0.0, $0.1, $1) }
             .bind(onNext: { [weak self] index, modules, currentIndex in
                 guard
                     let index = index,
@@ -138,7 +139,7 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
                     else {
                         return
                 }
-                self?.changeSubject.onNext(
+                self?.changeRelay.accept(
                     MJPagingChange(
                         viewController: modules[index].viewController,
                         direction: index < currentIndex ? .reverse : .forward,
@@ -157,12 +158,12 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
             .map { (pageViewController, models) in
                 return models.index(of: pageViewController) ?? 0
             }
-            .bind(to: currentIndexVariable)
+            .bind(to: currentIndexRelay)
             .disposed(by: disposeBag)
     }
     
     private func bindCurrentModule() {
-        currentIndexVariable.asObservable()
+        currentIndexRelay.asObservable()
             .observeOn(MainScheduler.instance)
             .with(pageModules.asObservable())
             .map { (currentIndex, modules) -> MJPageModule<PagingModel>? in
@@ -172,7 +173,7 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
                 }
                 return modules[currentIndex]
             }
-            .bind(to: currentModuleVariable)
+            .bind(to: currentModuleRelay)
             .disposed(by: disposeBag)
     }
     
@@ -258,7 +259,7 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
         }
         let models = pagingModels.value
         if let index = models.index(of: pageViewController) {
-            currentIndexVariable.value = index
+            currentIndexRelay.accept(index)
         }
     }
     

@@ -7,8 +7,8 @@
 
 import UIKit
 
-public struct MJTableSectionHeaderModel<Model> {
-    let tableView: UITableView
-    let section: Int
-    let model: Model
+public struct MJTableSectionHeaderModel<HeaderModel> {
+    public let tableView: UITableView
+    public let section: Int
+    public let header: HeaderModel
 }

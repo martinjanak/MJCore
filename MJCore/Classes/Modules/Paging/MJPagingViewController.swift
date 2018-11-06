@@ -51,7 +51,7 @@ public final class MJPagingVC<PagingModel: MJPagingModelType>: UIPageViewControl
                     direction: pageViewChange.direction,
                     animated: pageViewChange.animated,
                     completion: { _ in
-                        self?.model.changeCompletedWith.onNext(pageViewChange.viewController)
+                        self?.model.changeCompletedWith.accept(pageViewChange.viewController)
                     }
                 )
             })

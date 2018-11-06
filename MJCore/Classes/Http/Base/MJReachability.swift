@@ -8,14 +8,15 @@
 import Foundation
 import SystemConfiguration
 import RxSwift
+import RxCocoa
 
 public final class MJReachability {
     
     private let timerInterval: Double
     private var timer: Timer?
     
-    private let statusVariable = Variable<Status>(MJReachability.status)
-    public lazy var statusObservable = statusVariable.asObservable()
+    private let statusRelay = BehaviorRelay<Status?>(value: nil)
+    public lazy var status = statusRelay.asObservable()
     
     public init(timerInterval: Double = 2) {
         self.timerInterval = timerInterval
@@ -39,7 +40,7 @@ public final class MJReachability {
     
     @objc
     private func checkReachability() {
-        statusVariable.value = MJReachability.status
+        statusRelay.accept(MJReachability.status)
     }
     
     public enum Status {
