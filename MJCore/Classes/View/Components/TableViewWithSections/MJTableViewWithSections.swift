@@ -29,12 +29,12 @@ open class MJTableViewWithSections<SectionTableModel: MJSectionTableModel>
     public func set<SectionHeaderView: MJTableSectionHeaderView<SectionTableModel.HeaderModel>>(
         sectionHeaderViewType: SectionHeaderView.Type
     ) {
-        sectionHeaderConstructor = { tableView, section, model in
+        sectionHeaderConstructor = { tableView, section, headerModel in
             let header = SectionHeaderView()
             header.model.value = MJTableSectionHeaderModel(
                 tableView: tableView,
                 section: section,
-                model: model
+                header: headerModel
             )
             return header
         }
