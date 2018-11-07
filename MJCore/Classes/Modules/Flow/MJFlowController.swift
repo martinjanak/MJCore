@@ -14,7 +14,7 @@ open class MJFlowController<Service> {
     public weak var navigation: UINavigationController?
     public let service: Service
     
-    public var endClosure: (() -> Void)?
+    public var endClosure: ((Bool) -> Void)?
     public weak var parentFlowController: MJFlowController<Service>?
     public var childFlowController: MJFlowController<Service>?
     
@@ -31,11 +31,11 @@ open class MJFlowController<Service> {
         // override and present/push/root view controller
     }
     
-    public func end() {
+    public func end(animated: Bool = true) {
         guard let endClosure = endClosure else {
             return
         }
-        endClosure()
+        endClosure(animated)
     }
     
     public func connect(_ flowController: MJFlowController<Service>) {
@@ -45,14 +45,17 @@ open class MJFlowController<Service> {
             else {
                 return
         }
-        flowController.endClosure = { [weak navigationWeak = navigation, weak currentVCWeak = currentVC] in
+        childFlowController = flowController
+        flowController.parentFlowController = self
+        flowController.endClosure = {
+            [weak navigationWeak = navigation, weak currentVCWeak = currentVC] animated in
             guard
                 let navigationStrong = navigationWeak,
                 let currentVCStrong = currentVCWeak
                 else {
                     return
             }
-            navigationStrong.popToViewController(currentVCStrong, animated: true)
+            navigationStrong.popToViewController(currentVCStrong, animated: animated)
         }
         flowController.start(navigation: navigation)
     }
@@ -65,9 +68,10 @@ open class MJFlowController<Service> {
         guard let navigation = navigation else { return }
         childFlowController = flowController
         flowController.parentFlowController = self
-        flowController.endClosure = { [weak flowControllerWeak = flowController, weak navigationWeak = navigation] in
-            flowControllerWeak?.dismissBefore(animated: animated) {
-                navigationWeak?.dismiss(animated: animated, completion: nil)
+        flowController.endClosure = {
+            [weak flowControllerWeak = flowController, weak navigationWeak = navigation] animatedEnd in
+            flowControllerWeak?.dismissBefore(animated: animatedEnd) {
+                navigationWeak?.dismiss(animated: animatedEnd, completion: nil)
             }
         }
         let navigationController = UINavigationController()
@@ -87,9 +91,10 @@ open class MJFlowController<Service> {
         guard let navigation = navigation else { return }
         childFlowController = flowController
         flowController.parentFlowController = self
-        flowController.endClosure = { [weak flowControllerWeak = flowController, weak navigationWeak = navigation] in
-            flowControllerWeak?.dismissBefore(animated: animated) {
-                navigationWeak?.dismiss(animated: animated, completion: nil)
+        flowController.endClosure = {
+            [weak flowControllerWeak = flowController, weak navigationWeak = navigation] animatedEnd in
+            flowControllerWeak?.dismissBefore(animated: animatedEnd) {
+                navigationWeak?.dismiss(animated: animatedEnd, completion: nil)
             }
         }
         let navigationController = UINavigationController()
