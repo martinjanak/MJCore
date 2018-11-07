@@ -6,10 +6,11 @@
 //
 
 import RxSwift
+import RxCocoa
 
 open class MJPageViewModel<PagingModel: MJPagingModelType>: MJViewModel {
     
-    public let pagingModel = Variable<PagingModel?>(nil)
+    public let pagingModel = BehaviorRelay<PagingModel?>(value: nil)
     
     public var key: String? {
         return pagingModel.value?.key

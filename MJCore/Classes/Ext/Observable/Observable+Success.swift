@@ -6,6 +6,7 @@
 //
 
 import RxSwift
+import RxCocoa
 
 extension Observable {
     
@@ -97,7 +98,7 @@ extension Observable {
     }
     
     public func bindSuccess<V>(
-        to variable: Variable<V>
+        to relay: BehaviorRelay<V>
     ) -> Disposable where Element == MJResult<V> {
         return self
             .map({ result -> V? in
@@ -113,7 +114,7 @@ extension Observable {
             .map({ (value: V?) -> V in
                 return value!
             })
-            .bind(to: variable)
+            .bind(to: relay)
     }
     
     public func bindSuccess<V>(
@@ -206,11 +207,11 @@ extension Observable where Element == MJResultSimple {
     }
     
     public func bindSuccess(
-        to variable: Variable<Bool>
+        to relay: BehaviorRelay<Bool>
     ) -> Disposable {
         return self
             .map({ $0.isSuccess() })
-            .bind(to: variable)
+            .bind(to: relay)
     }
     
     public func bindSuccess(

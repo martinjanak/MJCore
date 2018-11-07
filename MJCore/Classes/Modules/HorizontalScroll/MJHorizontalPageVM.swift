@@ -7,25 +7,26 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 public class MJHorizontalPageVM: NSObject {
     
     private let disposeBag = DisposeBag()
     
-    public let viewControllers = Variable([UIViewController]())
-    public let currentVC = Variable<UIViewController?>(nil)
+    public let viewControllers = BehaviorRelay(value: [UIViewController]())
+    public let currentVC = BehaviorRelay<UIViewController?>(value: nil)
     
-    private let countVariable = Variable<Int>(0)
-    public lazy var count = countVariable
+    private let countRelay = BehaviorRelay<Int>(value: 0)
+    public lazy var count = countRelay
         .asObservable()
         .distinctUntilChanged()
     
-    public let index = Variable<Int>(0)
+    public let index = BehaviorRelay<Int>(value: 0)
     
-    private let changeSubject = PublishSubject<MJPageViewChange>()
-    public lazy var change = changeSubject.asObservable()
+    private let changeRelay = PublishRelay<MJPageViewChange>()
+    public lazy var change = changeRelay.asObservable()
     
-    public let changeCompleted = PublishSubject<Bool>()
+    public let changeCompleted = PublishRelay<Bool>()
     
     internal func initBindings() {
         bindCount()
@@ -46,14 +47,14 @@ public class MJHorizontalPageVM: NSObject {
                     animated: false
                 )
             }
-            .bind(to: changeSubject)
+            .bind(to: changeRelay)
             .disposed(by: disposeBag)
     }
     
     private func bindCount() {
         viewControllers.asObservable()
             .map { $0.count }
-            .bind(to: countVariable)
+            .bind(to: countRelay)
             .disposed(by: disposeBag)
     }
     
@@ -89,7 +90,7 @@ public class MJHorizontalPageVM: NSObject {
                     else {
                     return
                 }
-                self?.changeSubject.onNext(
+                self?.changeRelay.accept(
                     MJPageViewChange(
                         viewController: controllers[index],
                         direction: index < currentIndex ? .reverse : .forward,
@@ -162,7 +163,7 @@ extension MJHorizontalPageVM: UIPageViewControllerDelegate {
             else {
                 return
         }
-        currentVC.value = viewController
+        currentVC.accept(viewController)
     }
     
 }

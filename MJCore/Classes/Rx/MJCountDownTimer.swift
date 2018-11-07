@@ -6,17 +6,18 @@
 //
 
 import RxSwift
+import RxCocoa
 
 public final class MJCountDownTimer {
     
     private let disposeBag = DisposeBag()
-    public let isRunning = Variable(false)
+    public let isRunning = BehaviorRelay(value: false)
     
-    private let tickSubject = PublishSubject<Int>()
-    public lazy var tick = tickSubject.asObservable()
+    private let tickRelay = PublishRelay<Int>()
+    public lazy var tick = tickRelay.asObservable()
     
-    private let finishedSubject = PublishSubject<Void>()
-    public lazy var finished = finishedSubject.asObservable()
+    private let finishedRelay = PublishRelay<Void>()
+    public lazy var finished = finishedRelay.asObservable()
     
     private let timeInterval: Int
     private var countdown: Int = 0
@@ -45,13 +46,13 @@ public final class MJCountDownTimer {
             }
             .bind(onNext: { [weak self] timeRemaining in
                 if timeRemaining >= 0 {
-                    self?.tickSubject.onNext(timeRemaining)
+                    self?.tickRelay.accept(timeRemaining)
                 }
                 if timeRemaining == 0 {
-                    self?.finishedSubject.onNext(())
+                    self?.finishedRelay.accept(())
                 }
                 if timeRemaining <= 0 {
-                    self?.isRunning.value = false
+                    self?.isRunning.accept(false)
                 }
             })
             .disposed(by: disposeBag)
@@ -60,11 +61,11 @@ public final class MJCountDownTimer {
     public func start(countdown: Int) {
         guard countdown >= timeInterval else { return }
         self.countdown = countdown
-        isRunning.value = true
+        isRunning.accept(true)
     }
     
     public func stop() {
-        isRunning.value = false
+        isRunning.accept(false)
     }
     
 }

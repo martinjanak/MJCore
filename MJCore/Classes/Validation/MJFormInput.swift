@@ -6,29 +6,30 @@
 //
 
 import RxSwift
+import RxCocoa
 
 public final class MJFormInput<Value>: MJValidable {
     
     private let disposeBag = DisposeBag()
     
-    public let variable: Variable<Value>
-    public let isValid: Variable<Bool>
-    public let isDirty: Variable<Bool>
-    public let validityState: Variable<MJValidityState>
+    public let variable: BehaviorRelay<Value?>
+    public let isValid: BehaviorRelay<Bool>
+    public let isDirty: BehaviorRelay<Bool>
+    public let validityState: BehaviorRelay<MJValidityState>
     
     private let notValidMessage: String?
     
-    init(value: Value, validator: @escaping (Value) -> Bool, notValidMessage: String? = nil) {
+    init(value: Value, validator: @escaping (Value?) -> Bool, notValidMessage: String? = nil) {
         self.notValidMessage = notValidMessage
-        variable = Variable<Value>(value)
-        isValid = Variable<Bool>(validator(value))
-        isDirty = Variable<Bool>(false)
-        validityState = Variable<MJValidityState>(.notSpecified)
+        variable = BehaviorRelay<Value?>(value: value)
+        isValid = BehaviorRelay<Bool>(value: validator(value))
+        isDirty = BehaviorRelay<Bool>(value: false)
+        validityState = BehaviorRelay<MJValidityState>(value: .notSpecified)
         bindIsValid(validator)
         bindViewState()
     }
     
-    private func bindIsValid(_ validator: @escaping (Value) -> Bool) {
+    private func bindIsValid(_ validator: @escaping (Value?) -> Bool) {
         variable.asObservable()
             .map(validator)
             .bind(to: isValid)

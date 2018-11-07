@@ -16,26 +16,26 @@ open class MJTextField: UITextField {
     public var maxCount: Int?
     public var allowedCharacterSet: CharacterSet?
     
-    public let hasSomeText = Variable<Bool>(false)
-    public let inEditingState = Variable<Bool>(false)
-    public let validityState = Variable<MJValidityState>(.notSpecified)
+    public let hasSomeText = BehaviorRelay<Bool>(value: false)
+    public let inEditingState = BehaviorRelay<Bool>(value: false)
+    public let validityState = BehaviorRelay<MJValidityState>(value: .notSpecified)
     
     public var shouldClear: () -> Bool = { true }
     public var shouldReturn: () -> Bool = { true }
     
     public var shouldBeginEditing: () -> Bool = { true }
     
-    private let didBeginEditingSubject = PublishSubject<Void>()
-    public lazy var didBeginEditing = didBeginEditingSubject.asObservable()
+    private let didBeginEditingRelay = PublishRelay<Void>()
+    public lazy var didBeginEditing = didBeginEditingRelay.asObservable()
     
     public var shouldEndEditing: () -> Bool = { true }
     
-    private let didEndEditingSubject = PublishSubject<Void>()
-    public lazy var didEndEditing = didEndEditingSubject.asObservable()
+    private let didEndEditingRelay = PublishRelay<Void>()
+    public lazy var didEndEditing = didEndEditingRelay.asObservable()
     
     // initial value problem
-    internal let didBindSubject = PublishSubject<Void>()
-    public lazy var didBind = didBindSubject.asObservable()
+    internal let didBindRelay = PublishRelay<Void>()
+    public lazy var didBind = didBindRelay.asObservable()
     
     public init() {
         super.init(frame: .zero)
@@ -76,8 +76,8 @@ extension MJTextField: UITextFieldDelegate {
     }
     
     public func textFieldDidBeginEditing(_ textField: UITextField) {
-        inEditingState.value = true
-        didBeginEditingSubject.onNext(())
+        inEditingState.accept(true)
+        didBeginEditingRelay.accept(())
     }
     
     public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
@@ -85,8 +85,8 @@ extension MJTextField: UITextFieldDelegate {
     }
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
-        inEditingState.value = false
-        didEndEditingSubject.onNext(())
+        inEditingState.accept(false)
+        didEndEditingRelay.accept(())
     }
     
     // MARK: Text

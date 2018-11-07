@@ -6,6 +6,7 @@
 //
 
 import RxSwift
+import RxCocoa
 
 public class MJFixedOrderGroup<Element: MJGroupElementType> {
     
@@ -16,8 +17,8 @@ public class MJFixedOrderGroup<Element: MJGroupElementType> {
     
     private var elements: [Element]?
     
-    private let changeSubject = PublishSubject<MJFixedOrderGroupChange<Element>>()
-    public lazy var change = changeSubject.asObservable()
+    private let changeRelay = PublishRelay<MJFixedOrderGroupChange<Element>>()
+    public lazy var change = changeRelay.asObservable()
     
     public init() { }
     
@@ -25,13 +26,13 @@ public class MJFixedOrderGroup<Element: MJGroupElementType> {
         queue.async {
             guard let elements = self.elements else {
                 self.elements = newElements.sorted { $0.uniqueIdType < $1.uniqueIdType }
-                self.changeSubject.onNext(.initialization(elements: newElements))
+                self.changeRelay.accept(.initialization(elements: newElements))
                 return
             }
             let newElementsSorted = newElements.sorted { $0.uniqueIdType < $1.uniqueIdType }
             let operations = elements.fixedOrderLcsOperations(with: newElementsSorted)
             if operations.hasAny {
-                self.changeSubject.onNext(.model(operations: operations))
+                self.changeRelay.accept(.model(operations: operations))
             }
             self.elements = newElements
         }
@@ -52,7 +53,7 @@ public class MJFixedOrderGroup<Element: MJGroupElementType> {
                     appends: [Element](),
                     updates: [element.uniqueIdType: element]
                 )
-                self.changeSubject.onNext(.model(operations: operations))
+                self.changeRelay.accept(.model(operations: operations))
             }
         }
     }

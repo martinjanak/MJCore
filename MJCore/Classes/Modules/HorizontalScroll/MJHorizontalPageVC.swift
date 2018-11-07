@@ -56,8 +56,8 @@ public final class MJHorizontalPageVC: UIPageViewController {
                     direction: pageViewChange.direction,
                     animated: pageViewChange.animated,
                     completion: { _ in
-                        self?.model.changeCompleted.onNext(true)
-                        self?.model.currentVC.value = pageViewChange.viewController
+                        self?.model.changeCompleted.accept(true)
+                        self?.model.currentVC.accept(pageViewChange.viewController)
                     }
                 )
             })

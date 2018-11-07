@@ -16,7 +16,7 @@ open class MJPageViewController<
     
     required public init(_ pagingModel: PagingModel) {
         super.init()
-        viewModel.pagingModel.value = pagingModel
+        viewModel.pagingModel.accept(pagingModel)
     }
     
     open var uniqueId: String {

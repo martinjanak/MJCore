@@ -6,18 +6,19 @@
 //
 
 import RxSwift
+import RxCocoa
 
 public final class MJForm {
     
     private var disposeBag: DisposeBag?
     private var inputs = [MJValidable]()
-    public let isValid = Variable<Bool>(false)
+    public let isValid = BehaviorRelay<Bool>(value: false)
     
     public init() { }
     
     public func createInput<Value>(
         value: Value,
-        validator: @escaping (Value) -> Bool,
+        validator: @escaping (Value?) -> Bool,
         notValidMessage: String? = nil
     ) -> MJFormInput<Value> {
         let formInput = MJFormInput<Value>(

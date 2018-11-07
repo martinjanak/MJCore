@@ -12,10 +12,10 @@ import RxCocoa
 open class MJViewComponent<Model>: MJView {
     
     private let disposeBag = DisposeBag()
-    public let model: Variable<Model?>
+    public let model: BehaviorRelay<Model?>
     
     required public init(model: Model? = nil) {
-        self.model = Variable<Model?>(model)
+        self.model = BehaviorRelay<Model?>(value: model)
         super.init(frame: .zero)
         initView()
         initBindings()

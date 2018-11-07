@@ -6,11 +6,12 @@
 //
 
 import RxSwift
+import RxCocoa
 
 public final class MJBackgroundPoller {
     
-    private let tickSubject = PublishSubject<MJResult<Double>>()
-    public lazy var tick = tickSubject.asObservable()
+    private let tickRelay = PublishRelay<MJResult<Double>>()
+    public lazy var tick = tickRelay.asObservable()
     
     private let queue = DispatchQueue(
         label: "Poller",
@@ -60,10 +61,10 @@ public final class MJBackgroundPoller {
     @objc
     private func tickHandler() {
         if let timeout = timeout, timeout <= seconds {
-            tickSubject.onNext(.failure(error: MJPollerError.timeout))
+            tickRelay.accept(.failure(error: MJPollerError.timeout))
             stopSync()
         } else {
-            tickSubject.onNext(.success(value: seconds))
+            tickRelay.accept(.success(value: seconds))
             seconds = seconds + interval
         }
     }

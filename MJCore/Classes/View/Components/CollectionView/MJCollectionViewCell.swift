@@ -7,14 +7,15 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 open class MJCollectionViewCell<Model>: UICollectionViewCell {
     
     private let disposeBag = DisposeBag()
-    public let model: Variable<MJCollectionViewCellModel<Model>?>
+    public let model: BehaviorRelay<MJCollectionViewCellModel<Model>?>
     
     override public init(frame: CGRect) {
-        self.model = Variable<MJCollectionViewCellModel<Model>?>(nil)
+        self.model = BehaviorRelay<MJCollectionViewCellModel<Model>?>(value: nil)
         super.init(frame: .zero)
         initView()
         initBindings()

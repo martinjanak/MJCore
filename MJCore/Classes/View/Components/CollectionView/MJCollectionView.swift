@@ -20,25 +20,25 @@ open class MJCollectionView<CollectionModel>
     
     private let disposeBag = DisposeBag()
     
-    public let data = Variable([CollectionModel]())
+    public let data = BehaviorRelay(value: [CollectionModel]())
     private var cellConstructors = [CellConstructor]()
     
     public var shouldSelectItem: (IndexPath) -> Bool = { _ in true }
     public var shouldDeselectItem: (IndexPath) -> Bool = { _ in true }
     
-    private let didSelectItemSubject = PublishSubject<IndexPath>()
-    public lazy var didSelectItem = didSelectItemSubject.asObservable()
+    private let didSelectItemRelay = PublishRelay<IndexPath>()
+    public lazy var didSelectItem = didSelectItemRelay.asObservable()
     
-    private let didDeselectItemSubject = PublishSubject<IndexPath>()
-    public lazy var didDeselectItem = didDeselectItemSubject.asObservable()
+    private let didDeselectItemRelay = PublishRelay<IndexPath>()
+    public lazy var didDeselectItem = didDeselectItemRelay.asObservable()
     
-    private let didSelectModelSubject = PublishSubject<CollectionModel?>()
-    public lazy var didDeselectModel = didSelectModelSubject.asDriver(onErrorJustReturn: nil)
+    private let didSelectModelRelay = PublishRelay<CollectionModel?>()
+    public lazy var didDeselectModel = didSelectModelRelay.asDriver(onErrorJustReturn: nil)
         .filter { $0 != nil }
         .map { $0! }
     
     public func didSelectModel<Model>(_ modelType: Model.Type) -> Driver<Model> {
-        return didSelectModelSubject.asDriver(onErrorJustReturn: nil)
+        return didSelectModelRelay.asDriver(onErrorJustReturn: nil)
             .filter { $0 != nil && $0 is Model }
             .map { $0 as! Model }
     }
@@ -106,11 +106,11 @@ open class MJCollectionView<CollectionModel>
                     withReuseIdentifier: cellId,
                     for: indexPath
                 ) as? Cell {
-                    cell.model.value = MJCollectionViewCellModel(
+                    cell.model.accept(MJCollectionViewCellModel(
                         collectionView: collectionView,
                         indexPath: indexPath,
                         cell: cellModel
-                    )
+                    ))
                     additionalSetup?(collectionView, indexPath, cellModel, &cell)
                     return cell
                 }
@@ -135,11 +135,11 @@ open class MJCollectionView<CollectionModel>
                         withReuseIdentifier: cellId,
                         for: indexPath
                     ) as? Cell {
-                        cell.model.value = MJCollectionViewCellModel(
+                        cell.model.accept(MJCollectionViewCellModel(
                             collectionView: collectionView,
                             indexPath: indexPath,
                             cell: cellModel
-                        )
+                        ))
                         additionalSetup?(collectionView, indexPath, cellModel, &cell)
                         return cell
                     }
@@ -190,9 +190,9 @@ open class MJCollectionView<CollectionModel>
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
-        didSelectItemSubject.onNext(indexPath)
+        didSelectItemRelay.accept(indexPath)
         let model = data.value[indexPath.item]
-        didSelectModelSubject.onNext(model)
+        didSelectModelRelay.accept(model)
     }
     
     public func collectionView(
@@ -206,7 +206,7 @@ open class MJCollectionView<CollectionModel>
         _ collectionView: UICollectionView,
         didDeselectItemAt indexPath: IndexPath
     ) {
-        didDeselectItemSubject.onNext(indexPath)
+        didDeselectItemRelay.accept(indexPath)
     }
     
     required public init?(coder aDecoder: NSCoder) {

@@ -6,6 +6,7 @@
 //
 
 import RxSwift
+import RxCocoa
 
 public enum MJPollerError: Error {
     case timeout
@@ -13,8 +14,8 @@ public enum MJPollerError: Error {
 
 public final class MJPoller {
     
-    private let tickSubject = PublishSubject<MJResult<Double>>()
-    public lazy var tick = tickSubject.asObservable()
+    private let tickRelay = PublishRelay<MJResult<Double>>()
+    public lazy var tick = tickRelay.asObservable()
     
     private var timer: Timer?
     private let interval: Double
@@ -54,10 +55,10 @@ public final class MJPoller {
     @objc
     private func tickHandler() {
         if let timeout = timeout, timeout <= seconds {
-            tickSubject.onNext(.failure(error: MJPollerError.timeout))
+            tickRelay.accept(.failure(error: MJPollerError.timeout))
             stopSync()
         } else {
-            tickSubject.onNext(.success(value: seconds))
+            tickRelay.accept(.success(value: seconds))
             seconds = seconds + interval
         }
     }

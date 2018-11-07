@@ -161,19 +161,24 @@ open class MJFlowController<Service> {
         completion: (() -> Void)? = nil
     ) -> Driver<Result> {
         
-        let subject = PublishSubject<Result?>()
-        
-        controller.modalPresentationStyle = .overFullScreen
-        controller.modalTransitionStyle = .crossDissolve
-        controller.close = { result in
-            self.back(animated: animated) {
-                subject.onNext(result)
-                subject.onCompleted()
+        return Observable.create { [weak self, weak controller] observer in
+            guard let strongSelf = self,
+                let controller = controller
+                else {
+                return Disposables.create()
             }
+            controller.modalPresentationStyle = .overFullScreen
+            controller.modalTransitionStyle = .crossDissolve
+            controller.close = { [weak self] result in
+                self?.back(animated: animated) {
+                    observer.onNext(result)
+                    observer.onCompleted()
+                }
+            }
+            
+            strongSelf.present(controller, animated: animated, completion: completion)
+            return Disposables.create()
         }
-        
-        present(controller, animated: animated, completion: completion)
-        return subject
             .asDriver(onErrorJustReturn: nil)
             .unwrap()
     }

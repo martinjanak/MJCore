@@ -6,14 +6,15 @@
 //
 
 import RxSwift
+import RxCocoa
 
 public final class MJTimer {
     
     private let disposeBag = DisposeBag()
-    public let isRunning = Variable(false)
+    public let isRunning = BehaviorRelay(value: false)
     
-    private let tickSubject = PublishSubject<Int>()
-    public lazy var tick = tickSubject.asObservable()
+    private let tickRelay = PublishRelay<Int>()
+    public lazy var tick = tickRelay.asObservable()
     
     public init(_ timeInterval: Int = 1) {
         if timeInterval < 1 {
@@ -32,16 +33,16 @@ public final class MJTimer {
                 ) : .empty()
             }
             .map { timeInterval * ($0 + 1) }
-            .bind(to: tickSubject)
+            .bind(to: tickRelay)
             .disposed(by: disposeBag)
     }
     
     public func start() {
-        isRunning.value = true
+        isRunning.accept(true)
     }
     
     public func stop() {
-        isRunning.value = false
+        isRunning.accept(false)
     }
     
 }

@@ -20,25 +20,25 @@ open class MJTableView<TableModel>
     
     private let disposeBag = DisposeBag()
     
-    public let data = Variable([TableModel]())
+    public let data = BehaviorRelay(value: [TableModel]())
     private var cellConstructors = [CellConstructor]()
     
     public var willSelectItem: (IndexPath) -> IndexPath? = { $0 }
     public var willDeselectItem: (IndexPath) -> IndexPath? = { $0 }
     
-    private let didSelectItemSubject = PublishSubject<IndexPath>()
-    public lazy var didSelectItem = didSelectItemSubject.asObservable()
+    private let didSelectItemRelay = PublishRelay<IndexPath>()
+    public lazy var didSelectItem = didSelectItemRelay.asObservable()
     
-    private let didDeselectItemSubject = PublishSubject<IndexPath>()
-    public lazy var didDeselectItem = didDeselectItemSubject.asObservable()
+    private let didDeselectItemRelay = PublishRelay<IndexPath>()
+    public lazy var didDeselectItem = didDeselectItemRelay.asObservable()
     
-    private let didSelectModelSubject = PublishSubject<TableModel?>()
-    public lazy var didDeselectModel = didSelectModelSubject
+    private let didSelectModelRelay = PublishRelay<TableModel?>()
+    public lazy var didDeselectModel = didSelectModelRelay
         .asDriver(onErrorJustReturn: nil)
         .unwrap()
     
     public func didSelectModel<Model>(_ modelType: Model.Type) -> Driver<Model> {
-        return didSelectModelSubject
+        return didSelectModelRelay
             .asDriver(onErrorJustReturn: nil)
             .cast(Model.self)
     }
@@ -92,11 +92,11 @@ open class MJTableView<TableModel>
                     withIdentifier: cellId,
                     for: indexPath
                 ) as? Cell {
-                    cell.model.value = MJTableViewCellModel(
+                    cell.model.accept(MJTableViewCellModel(
                         tableView: tableView,
                         indexPath: indexPath,
                         cell: cellModel
-                    )
+                    ))
                     additionalSetup?(tableView, indexPath, cellModel, &cell)
                     return cell
                 }
@@ -121,11 +121,11 @@ open class MJTableView<TableModel>
                         withIdentifier: cellId,
                         for: indexPath
                     ) as? Cell {
-                        cell.model.value = MJTableViewCellModel(
+                        cell.model.accept(MJTableViewCellModel(
                             tableView: tableView,
                             indexPath: indexPath,
                             cell: cellModel
-                        )
+                        ))
                         additionalSetup?(tableView, indexPath, cellModel, &cell)
                         return cell
                     }
@@ -176,9 +176,9 @@ open class MJTableView<TableModel>
         _ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath
     ) {
-        didSelectItemSubject.onNext(indexPath)
+        didSelectItemRelay.accept(indexPath)
         let model = data.value[indexPath.item]
-        didSelectModelSubject.onNext(model)
+        didSelectModelRelay.accept(model)
     }
     
     public func tableView(
@@ -192,7 +192,7 @@ open class MJTableView<TableModel>
         _ tableView: UITableView,
         didDeselectRowAt indexPath: IndexPath
     ) {
-        didDeselectItemSubject.onNext(indexPath)
+        didDeselectItemRelay.accept(indexPath)
     }
     
     required public init?(coder aDecoder: NSCoder) {

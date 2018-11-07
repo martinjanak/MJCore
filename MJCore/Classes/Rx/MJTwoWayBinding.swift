@@ -32,73 +32,57 @@ public func nonMarkedText(_ textInput: UITextInput) -> String? {
     return (textInput.text(in: startRange) ?? "") + (textInput.text(in: endRange) ?? "")
 }
 
-public func <-> <Base: UITextInput>(textInput: TextInput<Base>, variable: Variable<String>) -> Disposable {
-    let bindToUIDisposable = variable.asObservable()
-        .bind(to: textInput.text)
-    let bindToVariable = textInput.text
-        .subscribe(
-            onNext: { [weak baseWeak = textInput.base] _ in
-                guard let base = baseWeak else {
-                    return
-                }
-                let nonMarkedTextValue = nonMarkedText(base)
-                if let nonMarkedTextValue = nonMarkedTextValue,
-                    nonMarkedTextValue != variable.value {
-                    variable.value = nonMarkedTextValue
-                }
-            },
-            onCompleted: {
-                bindToUIDisposable.dispose()
-            }
-        )
-    return Disposables.create(bindToUIDisposable, bindToVariable)
-}
-
-public func <-> <T>(property: ControlProperty<T>, variable: Variable<T>) -> Disposable {
-    let bindToUIDisposable = variable.asObservable()
+public func <-> <T>(property: ControlProperty<T>, relay: BehaviorRelay<T>) -> Disposable {
+    let bindToUIDisposable = relay.asObservable()
         .bind(to: property)
-    let bindToVariable = property
+    let bindToRelay = property
         .subscribe(
-            onNext: { [weak variableWeak = variable] next in
-                variableWeak?.value = next
+            onNext: { [weak relay] value in
+                relay?.accept(value)
             },
-            onCompleted: {
+            onCompleted:  {
                 bindToUIDisposable.dispose()
             }
         )
-    return Disposables.create(bindToUIDisposable, bindToVariable)
+    return Disposables.create(bindToUIDisposable, bindToRelay)
 }
 
-public func <-> <T: Equatable>(variableA: Variable<T>, variableB: Variable<T>) -> Disposable {
-    let dA = variableA.asObservable()
-        .filter({ [weak weakVariableB = variableB] value in
-            guard let strongVariableB = weakVariableB else { return false }
-            return strongVariableB.value != value
-        })
-        .bind(to: variableB)
-    let dB = variableB.asObservable()
-        .filter({ [weak weakVariableA = variableA] value in
-            guard let strongVariableA = weakVariableA else { return false }
-            return strongVariableA.value != value
-        })
-        .bind(to: variableA)
+public func <-> <T: Equatable>(relayA: BehaviorRelay<T>, relayB: BehaviorRelay<T>) -> Disposable {
+    let dA = relayA.asObservable()
+        .with(relayB.asObservable())
+        .filter { newValue, oldValue in
+            return newValue != oldValue
+        }
+        .map { newValue, _ in
+            return newValue
+        }
+        .bind(to: relayB)
+    let dB = relayB.asObservable()
+        .with(relayA.asObservable())
+        .filter { newValue, oldValue in
+            return newValue != oldValue
+        }
+        .map { newValue, _ in
+            return newValue
+        }
+        .bind(to: relayA)
     return Disposables.create(dA, dB)
 }
 
 public func <-> (textField: MJTextField, formInput: MJFormInput<String>) -> Disposable {
     
-    let textDisposable = textField.rx.textInput <-> formInput.variable
+    let textDisposable = textField.rx.textInput.text <-> formInput.variable
     
     let isDirtyDisposable = textField.didEndEditing
         .bind(onNext: { [weak formInputWeak = formInput] _ in
-            formInputWeak?.isDirty.value = true
+            formInputWeak?.isDirty.accept(true)
         })
     
     let viewStateDisposable = textField.validityState <-> formInput.validityState
     
     // initial value problem
     DispatchQueue.main.async {
-        textField.didBindSubject.onNext(())
+        textField.didBindRelay.accept(())
     }
     
     return Disposables.create(

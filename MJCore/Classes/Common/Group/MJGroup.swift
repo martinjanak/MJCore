@@ -6,6 +6,7 @@
 //
 
 import RxSwift
+import RxCocoa
 
 public class MJGroup<Element: MJGroupElementType> {
     
@@ -16,8 +17,8 @@ public class MJGroup<Element: MJGroupElementType> {
     
     private var elements: [Element]?
     
-    private let changeSubject = PublishSubject<MJGroupChange<Element>>()
-    public lazy var change = changeSubject.asObservable()
+    private let changeRelay = PublishRelay<MJGroupChange<Element>>()
+    public lazy var change = changeRelay.asObservable()
     
     public init() { }
     
@@ -29,16 +30,16 @@ public class MJGroup<Element: MJGroupElementType> {
         queue.async {
             guard let elements = self.elements else {
                 self.elements = newElements
-                self.changeSubject.onNext(.initialization(elements: newElements))
+                self.changeRelay.accept(.initialization(elements: newElements))
                 return
             }
             if let index = elements.getCylicPermutationIndex(of: newElements) {
                 if index > 0 {
-                    self.changeSubject.onNext(.cyclicPermutation(index: index))
+                    self.changeRelay.accept(.cyclicPermutation(index: index))
                 }
             } else {
                 let operations = elements.lcsOperations(with: newElements)
-                self.changeSubject.onNext(.model(operations: operations))
+                self.changeRelay.accept(.model(operations: operations))
             }
             self.elements = newElements
         }
@@ -55,7 +56,7 @@ public class MJGroup<Element: MJGroupElementType> {
             let newElements = Array(elements[index...(elements.count-1)])
                 + Array(elements[0...(index-1)])
             self.elements = newElements
-            self.changeSubject.onNext(.cyclicPermutation(index: index))
+            self.changeRelay.accept(.cyclicPermutation(index: index))
         }
     }
     
@@ -74,7 +75,7 @@ public class MJGroup<Element: MJGroupElementType> {
                         MJGroupElementOperation<Element>(model: element, index: index)
                     ]
                 )
-                self.changeSubject.onNext(.model(operations: operations))
+                self.changeRelay.accept(.model(operations: operations))
             }
         }
     }

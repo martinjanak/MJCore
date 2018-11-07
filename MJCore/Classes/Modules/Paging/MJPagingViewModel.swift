@@ -77,7 +77,7 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
                 
                 if newSignature ~~ oldSignature {
                     for i in 0..<pagingModels.count {
-                        pageModules[i].pageViewModel.pagingModel.value = pagingModels[i]
+                        pageModules[i].pageViewModel.pagingModel.accept(pagingModels[i])
                     }
                     return nil
                 }

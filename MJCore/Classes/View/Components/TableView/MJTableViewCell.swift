@@ -7,14 +7,15 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 open class MJTableViewCell<Model>: UITableViewCell {
     
     private let disposeBag = DisposeBag()
-    public let model: Variable<MJTableViewCellModel<Model>?>
+    public let model: BehaviorRelay<MJTableViewCellModel<Model>?>
     
     override public init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        model = Variable<MJTableViewCellModel<Model>?>(nil)
+        model = BehaviorRelay<MJTableViewCellModel<Model>?>(value: nil)
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         initView()
         initBindings()

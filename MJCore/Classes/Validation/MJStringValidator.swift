@@ -9,11 +9,11 @@ import Foundation
 
 public enum MJStringValidator {
     
-    case wrapper((String) -> Bool)
+    case wrapper((String?) -> Bool)
     case regex(String)
     case minChars(Int)
     
-    public var closure: (String) -> Bool {
+    public var closure: (String?) -> Bool {
         switch self {
         case .wrapper(let validator):
             return validator
@@ -24,7 +24,11 @@ public enum MJStringValidator {
             }
         case .minChars(let count):
             return { value in
-                value.count >= count
+                if let value = value {
+                    return  value.count >= count
+                } else {
+                    return false
+                }
             }
         }
     }

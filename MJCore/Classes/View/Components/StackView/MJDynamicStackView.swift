@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 open class MJDynamicStackView<StackModel>: UIStackView {
     
@@ -15,7 +16,7 @@ open class MJDynamicStackView<StackModel>: UIStackView {
     )
     
     private let disposeBag = DisposeBag()
-    public let data = Variable([StackModel]())
+    public let data = BehaviorRelay(value: [StackModel]())
     private var cellConstructors = [CellConstructor]()
     
     public init() {
@@ -53,11 +54,11 @@ open class MJDynamicStackView<StackModel>: UIStackView {
         cellConstructors.append({ cellModel in
             return { stackView, index in
                 var cell = Cell()
-                cell.model.value = MJStackViewCellModel(
+                cell.model.accept(MJStackViewCellModel(
                     stackView: stackView,
                     index: index,
                     cell: cellModel
-                )
+                ))
                 additionalSetup?(stackView, index, cellModel, &cell)
                 return cell
             }
@@ -75,11 +76,11 @@ open class MJDynamicStackView<StackModel>: UIStackView {
             if let cellModel = stackModel as? CellModel {
                 return { stackView, index in
                     var cell = Cell()
-                    cell.model.value = MJStackViewCellModel(
+                    cell.model.accept(MJStackViewCellModel(
                         stackView: stackView,
                         index: index,
                         cell: cellModel
-                    )
+                    ))
                     additionalSetup?(stackView, index, cellModel, &cell)
                     return cell
                 }

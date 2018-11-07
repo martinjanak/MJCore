@@ -6,10 +6,11 @@
 //
 
 import RxSwift
+import RxCocoa
 
 public protocol MJValidable {
-    var isValid: Variable<Bool> { get }
-    var isDirty: Variable<Bool> { get }
+    var isValid: BehaviorRelay<Bool> { get }
+    var isDirty: BehaviorRelay<Bool> { get }
 }
 
 extension MJValidable {
