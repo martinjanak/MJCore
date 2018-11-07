@@ -204,6 +204,8 @@
 		5BB1B0BD21833226007F5973 /* Observable+First.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1B0BC21833226007F5973 /* Observable+First.swift */; };
 		5BB1B0BF218335F8007F5973 /* Driver+First.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1B0BE218335F8007F5973 /* Driver+First.swift */; };
 		5BBABE6A21933CAB0060CAED /* Observable+AsDriverIgnoringErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBABE6921933CAB0060CAED /* Observable+AsDriverIgnoringErrors.swift */; };
+		5BBABE6C21933F7F0060CAED /* Driver+Drive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBABE6B21933F7F0060CAED /* Driver+Drive.swift */; };
+		5BBABE6E21933FFF0060CAED /* Observable+Bind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBABE6D21933FFF0060CAED /* Observable+Bind.swift */; };
 		5BC13E2720D0502A00454828 /* MJViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC13E2620D0502A00454828 /* MJViewComponent.swift */; };
 		5BC972292116DCB600C021A8 /* Array+LSC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC972282116DCB600C021A8 /* Array+LSC.swift */; };
 		5BF0283E20C9B2ED00B00A28 /* Observable+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0283D20C9B2ED00B00A28 /* Observable+Empty.swift */; };
@@ -723,6 +725,8 @@
 		5BB1B0BC21833226007F5973 /* Observable+First.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+First.swift"; sourceTree = "<group>"; };
 		5BB1B0BE218335F8007F5973 /* Driver+First.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Driver+First.swift"; sourceTree = "<group>"; };
 		5BBABE6921933CAB0060CAED /* Observable+AsDriverIgnoringErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+AsDriverIgnoringErrors.swift"; sourceTree = "<group>"; };
+		5BBABE6B21933F7F0060CAED /* Driver+Drive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Driver+Drive.swift"; sourceTree = "<group>"; };
+		5BBABE6D21933FFF0060CAED /* Observable+Bind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Bind.swift"; sourceTree = "<group>"; };
 		5BC13E2620D0502A00454828 /* MJViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJViewComponent.swift; sourceTree = "<group>"; };
 		5BC972282116DCB600C021A8 /* Array+LSC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+LSC.swift"; sourceTree = "<group>"; };
 		5BF0283D20C9B2ED00B00A28 /* Observable+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Empty.swift"; sourceTree = "<group>"; };
@@ -1373,6 +1377,7 @@
 		5B6D8051210DBF7600D9EAB2 /* Observable */ = {
 			isa = PBXGroup;
 			children = (
+				5BBABE6D21933FFF0060CAED /* Observable+Bind.swift */,
 				FA328ABC525FCD6318EF476D042B514A /* Observable+Debug.swift */,
 				1D2778E65497901E0D30D93FEEC9448B /* Observable+Decode.swift */,
 				BA99B9D33AB8A94D93EDA19BA1D2F9F9 /* Observable+MJLogService.swift */,
@@ -1401,6 +1406,7 @@
 		5B6D8052210DBFA300D9EAB2 /* Driver */ = {
 			isa = PBXGroup;
 			children = (
+				5BBABE6B21933F7F0060CAED /* Driver+Drive.swift */,
 				5B6D804F210DBF5600D9EAB2 /* Driver+Datasource.swift */,
 				5B31F9D6210C548C008F5AB5 /* Driver+Unwrap.swift */,
 				5B99DF18212573C400A0F6E1 /* Driver+Cast.swift */,
@@ -2429,6 +2435,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BBABE6E21933FFF0060CAED /* Observable+Bind.swift in Sources */,
 				3278C0F0850B4AC6CAF8464870A8D2F3 /* Array+MJson.swift in Sources */,
 				5B9971112111747400C20776 /* MJPagingViewController.swift in Sources */,
 				6A6DBA6577F847C3A7BD8A8891565CDB /* Date+Ext.swift in Sources */,
@@ -2507,6 +2514,7 @@
 				5B376C06218ADE93000C0DE0 /* Display.swift in Sources */,
 				5B9971132111748000C20776 /* MJPagingViewModel.swift in Sources */,
 				4BE0D73CEB0416296E5CD35493810190 /* MJResendRequest.swift in Sources */,
+				5BBABE6C21933F7F0060CAED /* Driver+Drive.swift in Sources */,
 				5BF265D320FB8417006D8838 /* MJFormInput.swift in Sources */,
 				5B2181A820EBA5CA00C623BE /* MJHorizontalScrollView.swift in Sources */,
 				5B2FCAD22100585B00983C71 /* Observable+Batch.swift in Sources */,
