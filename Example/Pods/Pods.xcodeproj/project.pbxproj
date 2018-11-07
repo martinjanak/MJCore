@@ -203,6 +203,7 @@
 		5BB1B0BB2183285F007F5973 /* MJUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1B0BA2183285F007F5973 /* MJUpdatable.swift */; };
 		5BB1B0BD21833226007F5973 /* Observable+First.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1B0BC21833226007F5973 /* Observable+First.swift */; };
 		5BB1B0BF218335F8007F5973 /* Driver+First.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1B0BE218335F8007F5973 /* Driver+First.swift */; };
+		5BBABE6A21933CAB0060CAED /* Observable+AsDriverIgnoringErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBABE6921933CAB0060CAED /* Observable+AsDriverIgnoringErrors.swift */; };
 		5BC13E2720D0502A00454828 /* MJViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC13E2620D0502A00454828 /* MJViewComponent.swift */; };
 		5BC972292116DCB600C021A8 /* Array+LSC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC972282116DCB600C021A8 /* Array+LSC.swift */; };
 		5BF0283E20C9B2ED00B00A28 /* Observable+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0283D20C9B2ED00B00A28 /* Observable+Empty.swift */; };
@@ -721,6 +722,7 @@
 		5BB1B0BA2183285F007F5973 /* MJUpdatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJUpdatable.swift; sourceTree = "<group>"; };
 		5BB1B0BC21833226007F5973 /* Observable+First.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+First.swift"; sourceTree = "<group>"; };
 		5BB1B0BE218335F8007F5973 /* Driver+First.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Driver+First.swift"; sourceTree = "<group>"; };
+		5BBABE6921933CAB0060CAED /* Observable+AsDriverIgnoringErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+AsDriverIgnoringErrors.swift"; sourceTree = "<group>"; };
 		5BC13E2620D0502A00454828 /* MJViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJViewComponent.swift; sourceTree = "<group>"; };
 		5BC972282116DCB600C021A8 /* Array+LSC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+LSC.swift"; sourceTree = "<group>"; };
 		5BF0283D20C9B2ED00B00A28 /* Observable+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Empty.swift"; sourceTree = "<group>"; };
@@ -1391,6 +1393,7 @@
 				5B1829192179CD1800A183E5 /* Observable+ScanPrevious.swift */,
 				5BB1B0BC21833226007F5973 /* Observable+First.swift */,
 				5B0DC93921875ECE0087C56D /* Observable+Group.swift */,
+				5BBABE6921933CAB0060CAED /* Observable+AsDriverIgnoringErrors.swift */,
 			);
 			path = Observable;
 			sourceTree = "<group>";
@@ -2555,6 +2558,7 @@
 				5B99712321118C9700C20776 /* MJPagingScrollVC.swift in Sources */,
 				A238273A732B47D48DAF6B31373F33A9 /* String+Ext.swift in Sources */,
 				5B754E6B20F4E17A0035D643 /* Observable+Unwrap.swift in Sources */,
+				5BBABE6A21933CAB0060CAED /* Observable+AsDriverIgnoringErrors.swift in Sources */,
 				5B6D8047210DBB4000D9EAB2 /* MJCollectionView.swift in Sources */,
 				5B36180D20C5AFCF0006C3EB /* Observable+BatchResult.swift in Sources */,
 				34C497AE556AE03275643E0D62EEF86D /* UINavigationController+Root.swift in Sources */,
