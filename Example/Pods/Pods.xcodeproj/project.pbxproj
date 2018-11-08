@@ -166,6 +166,7 @@
 		5B6D804E210DBCC800D9EAB2 /* MJTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D804D210DBCC800D9EAB2 /* MJTableViewCell.swift */; };
 		5B6D8050210DBF5600D9EAB2 /* Driver+Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D804F210DBF5600D9EAB2 /* Driver+Datasource.swift */; };
 		5B7233B147DB364DBE11D645CAA93375 /* Completable+AndThen.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED28D533686DF46636404EEC7E05AF9C /* Completable+AndThen.swift */; };
+		5B72BFB421945FC100DBC1DE /* Observable+HttpFailure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B72BFB321945FC100DBC1DE /* Observable+HttpFailure.swift */; };
 		5B754E6B20F4E17A0035D643 /* Observable+Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B754E6A20F4E17A0035D643 /* Observable+Unwrap.swift */; };
 		5B754E7420F4EB5D0035D643 /* MJModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B754E7320F4EB5D0035D643 /* MJModalViewController.swift */; };
 		5B7643E72188545B00C28D66 /* MJGroupElementType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7643E62188545B00C28D66 /* MJGroupElementType.swift */; };
@@ -687,6 +688,7 @@
 		5B6D804B210DBCBC00D9EAB2 /* MJTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJTableView.swift; sourceTree = "<group>"; };
 		5B6D804D210DBCC800D9EAB2 /* MJTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJTableViewCell.swift; sourceTree = "<group>"; };
 		5B6D804F210DBF5600D9EAB2 /* Driver+Datasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Driver+Datasource.swift"; sourceTree = "<group>"; };
+		5B72BFB321945FC100DBC1DE /* Observable+HttpFailure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+HttpFailure.swift"; sourceTree = "<group>"; };
 		5B754E6A20F4E17A0035D643 /* Observable+Unwrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Unwrap.swift"; sourceTree = "<group>"; };
 		5B754E7320F4EB5D0035D643 /* MJModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJModalViewController.swift; sourceTree = "<group>"; };
 		5B7643E62188545B00C28D66 /* MJGroupElementType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJGroupElementType.swift; sourceTree = "<group>"; };
@@ -1399,6 +1401,7 @@
 				5BB1B0BC21833226007F5973 /* Observable+First.swift */,
 				5B0DC93921875ECE0087C56D /* Observable+Group.swift */,
 				5BBABE6921933CAB0060CAED /* Observable+AsDriverIgnoringErrors.swift */,
+				5B72BFB321945FC100DBC1DE /* Observable+HttpFailure.swift */,
 			);
 			path = Observable;
 			sourceTree = "<group>";
@@ -2496,6 +2499,7 @@
 				5BF265D420FB8417006D8838 /* MJForm.swift in Sources */,
 				5BC13E2720D0502A00454828 /* MJViewComponent.swift in Sources */,
 				EB9123A2B6CE9B0C2CB40BA6EF3E88F9 /* MJLogService.swift in Sources */,
+				5B72BFB421945FC100DBC1DE /* Observable+HttpFailure.swift in Sources */,
 				651FBEB6B0F33433E460F2BC43458D4F /* MJPoller.swift in Sources */,
 				5B6D804C210DBCBC00D9EAB2 /* MJTableView.swift in Sources */,
 				A0059E0A03BFCD4E82D3FD2632190711 /* MJReachability.swift in Sources */,

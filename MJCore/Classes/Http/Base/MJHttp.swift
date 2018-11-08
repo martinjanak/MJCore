@@ -99,7 +99,7 @@ public final class MJHttp {
             if let statusCode = (response as? HTTPURLResponse)?.statusCode {
                 if statusCode < 200 || statusCode > 299 {
                     debug("[http]: Response error status code: \(statusCode)")
-                    handler(.failure(error: MJHttpError.http(statusCode: statusCode)))
+                    handler(.failure(error: MJHttpError.http(statusCode: statusCode, data: data)))
                     return
                 }
             }

@@ -12,7 +12,7 @@ public enum MJHttpError: Error {
     case noConnection
     case invalidUrlComponents
     case invalidUrl
-    case http(statusCode: Int)
+    case http(statusCode: Int, data: Data?)
     case noDataReturned
     case couldNotParseAsJson
     case couldNotAuthenticateRequest
@@ -36,7 +36,7 @@ public enum MJHttpError: Error {
     }
     
     public func isHttpError(_ sc: Int) -> Bool {
-        if case let .http(statusCode) = self {
+        if case .http(let statusCode, _) = self {
             return statusCode == sc
         } else {
             return false
@@ -44,8 +44,8 @@ public enum MJHttpError: Error {
     }
     
     public func isHttpError(_ range: ClosedRange<Int>) -> Bool {
-        if case let .http(sc) = self {
-            return range.contains(sc)
+        if case .http(let statusCode, _) = self {
+            return range.contains(statusCode)
         } else {
             return false
         }

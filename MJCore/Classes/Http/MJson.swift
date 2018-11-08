@@ -171,6 +171,28 @@ extension Dictionary where Key == String, Value == Any {
         return try Model(json: json)
     }
     
+    public static func parseModelOptional<Model: MJsonParsable>(
+        _ data: Data,
+        key: String? = nil,
+        defaults: MJson? = nil
+    ) -> Model? {
+        do {
+            var json: MJson
+            let jsonParsed = try MJson.parse(data)
+            if let key = key {
+                json = try jsonParsed.get(key)
+            } else {
+                json = jsonParsed
+            }
+            if let defaults = defaults {
+                json.merge(defaults, uniquingKeysWith: { a, _ in a })
+            }
+            return try Model(json: json)
+        } catch {
+            return nil
+        }
+    }
+    
     public static func parseArrayModel<Model: MJsonParsable>(
         _ data: Data,
         key: String? = nil,
