@@ -7,12 +7,11 @@
 
 import RxSwift
 
-extension Observable {
+extension Observable where Element == MJResult<Data> {
     
-    public func onHttpFailure<ErrorModel: MJsonParsable>(
-        _ modelType: ErrorModel.Type,
-        handler: @escaping (Int, MJResult<ErrorModel>?) -> Void
-    ) -> Observable<MJResult<Data>> where Element == MJResult<Data> {
+    public func onHttpFailure(
+        handler: @escaping (Int, MJson?) -> Void
+    ) -> Observable<MJResult<Data>> {
         return self.map({ response in
             switch response {
             case .success:
@@ -20,11 +19,8 @@ extension Observable {
             case .failure(let error):
                 if let httpError = error as? MJHttpError,
                     case .http(let statusCode, let dataOptional) = httpError {
-                    if let data = dataOptional {
-                        let result = MJResult<ErrorModel> {
-                            return try MJson.parseModel(data)
-                        }
-                        handler(statusCode, result)
+                    if let data = dataOptional, let json = MJson.parseOptional(data) {
+                        handler(statusCode, json)
                     } else {
                         handler(statusCode, nil)
                     }
