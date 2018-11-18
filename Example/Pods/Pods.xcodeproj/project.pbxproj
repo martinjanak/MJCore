@@ -168,7 +168,6 @@
 		5B7233B147DB364DBE11D645CAA93375 /* Completable+AndThen.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED28D533686DF46636404EEC7E05AF9C /* Completable+AndThen.swift */; };
 		5B72BFB421945FC100DBC1DE /* Observable+HttpFailure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B72BFB321945FC100DBC1DE /* Observable+HttpFailure.swift */; };
 		5B754E6B20F4E17A0035D643 /* Observable+Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B754E6A20F4E17A0035D643 /* Observable+Unwrap.swift */; };
-		5B754E7420F4EB5D0035D643 /* MJModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B754E7320F4EB5D0035D643 /* MJModalViewController.swift */; };
 		5B7643E72188545B00C28D66 /* MJGroupElementType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7643E62188545B00C28D66 /* MJGroupElementType.swift */; };
 		5B7643E92188549000C28D66 /* MJGroupChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7643E82188549000C28D66 /* MJGroupChange.swift */; };
 		5B7643EB2188712200C28D66 /* MJFixedOrderGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7643EA2188712200C28D66 /* MJFixedOrderGroup.swift */; };
@@ -177,6 +176,7 @@
 		5B7643F42188CED200C28D66 /* UIView+SetConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7643F32188CED200C28D66 /* UIView+SetConstraint.swift */; };
 		5B8963CD21861467001B2E7D /* MJUniqueIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8963CC21861467001B2E7D /* MJUniqueIdentifiable.swift */; };
 		5B8963CF218614FA001B2E7D /* MJGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8963CE218614FA001B2E7D /* MJGroup.swift */; };
+		5B8E47B221A1D2A9008450F5 /* MJResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8E47B121A1D2A9008450F5 /* MJResultViewController.swift */; };
 		5B901F982105BC7700E3E289 /* Observable+With.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B901F972105BC7700E3E289 /* Observable+With.swift */; };
 		5B99710D211173BC00C20776 /* MJHorizontalPageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B99710B211173BC00C20776 /* MJHorizontalPageVM.swift */; };
 		5B99710E211173BC00C20776 /* MJHorizontalPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B99710C211173BC00C20776 /* MJHorizontalPageVC.swift */; };
@@ -690,7 +690,6 @@
 		5B6D804F210DBF5600D9EAB2 /* Driver+Datasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Driver+Datasource.swift"; sourceTree = "<group>"; };
 		5B72BFB321945FC100DBC1DE /* Observable+HttpFailure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+HttpFailure.swift"; sourceTree = "<group>"; };
 		5B754E6A20F4E17A0035D643 /* Observable+Unwrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Unwrap.swift"; sourceTree = "<group>"; };
-		5B754E7320F4EB5D0035D643 /* MJModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJModalViewController.swift; sourceTree = "<group>"; };
 		5B7643E62188545B00C28D66 /* MJGroupElementType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJGroupElementType.swift; sourceTree = "<group>"; };
 		5B7643E82188549000C28D66 /* MJGroupChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJGroupChange.swift; sourceTree = "<group>"; };
 		5B7643EA2188712200C28D66 /* MJFixedOrderGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJFixedOrderGroup.swift; sourceTree = "<group>"; };
@@ -699,6 +698,7 @@
 		5B7643F32188CED200C28D66 /* UIView+SetConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SetConstraint.swift"; sourceTree = "<group>"; };
 		5B8963CC21861467001B2E7D /* MJUniqueIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJUniqueIdentifiable.swift; sourceTree = "<group>"; };
 		5B8963CE218614FA001B2E7D /* MJGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJGroup.swift; sourceTree = "<group>"; };
+		5B8E47B121A1D2A9008450F5 /* MJResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJResultViewController.swift; sourceTree = "<group>"; };
 		5B901F972105BC7700E3E289 /* Observable+With.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+With.swift"; sourceTree = "<group>"; };
 		5B99710B211173BC00C20776 /* MJHorizontalPageVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJHorizontalPageVM.swift; sourceTree = "<group>"; };
 		5B99710C211173BC00C20776 /* MJHorizontalPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJHorizontalPageVC.swift; sourceTree = "<group>"; };
@@ -1800,7 +1800,7 @@
 				5B0870D820F1F442007DD392 /* HorizontalScroll */,
 				48F2DCD12131E7880F3D527BB704A5DA /* MJViewController.swift */,
 				5B0870D620F1EE3D007DD392 /* MJViewModel.swift */,
-				5B754E7320F4EB5D0035D643 /* MJModalViewController.swift */,
+				5B8E47B121A1D2A9008450F5 /* MJResultViewController.swift */,
 			);
 			name = Modules;
 			path = MJCore/Classes/Modules;
@@ -2547,6 +2547,7 @@
 				7801225063DEB1BDBCCCFF891A11E0FE /* Observable+Debug.swift in Sources */,
 				A16D57686B250C8D695A9859462732B4 /* Observable+Decode.swift in Sources */,
 				5B684E43218EFA7300803B29 /* MJSmartViewComponent.swift in Sources */,
+				5B8E47B221A1D2A9008450F5 /* MJResultViewController.swift in Sources */,
 				4105815956827EE44810C49A37EC1DC6 /* Observable+Failure.swift in Sources */,
 				252818B08048054B91773F39C90C3A3D /* Observable+MJLogService.swift in Sources */,
 				5B15B9EE20FCC3B8009D24C7 /* UIScrollView+ScrollTo.swift in Sources */,
@@ -2564,7 +2565,6 @@
 				5B684E49218EFF8200803B29 /* MJTableViewCellModel.swift in Sources */,
 				5B99711B211179E800C20776 /* MJPageViewModel.swift in Sources */,
 				5B1D2C98214673420004326E /* UIColor+hexString.swift in Sources */,
-				5B754E7420F4EB5D0035D643 /* MJModalViewController.swift in Sources */,
 				5B2FCAD421005B8000983C71 /* Observable+BatchParse.swift in Sources */,
 				605DD648ECBCE3EAC4F5822BCFBD9FF5 /* RawRepresentable+Create.swift in Sources */,
 				5B99712321118C9700C20776 /* MJPagingScrollVC.swift in Sources */,

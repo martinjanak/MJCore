@@ -154,33 +154,26 @@ open class MJFlowController<Service> {
         }
     }
     
-    @discardableResult
-    public func presentModal<View, Result>(
-        _ controller: MJModalViewController<View, Result>,
+    public func presentWithResult<View, ViewModel, Result>(
+        _ controller: MJResultViewController<View, ViewModel, Result>,
         animated: Bool = true,
         completion: (() -> Void)? = nil
-    ) -> Driver<Result> {
+    ) -> Observable<Result> {
+        
+        present(controller, animated: animated, completion: completion)
         
         return Observable.create { [weak self, weak controller] observer in
-            guard let strongSelf = self,
-                let controller = controller
-                else {
+            guard let controller = controller else {
                 return Disposables.create()
             }
-            controller.modalPresentationStyle = .overFullScreen
-            controller.modalTransitionStyle = .crossDissolve
             controller.close = { [weak self] result in
                 self?.back(animated: animated) {
                     observer.onNext(result)
                     observer.onCompleted()
                 }
             }
-            
-            strongSelf.present(controller, animated: animated, completion: completion)
             return Disposables.create()
         }
-            .asDriver(onErrorJustReturn: nil)
-            .unwrap()
     }
     
     public func presentModally(
