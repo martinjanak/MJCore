@@ -102,6 +102,10 @@ open class MJLocalNotificationServiceAny<Notification: MJLocalNotifications>: MJ
     
     public typealias NotificationType = Notification
     
+    public init() {
+        
+    }
+    
     open func create(_ notification: Notification) -> Observable<MJResultSimple> {
         return .just(.success)
     }
