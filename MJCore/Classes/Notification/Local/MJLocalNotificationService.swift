@@ -8,11 +8,11 @@
 import UserNotifications
 import RxSwift
 
-public final class MJLocalNotificationService<Notification: MJLocalNotifications> {
+public final class MJLocalNotificationService<Notification: MJLocalNotifications>: MJLocalNotificationServiceAny<Notification> {
     
-    public init() { }
+    public override init() { }
     
-    public func create(
+    public override func create(
         _ notification: Notification
     ) -> Observable<MJResultSimple> {
         return requestAuthorization()
@@ -49,7 +49,7 @@ public final class MJLocalNotificationService<Notification: MJLocalNotifications
             })
     }
     
-    public func requestAuthorization() -> Observable<MJResultSimple> {
+    public override func requestAuthorization() -> Observable<MJResultSimple> {
         return Observable.create { observer in
             UNUserNotificationCenter
                 .current()
@@ -72,7 +72,7 @@ public final class MJLocalNotificationService<Notification: MJLocalNotifications
         }
     }
     
-    public func getPendingRequests() -> Observable<[UNNotificationRequest]> {
+    public override func getPendingRequests() -> Observable<[UNNotificationRequest]> {
         return Observable.create { observer in
             UNUserNotificationCenter
                 .current()
@@ -84,7 +84,7 @@ public final class MJLocalNotificationService<Notification: MJLocalNotifications
         }
     }
     
-    public func removeAllPendingRequests() {
+    public override func removeAllPendingRequests() {
         UNUserNotificationCenter
             .current()
             .removeAllPendingNotificationRequests()
@@ -96,4 +96,34 @@ public final class MJLocalNotificationService<Notification: MJLocalNotifications
         case authNotGranted
     }
     
+}
+
+open class MJLocalNotificationServiceAny<Notification: MJLocalNotifications>: MJLocalNotificationServiceProtocol {
+    
+    public typealias NotificationType = Notification
+    
+    open func create(_ notification: Notification) -> Observable<MJResultSimple> {
+        return .just(.success)
+    }
+    
+    open func requestAuthorization() -> Observable<MJResultSimple> {
+        return .just(.success)
+    }
+    
+    open func getPendingRequests() -> Observable<[UNNotificationRequest]> {
+        return .just([UNNotificationRequest]())
+    }
+    
+    open func removeAllPendingRequests() {
+        
+    }
+    
+}
+
+public protocol MJLocalNotificationServiceProtocol {
+    associatedtype NotificationType: MJLocalNotifications
+    func create(_ notification: NotificationType) -> Observable<MJResultSimple>
+    func requestAuthorization() -> Observable<MJResultSimple>
+    func getPendingRequests() -> Observable<[UNNotificationRequest]>
+    func removeAllPendingRequests()
 }
