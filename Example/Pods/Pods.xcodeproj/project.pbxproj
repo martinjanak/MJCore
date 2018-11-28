@@ -292,7 +292,6 @@
 		91E12AC9BA969C08CC0E405C8EBD145B /* Bag.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C5D59D9B342A0E8EFCAA6EFC55456D /* Bag.swift */; };
 		951F2BB80D4636216EACC0886B7C85F1 /* AsyncSubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01EFCFB6D4159BEBFEB51D6B1EDBE0 /* AsyncSubject.swift */; };
 		96BDC11C41BC83ED18C1840B76984D65 /* Stevia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC5FE67750CC032F20FBA314E33A419D /* Stevia.framework */; };
-		970F80C207C19B1ADBD527AA6748A595 /* MJHttpAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6749F609639B563A8D190D2E42CB3ACD /* MJHttpAuthClient.swift */; };
 		9737FE48E58B625C1AA9D47C4426A8A2 /* ScheduledItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E032DCE53D0DA5B564CEB0BB56B4AD1 /* ScheduledItemType.swift */; };
 		98BE6711F004DD5CE179D158451795D5 /* DeprecationWarner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF49D53EB15F6C830AAAD17BAD215CF7 /* DeprecationWarner.swift */; };
 		990F68E49A2755DC079F27F5A87A570B /* RxPickerViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5033AC5B6D5A4C2C35054079EB935007 /* RxPickerViewDelegateProxy.swift */; };
@@ -762,7 +761,6 @@
 		6608ABB38A5D3EC7A095EC2331289B8B /* MJCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MJCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6655AE0EE98AE656B9FF83C931ED2DC5 /* MJKeychainService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MJKeychainService.swift; sourceTree = "<group>"; };
 		66C947917253FA074D7A2FEBF76E4DCF /* SerialDisposable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SerialDisposable.swift; path = RxSwift/Disposables/SerialDisposable.swift; sourceTree = "<group>"; };
-		6749F609639B563A8D190D2E42CB3ACD /* MJHttpAuthClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MJHttpAuthClient.swift; sourceTree = "<group>"; };
 		67D020E2CC985BC8372A22D8A508E1D9 /* RxCocoa.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RxCocoa.h; path = RxCocoa/RxCocoa.h; sourceTree = "<group>"; };
 		6865B6FDC6EFE7AF230724E0929C77A6 /* ElementAt.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ElementAt.swift; path = RxSwift/Observables/ElementAt.swift; sourceTree = "<group>"; };
 		686B9396ADBFC6D4549165A2B191604E /* Scan.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Scan.swift; path = RxSwift/Observables/Scan.swift; sourceTree = "<group>"; };
@@ -1846,7 +1844,6 @@
 			children = (
 				0312CFDF83DFE583CC7E0207CE592041 /* Base */,
 				64BE243BD79AF1A6A0F0C1019491BFAB /* MJHttpClient.swift */,
-				6749F609639B563A8D190D2E42CB3ACD /* MJHttpAuthClient.swift */,
 				3F0471FA1A4F7E9916EF61EC52EE9220 /* MJCodableUtil.swift */,
 				AFCB75FCEDF716FB0813E998EE624ADE /* MJson.swift */,
 				12F1E338F1EADF86A2F6E2E68E24FB65 /* MJsonModel.swift */,
@@ -2466,7 +2463,6 @@
 				5B15B9EC20FC9A6D009D24C7 /* UIView+GestureRecognizer.swift in Sources */,
 				49085134AD9F1392774A596C868E1681 /* MJFlowController.swift in Sources */,
 				5B4B15D020D4F1CB00EBA233 /* MJCoreDataSort.swift in Sources */,
-				970F80C207C19B1ADBD527AA6748A595 /* MJHttpAuthClient.swift in Sources */,
 				A39D4E454A87BCD28D6DA7F878E84B0C /* MJHttpClient.swift in Sources */,
 				5B50320B20C450790060FC35 /* MJKeyType.swift in Sources */,
 				7EC90AFF0B5D728EED73E24A26B8F8BB /* MJHttpEndpoint.swift in Sources */,

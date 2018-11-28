@@ -171,7 +171,7 @@ public final class MJHttpClient<Endpoint: MJHttpEndpoint>: MJHttpClientAny<Endpo
 open class MJHttpClientAny<Endpoint: MJHttpEndpoint>: MJHttpClientProtocol {
     public typealias EndpointType = Endpoint
     
-    public func sendRequest(_ endpoint: Endpoint) -> MJHttpResponse {
+    open func sendRequest(_ endpoint: Endpoint) -> MJHttpResponse {
         return .just(MJResult {
             return try MJson().serialize()
         })
