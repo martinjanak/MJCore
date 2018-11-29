@@ -17,7 +17,7 @@ public final class MJForm {
     public init() { }
     
     public func createInput<Value>(
-        value: Value,
+        value: Value?,
         validator: @escaping (Value?) -> Bool,
         notValidMessage: String? = nil
     ) -> MJFormInput<Value> {

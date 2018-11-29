@@ -19,7 +19,7 @@ public final class MJFormInput<Value>: MJValidable {
     
     private let notValidMessage: String?
     
-    init(value: Value, validator: @escaping (Value?) -> Bool, notValidMessage: String? = nil) {
+    init(value: Value?, validator: @escaping (Value?) -> Bool, notValidMessage: String? = nil) {
         self.notValidMessage = notValidMessage
         variable = BehaviorRelay<Value?>(value: value)
         isValid = BehaviorRelay<Bool>(value: validator(value))
