@@ -176,6 +176,30 @@ open class MJFlowController<Service> {
         }
     }
     
+    public func presentPopover<View: MJView, ViewModel: MJViewModel, Result>(
+        _ controller: MJPopoverViewController<View, ViewModel, Result>,
+        animated: Bool = true,
+        completion: (() -> Void)? = nil
+    ) -> Observable<Result> {
+        
+        controller.animated = animated
+        controller.modalPresentationStyle = .overCurrentContext
+        present(controller, animated: animated, completion: completion)
+        
+        return Observable.create { [weak self, weak controller] observer in
+            guard let controller = controller else {
+                return Disposables.create()
+            }
+            controller.close = { [weak self] result in
+                self?.back(animated: animated) {
+                    observer.onNext(result)
+                    observer.onCompleted()
+                }
+            }
+            return Disposables.create()
+        }
+    }
+    
     public func presentModally(
         _ controller: UIViewController,
         animated: Bool = true,

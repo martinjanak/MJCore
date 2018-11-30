@@ -198,6 +198,7 @@
 		5B99DF19212573C400A0F6E1 /* Driver+Cast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B99DF18212573C400A0F6E1 /* Driver+Cast.swift */; };
 		5BA06F7E20F738F300B0E504 /* MJYearMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA06F7C20F738F300B0E504 /* MJYearMonth.swift */; };
 		5BA06F7F20F738F300B0E504 /* MJMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA06F7D20F738F300B0E504 /* MJMonth.swift */; };
+		5BA6FE4921B163E40011B3D9 /* MJPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA6FE4821B163E40011B3D9 /* MJPopoverViewController.swift */; };
 		5BB1B0AF21830BF1007F5973 /* MJHasCustomTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1B0AE21830BF1007F5973 /* MJHasCustomTransitioning.swift */; };
 		5BB1B0B121831553007F5973 /* MJNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1B0B021831553007F5973 /* MJNavigationController.swift */; };
 		5BB1B0B9218327FC007F5973 /* MJOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1B0B8218327FC007F5973 /* MJOperators.swift */; };
@@ -719,6 +720,7 @@
 		5B99DF18212573C400A0F6E1 /* Driver+Cast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Driver+Cast.swift"; sourceTree = "<group>"; };
 		5BA06F7C20F738F300B0E504 /* MJYearMonth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJYearMonth.swift; sourceTree = "<group>"; };
 		5BA06F7D20F738F300B0E504 /* MJMonth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJMonth.swift; sourceTree = "<group>"; };
+		5BA6FE4821B163E40011B3D9 /* MJPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJPopoverViewController.swift; sourceTree = "<group>"; };
 		5BB1B0AE21830BF1007F5973 /* MJHasCustomTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJHasCustomTransitioning.swift; sourceTree = "<group>"; };
 		5BB1B0B021831553007F5973 /* MJNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJNavigationController.swift; sourceTree = "<group>"; };
 		5BB1B0B8218327FC007F5973 /* MJOperators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJOperators.swift; sourceTree = "<group>"; };
@@ -1799,6 +1801,7 @@
 				48F2DCD12131E7880F3D527BB704A5DA /* MJViewController.swift */,
 				5B0870D620F1EE3D007DD392 /* MJViewModel.swift */,
 				5B8E47B121A1D2A9008450F5 /* MJResultViewController.swift */,
+				5BA6FE4821B163E40011B3D9 /* MJPopoverViewController.swift */,
 			);
 			name = Modules;
 			path = MJCore/Classes/Modules;
@@ -2442,6 +2445,7 @@
 				52F7D891230780D9C6AA185C3B3CF6FB /* MJBackgroundPoller.swift in Sources */,
 				5B0DC93C218760A70087C56D /* Array+Permutation.swift in Sources */,
 				F09EF50EF2007288A1E3DB8CE69D8442 /* MJHttp.swift in Sources */,
+				5BA6FE4921B163E40011B3D9 /* MJPopoverViewController.swift in Sources */,
 				DAE7B8864F2E65B66DC894578BC980E3 /* MJCodableUtil.swift in Sources */,
 				6C7D70176A42E60525ADEA431E4B1B8B /* MJCore-dummy.m in Sources */,
 				5B997117211175D900C20776 /* MJPagingViewControllerType.swift in Sources */,
