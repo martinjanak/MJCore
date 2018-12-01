@@ -1245,8 +1245,7 @@
 				81F315F76A2EFE004D15DB3F54FCBF1B /* Keychain */,
 				11D8C2B351AC6C78FD75B0BB00C09351 /* UserDefaults */,
 			);
-			name = Persistence;
-			path = MJCore/Classes/Persistence;
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 		3E8456154B40D951C68A22F6DEEC136B /* Products */ = {
@@ -1318,14 +1317,18 @@
 			children = (
 				5B44E5C620C27530003A6AD3 /* MJLocalAuthService.swift */,
 			);
-			name = LocalAuthentication;
-			path = MJCore/Classes/LocalAuthentication;
+			path = LocalAuthentication;
 			sourceTree = "<group>";
 		};
 		5B50320920C450790060FC35 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				5BA06F7B20F738F300B0E504 /* Date */,
+				D71155246CE94498F98573387F1832F1 /* Log */,
+				74E21DA05D9032A5DB10773D4AE55855 /* Rx */,
 				5B7643E52188543A00C28D66 /* Group */,
+				5B5C2E7C20F9E1E0001ED90C /* Localization */,
+				5BF265CD20FB8416006D8838 /* Validation */,
 				5BB1B0B8218327FC007F5973 /* MJOperators.swift */,
 				5B50320A20C450790060FC35 /* MJKeyType.swift */,
 				5B5598DA2121AF1100B16537 /* MJSettings.swift */,
@@ -1361,8 +1364,19 @@
 				5B5C2E7D20F9E1E0001ED90C /* MJLocalizedString.swift */,
 				5B5C2E7E20F9E1E0001ED90C /* MJLanguage.swift */,
 			);
-			name = Localization;
-			path = MJCore/Classes/Localization;
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		5B5E40EB21B2BC930080C9D3 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				CE0BC249148A2ACD1EAC791828A496EC /* Http */,
+				2A5FA4DB39C4313F6E0636355E7DBAD7 /* Persistence */,
+				5B44E5C520C27530003A6AD3 /* LocalAuthentication */,
+				E4436D6F8C6A1CD139EA082DDEB8D7BB /* Notification */,
+			);
+			name = Service;
+			path = MJCore/Classes/Service;
 			sourceTree = "<group>";
 		};
 		5B6D804A210DBCA800D9EAB2 /* TableView */ = {
@@ -1487,8 +1501,7 @@
 				5BA06F7C20F738F300B0E504 /* MJYearMonth.swift */,
 				5BA06F7D20F738F300B0E504 /* MJMonth.swift */,
 			);
-			name = Date;
-			path = MJCore/Classes/Date;
+			path = Date;
 			sourceTree = "<group>";
 		};
 		5BB1B0AD21830BA7007F5973 /* Flow */ = {
@@ -1532,8 +1545,7 @@
 				5BF265D120FB8416006D8838 /* MJValidable.swift */,
 				5BF265D220FB8416006D8838 /* MJStringValidator.swift */,
 			);
-			name = Validation;
-			path = MJCore/Classes/Validation;
+			path = Validation;
 			sourceTree = "<group>";
 		};
 		5BF87629210779060003E9E8 /* CollectionView */ = {
@@ -1620,8 +1632,7 @@
 				5B2A1B272123FF2300F95811 /* MJTimer.swift */,
 				5B2A1B292123FFDF00F95811 /* MJCountDownTimer.swift */,
 			);
-			name = Rx;
-			path = MJCore/Classes/Rx;
+			path = Rx;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -1851,8 +1862,7 @@
 				AFCB75FCEDF716FB0813E998EE624ADE /* MJson.swift */,
 				12F1E338F1EADF86A2F6E2E68E24FB65 /* MJsonModel.swift */,
 			);
-			name = Http;
-			path = MJCore/Classes/Http;
+			path = Http;
 			sourceTree = "<group>";
 		};
 		CEDFD71359D1AFA56F5931C601427FBD /* Ext */ = {
@@ -1894,20 +1904,12 @@
 			isa = PBXGroup;
 			children = (
 				5B50320920C450790060FC35 /* Common */,
-				5BA06F7B20F738F300B0E504 /* Date */,
 				CEDFD71359D1AFA56F5931C601427FBD /* Ext */,
-				CE0BC249148A2ACD1EAC791828A496EC /* Http */,
-				D71155246CE94498F98573387F1832F1 /* Log */,
-				5B5C2E7C20F9E1E0001ED90C /* Localization */,
-				5B44E5C520C27530003A6AD3 /* LocalAuthentication */,
-				9C41D6581043F006969903D945BDF2E0 /* Modules */,
-				E4436D6F8C6A1CD139EA082DDEB8D7BB /* Notification */,
-				2A5FA4DB39C4313F6E0636355E7DBAD7 /* Persistence */,
-				4EDB6B4862CD489A884B2EAA45C4AD1B /* Pod */,
-				74E21DA05D9032A5DB10773D4AE55855 /* Rx */,
-				CF31C4A2AB73BC219D3C11D576D86371 /* Support Files */,
-				5BF265CD20FB8416006D8838 /* Validation */,
 				5BF265C920FB83F2006D8838 /* View */,
+				9C41D6581043F006969903D945BDF2E0 /* Modules */,
+				5B5E40EB21B2BC930080C9D3 /* Service */,
+				4EDB6B4862CD489A884B2EAA45C4AD1B /* Pod */,
+				CF31C4A2AB73BC219D3C11D576D86371 /* Support Files */,
 			);
 			name = MJCore;
 			path = ../..;
@@ -1918,8 +1920,7 @@
 			children = (
 				0A84CD5BC00EEA26239A30520D9D88C0 /* MJLogService.swift */,
 			);
-			name = Log;
-			path = MJCore/Classes/Log;
+			path = Log;
 			sourceTree = "<group>";
 		};
 		E4436D6F8C6A1CD139EA082DDEB8D7BB /* Notification */ = {
@@ -1928,8 +1929,7 @@
 				CA5121E6642B1BCDC0BAE4D070A1067F /* Local */,
 				85C9113BACE7377985E167C41C32328A /* Remote */,
 			);
-			name = Notification;
-			path = MJCore/Classes/Notification;
+			path = Notification;
 			sourceTree = "<group>";
 		};
 		E8292EA4CE8C792D5F5FCAAC0824443E /* Development Pods */ = {
