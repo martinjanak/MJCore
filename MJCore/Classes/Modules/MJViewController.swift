@@ -16,9 +16,9 @@ open class MJViewController<View: MJView, ViewModel: MJViewModel>: UIViewControl
     
     private(set) public var endEditingTapGR: UITapGestureRecognizer?
     
-    public init() {
+    public init(viewModel: ViewModel) {
         ui = View()
-        viewModel = ViewModel()
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     

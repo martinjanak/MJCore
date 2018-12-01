@@ -18,7 +18,10 @@ open class MJTextField: UITextField {
     
     public let hasSomeText = BehaviorRelay<Bool>(value: false)
     public let inEditingState = BehaviorRelay<Bool>(value: false)
-    public let validityState = BehaviorRelay<MJValidityState>(value: .notSpecified)
+    
+    open func bindValidityState(relay: BehaviorRelay<MJValidityState>) {
+        // optional override
+    }
     
     public var shouldClear: () -> Bool = { true }
     public var shouldReturn: () -> Bool = { true }

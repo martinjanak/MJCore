@@ -209,16 +209,15 @@ public class MJPagingViewModel<PagingModel: MJPagingModelType>
     
     public func register<
         View: MJView,
-        Model: MJPageViewModel<PagingModel>,
-        PageViewController: MJPageViewController<PagingModel, View, Model>
+        ViewModel: MJPageViewModel<PagingModel>,
+        PageViewController: MJPageViewController<PagingModel, View, ViewModel>
     >(
         _ type: PageViewController.Type,
-        additionalSetup: ((Int, PagingModel, inout PageViewController) -> Void)? = nil
+        constructor: @escaping ((Int, PagingModel) -> PageViewController)
     ) {
         let key = PageViewController.getKey()
-        pageContructors[key] = { index, model in
-            var pageVC = PageViewController(model)
-            additionalSetup?(index, model, &pageVC)
+        pageContructors[key] = { index, paginModel in
+            let pageVC = constructor(index, paginModel)
             return MJPageModule<PagingModel>(
                 viewController: pageVC,
                 pageViewModel: pageVC.viewModel

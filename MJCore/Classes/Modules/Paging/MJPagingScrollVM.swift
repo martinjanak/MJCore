@@ -11,4 +11,6 @@ open class MJPagingScrollVM<PagingModel: MJPagingModelType>: MJViewModel {
     
     public internal(set) var pagingVM: MJPagingViewModel<PagingModel>!
     
+    open func initBindings() { }
+    
 }

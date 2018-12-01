@@ -20,4 +20,6 @@ open class MJPageViewModel<PagingModel: MJPagingModelType>: MJViewModel {
         return pagingModel.value?.uniqueId
     }
     
+    open func initBindings() { }
+    
 }

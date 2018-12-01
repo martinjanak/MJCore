@@ -47,28 +47,6 @@ public func <-> <T>(property: ControlProperty<T>, relay: BehaviorRelay<T>) -> Di
     return Disposables.create(bindToUIDisposable, bindToRelay)
 }
 
-public func <-> <T: Equatable>(relayA: BehaviorRelay<T>, relayB: BehaviorRelay<T>) -> Disposable {
-    let dA = relayA.asObservable()
-        .with(relayB.asObservable())
-        .filter { newValue, oldValue in
-            return newValue != oldValue
-        }
-        .map { newValue, _ in
-            return newValue
-        }
-        .bind(to: relayB)
-    let dB = relayB.asObservable()
-        .with(relayA.asObservable())
-        .filter { newValue, oldValue in
-            return newValue != oldValue
-        }
-        .map { newValue, _ in
-            return newValue
-        }
-        .bind(to: relayA)
-    return Disposables.create(dA, dB)
-}
-
 public func <-> (textField: MJTextField, formInput: MJFormInput<String>) -> Disposable {
     
     let textDisposable = textField.rx.textInput.text <-> formInput.variable
@@ -78,7 +56,7 @@ public func <-> (textField: MJTextField, formInput: MJFormInput<String>) -> Disp
             formInputWeak?.isDirty.accept(true)
         })
     
-    let viewStateDisposable = textField.validityState <-> formInput.validityState
+    textField.bindValidityState(relay: formInput.validityState)
     
     // initial value problem
     DispatchQueue.main.async {
@@ -87,7 +65,6 @@ public func <-> (textField: MJTextField, formInput: MJFormInput<String>) -> Disp
     
     return Disposables.create(
         textDisposable,
-        isDirtyDisposable,
-        viewStateDisposable
+        isDirtyDisposable
     )
 }

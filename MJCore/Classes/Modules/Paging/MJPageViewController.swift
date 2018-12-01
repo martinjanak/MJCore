@@ -10,12 +10,12 @@ import Foundation
 open class MJPageViewController<
     PagingModel: MJPagingModelType,
     View: MJView,
-    Model: MJPageViewModel<PagingModel>
+    ViewModel: MJPageViewModel<PagingModel>
 >
-    : MJViewController<View, Model>, MJPagingViewControllerType {
+    : MJViewController<View, ViewModel>, MJPagingViewControllerType {
     
-    required public init(_ pagingModel: PagingModel) {
-        super.init()
+    required public init(viewModel: ViewModel, pagingModel: PagingModel) {
+        super.init(viewModel: viewModel)
         viewModel.pagingModel.accept(pagingModel)
     }
     
