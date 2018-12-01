@@ -12,7 +12,7 @@ public typealias MJPageViewControllerType = UIViewController & MJPagingViewContr
 public struct MJPagingChange {
     
     let viewController: MJPageViewControllerType?
-    let direction: UIPageViewControllerNavigationDirection
+    let direction: UIPageViewController.NavigationDirection
     let animated: Bool
     
 }
@@ -23,11 +23,14 @@ public final class MJPagingVC<PagingModel: MJPagingModelType>: UIPageViewControl
     public let model = MJPagingViewModel<PagingModel>()
     
     override init(
-        transitionStyle style: UIPageViewControllerTransitionStyle,
-        navigationOrientation: UIPageViewControllerNavigationOrientation,
-        options: [String: Any]? = nil
+        transitionStyle style: UIPageViewController.TransitionStyle,
+        navigationOrientation: UIPageViewController.NavigationOrientation,
+        options: [UIPageViewController.OptionsKey: Any]? = nil
     ) {
-        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: options)
+// Local variable inserted by Swift 4.2 migrator.
+let options = convertFromOptionalUIPageViewControllerOptionsKeyDictionary(options)
+
+        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: convertToOptionalUIPageViewControllerOptionsKeyDictionary(options))
         initBindings()
     }
     
@@ -62,4 +65,16 @@ public final class MJPagingVC<PagingModel: MJPagingModelType>: UIPageViewControl
         fatalError("init(coder:) has not been implemented")
     }
     
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromOptionalUIPageViewControllerOptionsKeyDictionary(_ input: [UIPageViewController.OptionsKey: Any]?) -> [String: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalUIPageViewControllerOptionsKeyDictionary(_ input: [String: Any]?) -> [UIPageViewController.OptionsKey: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIPageViewController.OptionsKey(rawValue: key), value)})
 }
