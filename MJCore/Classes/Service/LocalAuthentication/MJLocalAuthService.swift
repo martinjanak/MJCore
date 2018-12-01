@@ -62,13 +62,13 @@ public final class MJLocalAuthService {
             return .cannotEvaluate
         }
         switch error.code {
-        case LAError.biometryNotAvailable.rawValue:
+        case Int(kLAErrorBiometryNotAvailable):
             return .deviceDoesNotSupportBiometry
-        case LAError.biometryLockout.rawValue:
+        case Int(kLAErrorBiometryLockout):
             return .failedTooManyTimes
-        case LAError.biometryNotEnrolled.rawValue:
+        case Int(kLAErrorBiometryNotEnrolled):
             return .biometryNotEnrolled
-        case LAError.passcodeNotSet.rawValue:
+        case Int(kLAErrorPasscodeNotSet):
             return .passcodeNotSet
         default:
             return .cannotEvaluate
