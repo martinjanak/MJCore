@@ -19,10 +19,10 @@ open class MJPagingScrollVC<
     private let pagingVC: MJPagingVC<PagingModel>
     public let viewModel: ViewModel
     
-    public init() {
+    public init(viewModel: ViewModel) {
         ui = View()
         pagingVC = MJPagingVC<PagingModel>()
-        viewModel = ViewModel()
+        self.viewModel = viewModel
         viewModel.pagingVM = pagingVC.model
         super.init(nibName: nil, bundle: nil)
     }

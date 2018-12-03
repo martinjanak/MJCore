@@ -8,18 +8,18 @@
 import UIKit
 import RxSwift
 
-open class MJHorizontalScrollVC<View: MJHorizontalScrollView, Model: MJHorizontalScrollVM>: UIViewController {
+open class MJHorizontalScrollVC<View: MJHorizontalScrollView, ViewModel: MJHorizontalScrollVM>: UIViewController {
     
     public let disposeBag = DisposeBag()
     public let ui: View
     private let pageVC: MJHorizontalPageVC
-    public let model: Model
+    public let viewModel: ViewModel
     
-    public init() {
+    public init(viewModel: ViewModel) {
         ui = View()
         pageVC = MJHorizontalPageVC()
-        model = Model()
-        model.pageVM = pageVC.model
+        self.viewModel = viewModel
+        self.viewModel.pageVM = pageVC.model
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -29,7 +29,7 @@ open class MJHorizontalScrollVC<View: MJHorizontalScrollView, Model: MJHorizonta
         ui.initView(pageVC.view)
         view = ui
         pageVC.didMove(toParent: self)
-        model.initBindings()
+        viewModel.initBindings()
         pageVC.model.initBindings()
         initBindings()
     }

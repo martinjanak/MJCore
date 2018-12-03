@@ -11,4 +11,6 @@ open class MJHorizontalScrollVM: MJViewModel {
     
     public internal(set) var pageVM: MJHorizontalPageVM!
     
+    open func initBindings() { }
+    
 }

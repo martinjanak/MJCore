@@ -7,6 +7,6 @@
 
 import Foundation
 
-open class MJStackViewCell<Model>: MJViewComponent<MJStackViewCellModel<Model>> {
+open class MJStackViewCell<Model>: MJCellComponent<MJStackViewCellModel<Model>> {
     
 }

@@ -23,6 +23,7 @@ open class MJPopoverViewController<View: MJView, ViewModel: MJViewModel, Result>
     private let overlayColor: UIColor
     
     public init(
+        viewModel: ViewModel,
         sourceView: UIView,
         direction: UIPopoverArrowDirection = .any,
         overlayColor: UIColor = .clear
@@ -31,7 +32,7 @@ open class MJPopoverViewController<View: MJView, ViewModel: MJViewModel, Result>
         self.direction = direction
         self.overlayColor = overlayColor
         popover = View()
-        viewModel = ViewModel()
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
