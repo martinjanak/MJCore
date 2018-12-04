@@ -11,3 +11,7 @@ import RxCocoa
 public protocol MJViewModel: class {
     func initBindings()
 }
+
+extension MJViewModel {
+    public func initBindings() { }
+}
