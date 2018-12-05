@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-open class MJCellComponent<Model>: MJView {
+open class MJCellViewComponent<Model>: MJView {
     
     private let disposeBag = DisposeBag()
     public let model: BehaviorRelay<Model?>

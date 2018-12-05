@@ -7,6 +7,6 @@
 
 import UIKit
 
-open class MJTableSectionHeaderView<Model>: MJCellComponent<MJTableSectionHeaderModel<Model>> {
+open class MJTableSectionHeaderView<Model>: MJCellViewComponent<MJTableSectionHeaderModel<Model>> {
     
 }

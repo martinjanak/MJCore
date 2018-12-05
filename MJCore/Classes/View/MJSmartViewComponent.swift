@@ -8,10 +8,10 @@
 import UIKit
 import RxSwift
 
-open class MJSmartViewComponent<ViewModel: MJViewModel>: MJViewComponent {
+open class MJSmartViewComponent<ViewModel>: MJViewComponent {
     
     open func initBindings(viewModel: ViewModel) {
-        // override
+        fatalError("initBindings(viewModel:) has not been implemented")
     }
     
 }
