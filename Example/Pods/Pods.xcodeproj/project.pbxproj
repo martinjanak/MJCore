@@ -133,7 +133,6 @@
 		5B18291C2179CFCC00A183E5 /* MJTableViewLCS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B18291B2179CFCC00A183E5 /* MJTableViewLCS.swift */; };
 		5B1D2C98214673420004326E /* UIColor+hexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1D2C97214673420004326E /* UIColor+hexString.swift */; };
 		5B1D7C112122B28600F520AE /* UIViewController+ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1D7C102122B28600F520AE /* UIViewController+ShowAlert.swift */; };
-		5B20EB8E21B835C000630813 /* MJGroupViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B20EB8D21B835C000630813 /* MJGroupViewComponent.swift */; };
 		5B2181A820EBA5CA00C623BE /* MJHorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2181A420EBA5CA00C623BE /* MJHorizontalScrollView.swift */; };
 		5B2181A920EBA5CA00C623BE /* MJHorizontalScrollVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2181A520EBA5CA00C623BE /* MJHorizontalScrollVC.swift */; };
 		5B2A1B282123FF2300F95811 /* MJTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A1B272123FF2300F95811 /* MJTimer.swift */; };
@@ -144,7 +143,6 @@
 		5B31F9D7210C548C008F5AB5 /* Driver+Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B31F9D6210C548C008F5AB5 /* Driver+Unwrap.swift */; };
 		5B36180D20C5AFCF0006C3EB /* Observable+BatchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B36180C20C5AFCF0006C3EB /* Observable+BatchResult.swift */; };
 		5B376C06218ADE93000C0DE0 /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B376C05218ADE93000C0DE0 /* Display.swift */; };
-		5B3AD81C21B7E5CA00C203E3 /* MJFixedOrderGroupViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3AD81B21B7E5CA00C203E3 /* MJFixedOrderGroupViewComponent.swift */; };
 		5B44E5C720C27530003A6AD3 /* MJLocalAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B44E5C620C27530003A6AD3 /* MJLocalAuthService.swift */; };
 		5B4B15D020D4F1CB00EBA233 /* MJCoreDataSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B15CF20D4F1CB00EBA233 /* MJCoreDataSort.swift */; };
 		5B50320B20C450790060FC35 /* MJKeyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B50320A20C450790060FC35 /* MJKeyType.swift */; };
@@ -659,7 +657,6 @@
 		5B1C053449E8FF44CB648F511C203C5C /* PublishRelay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PublishRelay.swift; path = RxCocoa/Traits/PublishRelay.swift; sourceTree = "<group>"; };
 		5B1D2C97214673420004326E /* UIColor+hexString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hexString.swift"; sourceTree = "<group>"; };
 		5B1D7C102122B28600F520AE /* UIViewController+ShowAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ShowAlert.swift"; sourceTree = "<group>"; };
-		5B20EB8D21B835C000630813 /* MJGroupViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJGroupViewComponent.swift; sourceTree = "<group>"; };
 		5B2181A420EBA5CA00C623BE /* MJHorizontalScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJHorizontalScrollView.swift; sourceTree = "<group>"; };
 		5B2181A520EBA5CA00C623BE /* MJHorizontalScrollVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJHorizontalScrollVC.swift; sourceTree = "<group>"; };
 		5B2A1B272123FF2300F95811 /* MJTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJTimer.swift; sourceTree = "<group>"; };
@@ -669,7 +666,6 @@
 		5B31F9D6210C548C008F5AB5 /* Driver+Unwrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Driver+Unwrap.swift"; sourceTree = "<group>"; };
 		5B36180C20C5AFCF0006C3EB /* Observable+BatchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+BatchResult.swift"; sourceTree = "<group>"; };
 		5B376C05218ADE93000C0DE0 /* Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Display.swift; sourceTree = "<group>"; };
-		5B3AD81B21B7E5CA00C203E3 /* MJFixedOrderGroupViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJFixedOrderGroupViewComponent.swift; sourceTree = "<group>"; };
 		5B44E5C620C27530003A6AD3 /* MJLocalAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJLocalAuthService.swift; sourceTree = "<group>"; };
 		5B4B15CF20D4F1CB00EBA233 /* MJCoreDataSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJCoreDataSort.swift; sourceTree = "<group>"; };
 		5B50320A20C450790060FC35 /* MJKeyType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJKeyType.swift; sourceTree = "<group>"; };
@@ -1527,8 +1523,6 @@
 				5B684E44218EFACE00803B29 /* MJViewComponent.swift */,
 				5B5E40EC21B2DDA10080C9D3 /* MJCellViewComponent.swift */,
 				5B6FF59A21B68E8C00F82BF5 /* MJSmartViewComponent.swift */,
-				5B20EB8D21B835C000630813 /* MJGroupViewComponent.swift */,
-				5B3AD81B21B7E5CA00C203E3 /* MJFixedOrderGroupViewComponent.swift */,
 			);
 			name = View;
 			path = MJCore/Classes/View;
@@ -2465,7 +2459,6 @@
 				52F7D891230780D9C6AA185C3B3CF6FB /* MJBackgroundPoller.swift in Sources */,
 				5B0DC93C218760A70087C56D /* Array+Permutation.swift in Sources */,
 				F09EF50EF2007288A1E3DB8CE69D8442 /* MJHttp.swift in Sources */,
-				5B20EB8E21B835C000630813 /* MJGroupViewComponent.swift in Sources */,
 				5BA6FE4921B163E40011B3D9 /* MJPopoverViewController.swift in Sources */,
 				DAE7B8864F2E65B66DC894578BC980E3 /* MJCodableUtil.swift in Sources */,
 				6C7D70176A42E60525ADEA431E4B1B8B /* MJCore-dummy.m in Sources */,
@@ -2599,7 +2592,6 @@
 				5B99DF1321255AEF00A0F6E1 /* MJSectionTableModel.swift in Sources */,
 				5BB1B0BD21833226007F5973 /* Observable+First.swift in Sources */,
 				12252DB55373C62061B2D744ACC1C383 /* UIView+SafeConstraint.swift in Sources */,
-				5B3AD81C21B7E5CA00C203E3 /* MJFixedOrderGroupViewComponent.swift in Sources */,
 				5BF265D620FB8417006D8838 /* MJValidable.swift in Sources */,
 				5B684E4D218F060400803B29 /* MJCollectionViewCellModel.swift in Sources */,
 			);
