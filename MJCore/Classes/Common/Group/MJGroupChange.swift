@@ -9,7 +9,7 @@ import Foundation
 
 public enum MJGroupChange<Element: MJGroupElementType> {
     case initialization(elements: [Element])
-    case cyclicPermutation(index: Int)
+    case cyclicPermutation(index: Int, count: Int)
     case model(operations: MJGroupModelOperations<Element>)
 }
 

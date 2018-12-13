@@ -175,6 +175,7 @@
 		5B7643ED218871D000C28D66 /* MJFixedOrderGroupChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7643EC218871D000C28D66 /* MJFixedOrderGroupChange.swift */; };
 		5B7643F2218883F100C28D66 /* Observable+BindToGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7643F1218883F100C28D66 /* Observable+BindToGroup.swift */; };
 		5B7643F42188CED200C28D66 /* UIView+SetConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7643F32188CED200C28D66 /* UIView+SetConstraint.swift */; };
+		5B7DE00621C29E740038D58E /* MJGroupTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7DE00521C29E740038D58E /* MJGroupTableView.swift */; };
 		5B8963CD21861467001B2E7D /* MJUniqueIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8963CC21861467001B2E7D /* MJUniqueIdentifiable.swift */; };
 		5B8963CF218614FA001B2E7D /* MJGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8963CE218614FA001B2E7D /* MJGroup.swift */; };
 		5B8E47B221A1D2A9008450F5 /* MJResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8E47B121A1D2A9008450F5 /* MJResultViewController.swift */; };
@@ -697,6 +698,7 @@
 		5B7643EC218871D000C28D66 /* MJFixedOrderGroupChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJFixedOrderGroupChange.swift; sourceTree = "<group>"; };
 		5B7643F1218883F100C28D66 /* Observable+BindToGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+BindToGroup.swift"; sourceTree = "<group>"; };
 		5B7643F32188CED200C28D66 /* UIView+SetConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SetConstraint.swift"; sourceTree = "<group>"; };
+		5B7DE00521C29E740038D58E /* MJGroupTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJGroupTableView.swift; sourceTree = "<group>"; };
 		5B8963CC21861467001B2E7D /* MJUniqueIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJUniqueIdentifiable.swift; sourceTree = "<group>"; };
 		5B8963CE218614FA001B2E7D /* MJGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJGroup.swift; sourceTree = "<group>"; };
 		5B8E47B121A1D2A9008450F5 /* MJResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJResultViewController.swift; sourceTree = "<group>"; };
@@ -1383,6 +1385,7 @@
 			isa = PBXGroup;
 			children = (
 				5B6D804B210DBCBC00D9EAB2 /* MJTableView.swift */,
+				5B7DE00521C29E740038D58E /* MJGroupTableView.swift */,
 				5B18291B2179CFCC00A183E5 /* MJTableViewLCS.swift */,
 				5B6D804D210DBCC800D9EAB2 /* MJTableViewCell.swift */,
 				5B684E48218EFF8200803B29 /* MJTableViewCellModel.swift */,
@@ -2473,6 +2476,7 @@
 				5BA06F7E20F738F300B0E504 /* MJYearMonth.swift in Sources */,
 				5B6FF59B21B68E8C00F82BF5 /* MJSmartViewComponent.swift in Sources */,
 				5B5C2E8020F9E1E1001ED90C /* MJLanguage.swift in Sources */,
+				5B7DE00621C29E740038D58E /* MJGroupTableView.swift in Sources */,
 				5B0E07C7212964F500692481 /* MJStackViewCell.swift in Sources */,
 				5B15B9EA20FC857B009D24C7 /* MJHorizonatlScrollVM.swift in Sources */,
 				2A7342C71F12451379C7D6DBF769611E /* MJCoreDataService.swift in Sources */,

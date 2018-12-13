@@ -31,7 +31,7 @@ public class MJGroup<Element: MJGroupElementType> {
         }
         if let index = elements.getCylicPermutationIndex(of: newElements) {
             if index > 0 {
-                self.changeRelay.accept(.cyclicPermutation(index: index))
+                self.changeRelay.accept(.cyclicPermutation(index: index, count: elements.count))
             }
         } else {
             let operations = elements.lcsOperations(with: newElements)
@@ -42,17 +42,43 @@ public class MJGroup<Element: MJGroupElementType> {
     
     // MARK: Operations
     
-    public func cyclicPermutate(index: Int) {
+    public func insert(element: Element, at index: Int) {
         semaphore.wait(); defer { semaphore.signal() }
-        
-        guard let elements = self.elements else {
+        guard var elements = self.elements else {
+            let newElements = [element]
+            self.elements = newElements
+            changeRelay.accept(.initialization(elements: newElements))
             return
         }
-        guard 0 < index, index < elements.count else { return }
-        let newElements = Array(elements[index...(elements.count-1)])
-            + Array(elements[0...(index-1)])
-        self.elements = newElements
-        self.changeRelay.accept(.cyclicPermutation(index: index))
+        guard elements.count > index else {
+            return
+        }
+        elements.insert(element, at: index)
+        let operations = MJGroupModelOperations(
+            inserts: [
+                 MJGroupElementOperation<Element>(model: element, index: index)
+            ],
+            deletes: [MJGroupElementOperation<Element>](),
+            updates: [MJGroupElementOperation<Element>]()
+        )
+        changeRelay.accept(.model(operations: operations))
+    }
+    
+    public func delete(at index: Int) {
+        semaphore.wait(); defer { semaphore.signal() }
+        guard var elements = self.elements,
+            elements.count > index else {
+            return
+        }
+        let removedElement = elements.remove(at: index)
+        let operations = MJGroupModelOperations(
+            inserts: [MJGroupElementOperation<Element>](),
+            deletes: [
+                MJGroupElementOperation<Element>(model: removedElement, index: index)
+            ],
+            updates: [MJGroupElementOperation<Element>]()
+        )
+        changeRelay.accept(.model(operations: operations))
     }
     
     public func update(element: Element) {
@@ -75,11 +101,32 @@ public class MJGroup<Element: MJGroupElementType> {
         }
     }
     
-    // Rx
+    public func cyclicPermutate(index: Int) {
+        semaphore.wait(); defer { semaphore.signal() }
+        
+        guard let elements = self.elements else {
+            return
+        }
+        guard 0 < index, index < elements.count else { return }
+        let newElements = Array(elements[index...(elements.count-1)])
+            + Array(elements[0...(index-1)])
+        self.elements = newElements
+        self.changeRelay.accept(.cyclicPermutation(index: index, count: elements.count))
+    }
+    
+    public func getElement(at index: Int) -> Element? {
+        semaphore.wait(); defer { semaphore.signal() }
+        if let elements = elements, elements.count > index {
+            return elements[index]
+        } else {
+            return nil
+        }
+    }
+    
+    // MARK: Rx
     
     public func asObservable() -> Observable<MJGroupChange<Element>> {
         semaphore.wait(); defer { semaphore.signal() }
-        
         if let elements = self.elements {
             return changeRelay
                 .asObservable()
