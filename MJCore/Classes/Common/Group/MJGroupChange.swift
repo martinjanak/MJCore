@@ -19,6 +19,16 @@ public struct MJGroupModelOperations<Element: MJGroupElementType> {
     public var deletes: [MJGroupElementOperation<Element>]
     public var updates: [MJGroupElementOperation<Element>]
     
+    init(
+        inserts: [MJGroupElementOperation<Element>] = [MJGroupElementOperation<Element>](),
+        deletes: [MJGroupElementOperation<Element>] = [MJGroupElementOperation<Element>](),
+        updates: [MJGroupElementOperation<Element>] = [MJGroupElementOperation<Element>]()
+    ) {
+        self.inserts = inserts
+        self.deletes = deletes
+        self.updates = updates
+    }
+    
     public var hasAny: Bool {
         return inserts.count + deletes.count + updates.count > 0
     }

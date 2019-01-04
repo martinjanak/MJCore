@@ -11,10 +11,26 @@ import Foundation
 extension Array where Element: MJGroupElementType {
     
     public func lcsOperations(with second: Array<Element>) -> MJGroupModelOperations<Element> {
-        let lcs = self.lcs(with: second)
-        var diff = self.diff(lcs: lcs, with: second, i: self.count, j: second.count)
-        diff.inserts.reverse()
-        return diff
+        if self.count > 0 && second.count > 0 {
+            let lcs = self.lcs(with: second)
+            var diff = self.diff(lcs: lcs, with: second, i: self.count, j: second.count)
+            diff.inserts.reverse()
+            return diff
+        } else if self.count > 0 {
+            return MJGroupModelOperations<Element>(
+                deletes: self.enumerated().map {
+                    MJGroupElementOperation<Element>(model: $0.element, index: $0.offset)
+                }
+            )
+        } else if second.count > 0 {
+            return MJGroupModelOperations<Element>(
+                inserts: second.enumerated().map {
+                    MJGroupElementOperation<Element>(model: $0.element, index: $0.offset)
+                }
+            )
+        } else {
+            return MJGroupModelOperations<Element>()
+        }
     }
     
     public func fixedOrderLcsOperations(with second: Array<Element>) -> MJFixedOrderGroupModelOperations<Element> {
