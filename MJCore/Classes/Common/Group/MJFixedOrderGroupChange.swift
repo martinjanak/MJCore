@@ -19,7 +19,7 @@ public struct MJFixedOrderGroupModelOperations<Element: MJGroupElementType> {
     public var updates: [String: Element]
     
     public var hasAny: Bool {
-        return deletes.count + appends.count > 0
+        return deletes.count + appends.count + updates.count > 0
     }
     
 }

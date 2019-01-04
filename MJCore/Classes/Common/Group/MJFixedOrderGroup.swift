@@ -30,7 +30,7 @@ public class MJFixedOrderGroup<Element: MJGroupElementType> {
         if operations.hasAny {
             self.changeRelay.accept(.model(operations: operations))
         }
-        self.elements = newElements
+        self.elements = newElementsSorted
     }
     
     // MARK: Operations
